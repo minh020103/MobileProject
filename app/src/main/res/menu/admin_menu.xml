@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/nvaChuTro"
+        android:title="Chủ trọ"
+        android:icon="@drawable/motel_room_owner_selector"/>
+    <item
+        android:id="@+id/nvaGoiDichVu"
+        android:title="Gói dịch vụ"
+        android:icon="@drawable/package_selector"/>
+    <item
+        android:id="@+id/nvaChoDuyet"
+        android:title="Chờ duyệt"
+        android:icon="@drawable/pending_selector"/>
+    <item
         android:id="@+id/nvaQuanLy"
         android:title="Quản lý"
         android:icon="@drawable/management_selector"/>
-    <item
-        android:id="@+id/nvaUngDung"
-        android:title="Ứng dụng"
-        android:icon="@drawable/app_management_selector"/>
-    <item
-        android:id="@+id/nvaLuong"
-        android:title="Lương"
-        android:icon="@drawable/wage_selector"/>
     <item
         android:id="@+id/nvaTaiKhoan"
         android:title="Tài khoản"

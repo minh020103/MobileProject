@@ -10,21 +10,23 @@ import android.view.MenuItem;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.fragment.admin.AbstractFragment;
-import com.example.mobileproject.fragment.admin.AppManagementFragment;
+import com.example.mobileproject.fragment.admin.MotelRoomOwnerFragment;
+import com.example.mobileproject.fragment.admin.PackageFragment;
 import com.example.mobileproject.fragment.admin.ManagementFragment;
 import com.example.mobileproject.fragment.admin.ProfileFragment;
-import com.example.mobileproject.fragment.admin.WageFragment;
+import com.example.mobileproject.fragment.admin.PendingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private final int MANAGEMENT_SCREEN = 1000;
-    private final int APP_MANAGEMENT_SCREEN = 1001;
-    private final int WAGE_SCREEN = 1002;
-    private final int PROFILE_SCREEN = 1003;
+    private final int MOTEL_ROOM_SCREEN = 1000;
+    private final int PACKAGE_SCREEN = 1001;
+    private final int PENDING_SCREEN = 1002;
+    private final int MANAGEMENT_SCREEN = 1003;
+    private final int PROFILE_SCREEN = 1004;
 
-    private int screenID = MANAGEMENT_SCREEN;
+    private int screenID = MOTEL_ROOM_SCREEN;
 
 
     AbstractFragment fragment;
@@ -49,16 +51,20 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case R.id.nvaChuTro:
+                        screenID = MOTEL_ROOM_SCREEN;
+                        replaceFragment();
+                        break;
+                    case R.id.nvaGoiDichVu:
+                        screenID = PACKAGE_SCREEN;
+                        replaceFragment();
+                        break;
+                    case R.id.nvaChoDuyet:
+                        screenID = PENDING_SCREEN;
+                        replaceFragment();
+                        break;
                     case R.id.nvaQuanLy:
                         screenID = MANAGEMENT_SCREEN;
-                        replaceFragment();
-                        break;
-                    case R.id.nvaUngDung:
-                        screenID = APP_MANAGEMENT_SCREEN;
-                        replaceFragment();
-                        break;
-                    case R.id.nvaLuong:
-                        screenID = WAGE_SCREEN;
                         replaceFragment();
                         break;
                     case R.id.nvaTaiKhoan:
@@ -69,9 +75,6 @@ public class AdminActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
     }
 
 
@@ -80,14 +83,17 @@ public class AdminActivity extends AppCompatActivity {
         if (getSupportFragmentManager().findFragmentByTag(screenID + "") != null) {
             fragment = (AbstractFragment) getSupportFragmentManager().findFragmentByTag(screenID + "");
         } else {
+            if (screenID == MOTEL_ROOM_SCREEN) {
+                fragment = new MotelRoomOwnerFragment();
+            }
+            if (screenID == PACKAGE_SCREEN) {
+                fragment = new PackageFragment();
+            }
+            if (screenID == PENDING_SCREEN) {
+                fragment = new PendingFragment();
+            }
             if (screenID == MANAGEMENT_SCREEN) {
                 fragment = new ManagementFragment();
-            }
-            if (screenID == APP_MANAGEMENT_SCREEN) {
-                fragment = new AppManagementFragment();
-            }
-            if (screenID == WAGE_SCREEN) {
-                fragment = new WageFragment();
             }
             if (screenID == PROFILE_SCREEN) {
                 fragment = new ProfileFragment();
