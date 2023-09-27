@@ -69,9 +69,6 @@ public class AdminActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
     }
 
 
