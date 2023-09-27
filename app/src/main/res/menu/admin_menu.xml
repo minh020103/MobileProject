@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nvaQuanLy"
+        android:title="Quản lý"
+        android:icon="@drawable/management_selector"/>
+    <item
+        android:id="@+id/nvaUngDung"
+        android:title="Ứng dụng"
+        android:icon="@drawable/app_management_selector"/>
+    <item
+        android:id="@+id/nvaLuong"
+        android:title="Lương"
+        android:icon="@drawable/wage_selector"/>
+    <item
+        android:id="@+id/nvaTaiKhoan"
+        android:title="Tài khoản"
+        android:icon="@drawable/profile_selector"/>
+</menu>
