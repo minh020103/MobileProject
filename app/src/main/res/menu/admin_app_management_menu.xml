@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nvaTienIch"
+        android:title="Tiện ích"/>
+    <item
+        android:id="@+id/nvaKhuVuc"
+        android:title="Khu vực"/>
+    <item
+        android:id="@+id/nvaHinhAnhCuaApp"
+        android:title="Hình ảnh"/>
+</menu>
