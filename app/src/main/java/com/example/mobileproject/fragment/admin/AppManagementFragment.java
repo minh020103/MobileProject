@@ -52,9 +52,6 @@ public class AppManagementFragment extends AbstractFragment{
             }
         }).attach();
 
-        requireActivity().getOnBackPressedDispatcher().addCallback(){
-
-        };
 
 
         return fragmentLayout;
