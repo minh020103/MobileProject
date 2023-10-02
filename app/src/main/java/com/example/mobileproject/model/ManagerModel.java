@@ -1,27 +1,67 @@
 package com.example.mobileproject.model;
 
-public class Data {
-    private String hinh;
-    private String ten;
+public class ManagerModel {
+    private int idTaiKhoanQuanLi;
+    private String tenNguoiQuanLi;
+    private String hinhNguoiQuanLi;
+    private String sdtNguoiQuanLi;
+    private String tinhQuanLi;
+    private int soTienDaNhan;
 
-    public Data(String hinh, String ten) {
-        this.hinh = hinh;
-        this.ten = ten;
+    public ManagerModel(int idTaiKhoanQuanLi, String tenNguoiQuanLi, String hinhNguoiQuanLi, String sdtNguoiQuanLi, String tinhQuanLi, int soTienDaNhan) {
+        this.idTaiKhoanQuanLi = idTaiKhoanQuanLi;
+        this.tenNguoiQuanLi = tenNguoiQuanLi;
+        this.hinhNguoiQuanLi = hinhNguoiQuanLi;
+        this.sdtNguoiQuanLi = sdtNguoiQuanLi;
+        this.tinhQuanLi = tinhQuanLi;
+        this.soTienDaNhan = soTienDaNhan;
     }
 
-    public String getHinh() {
-        return hinh;
+    public int getIdTaiKhoanQuanLi() {
+        return idTaiKhoanQuanLi;
     }
 
-    public void setHinh(String hinh) {
-        this.hinh = hinh;
+    public void setIdTaiKhoanQuanLi(int idTaiKhoanQuanLi) {
+        this.idTaiKhoanQuanLi = idTaiKhoanQuanLi;
     }
 
-    public String getTen() {
-        return ten;
+    public String getTenNguoiQuanLi() {
+        return tenNguoiQuanLi;
     }
 
-    public void setTen(String ten) {
-        this.ten = ten;
+    public void setTenNguoiQuanLi(String tenNguoiQuanLi) {
+        this.tenNguoiQuanLi = tenNguoiQuanLi;
+    }
+
+    public String getHinhNguoiQuanLi() {
+        return hinhNguoiQuanLi;
+    }
+
+    public void setHinhNguoiQuanLi(String hinhNguoiQuanLi) {
+        this.hinhNguoiQuanLi = hinhNguoiQuanLi;
+    }
+
+    public String getSdtNguoiQuanLi() {
+        return sdtNguoiQuanLi;
+    }
+
+    public void setSdtNguoiQuanLi(String sdtNguoiQuanLi) {
+        this.sdtNguoiQuanLi = sdtNguoiQuanLi;
+    }
+
+    public String getTinhQuanLi() {
+        return tinhQuanLi;
+    }
+
+    public void setTinhQuanLi(String tinhQuanLi) {
+        this.tinhQuanLi = tinhQuanLi;
+    }
+
+    public int getSoTienDaNhan() {
+        return soTienDaNhan;
+    }
+
+    public void setSoTienDaNhan(int soTienDaNhan) {
+        this.soTienDaNhan = soTienDaNhan;
     }
 }

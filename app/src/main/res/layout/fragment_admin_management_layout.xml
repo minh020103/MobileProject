@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvManager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="management screen"
-        android:gravity="center"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
