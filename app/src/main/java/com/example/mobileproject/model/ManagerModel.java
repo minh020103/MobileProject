@@ -1,7 +1,10 @@
 package com.example.mobileproject.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ManagerModel {
     private int idTaiKhoanQuanLi;
+    @SerializedName("tenNguoiQuanLy")
     private String tenNguoiQuanLi;
     private String hinhNguoiQuanLi;
     private String sdtNguoiQuanLi;
@@ -34,7 +37,7 @@ public class ManagerModel {
     }
 
     public String getHinhNguoiQuanLi() {
-        return hinhNguoiQuanLi;
+        return "http://192.168.1.22/example-app/public/images/"+hinhNguoiQuanLi;
     }
 
     public void setHinhNguoiQuanLi(String hinhNguoiQuanLi) {
@@ -63,5 +66,17 @@ public class ManagerModel {
 
     public void setSoTienDaNhan(int soTienDaNhan) {
         this.soTienDaNhan = soTienDaNhan;
+    }
+
+    @Override
+    public String toString() {
+        return "ManagerModel{" +
+                "idTaiKhoanQuanLi=" + idTaiKhoanQuanLi +
+                ", tenNguoiQuanLi='" + tenNguoiQuanLi + '\'' +
+                ", hinhNguoiQuanLi='" + hinhNguoiQuanLi + '\'' +
+                ", sdtNguoiQuanLi='" + sdtNguoiQuanLi + '\'' +
+                ", tinhQuanLi='" + tinhQuanLi + '\'' +
+                ", soTienDaNhan=" + soTienDaNhan +
+                '}';
     }
 }

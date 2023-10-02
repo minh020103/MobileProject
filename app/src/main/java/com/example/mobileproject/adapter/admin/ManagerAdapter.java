@@ -1,6 +1,7 @@
 package com.example.mobileproject.adapter.admin;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
 import com.example.mobileproject.model.ManagerModel;
 
@@ -21,6 +23,8 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
     private Activity activity;
     private List<ManagerModel> list;
     private int layoutID;
+
+    OnClickItemListener onClickItemListene;
 
     public ManagerAdapter(Activity activity, List<ManagerModel> list, int layoutID) {
         this.activity = activity;
@@ -39,15 +43,29 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ManagerModel data = list.get(position);
-        if (data.getHinhNguoiQuanLi() != null){
-            holder.hinhNguoiQuanLi.setImageDrawable(activity.getResources().getDrawable(R.drawable.app_management_selector, activity.getTheme()));
-
-        }
+        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiQuanLi()).into(holder.hinhNguoiQuanLi);
         holder.tenNguoiQuanLi.setText(data.getTenNguoiQuanLi());
         holder.sdtNguoiQuanLi.setText(data.getSdtNguoiQuanLi());
         holder.tinhQuanLi.setText(data.getTinhQuanLi());
-        //holder.soTienDaNhan.setText(data.getSoTienDaNhan());
+        holder.soTienDaNhan.setText(String.valueOf(data.getSoTienDaNhan()));
 
+        holder.onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickItemListene.onClickItem(position,v);
+            }
+        };
+
+
+
+    }
+
+    public OnClickItemListener getOnClickItemListene() {
+        return onClickItemListene;
+    }
+
+    public void setOnClickItemListene(OnClickItemListener onClickItemListene) {
+        this.onClickItemListene = onClickItemListene;
     }
 
     @Override
@@ -60,12 +78,19 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
         return layoutID;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+
+    public interface OnClickItemListener{
+        void onClickItem(int position, View v);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tenNguoiQuanLi;
         ImageView hinhNguoiQuanLi;
         TextView sdtNguoiQuanLi;
         TextView tinhQuanLi;
-        //TextView soTienDaNhan;
+        TextView soTienDaNhan;
+
+        View.OnClickListener onClickListener;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -74,7 +99,14 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
             hinhNguoiQuanLi = itemView.findViewById(R.id.imgHinhQuanLi);
             sdtNguoiQuanLi = itemView.findViewById(R.id.tvSdtQuanLi);
             tinhQuanLi = itemView.findViewById(R.id.tvTinhQuanLi);
-            //soTienDaNhan = itemView.findViewById(R.id.tvSoTienDaNhanQuanLi);
+            soTienDaNhan = itemView.findViewById(R.id.tvSoTienDaNhanQuanLi);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onClickListener.onClick(v);
         }
     }
 }
