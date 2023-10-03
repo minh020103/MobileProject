@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +33,9 @@ public class ManagementFragment extends AbstractFragment{
     List<ManagerModel> list;
     ManagerAdapter managerAdapter;
     LinearLayoutManager layoutManager;
+
+    EditText edtSearch;
+    Button btnSearch;
 
     @Nullable
     @Override
@@ -60,7 +65,8 @@ public class ManagementFragment extends AbstractFragment{
 //        recyclerView.setLayoutManager(layoutManager);
 //        recyclerView.setAdapter(managerAdapter);
 
-
+        edtSearch = fragmentLayout.findViewById(R.id.edt_search);
+        btnSearch = fragmentLayout.findViewById(R.id.btn_search);
 
         recyclerView = fragmentLayout.findViewById(R.id.rvManager);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -71,15 +77,94 @@ public class ManagementFragment extends AbstractFragment{
 
         list = new ArrayList<>();
 
-        CallApi();
+        ListManagerApi();
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edtSearch.getText() != null)
+                {
+                    String key = String.valueOf(edtSearch.getText());
+                    ManagerByNameApi(key);
+                    ManagerByAreaAPI(key);
+                }
+                else
+                {
+                    ListManagerApi();
+                }
+            }
+        });
+
 
 
         return fragmentLayout;
     }
 
-    private void CallApi()
+    private void ListManagerApi()
     {
         ApiServiceKiet.apiServiceKiet.getListManagerAPI().enqueue(new Callback<List<ManagerModel>>() {
+            @Override
+            public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
+                Log.d("tinnhan", "thanh cong");
+                List<ManagerModel> list1 = response.body();
+                list = response.body();
+                managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
+                recyclerView.setAdapter(managerAdapter);
+
+
+
+                managerAdapter.setOnClickItemListene(new ManagerAdapter.OnClickItemListener() {
+                    @Override
+                    public void onClickItem(int position, View v) {
+                        Log.d("TAG", list.get(position)+"");
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ManagerModel>> call, Throwable t) {
+                Log.d("tinnhan", "that bai");
+            }
+        });
+
+    }
+
+    private void ManagerByNameApi(String key)
+    {
+        ApiServiceKiet.apiServiceKiet.getManagerByIdAPI(key).enqueue(new Callback<List<ManagerModel>>() {
+            @Override
+            public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
+                Log.d("tinnhan", "thanh cong");
+                List<ManagerModel> list1 = response.body();
+                list = response.body();
+                managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
+                recyclerView.setAdapter(managerAdapter);
+
+
+
+                managerAdapter.setOnClickItemListene(new ManagerAdapter.OnClickItemListener() {
+                    @Override
+                    public void onClickItem(int position, View v) {
+                        Log.d("TAG", list.get(position)+"");
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ManagerModel>> call, Throwable t) {
+                Log.d("tinnhan", "that bai");
+            }
+        });
+
+    }
+
+    private void ManagerByAreaAPI(String key)
+    {
+        ApiServiceKiet.apiServiceKiet.getManagerByAreaAPI(key).enqueue(new Callback<List<ManagerModel>>() {
             @Override
             public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
                 Log.d("tinnhan", "thanh cong");

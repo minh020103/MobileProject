@@ -19,10 +19,16 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.22/example-app/public/api/")
+            .baseUrl("http://192.168.2.6/API_ChuyenDe2/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
-    @GET("manager/all")
+    @GET("index")
     Call<List<ManagerModel>> getListManagerAPI();
+
+    @GET("managerByName.php")
+    Call<List<ManagerModel>> getManagerByIdAPI(@Query("tenNguoiQuanLy") String tenNguoiQuanLy);
+
+    @GET("managerByArea.php")
+    Call<List<ManagerModel>> getManagerByAreaAPI(@Query("tinhQuanLi") String tinhQuanLi);
 }
