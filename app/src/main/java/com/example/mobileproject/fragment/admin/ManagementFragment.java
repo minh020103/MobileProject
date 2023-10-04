@@ -83,7 +83,8 @@ public class ManagementFragment extends AbstractFragment{
                 if (edtSearch.getText() != null)
                 {
                     String key = String.valueOf(edtSearch.getText());
-                    ManagerByNameApi(key);
+                    HostByNameApi(key);
+                    HostByPhoneApi(key);
                 }
                 else
                 {
@@ -128,9 +129,40 @@ public class ManagementFragment extends AbstractFragment{
 
     }
 
-    private void ManagerByNameApi(String key)
+    private void HostByNameApi(String key)
     {
         ApiServiceKiet.apiServiceKiet.getHostByNameAPI(key).enqueue(new Callback<List<HostModel>>() {
+            @Override
+            public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
+                Log.d("tinnhan", "thanh cong");
+                List<HostModel> list1 = response.body();
+                list = response.body();
+                hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
+                recyclerView.setAdapter(hostAdapter);
+
+
+
+                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
+                    @Override
+                    public void onClickItem(int position, View v) {
+                        Log.d("TAG", list.get(position)+"");
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<HostModel>> call, Throwable t) {
+                Log.d("tinnhan", "that bai");
+            }
+        });
+
+    }
+
+    private void HostByPhoneApi(String key)
+    {
+        ApiServiceKiet.apiServiceKiet.getHostByPhoneAPI(key).enqueue(new Callback<List<HostModel>>() {
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");

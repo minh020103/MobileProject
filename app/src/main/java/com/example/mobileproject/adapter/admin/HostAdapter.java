@@ -48,10 +48,12 @@ public class HostAdapter extends RecyclerView.Adapter<HostAdapter.MyViewHolder> 
         if (data.getXacThuc() == 1)
         {
             holder.tvStatusHost.setText("Da Xac Thuc");
+            holder.tvStatusHost.setBackgroundColor(0xFF00FF00);
         }
         else
         {
             holder.tvStatusHost.setText("Chua Xac Thuc");
+            holder.tvStatusHost.setBackgroundColor(0xFFFF0000);
         }
         //holder.tvStatusHost.setText(String.valueOf(data.getXacThuc()));
 

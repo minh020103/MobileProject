@@ -27,6 +27,8 @@ public interface ApiServiceKiet {
     Call<List<HostModel>> getListHostAPI();
     @GET("hostByName.php")
     Call<List<HostModel>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
+    @GET("hostByPhone.php")
+    Call<List<HostModel>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
 
 
 }
