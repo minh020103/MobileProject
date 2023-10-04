@@ -2,81 +2,102 @@ package com.example.mobileproject.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ManagerModel {
-    private int idTaiKhoanQuanLi;
-    @SerializedName("tenNguoiQuanLy")
-    private String tenNguoiQuanLi;
-    private String hinhNguoiQuanLi;
-    private String sdtNguoiQuanLi;
-    private String tinhQuanLi;
-    private int soTienDaNhan;
+public class HostModel {
+    private int id;
+    private int idTaiKhoan;
+    private int idViThanhToan;
+    private String hinhNguoiDung;
+    private String tenNguoiDung;
+    private String SoDienThoai;
+    private String gioiTinh;
+    private int xacThuc;
 
-    public ManagerModel(int idTaiKhoanQuanLi, String tenNguoiQuanLi, String hinhNguoiQuanLi, String sdtNguoiQuanLi, String tinhQuanLi, int soTienDaNhan) {
-        this.idTaiKhoanQuanLi = idTaiKhoanQuanLi;
-        this.tenNguoiQuanLi = tenNguoiQuanLi;
-        this.hinhNguoiQuanLi = hinhNguoiQuanLi;
-        this.sdtNguoiQuanLi = sdtNguoiQuanLi;
-        this.tinhQuanLi = tinhQuanLi;
-        this.soTienDaNhan = soTienDaNhan;
+    public HostModel(int id, int idTaiKhoan, int idViThanhToan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, String gioiTinh, int xacThuc) {
+        this.id = id;
+        this.idTaiKhoan = idTaiKhoan;
+        this.idViThanhToan = idViThanhToan;
+        this.hinhNguoiDung = hinhNguoiDung;
+        this.tenNguoiDung = tenNguoiDung;
+        SoDienThoai = soDienThoai;
+        this.gioiTinh = gioiTinh;
+        this.xacThuc = xacThuc;
     }
 
-    public int getIdTaiKhoanQuanLi() {
-        return idTaiKhoanQuanLi;
+    public int getId() {
+        return id;
     }
 
-    public void setIdTaiKhoanQuanLi(int idTaiKhoanQuanLi) {
-        this.idTaiKhoanQuanLi = idTaiKhoanQuanLi;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTenNguoiQuanLi() {
-        return tenNguoiQuanLi;
+    public int getIdTaiKhoan() {
+        return idTaiKhoan;
     }
 
-    public void setTenNguoiQuanLi(String tenNguoiQuanLi) {
-        this.tenNguoiQuanLi = tenNguoiQuanLi;
+    public void setIdTaiKhoan(int idTaiKhoan) {
+        this.idTaiKhoan = idTaiKhoan;
     }
 
-    public String getHinhNguoiQuanLi() {
-        return "http://192.168.1.22/example-app/public/images/"+hinhNguoiQuanLi;
+    public int getIdViThanhToan() {
+        return idViThanhToan;
     }
 
-    public void setHinhNguoiQuanLi(String hinhNguoiQuanLi) {
-        this.hinhNguoiQuanLi = hinhNguoiQuanLi;
+    public void setIdViThanhToan(int idViThanhToan) {
+        this.idViThanhToan = idViThanhToan;
     }
 
-    public String getSdtNguoiQuanLi() {
-        return sdtNguoiQuanLi;
+    public String getHinhNguoiDung() {
+        return hinhNguoiDung;
     }
 
-    public void setSdtNguoiQuanLi(String sdtNguoiQuanLi) {
-        this.sdtNguoiQuanLi = sdtNguoiQuanLi;
+    public void setHinhNguoiDung(String hinhNguoiDung) {
+        this.hinhNguoiDung = hinhNguoiDung;
     }
 
-    public String getTinhQuanLi() {
-        return tinhQuanLi;
+    public String getTenNguoiDung() {
+        return tenNguoiDung;
     }
 
-    public void setTinhQuanLi(String tinhQuanLi) {
-        this.tinhQuanLi = tinhQuanLi;
+    public void setTenNguoiDung(String tenNguoiDung) {
+        this.tenNguoiDung = tenNguoiDung;
     }
 
-    public int getSoTienDaNhan() {
-        return soTienDaNhan;
+    public String getSoDienThoai() {
+        return SoDienThoai;
     }
 
-    public void setSoTienDaNhan(int soTienDaNhan) {
-        this.soTienDaNhan = soTienDaNhan;
+    public void setSoDienThoai(String soDienThoai) {
+        SoDienThoai = soDienThoai;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public int getXacThuc() {
+        return xacThuc;
+    }
+
+    public void setXacThuc(int xacThuc) {
+        this.xacThuc = xacThuc;
     }
 
     @Override
     public String toString() {
-        return "ManagerModel{" +
-                "idTaiKhoanQuanLi=" + idTaiKhoanQuanLi +
-                ", tenNguoiQuanLi='" + tenNguoiQuanLi + '\'' +
-                ", hinhNguoiQuanLi='" + hinhNguoiQuanLi + '\'' +
-                ", sdtNguoiQuanLi='" + sdtNguoiQuanLi + '\'' +
-                ", tinhQuanLi='" + tinhQuanLi + '\'' +
-                ", soTienDaNhan=" + soTienDaNhan +
+        return "HostModel{" +
+                "id=" + id +
+                ", idTaiKhoan=" + idTaiKhoan +
+                ", idViThanhToan=" + idViThanhToan +
+                ", hinhNguoiDung='" + hinhNguoiDung + '\'' +
+                ", tenNguoiDung='" + tenNguoiDung + '\'' +
+                ", SoDienThoai='" + SoDienThoai + '\'' +
+                ", gioiTinh='" + gioiTinh + '\'' +
+                ", xacThuc=" + xacThuc +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package com.example.mobileproject.fragment.admin;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,14 +10,13 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.adapter.admin.ManagerAdapter;
 import com.example.mobileproject.apiKiet.ApiServiceKiet;
-import com.example.mobileproject.model.ManagerModel;
+import com.example.mobileproject.model.HostModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +28,7 @@ import retrofit2.Response;
 public class ManagementFragment extends AbstractFragment{
         /* Hard code */
     RecyclerView recyclerView;
-    List<ManagerModel> list;
+    List<HostModel> list;
     ManagerAdapter managerAdapter;
     LinearLayoutManager layoutManager;
 
@@ -102,11 +100,11 @@ public class ManagementFragment extends AbstractFragment{
 
     private void ListManagerApi()
     {
-        ApiServiceKiet.apiServiceKiet.getListManagerAPI().enqueue(new Callback<List<ManagerModel>>() {
+        ApiServiceKiet.apiServiceKiet.getListManagerAPI().enqueue(new Callback<List<HostModel>>() {
             @Override
-            public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
+            public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<ManagerModel> list1 = response.body();
+                List<HostModel> list1 = response.body();
                 list = response.body();
                 managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(managerAdapter);
@@ -124,7 +122,7 @@ public class ManagementFragment extends AbstractFragment{
             }
 
             @Override
-            public void onFailure(Call<List<ManagerModel>> call, Throwable t) {
+            public void onFailure(Call<List<HostModel>> call, Throwable t) {
                 Log.d("tinnhan", "that bai");
             }
         });
@@ -133,11 +131,11 @@ public class ManagementFragment extends AbstractFragment{
 
     private void ManagerByNameApi(String key)
     {
-        ApiServiceKiet.apiServiceKiet.getManagerByIdAPI(key).enqueue(new Callback<List<ManagerModel>>() {
+        ApiServiceKiet.apiServiceKiet.getManagerByIdAPI(key).enqueue(new Callback<List<HostModel>>() {
             @Override
-            public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
+            public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<ManagerModel> list1 = response.body();
+                List<HostModel> list1 = response.body();
                 list = response.body();
                 managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(managerAdapter);
@@ -155,7 +153,7 @@ public class ManagementFragment extends AbstractFragment{
             }
 
             @Override
-            public void onFailure(Call<List<ManagerModel>> call, Throwable t) {
+            public void onFailure(Call<List<HostModel>> call, Throwable t) {
                 Log.d("tinnhan", "that bai");
             }
         });
@@ -164,11 +162,11 @@ public class ManagementFragment extends AbstractFragment{
 
     private void ManagerByAreaAPI(String key)
     {
-        ApiServiceKiet.apiServiceKiet.getManagerByAreaAPI(key).enqueue(new Callback<List<ManagerModel>>() {
+        ApiServiceKiet.apiServiceKiet.getManagerByAreaAPI(key).enqueue(new Callback<List<HostModel>>() {
             @Override
-            public void onResponse(Call<List<ManagerModel>> call, Response<List<ManagerModel>> response) {
+            public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<ManagerModel> list1 = response.body();
+                List<HostModel> list1 = response.body();
                 list = response.body();
                 managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(managerAdapter);
@@ -186,7 +184,7 @@ public class ManagementFragment extends AbstractFragment{
             }
 
             @Override
-            public void onFailure(Call<List<ManagerModel>> call, Throwable t) {
+            public void onFailure(Call<List<HostModel>> call, Throwable t) {
                 Log.d("tinnhan", "that bai");
             }
         });

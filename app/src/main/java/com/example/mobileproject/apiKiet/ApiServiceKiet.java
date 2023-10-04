@@ -1,6 +1,6 @@
 package com.example.mobileproject.apiKiet;
 
-import com.example.mobileproject.model.ManagerModel;
+import com.example.mobileproject.model.HostModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,16 +19,16 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.2.6/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.1.2/API_ChuyenDe2/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
     @GET("index")
-    Call<List<ManagerModel>> getListManagerAPI();
+    Call<List<HostModel>> getListManagerAPI();
 
     @GET("managerByName.php")
-    Call<List<ManagerModel>> getManagerByIdAPI(@Query("tenNguoiQuanLy") String tenNguoiQuanLy);
+    Call<List<HostModel>> getManagerByIdAPI(@Query("tenNguoiQuanLy") String tenNguoiQuanLy);
 
     @GET("managerByArea.php")
-    Call<List<ManagerModel>> getManagerByAreaAPI(@Query("tinhQuanLi") String tinhQuanLi);
+    Call<List<HostModel>> getManagerByAreaAPI(@Query("tinhQuanLi") String tinhQuanLi);
 }

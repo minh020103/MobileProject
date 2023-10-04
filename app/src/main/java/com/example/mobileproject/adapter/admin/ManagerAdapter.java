@@ -1,7 +1,6 @@
 package com.example.mobileproject.adapter.admin;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
-import com.example.mobileproject.model.ManagerModel;
+import com.example.mobileproject.model.HostModel;
 
 import java.util.List;
 
 public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
 
     private Activity activity;
-    private List<ManagerModel> list;
+    private List<HostModel> list;
     private int layoutID;
 
     OnClickItemListener onClickItemListene;
 
-    public ManagerAdapter(Activity activity, List<ManagerModel> list, int layoutID) {
+    public ManagerAdapter(Activity activity, List<HostModel> list, int layoutID) {
         this.activity = activity;
         this.list = list;
         this.layoutID = layoutID;
@@ -42,7 +41,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ManagerModel data = list.get(position);
+        HostModel data = list.get(position);
         Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiQuanLi()).into(holder.hinhNguoiQuanLi);
         holder.tenNguoiQuanLi.setText(data.getTenNguoiQuanLi());
         holder.sdtNguoiQuanLi.setText(data.getSdtNguoiQuanLi());
