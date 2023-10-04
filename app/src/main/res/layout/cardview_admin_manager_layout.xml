@@ -16,7 +16,7 @@
             >
 
             <ImageView
-                android:id="@+id/imgHinhQuanLi"
+                android:id="@+id/imgHost"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -24,12 +24,13 @@
         //
 
         <LinearLayout
+            android:paddingTop="20dp"
+            android:paddingLeft="15dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="8"
             >
             <LinearLayout
-                android:paddingTop="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -49,86 +50,40 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Area: "
+                    android:text="Status: "
                     android:textStyle="bold"
                     android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Salary: "
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
+
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="10dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tvTenQuanLi"
+                    android:id="@+id/tvNameHost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kiet"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <TextView
-                    android:id="@+id/tvSdtQuanLi"
+                    android:id="@+id/tvPhoneHost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0987123456"
                     android:textSize="20sp"/>
                 <TextView
-                    android:id="@+id/tvTinhQuanLi"
+                    android:id="@+id/tvStatusHost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TP.HCM"
+                    android:text="Da Xac Thuc"
                     android:textSize="20sp"/>
-                <TextView
-                    android:id="@+id/tvSoTienDaNhanQuanLi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5000"
-                    android:textSize="20sp"/>
+
             </LinearLayout>
         </LinearLayout>
-
-        //
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/app_management_selector"></ImageView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher_background"></ImageView>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-
-
 
     </LinearLayout>
-
-
 
 </androidx.cardview.widget.CardView>

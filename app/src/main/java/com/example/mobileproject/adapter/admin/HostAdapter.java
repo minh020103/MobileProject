@@ -17,7 +17,7 @@ import com.example.mobileproject.model.HostModel;
 
 import java.util.List;
 
-public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
+public class HostAdapter extends RecyclerView.Adapter<HostAdapter.MyViewHolder> {
 
     private Activity activity;
     private List<HostModel> list;
@@ -25,7 +25,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
 
     OnClickItemListener onClickItemListene;
 
-    public ManagerAdapter(Activity activity, List<HostModel> list, int layoutID) {
+    public HostAdapter(Activity activity, List<HostModel> list, int layoutID) {
         this.activity = activity;
         this.list = list;
         this.layoutID = layoutID;
@@ -42,11 +42,18 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         HostModel data = list.get(position);
-        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiQuanLi()).into(holder.hinhNguoiQuanLi);
-        holder.tenNguoiQuanLi.setText(data.getTenNguoiQuanLi());
-        holder.sdtNguoiQuanLi.setText(data.getSdtNguoiQuanLi());
-        holder.tinhQuanLi.setText(data.getTinhQuanLi());
-        holder.soTienDaNhan.setText(String.valueOf(data.getSoTienDaNhan()));
+        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiDung()).into(holder.imgHost);
+        holder.tvNameHost.setText(data.getTenNguoiDung());
+        holder.tvPhoneHost.setText(data.getSoDienThoai());
+        if (data.getXacThuc() == 1)
+        {
+            holder.tvStatusHost.setText("Da Xac Thuc");
+        }
+        else
+        {
+            holder.tvStatusHost.setText("Chua Xac Thuc");
+        }
+        //holder.tvStatusHost.setText(String.valueOf(data.getXacThuc()));
 
         holder.onClickListener = new View.OnClickListener() {
             @Override
@@ -83,22 +90,20 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tenNguoiQuanLi;
-        ImageView hinhNguoiQuanLi;
-        TextView sdtNguoiQuanLi;
-        TextView tinhQuanLi;
-        TextView soTienDaNhan;
+        TextView tvNameHost;
+        ImageView imgHost;
+        TextView tvPhoneHost;
+        TextView tvStatusHost;
 
         View.OnClickListener onClickListener;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tenNguoiQuanLi = itemView.findViewById(R.id.tvTenQuanLi);
-            hinhNguoiQuanLi = itemView.findViewById(R.id.imgHinhQuanLi);
-            sdtNguoiQuanLi = itemView.findViewById(R.id.tvSdtQuanLi);
-            tinhQuanLi = itemView.findViewById(R.id.tvTinhQuanLi);
-            soTienDaNhan = itemView.findViewById(R.id.tvSoTienDaNhanQuanLi);
+            tvNameHost = itemView.findViewById(R.id.tvNameHost);
+            imgHost = itemView.findViewById(R.id.imgHost);
+            tvPhoneHost = itemView.findViewById(R.id.tvPhoneHost);
+            tvStatusHost = itemView.findViewById(R.id.tvStatusHost);
 
             itemView.setOnClickListener(this);
         }

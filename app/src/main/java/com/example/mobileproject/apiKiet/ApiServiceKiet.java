@@ -24,11 +24,9 @@ public interface ApiServiceKiet {
             .build()
             .create(ApiServiceKiet.class);
     @GET("index")
-    Call<List<HostModel>> getListManagerAPI();
+    Call<List<HostModel>> getListHostAPI();
+    @GET("hostByName.php")
+    Call<List<HostModel>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
 
-    @GET("managerByName.php")
-    Call<List<HostModel>> getManagerByIdAPI(@Query("tenNguoiQuanLy") String tenNguoiQuanLy);
 
-    @GET("managerByArea.php")
-    Call<List<HostModel>> getManagerByAreaAPI(@Query("tinhQuanLi") String tinhQuanLi);
 }

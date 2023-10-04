@@ -3,13 +3,21 @@ package com.example.mobileproject.model;
 import com.google.gson.annotations.SerializedName;
 
 public class HostModel {
+    @SerializedName("Id")
     private int id;
+    @SerializedName("IdTaiKhoan")
     private int idTaiKhoan;
+    @SerializedName("IdViThanhToan")
     private int idViThanhToan;
+    @SerializedName("HinhNguoiDung")
     private String hinhNguoiDung;
+    @SerializedName("TenNguoiDung")
     private String tenNguoiDung;
+    @SerializedName("SoDienThoai")
     private String SoDienThoai;
+    @SerializedName("GioiTinh")
     private String gioiTinh;
+    @SerializedName("XacThuc")
     private int xacThuc;
 
     public HostModel(int id, int idTaiKhoan, int idViThanhToan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, String gioiTinh, int xacThuc) {

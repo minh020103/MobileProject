@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.adapter.admin.ManagerAdapter;
+import com.example.mobileproject.adapter.admin.HostAdapter;
 import com.example.mobileproject.apiKiet.ApiServiceKiet;
 import com.example.mobileproject.model.HostModel;
 
@@ -29,7 +29,7 @@ public class ManagementFragment extends AbstractFragment{
         /* Hard code */
     RecyclerView recyclerView;
     List<HostModel> list;
-    ManagerAdapter managerAdapter;
+    HostAdapter hostAdapter;
     LinearLayoutManager layoutManager;
 
     EditText edtSearch;
@@ -71,7 +71,7 @@ public class ManagementFragment extends AbstractFragment{
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(managerAdapter);
+        recyclerView.setAdapter(hostAdapter);
 
         list = new ArrayList<>();
 
@@ -84,7 +84,6 @@ public class ManagementFragment extends AbstractFragment{
                 {
                     String key = String.valueOf(edtSearch.getText());
                     ManagerByNameApi(key);
-                    ManagerByAreaAPI(key);
                 }
                 else
                 {
@@ -100,18 +99,18 @@ public class ManagementFragment extends AbstractFragment{
 
     private void ListManagerApi()
     {
-        ApiServiceKiet.apiServiceKiet.getListManagerAPI().enqueue(new Callback<List<HostModel>>() {
+        ApiServiceKiet.apiServiceKiet.getListHostAPI().enqueue(new Callback<List<HostModel>>() {
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
                 List<HostModel> list1 = response.body();
                 list = response.body();
-                managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
-                recyclerView.setAdapter(managerAdapter);
+                hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
+                recyclerView.setAdapter(hostAdapter);
 
 
 
-                managerAdapter.setOnClickItemListene(new ManagerAdapter.OnClickItemListener() {
+                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
@@ -131,49 +130,18 @@ public class ManagementFragment extends AbstractFragment{
 
     private void ManagerByNameApi(String key)
     {
-        ApiServiceKiet.apiServiceKiet.getManagerByIdAPI(key).enqueue(new Callback<List<HostModel>>() {
+        ApiServiceKiet.apiServiceKiet.getHostByNameAPI(key).enqueue(new Callback<List<HostModel>>() {
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
                 List<HostModel> list1 = response.body();
                 list = response.body();
-                managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
-                recyclerView.setAdapter(managerAdapter);
+                hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
+                recyclerView.setAdapter(hostAdapter);
 
 
 
-                managerAdapter.setOnClickItemListene(new ManagerAdapter.OnClickItemListener() {
-                    @Override
-                    public void onClickItem(int position, View v) {
-                        Log.d("TAG", list.get(position)+"");
-                    }
-                });
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<HostModel>> call, Throwable t) {
-                Log.d("tinnhan", "that bai");
-            }
-        });
-
-    }
-
-    private void ManagerByAreaAPI(String key)
-    {
-        ApiServiceKiet.apiServiceKiet.getManagerByAreaAPI(key).enqueue(new Callback<List<HostModel>>() {
-            @Override
-            public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
-                Log.d("tinnhan", "thanh cong");
-                List<HostModel> list1 = response.body();
-                list = response.body();
-                managerAdapter = new ManagerAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
-                recyclerView.setAdapter(managerAdapter);
-
-
-
-                managerAdapter.setOnClickItemListene(new ManagerAdapter.OnClickItemListener() {
+                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
