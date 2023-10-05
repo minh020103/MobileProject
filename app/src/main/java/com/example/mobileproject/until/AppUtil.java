@@ -1,2 +1,5 @@
-package com.example.mobileproject.until;public class AppUtil {
+package com.example.mobileproject.until;
+
+public class AppUtil {
+    public static int Id;
 }

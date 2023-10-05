@@ -19,12 +19,14 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.2/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.2.6/API_ChuyenDe2/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
     @GET("index")
     Call<List<HostModel>> getListHostAPI();
+    @GET("hostByID.php")
+    Call<HostModel> getHostByIdAPI(@Query("Id") int Id);
     @GET("hostByName.php")
     Call<List<HostModel>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
     @GET("hostByPhone.php")

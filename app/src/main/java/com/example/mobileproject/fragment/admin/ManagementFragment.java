@@ -1,5 +1,6 @@
 package com.example.mobileproject.fragment.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.HostDetailActivity;
 import com.example.mobileproject.adapter.admin.HostAdapter;
 import com.example.mobileproject.apiKiet.ApiServiceKiet;
 import com.example.mobileproject.model.HostModel;
+import com.example.mobileproject.until.AppUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +107,7 @@ public class ManagementFragment extends AbstractFragment{
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<HostModel> list1 = response.body();
+                //List<HostModel> list = response.body();
                 list = response.body();
                 hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(hostAdapter);
@@ -115,6 +118,8 @@ public class ManagementFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
+                        AppUtil.Id = GetPositionId(list.get(position).getId());
+                        nextActivity();
                     }
                 });
 
@@ -135,7 +140,7 @@ public class ManagementFragment extends AbstractFragment{
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<HostModel> list1 = response.body();
+                //List<HostModel> list = response.body();
                 list = response.body();
                 hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(hostAdapter);
@@ -146,6 +151,8 @@ public class ManagementFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
+                        AppUtil.Id = GetPositionId(list.get(position).getId());
+                        nextActivity();
                     }
                 });
 
@@ -166,7 +173,7 @@ public class ManagementFragment extends AbstractFragment{
             @Override
             public void onResponse(Call<List<HostModel>> call, Response<List<HostModel>> response) {
                 Log.d("tinnhan", "thanh cong");
-                List<HostModel> list1 = response.body();
+                //List<HostModel> list = response.body();
                 list = response.body();
                 hostAdapter = new HostAdapter(getActivity(),list, R.layout.cardview_admin_manager_layout);
                 recyclerView.setAdapter(hostAdapter);
@@ -177,6 +184,8 @@ public class ManagementFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
+                        AppUtil.Id = GetPositionId(list.get(position).getId());
+                        nextActivity();
                     }
                 });
 
@@ -189,5 +198,17 @@ public class ManagementFragment extends AbstractFragment{
             }
         });
 
+    }
+
+    private int GetPositionId(int Id)
+    {
+        return Id;
+    }
+
+
+    private void nextActivity()
+    {
+        Intent intent = new Intent(getActivity(), HostDetailActivity.class);
+        startActivity(intent);
     }
 }
