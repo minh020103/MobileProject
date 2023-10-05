@@ -11,4 +11,5 @@
 
     <color name="main_color_of_app">#00C385</color>
     <color name="main_color_of_app_night">#105740</color>
+    <color name="gray">#DDDADA</color>
 </resources>
