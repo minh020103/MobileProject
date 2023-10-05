@@ -1,4 +1,4 @@
-package com.example.mobileproject.fragment.admin;
+package com.example.mobileproject.fragment.admin.pending;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,12 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class AbstractFragment extends Fragment {
+import com.example.mobileproject.R;
+
+public class MotelRoomDeleteFragment extends AbstractFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View fragmentLayout = null;
+        fragmentLayout = inflater.inflate(R.layout.fragment_admin_pending_motel_room_delete_layout, container, false);
+
+
+        return fragmentLayout;
     }
 }
