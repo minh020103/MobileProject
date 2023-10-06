@@ -30,6 +30,7 @@ public class HostDetailActivity extends AppCompatActivity {
     TextView tvHostName;
     TextView tvHostPhone;
 
+
     Button btnHostDanhSachPhong;
     Button btnHostCall;
     Button btnHostKhoaTaiKhoan;
