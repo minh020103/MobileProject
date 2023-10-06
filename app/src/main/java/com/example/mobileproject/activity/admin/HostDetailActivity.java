@@ -3,9 +3,17 @@ package com.example.mobileproject.activity.admin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,11 +33,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HostDetailActivity extends AppCompatActivity {
-    private Activity activity;
     ImageView imgHost;
-    TextView tvHostName;
-    TextView tvHostPhone;
-
+    TextView tvTenHost;
+    TextView tvSoDienThoaiHost;
+    TextView tvGioiTinhHost;
+    TextView tvIdDichVuHost;
+    TextView tvSoTaiKhoanNganHangHost;
+    TextView tvTenChuTaiKhoanNganHangHost;
+    TextView tvTrangThaiHost;
 
     Button btnHostDanhSachPhong;
     Button btnHostCall;
@@ -42,8 +53,14 @@ public class HostDetailActivity extends AppCompatActivity {
         setContentView(R.layout.host_detail);
 
         imgHost = findViewById(R.id.imgHostDetail);
-        tvHostName = findViewById(R.id.tvNameHostDetail);
-        tvHostPhone = findViewById(R.id.tvNameHostPhoneDetail);
+        tvTenHost = findViewById(R.id.tvTenHostDetail);
+        tvSoDienThoaiHost = findViewById(R.id.tvSoDienThoaiHostDetail);
+        tvGioiTinhHost = findViewById(R.id.tvGioiTinhHostDetail);
+        tvIdDichVuHost = findViewById(R.id.tvIdDichVuHostDetail);
+        tvSoTaiKhoanNganHangHost = findViewById(R.id.tvSoTaiKhoanNganHangHostDetail);
+        tvTenChuTaiKhoanNganHangHost = findViewById(R.id.tvTenTaiKhoanNganHangHostDetail);
+        tvTrangThaiHost = findViewById(R.id.tvTrangThaiHostDetail);
+
         btnHostDanhSachPhong = findViewById(R.id.btnHostDanhSachPhong);
         btnHostCall = findViewById(R.id.btnHostCall);
         btnHostKhoaTaiKhoan = findViewById(R.id.btnHostKhoaTaiKhoan);
@@ -54,14 +71,16 @@ public class HostDetailActivity extends AppCompatActivity {
         btnHostKhoaTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LockHostApi(AppUtil.Id);
+                openDialogConfirmLockAccount();
+                //LockHostApi(AppUtil.Id);
             }
         });
 
         btnHostMoTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UnLockHostApi(AppUtil.Id);
+                openDialogConfirmUnLockAccount();
+                //UnLockHostApi(AppUtil.Id);
             }
         });
     }
@@ -75,8 +94,20 @@ public class HostDetailActivity extends AppCompatActivity {
                 HostModel host = (HostModel) response.body();
 
                 Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgHost);
-                tvHostName.setText(host.getTenNguoiDung());
-                tvHostPhone.setText(host.getSoDienThoai());
+                tvTenHost.setText(host.getTenNguoiDung());
+                tvSoDienThoaiHost.setText(host.getSoDienThoai());
+                tvGioiTinhHost.setText(host.getGioiTinh());
+                tvIdDichVuHost.setText(String.valueOf(host.getIdDichVu()));
+                tvSoTaiKhoanNganHangHost.setText(String.valueOf(host.getSoTaiKhoanNganHang()));
+                tvTenChuTaiKhoanNganHangHost.setText(host.getTenChuTaiKhoanNganHang());
+                if (host.getXacThuc() == 1)
+                {
+                    tvTrangThaiHost.setText("Tai khoan da khoa");
+                }
+                else
+                {
+                    tvTrangThaiHost.setText("Dang hoat dong");
+                }
             }
 
             @Override
@@ -117,5 +148,25 @@ public class HostDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void openDialogConfirmLockAccount()
+    {
+        new AlertDialog.Builder(this).setMessage("Xac nhan thuc hien hanh dong nay ?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                LockHostApi(AppUtil.Id);
+            }
+        }).setNegativeButton("Cancle",null).show();
+    }
+
+    private void openDialogConfirmUnLockAccount()
+    {
+        new AlertDialog.Builder(this).setMessage("Xac nhan thuc hien hanh dong nay ?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                UnLockHostApi(AppUtil.Id);
+            }
+        }).setNegativeButton("Cancle",null).show();
     }
 }

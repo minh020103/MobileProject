@@ -53,14 +53,14 @@
                 android:layout_weight="7"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tvNameHostDetail"
+                    android:id="@+id/tvTenHostDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"></TextView>
 
                 <TextView
-                    android:id="@+id/tvNameHostPhoneDetail"
+                    android:id="@+id/tvSoDienThoaiHostDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -89,9 +89,11 @@
                 android:textSize="15sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
+
             <TextView
+                android:id="@+id/tvGioiTinhHostDetail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Nam"
                 android:textSize="15sp"></TextView>
         </LinearLayout>
@@ -107,9 +109,11 @@
                 android:textSize="15sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
+
             <TextView
+                android:id="@+id/tvIdDichVuHostDetail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="1"
                 android:textSize="15sp"></TextView>
         </LinearLayout>
@@ -125,9 +129,11 @@
                 android:textSize="15sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
+
             <TextView
+                android:id="@+id/tvSoTaiKhoanNganHangHostDetail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="964781572"
                 android:textSize="15sp"></TextView>
         </LinearLayout>
@@ -143,9 +149,11 @@
                 android:textSize="15sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
+
             <TextView
+                android:id="@+id/tvTenTaiKhoanNganHangHostDetail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="TEN TAI KHOAN"
                 android:textSize="15sp"></TextView>
         </LinearLayout>
@@ -162,6 +170,7 @@
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
             <TextView
+                android:id="@+id/tvTrangThaiHostDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dang hoat dong"

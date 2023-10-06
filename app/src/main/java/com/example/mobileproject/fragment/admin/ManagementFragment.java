@@ -213,4 +213,10 @@ public class ManagementFragment extends AbstractFragment{
         Intent intent = new Intent(getActivity(), HostDetailActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ListManagerApi();
+    }
 }
