@@ -23,7 +23,9 @@ public interface ApiServiceKiet {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
-    @GET("index")
+
+    /* Host */
+    @GET("hostAll.php")
     Call<List<HostModel>> getListHostAPI();
     @GET("hostByID.php")
     Call<HostModel> getHostByIdAPI(@Query("Id") int Id);
@@ -32,5 +34,7 @@ public interface ApiServiceKiet {
     @GET("hostByPhone.php")
     Call<List<HostModel>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
 
-
+    /* Service */
+    //@GET("serviceAll.php")
+    //Call<List<HostModel>> getListHostAPI();
 }

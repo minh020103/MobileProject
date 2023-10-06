@@ -5,6 +5,10 @@
         android:title="Quản lý"
         android:icon="@drawable/management_selector"/>
     <item
+        android:id="@+id/nvaDichVu"
+        android:title="Ứng dụng"
+        android:icon="@drawable/icon_service"/>
+    <item
         android:id="@+id/nvaUngDung"
         android:title="Ứng dụng"
         android:icon="@drawable/app_management_selector"/>

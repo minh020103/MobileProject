@@ -23,7 +23,7 @@ public class HostAdapter extends RecyclerView.Adapter<HostAdapter.MyViewHolder> 
     private List<HostModel> list;
     private int layoutID;
 
-    OnClickItemListener onClickItemListene;
+    OnClickItemListener onClickItemListener;
 
     public HostAdapter(Activity activity, List<HostModel> list, int layoutID) {
         this.activity = activity;
@@ -60,7 +60,7 @@ public class HostAdapter extends RecyclerView.Adapter<HostAdapter.MyViewHolder> 
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickItemListene.onClickItem(position,v);
+                onClickItemListener.onClickItem(position,v);
             }
         };
 
@@ -68,12 +68,12 @@ public class HostAdapter extends RecyclerView.Adapter<HostAdapter.MyViewHolder> 
 
     }
 
-    public OnClickItemListener getOnClickItemListene() {
-        return onClickItemListene;
+    public OnClickItemListener getOnClickItemListener() {
+        return onClickItemListener;
     }
 
-    public void setOnClickItemListene(OnClickItemListener onClickItemListene) {
-        this.onClickItemListene = onClickItemListene;
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
+        this.onClickItemListener = onClickItemListener;
     }
 
     @Override

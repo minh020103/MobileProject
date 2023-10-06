@@ -114,7 +114,7 @@ public class ManagementFragment extends AbstractFragment{
 
 
 
-                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
+                hostAdapter.setOnClickItemListener(new HostAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
@@ -147,7 +147,7 @@ public class ManagementFragment extends AbstractFragment{
 
 
 
-                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
+                hostAdapter.setOnClickItemListener(new HostAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
@@ -180,7 +180,7 @@ public class ManagementFragment extends AbstractFragment{
 
 
 
-                hostAdapter.setOnClickItemListene(new HostAdapter.OnClickItemListener() {
+                hostAdapter.setOnClickItemListener(new HostAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("TAG", list.get(position)+"");
