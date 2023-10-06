@@ -82,31 +82,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gioi Tinh"
-            android:textStyle="bold"
-            ></TextView>
+            android:textStyle="bold"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Goi Dang Ki"
-            android:textStyle="bold"
-            ></TextView>
+            android:textStyle="bold"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="So Tai Khoan"
-            android:textStyle="bold"
-            ></TextView>
+            android:textStyle="bold"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text=""></TextView>
 
     </LinearLayout>
@@ -114,6 +117,78 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"></LinearLayout>
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnHostDanhSachPhong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Sanh sach phong">
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnHostCall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Call"></Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnHostKhoaTaiKhoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Khoa Tai khoan">
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnHostMoTaiKhoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mo Khoa Tai Khoan"></Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

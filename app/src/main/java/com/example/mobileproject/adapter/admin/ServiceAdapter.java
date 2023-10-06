@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.model.HostModel;
 import com.example.mobileproject.model.ServiceModel;
 
 import java.util.List;
@@ -23,7 +21,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     private List<ServiceModel> list;
     private int layoutID;
 
-    HostAdapter.OnClickItemListener onClickItemListener;
 
     public ServiceAdapter(Activity activity, List<ServiceModel> list, int layoutID) {
         this.activity = activity;
@@ -42,15 +39,23 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ServiceModel data = list.get(position);
-        holder.tvServiceId.setText(data.getId());
-    }
+        holder.tvServiceId.setText(String.valueOf(data.getId()));
+        holder.tvServiceThoiHan.setText(String.valueOf(data.getThoiHan()));
+        holder.tvServiceSoLuongPhong.setText(String.valueOf(data.getSoLuongPhong()));
+        holder.tvServiceGia.setText(String.valueOf(data.getGiaGoi()));
+        if (data.getTrangThai() == 1)
+        {
+            holder.tvServiceTrangThai.setText("Da Khoa");
+            holder.tvServiceTrangThai.setBackgroundColor(0xFFFF0000);
+        }
+        else
+        {
+            holder.tvServiceTrangThai.setText("Dang Hoat Dong");
+            holder.tvServiceTrangThai.setBackgroundColor(0xFF00FF00);
+        }
+        //holder.tvServiceTrangThai.setText(data.getTrangThai());
 
-    public HostAdapter.OnClickItemListener getOnClickItemListener() {
-        return onClickItemListener;
-    }
 
-    public void setOnClickItemListener(HostAdapter.OnClickItemListener onClickItemListener) {
-        this.onClickItemListener = onClickItemListener;
     }
 
     @Override
@@ -63,15 +68,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         return layoutID;
     }
 
-
-    public interface OnClickItemListener{
-        void onClickItem(int position, View v);
-    }
-
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvServiceId;
-        TextView tvServiceName;
-        TextView tvServiceRoomCount;
+        TextView tvServiceThoiHan;
+        TextView tvServiceSoLuongPhong;
+        TextView tvServiceGia;
+        TextView tvServiceTrangThai;
 
         View.OnClickListener onClickListener;
 
@@ -79,8 +81,10 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvServiceId = itemView.findViewById(R.id.tvServiceId);
-            tvServiceName = itemView.findViewById(R.id.tvServiceName);
-            tvServiceRoomCount = itemView.findViewById(R.id.tvServiceRoomCount);
+            tvServiceThoiHan = itemView.findViewById(R.id.tvServiceThoiHan);
+            tvServiceSoLuongPhong = itemView.findViewById(R.id.tvServiceSoLuongPhong);
+            tvServiceGia = itemView.findViewById(R.id.tvServiceGia);
+            tvServiceTrangThai = itemView.findViewById(R.id.tvServiceTrangThai);
 
             itemView.setOnClickListener(this);
         }

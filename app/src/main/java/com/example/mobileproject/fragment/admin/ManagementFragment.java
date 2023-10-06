@@ -38,6 +38,7 @@ public class ManagementFragment extends AbstractFragment{
     EditText edtSearch;
     Button btnSearch;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,7 +70,8 @@ public class ManagementFragment extends AbstractFragment{
         edtSearch = fragmentLayout.findViewById(R.id.edt_search);
         btnSearch = fragmentLayout.findViewById(R.id.btn_search);
 
-        recyclerView = fragmentLayout.findViewById(R.id.rvManager);
+
+        recyclerView = fragmentLayout.findViewById(R.id.rvHost);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);

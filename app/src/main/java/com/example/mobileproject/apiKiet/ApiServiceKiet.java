@@ -1,6 +1,7 @@
 package com.example.mobileproject.apiKiet;
 
 import com.example.mobileproject.model.HostModel;
+import com.example.mobileproject.model.ServiceModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,8 +34,13 @@ public interface ApiServiceKiet {
     Call<List<HostModel>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
     @GET("hostByPhone.php")
     Call<List<HostModel>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
+    @GET("hostLockAccount.php")
+    Call<HostModel> getHostLockAccountAPI(@Query("Id") int Id);
+    @GET("hostUnLockAccount.php")
+    Call<HostModel> getHostUnLockAccountAPI(@Query("Id") int Id);
 
     /* Service */
-    //@GET("serviceAll.php")
-    //Call<List<HostModel>> getListHostAPI();
+    @GET("serviceAll.php")
+    Call<List<ServiceModel>> getListServiceAPI();
+
 }
