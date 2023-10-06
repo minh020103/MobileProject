@@ -103,11 +103,17 @@ public class HostDetailActivity extends AppCompatActivity {
                 if (host.getXacThuc() == 1)
                 {
                     tvTrangThaiHost.setText("Tai khoan da khoa");
+                    btnHostKhoaTaiKhoan.setEnabled(false);
+                    btnHostMoTaiKhoan.setEnabled(true);
                 }
                 else
                 {
                     tvTrangThaiHost.setText("Dang hoat dong");
+                    btnHostKhoaTaiKhoan.setEnabled(true);
+                    btnHostMoTaiKhoan.setEnabled(false);
                 }
+                AppUtil.nameHost = host.getTenNguoiDung();
+
             }
 
             @Override
@@ -152,7 +158,7 @@ public class HostDetailActivity extends AppCompatActivity {
 
     private void openDialogConfirmLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Xac nhan thuc hien hanh dong nay ?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUtil.nameHost + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LockHostApi(AppUtil.Id);
@@ -162,7 +168,7 @@ public class HostDetailActivity extends AppCompatActivity {
 
     private void openDialogConfirmUnLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Xac nhan thuc hien hanh dong nay ?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUtil.nameHost + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UnLockHostApi(AppUtil.Id);
