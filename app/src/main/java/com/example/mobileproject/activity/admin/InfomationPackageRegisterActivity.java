@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.mobileproject.R;
 
-public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
+public class InfomationPackageRegisterActivity extends AppCompatActivity {
 
     ImageView imgBack;
     LinearLayout llCall;
@@ -21,7 +21,7 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_confirm_account_motel_room_owner_layout);
+        setContentView(R.layout.admin_infomation_package_register_layout);
 
         imgBack = findViewById(R.id.imgBack);
         tvSDT = findViewById(R.id.tvSDT);
