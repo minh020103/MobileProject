@@ -1,6 +1,7 @@
 package com.example.mobileproject.adapter.admin;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,13 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     private List<ServiceModel> list;
     private int layoutID;
 
+
+    private OnClickItemListener onClickItemListener;
+
+
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
+        this.onClickItemListener = onClickItemListener;
+    }
 
     public ServiceAdapter(Activity activity, List<ServiceModel> list, int layoutID) {
         this.activity = activity;
@@ -55,6 +63,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         }
         //holder.tvServiceTrangThai.setText(data.getTrangThai());
 
+        holder.onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickItemListener.onClickItemListener(position, v);
+            }
+        };
 
     }
 
@@ -66,6 +80,10 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     @Override
     public int getItemViewType(int position) {
         return layoutID;
+    }
+
+    public interface OnClickItemListener{
+        void onClickItemListener(int position, View view);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -38,14 +38,18 @@ public class ServiceFragment extends AbstractFragment{
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_service_layout, container, false);
 
+        list = new ArrayList<>();
         recyclerView = fragmentLayout.findViewById(R.id.rvService);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(serviceAdapter);
 
-        list = new ArrayList<>();
+
+
+
+
+
 
         ListServiceApi();
 
@@ -62,6 +66,13 @@ public class ServiceFragment extends AbstractFragment{
                 list = response.body();
                 serviceAdapter = new ServiceAdapter(getActivity(),list, R.layout.cardview_admin_service_layout);
                 recyclerView.setAdapter(serviceAdapter);
+                serviceAdapter.setOnClickItemListener(new ServiceAdapter.OnClickItemListener() {
+                    @Override
+                    public void onClickItemListener(int position, View view) {
+                        Log.d("TAG", 11111+"");
+                    }
+                });
+
 
             }
 
