@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,40 +22,52 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
-    ImageView imgChuTro;
-    TextView tvTenChuTro;
-    TextView tvSoDienThoaiChuTro;
-    TextView tvGioiTinhChuTro;
-    TextView tvIdDichVuChuTro;
-    TextView tvSoTaiKhoanNganHangChuTro;
-    TextView tvTenChuTaiKhoanNganHangChuTro;
-    TextView tvTrangThaiChuTro;
-
-    Button btnDanhSachPhongChuTro;
-    Button btnGoiDienChuTro;
-    Button btnKhoaTaiKhoanChuTro;
-    Button btnMoTaiKhoanChuTro;
+    ImageView imgChuTroChiTiet;
+    TextView tvTenChuTroChiTiet;
+    TextView tvSoDienThoaiChuTroChiTiet;
+    TextView tvGioiTinhChuTroChiTiet;
+    TextView tvIdDichVuChuTroChiTiet;
+    TextView tvSoTaiKhoanNganHangChuTroChiTiet;
+    TextView tvTenChuTaiKhoanNganHangChuTroChiTiet;
+    TextView tvTrangThaiChuTroChiTiet;
+    Button btnDanhSachPhongChuTroChiTiet;
+    Button btnGoiDienChuTroChiTiet;
+    Button btnKhoaTaiKhoanChuTroChiTiet;
+    Button btnMoTaiKhoanChuTroChiTiet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.motel_room_owner_detail_layout);
 
-        imgChuTro = findViewById(R.id.imgChuTroChiTiet);
-        tvTenChuTro = findViewById(R.id.tvTenChuTroChiTiet);
-        tvSoDienThoaiChuTro = findViewById(R.id.tvSDTChuTroChiTiet);
-        tvGioiTinhChuTro = findViewById(R.id.tvGioiTinhChuTroChiTiet);
-        tvIdDichVuChuTro = findViewById(R.id.tvIdDichVuChuTroChiTiet);
-        tvSoTaiKhoanNganHangChuTro = findViewById(R.id.tvSoTaiKhoanChuTroChiTiet);
-        tvTenChuTaiKhoanNganHangChuTro = findViewById(R.id.tvTenTaiKhoanNganHangChuTroChiTiet);
-        tvTrangThaiChuTro = findViewById(R.id.tvTrangThaiChuTroChiTiet);
+        imgChuTroChiTiet = findViewById(R.id.imgChuTroChiTiet);
+        tvTenChuTroChiTiet = findViewById(R.id.tvTenChuTroChiTiet);
+        tvSoDienThoaiChuTroChiTiet = findViewById(R.id.tvSDTChuTroChiTiet);
+        tvGioiTinhChuTroChiTiet = findViewById(R.id.tvGioiTinhChuTroChiTiet);
+        tvIdDichVuChuTroChiTiet = findViewById(R.id.tvIdDichVuChuTroChiTiet);
+        tvSoTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvSoTaiKhoanChuTroChiTiet);
+        tvTenChuTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvTenTaiKhoanNganHangChuTroChiTiet);
+        tvTrangThaiChuTroChiTiet = findViewById(R.id.tvTrangThaiChuTroChiTiet);
 
-        btnDanhSachPhongChuTro = findViewById(R.id.btnDanhSachPhongChuTro);
-        btnGoiDienChuTro = findViewById(R.id.btnGoiDienChuTro);
-        btnKhoaTaiKhoanChuTro = findViewById(R.id.btnKhoaTaiKhoanChuTro);
-        btnMoTaiKhoanChuTro = findViewById(R.id.btnMoTaiKhoanChuTro);
+        btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
+        btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
+        btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
+        btnMoTaiKhoanChuTroChiTiet = findViewById(R.id.btnMoTaiKhoanChuTro);
 
-        HostByIdApi(AppUntil.ID_CHU_TRO);
+        HostByIdApi(AppUntil.Id);
+
+        btnMoTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialogConfirmUnLockAccount();
+            }
+        });
+        btnKhoaTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialogConfirmLockAccount();
+            }
+        });
 
     }
 
@@ -63,35 +76,32 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getHostByIdAPI(key).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
-                Log.d("tinnhan", "thanh cong");
                 ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTro);
-                tvTenChuTro.setText(host.getTenNguoiDung());
-                tvSoDienThoaiChuTro.setText(host.getSoDienThoai());
-                tvGioiTinhChuTro.setText(host.getGioiTinh());
-                tvIdDichVuChuTro.setText(String.valueOf(host.getIdDichVu()));
-                tvSoTaiKhoanNganHangChuTro.setText(String.valueOf(host.getSoTaiKhoanNganHang()));
-                tvTenChuTro.setText(host.getTenChuTaiKhoanNganHang());
+                Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTroChiTiet);
+                tvTenChuTroChiTiet.setText(host.getTenNguoiDung());
+                tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
+                tvGioiTinhChuTroChiTiet.setText(host.getGioiTinh());
+                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
+                tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
+                tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
                 if (host.getXacThuc() == 1)
                 {
-                    tvTrangThaiChuTro.setText("Tai khoan da khoa");
-                    btnKhoaTaiKhoanChuTro.setEnabled(false);
-                    btnMoTaiKhoanChuTro.setEnabled(true);
+                    tvTrangThaiChuTroChiTiet.setText("Tai khoan da khoa");
+                    btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
+                    btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
                 }
                 else
                 {
-                    tvTrangThaiChuTro.setText("Dang hoat dong");
-                    btnKhoaTaiKhoanChuTro.setEnabled(true);
-                    btnMoTaiKhoanChuTro.setEnabled(false);
+                    tvTrangThaiChuTroChiTiet.setText("Dang hoat dong");
+                    btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
+                    btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
-                AppUntil.TEN_CHU_TRO = host.getTenNguoiDung();
+                AppUntil.TenChuTro = host.getTenNguoiDung();
 
             }
-
             @Override
             public void onFailure(Call<ChuTro> call, Throwable t) {
-                Log.d("tinnhan", "that bai");
 
             }
         });
@@ -102,15 +112,11 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getHostLockAccountAPI(key).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
-
             }
-
             @Override
             public void onFailure(Call<ChuTro> call, Throwable t) {
-
             }
         });
-
     }
 
     private void UnLockHostApi(int key)
@@ -118,33 +124,33 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getHostUnLockAccountAPI(key).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
-
             }
-
             @Override
             public void onFailure(Call<ChuTro> call, Throwable t) {
-
             }
         });
-
     }
 
     private void openDialogConfirmLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUntil.TenChuTro + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                LockHostApi(AppUntil.ID_CHU_TRO);
+                LockHostApi(AppUntil.Id);
+                btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
+                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
             }
         }).setNegativeButton("Cancle",null).show();
     }
 
     private void openDialogConfirmUnLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUntil.TenChuTro + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                UnLockHostApi(AppUntil.ID_CHU_TRO);
+                UnLockHostApi(AppUntil.Id);
+                btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
+                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
             }
         }).setNegativeButton("Cancle",null).show();
     }

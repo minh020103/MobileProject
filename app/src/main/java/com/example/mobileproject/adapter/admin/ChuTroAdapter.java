@@ -99,8 +99,6 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
 
             itemView.setOnClickListener(this);
         }
-
-
         @Override
         public void onClick(View v) {
             onClickListener.onClick(v);

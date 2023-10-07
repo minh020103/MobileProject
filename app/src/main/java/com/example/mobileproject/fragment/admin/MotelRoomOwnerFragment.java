@@ -81,8 +81,8 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                 chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
-                        Log.d("TAG", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
+                        Log.d("RESULT", list.get(position)+"");
+                        AppUntil.Id = list.get(position).getId();
                         nextActivity();
                     }
                 });
@@ -106,8 +106,8 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                 chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
-                        nextActivity();
+                        Log.d("RESULT", list.get(position)+"");
+                        AppUntil.Id = list.get(position).getId();
                     }
                 });
             }
@@ -129,8 +129,8 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                 chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
-                        nextActivity();
+                        Log.d("RESULT", list.get(position)+"");
+                        AppUntil.Id = list.get(position).getId();
                     }
                 });
             }
@@ -146,5 +146,11 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
     {
         Intent intent = new Intent(getActivity(), MotelRoomOwnerDetailActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ListMotelRoomOwnerAPI();
     }
 }

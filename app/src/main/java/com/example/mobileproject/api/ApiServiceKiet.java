@@ -18,7 +18,7 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.99.118/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.2.6/API_ChuyenDe2/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
