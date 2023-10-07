@@ -8,14 +8,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.EditPasswordAdminActivity;
 import com.example.mobileproject.activity.admin.EditPolicyActivity;
+import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
 
 public class ProfileFragment extends AbstractFragment{
 
     AppCompatImageView nextChinhSach;
+    AppCompatImageView nextDoiThongTin;
+    AppCompatImageView nextDoiMatKhau;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,10 +34,27 @@ public class ProfileFragment extends AbstractFragment{
                 startActivity(intent);
             }
         });
+        nextDoiThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EditProfileAdminActivity.class);
+                startActivity(intent);
+            }
+        });
+        nextDoiMatKhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EditPasswordAdminActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return fragmentLayout;
     }
     private void anhXa(View fragment){
         nextChinhSach = fragment.findViewById(R.id.nextDoiChinhSach);
+        nextDoiThongTin = fragment.findViewById(R.id.nextSuaThongTin);
+        nextDoiMatKhau = fragment.findViewById(R.id.nextDoiMK);
     }
 }

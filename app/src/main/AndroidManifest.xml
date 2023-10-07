@@ -27,6 +27,8 @@
         </activity>
 
         <activity android:name=".activity.admin.EditPolicyActivity"/>
+        <activity android:name=".activity.admin.EditProfileAdminActivity"/>
+        <activity android:name=".activity.admin.EditPasswordAdminActivity"/>
     </application>
 
 </manifest>

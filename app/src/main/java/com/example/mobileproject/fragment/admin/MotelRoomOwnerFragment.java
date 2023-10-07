@@ -16,8 +16,6 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_motel_room_owner_layout, container, false);
-
-
         return fragmentLayout;
     }
 }
