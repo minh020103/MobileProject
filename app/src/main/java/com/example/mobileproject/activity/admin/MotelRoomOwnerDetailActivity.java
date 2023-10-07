@@ -53,6 +53,9 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         btnGoiDienChuTro = findViewById(R.id.btnGoiDienChuTro);
         btnKhoaTaiKhoanChuTro = findViewById(R.id.btnKhoaTaiKhoanChuTro);
         btnMoTaiKhoanChuTro = findViewById(R.id.btnMoTaiKhoanChuTro);
+
+        HostByIdApi(AppUntil.ID_CHU_TRO);
+
     }
 
     private void HostByIdApi(int key)
@@ -61,7 +64,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
                 Log.d("tinnhan", "thanh cong");
-                ChuTro host = (ChuTro) response.body();
+                ChuTro host = response.body();
 
                 Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTro);
                 tvTenChuTro.setText(host.getTenNguoiDung());

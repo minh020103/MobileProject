@@ -81,6 +81,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                 chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
                     @Override
                     public void onClickItem(int position, View v) {
+                        Log.d("TAG", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getId();
                         nextActivity();
                     }
