@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.InfomationConfirmMotelRoomOwner;
-import com.example.mobileproject.recyclerviewadapter.admin.OwnerAccountAdapter;
+import com.example.mobileproject.recycerviewadapter.admin.OwnerAccountAdapter;
 import com.example.mobileproject.datamodel.ChuTro;
 
 import java.util.ArrayList;
