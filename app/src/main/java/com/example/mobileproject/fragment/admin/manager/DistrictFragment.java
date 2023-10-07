@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobileproject.R;
 
-public class UtilitiesFragment extends Fragment {
+public class DistrictFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
-        fragmentLayout = inflater.inflate(R.layout.fragment_admin_management_utilities_layout, container, false);
+        fragmentLayout = inflater.inflate(R.layout.fragment_admin_management_district_layout, container, false);
 
 
         return fragmentLayout;
