@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.admin.HostDetailActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+            <ImageView
+                android:id="@+id/imgHostDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone: "
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvTenHostDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/tvSoDienThoaiHostDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                ></TextView>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gioi tinh: "
+                android:textSize="15sp"
+                android:paddingRight="10dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tvGioiTinhHostDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Nam"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID dich vu: "
+                android:textSize="15sp"
+                android:paddingRight="10dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tvIdDichVuHostDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="So tai khoan ngan hang: "
+                android:textSize="15sp"
+                android:paddingRight="10dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tvSoTaiKhoanNganHangHostDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="964781572"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="So tai khoan ngan hang: "
+                android:textSize="15sp"
+                android:paddingRight="10dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tvTenTaiKhoanNganHangHostDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="TEN TAI KHOAN"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trang thai tai khoan: "
+                android:textSize="15sp"
+                android:paddingRight="10dp"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tvTrangThaiHostDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dang hoat dong"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnHostDanhSachPhong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Sanh sach phong">
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnHostCall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Call"></Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnHostKhoaTaiKhoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Khoa Tai khoan">
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnHostMoTaiKhoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mo Khoa Tai Khoan"></Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
