@@ -1,4 +1,4 @@
-package com.example.mobileproject.ViewPagerAdapter.amin;
+package com.example.mobileproject.viewpageradapter.amin;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,13 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.mobileproject.R;
 import com.example.mobileproject.fragment.admin.pending.AbstractFragment;
-import com.example.mobileproject.fragment.admin.ManagementFragment;
-import com.example.mobileproject.fragment.admin.MotelRoomOwnerFragment;
-import com.example.mobileproject.fragment.admin.PackageFragment;
-import com.example.mobileproject.fragment.admin.PendingFragment;
-import com.example.mobileproject.fragment.admin.ProfileFragment;
 import com.example.mobileproject.fragment.admin.pending.MotelRoomDeleteFragment;
 import com.example.mobileproject.fragment.admin.pending.OwnerAccountFragment;
 import com.example.mobileproject.fragment.admin.pending.PackageRegisterFragment;
