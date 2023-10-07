@@ -10,12 +10,12 @@ import androidx.annotation.Nullable;
 
 import com.example.mobileproject.R;
 
-public class WageFragment extends AbstractFragment{
+public class PackageFragment extends AbstractFragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
-        fragmentLayout = inflater.inflate(R.layout.fragment_admin_wage_layout, container, false);
+        fragmentLayout = inflater.inflate(R.layout.fragment_admin_package_layout, container, false);
 
 
         return fragmentLayout;
