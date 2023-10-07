@@ -29,7 +29,7 @@ public class ManagementFragment extends AbstractFragment{
         mTablayout = fragmentLayout.findViewById(R.id.tab_layout_manager);
         mViewPager2 = fragmentLayout.findViewById(R.id.view_pager2_manager);
 
-        mViewPager2Adapter = new ManagementViewPager2Adapter(new FragmentActivity());
+        mViewPager2Adapter = new ManagementViewPager2Adapter(getActivity());
         mViewPager2.setAdapter(mViewPager2Adapter);
 
         new TabLayoutMediator(mTablayout, mViewPager2, (tab, position) -> {
