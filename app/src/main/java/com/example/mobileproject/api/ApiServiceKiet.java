@@ -1,6 +1,7 @@
 package com.example.mobileproject.api;
 
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.GoiDichVu;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -36,4 +37,8 @@ public interface ApiServiceKiet {
     Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
     @GET("hostUnLockAccount.php")
     Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
+
+    /* Pakage */
+    @GET("serviceAll.php")
+    Call<List<GoiDichVu>> getListPakageAPI();
 }
