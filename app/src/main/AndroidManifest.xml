@@ -58,6 +58,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name=".activity.admin.EditPolicyActivity"/>
+        <activity android:name=".activity.admin.EditProfileAdminActivity"/>
+        <activity android:name=".activity.admin.EditPasswordAdminActivity"/>
     </application>
 
 </manifest>
