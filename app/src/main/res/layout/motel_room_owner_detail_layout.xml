@@ -6,19 +6,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbar"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imgBackChuTroFragment"
+                android:layout_width="50dp"
+                android:layout_height="34dp"
+                android:src="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Thoong tin chi tiet"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_green"
+        android:padding="20dp">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4">
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgChuTroChiTiet"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ImageView>
+                android:layout_height="match_parent"
+                android:src="@color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -202,6 +232,7 @@
                     android:id="@+id/btnDanhSachPhongChuTro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/yellow"
                     android:text="Sanh sach phong">
                 </Button>
 
@@ -236,6 +267,7 @@
                     android:id="@+id/btnKhoaTaiKhoanChuTro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/red"
                     android:text="Khoa Tai khoan">
                 </Button>
 
@@ -250,6 +282,7 @@
                     android:id="@+id/btnMoTaiKhoanChuTro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/blue"
                     android:text="Mo Khoa Tai Khoan"></Button>
             </LinearLayout>
 

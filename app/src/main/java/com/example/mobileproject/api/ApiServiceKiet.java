@@ -19,7 +19,7 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.2.6/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.1.103/API_ChuyenDe2/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
@@ -41,4 +41,7 @@ public interface ApiServiceKiet {
     /* Pakage */
     @GET("serviceAll.php")
     Call<List<GoiDichVu>> getListPakageAPI();
+    @GET("serviceByID.php")
+    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+
 }

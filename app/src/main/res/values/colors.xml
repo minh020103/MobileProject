@@ -11,4 +11,9 @@
 
     <color name="main_color_of_app">#00C385</color>
     <color name="main_color_of_app_night">#105740</color>
+    <color name="red">#fc0303</color>
+    <color name="yellow">#eef522</color>
+    <color name="blue">#2a66e8</color>
+
+
 </resources>

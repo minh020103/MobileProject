@@ -35,6 +35,8 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     Button btnKhoaTaiKhoanChuTroChiTiet;
     Button btnMoTaiKhoanChuTroChiTiet;
 
+    ImageView imgBackChuTroFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,15 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
         btnMoTaiKhoanChuTroChiTiet = findViewById(R.id.btnMoTaiKhoanChuTro);
 
-        HostByIdApi(AppUntil.Id);
+        imgBackChuTroFragment = findViewById(R.id.imgBackChuTroFragment);
+
+        imgBackChuTroFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        HostByIdApi(AppUntil.ID_CHU_TRO);
 
         btnMoTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +107,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
-                AppUntil.TenChuTro = host.getTenNguoiDung();
+                AppUntil.TEN_CHU_TRO = host.getTenNguoiDung();
 
             }
             @Override
@@ -133,10 +143,10 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
 
     private void openDialogConfirmLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUntil.TenChuTro + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                LockHostApi(AppUntil.Id);
+                LockHostApi(AppUntil.ID_CHU_TRO);
                 btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
                 btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
             }
@@ -145,10 +155,10 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
 
     private void openDialogConfirmUnLockAccount()
     {
-        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUntil.TenChuTro + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                UnLockHostApi(AppUntil.Id);
+                UnLockHostApi(AppUntil.ID_CHU_TRO);
                 btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
             }
