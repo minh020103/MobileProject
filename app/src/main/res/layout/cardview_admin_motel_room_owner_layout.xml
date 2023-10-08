@@ -80,6 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Da Xac Thuc"
+                    android:textStyle="bold"
                     android:textSize="20sp"/>
 
             </LinearLayout>
