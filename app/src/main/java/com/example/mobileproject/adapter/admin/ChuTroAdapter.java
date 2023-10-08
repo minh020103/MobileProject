@@ -52,12 +52,12 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
         if (data.getXacThuc() == 1)
         {
             holder.tvTrangThaiChuTro.setText("Da Khoa");
-            holder.tvTrangThaiChuTro.setBackgroundColor(0xFFFF0000);
+            holder.tvTrangThaiChuTro.setTextColor(0xFFFF0000);
         }
         else
         {
             holder.tvTrangThaiChuTro.setText("Dang Hoat Dong");
-            holder.tvTrangThaiChuTro.setBackgroundColor(0xFF00FF00);
+            holder.tvTrangThaiChuTro.setTextColor(0xFF00FF00);
         }
         holder.onClickListener = new View.OnClickListener() {
             @Override

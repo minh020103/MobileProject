@@ -54,12 +54,12 @@ public class GoiDichVuAdapter extends RecyclerView.Adapter<GoiDichVuAdapter.MyVi
         if (data.getTrangThai() == 1)
         {
             holder.tvTrangThai.setText("Da Khoa");
-            holder.tvTrangThai.setBackgroundColor(0xFFFF0000);
+            holder.tvTrangThai.setTextColor(0xFFFF0000);
         }
         else
         {
             holder.tvTrangThai.setText("Dang Hoat Dong");
-            holder.tvTrangThai.setBackgroundColor(0xFF00FF00);
+            holder.tvTrangThai.setTextColor(0xFF00FF00);
         }
         //holder.tvTrangThai.setText(String.valueOf(data.getTrangThai()));
         holder.onClickListener = new View.OnClickListener() {
