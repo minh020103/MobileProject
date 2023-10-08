@@ -56,7 +56,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
         btnMoTaiKhoanChuTroChiTiet = findViewById(R.id.btnMoTaiKhoanChuTro);
 
-        imgBackChuTroFragment = findViewById(R.id.imgBackChuTroFragment);
+        imgBackChuTroFragment = findViewById(R.id.imgBackChuTroChiTiet);
 
         imgBackChuTroFragment.setOnClickListener(new View.OnClickListener() {
             @Override

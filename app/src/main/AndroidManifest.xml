@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -18,6 +16,12 @@
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".activity.admin.PakageEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.PakageAddActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.admin.PakageDetailActivity"
             android:exported="false" />

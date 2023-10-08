@@ -4,29 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbXacNhanTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/toolbar"
-        android:layout_marginBottom="1dp"
-        >
+        android:layout_marginBottom="2dp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
-                android:id="@+id/imgBackGoiDVFragment"
+                android:id="@+id/imgBackGoiDVSua"
                 android:layout_width="50dp"
                 android:layout_height="34dp"
-                android:src="@color/black"/>
+                android:src="@drawable/icon_back" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
+                android:textStyle="bold"
+                android:text="Sua Goi Dich Vu"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="Them Goi Dich Vu"/>
+                android:textSize="25sp"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
@@ -66,7 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edt_text"
-                android:text="text"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"></EditText>
@@ -91,7 +90,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edt_text"
-                android:text="text"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"></EditText>
@@ -116,7 +114,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edt_text"
-                android:text="text"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"></EditText>

@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView2"
+            android:id="@+id/imgThemGoiDVFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -33,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quan Li Goi Dich Vu"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/imgThemGoiDVFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+            app:layout_constraintTop_toTopOf="@+id/imgThemGoiDVFragment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
     <LinearLayout

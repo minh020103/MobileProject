@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.MotelRoomOwnerDetailActivity;
+import com.example.mobileproject.activity.admin.PakageAddActivity;
 import com.example.mobileproject.activity.admin.PakageDetailActivity;
 import com.example.mobileproject.adapter.admin.ChuTroAdapter;
 import com.example.mobileproject.adapter.admin.GoiDichVuAdapter;
@@ -34,12 +36,15 @@ public class PackageFragment extends AbstractFragment{
     List<GoiDichVu> list;
     GoiDichVuAdapter goiDichVuAdapter;
     LinearLayoutManager layoutManager;
+
+    ImageView imgThemGoiDichVuFragment;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_package_layout, container, false);
 
+        imgThemGoiDichVuFragment = fragmentLayout.findViewById(R.id.imgThemGoiDVFragment);
         recyclerView = fragmentLayout.findViewById(R.id.rvGoiDichVu);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -48,6 +53,14 @@ public class PackageFragment extends AbstractFragment{
         list = new ArrayList<>();
 
         ListPakageAPI();
+
+        imgThemGoiDichVuFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PakageAddActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return fragmentLayout;
     }
