@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,7 +67,15 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             }
         });
         HostByIdApi(AppUntil.ID_CHU_TRO);
-
+        btnGoiDienChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = "tel:"+tvSoDienThoaiChuTroChiTiet.getText();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse(phone));
+                startActivity(callIntent);
+            }
+        });
         btnMoTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,12 +108,14 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 if (host.getXacThuc() == 1)
                 {
                     tvTrangThaiChuTroChiTiet.setText("Tai khoan da khoa");
+                    tvTrangThaiChuTroChiTiet.setTextColor(0xFFFF0000);
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
                 }
                 else
                 {
                     tvTrangThaiChuTroChiTiet.setText("Dang hoat dong");
+                    tvTrangThaiChuTroChiTiet.setTextColor(0xFF00FF00);
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
@@ -147,8 +159,10 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LockHostApi(AppUntil.ID_CHU_TRO);
-                btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
-                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
+//                btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
+//                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
+                HostByIdApi(AppUntil.ID_CHU_TRO);
+
             }
         }).setNegativeButton("Cancle",null).show();
     }
@@ -159,8 +173,10 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UnLockHostApi(AppUntil.ID_CHU_TRO);
-                btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
-                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
+//                btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
+//                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
+                HostByIdApi(AppUntil.ID_CHU_TRO);
+
             }
         }).setNegativeButton("Cancle",null).show();
     }

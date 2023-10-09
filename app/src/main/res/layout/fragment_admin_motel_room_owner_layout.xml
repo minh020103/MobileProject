@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/white">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -19,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quan Li Chu Tro"
-                android:textColor="@color/black"
+                android:textColor="@color/gray"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -30,6 +32,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,7 +41,9 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8">
+            android:layout_weight="8"
+            android:background="@color/white"
+            android:layout_marginTop="2dp">
             <EditText
                 android:id="@+id/edtTimKiemChuTro"
                 android:layout_width="match_parent"
@@ -49,7 +54,9 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:layout_marginTop="2dp">
             <Button
                 android:id="@+id/btnTimKiemChuTro"
                 android:layout_width="match_parent"
@@ -62,7 +69,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_weight="9"
+        >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvChuTro"
             android:layout_width="match_parent"
