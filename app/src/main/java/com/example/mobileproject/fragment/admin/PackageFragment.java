@@ -95,4 +95,10 @@ public class PackageFragment extends AbstractFragment{
         Intent intent = new Intent(getActivity(), PakageDetailActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ListPakageAPI();
+    }
 }

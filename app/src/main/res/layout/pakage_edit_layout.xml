@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/gray">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbXacNhanTaiKhoan"
         android:layout_width="match_parent"
@@ -25,115 +26,124 @@
                 android:layout_height="34dp"
                 android:textStyle="bold"
                 android:text="Sua Goi Dich Vu"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="25sp"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pakage"></ImageView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:background="@drawable/bg_green"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:background="@color/white"
+        android:layout_marginTop="2dp">
         <LinearLayout
-            android:paddingTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
+            android:layout_height="0dp"
+            android:layout_weight="3">
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thoi han"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:paddingTop="10dp"
-                android:paddingLeft="20dp"></TextView>
-            <EditText
-                android:id="@+id/edtThoiHanGoiDVSua"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edt_text"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textStyle="bold"></EditText>
+                android:src="@drawable/pakage"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="So luong phong"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:paddingTop="10dp"
-                android:paddingLeft="20dp"></TextView>
-            <EditText
-                android:id="@+id/edtSoLuongPhongGoiDVSua"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:background="@drawable/bg_green"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:paddingTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edt_text"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textStyle="bold"></EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gia goi"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:paddingTop="10dp"
-                android:paddingLeft="20dp"></TextView>
-            <EditText
-                android:id="@+id/edtGiaGoiDVSua"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thoi han"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"></TextView>
+                <EditText
+                    android:id="@+id/edtThoiHanGoiDVSua"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_text"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></EditText>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edt_text"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textStyle="bold"></EditText>
-        </LinearLayout>
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="So luong phong"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"></TextView>
+                <EditText
+                    android:id="@+id/edtSoLuongPhongGoiDVSua"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_text"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gia goi"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"></TextView>
+                <EditText
+                    android:id="@+id/edtGiaGoiDVSua"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_text"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></EditText>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/btnGoiDVSua"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sua goi Dich Vu"
-                android:backgroundTint="@color/blue"
-                ></Button>
+                android:layout_weight="4"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btnGoiDVSua"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sua goi Dich Vu"
+                    android:backgroundTint="@color/blue"
+                    ></Button>
 
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

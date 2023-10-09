@@ -43,5 +43,9 @@ public interface ApiServiceKiet {
     Call<List<GoiDichVu>> getListPakageAPI();
     @GET("serviceByID.php")
     Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    @GET("serviceLock.php")
+    Call<GoiDichVu> getServiceLockAPI(@Query("Id") int Id);
+    @GET("serviceUnLock.php")
+    Call<GoiDichVu> getServiceUnLockAPI(@Query("Id") int Id);
 
 }

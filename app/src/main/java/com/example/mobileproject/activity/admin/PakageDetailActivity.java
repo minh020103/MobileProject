@@ -2,6 +2,8 @@ package com.example.mobileproject.activity.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,6 +55,20 @@ public class PakageDetailActivity extends AppCompatActivity {
             }
         });
 
+        btnKhoaGoiDVChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialogConfirmLockPakage();
+            }
+        });
+
+        btnMoKhoaGoiDVChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialogConfirmUnLockPakage();
+            }
+        });
+
         imgBackGoiDVFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,5 +112,57 @@ public class PakageDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void LockServiceApi(int key)
+    {
+        ApiServiceKiet.apiServiceKiet.getServiceLockAPI(key).enqueue(new Callback<GoiDichVu>() {
+            @Override
+            public void onResponse(Call<GoiDichVu> call, Response<GoiDichVu> response) {
+            }
+            @Override
+            public void onFailure(Call<GoiDichVu> call, Throwable t) {
+            }
+        });
+    }
+
+    private void UnLockServiceApi(int key)
+    {
+        ApiServiceKiet.apiServiceKiet.getServiceUnLockAPI(key).enqueue(new Callback<GoiDichVu>() {
+            @Override
+            public void onResponse(Call<GoiDichVu> call, Response<GoiDichVu> response) {
+            }
+            @Override
+            public void onFailure(Call<GoiDichVu> call, Throwable t) {
+            }
+        });
+    }
+
+    private void openDialogConfirmLockPakage()
+    {
+        new AlertDialog.Builder(this).setMessage("Khoa goi dich vu so '" + AppUntil.ID_GOI_DICH_VU + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                LockServiceApi(AppUntil.ID_GOI_DICH_VU);
+//                btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
+//                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
+                PakageByIdAPI(AppUntil.ID_GOI_DICH_VU);
+
+            }
+        }).setNegativeButton("Cancle",null).show();
+    }
+
+    private void openDialogConfirmUnLockPakage()
+    {
+        new AlertDialog.Builder(this).setMessage("Mo khoa goi dich vu so '" + AppUntil.ID_GOI_DICH_VU + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                UnLockServiceApi(AppUntil.ID_GOI_DICH_VU);
+//                btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
+//                btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
+                PakageByIdAPI(AppUntil.ID_GOI_DICH_VU);
+
+            }
+        }).setNegativeButton("Cancle",null).show();
     }
 }
