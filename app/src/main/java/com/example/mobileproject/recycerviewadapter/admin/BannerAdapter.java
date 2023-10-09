@@ -55,6 +55,12 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
                 myOnCLickListener.OnClickItem(position, v);
             }
         };
+        holder.onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnCLickListener.OnClickFabAdd(position,v);
+            }
+        };
 
     }
 
