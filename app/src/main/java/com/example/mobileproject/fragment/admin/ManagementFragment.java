@@ -26,27 +26,18 @@ public class ManagementFragment extends AbstractFragment {
 
     private TabLayout mTablayout;
     private ViewPager2 mViewPager2;
-    private ManagementViewPager2Adapter mViewPager2Adapter;
-
-    private RecyclerView rcvBanner;
-    private BannerAdapter bannerAdapter;
+    private ManagementViewPager2Adapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_management_layout, container, false);
-
-        rcvBanner = fragmentLayout.findViewById(R.id.rcvBanner);
-        bannerAdapter = new BannerAdapter(getActivity(), getListBanner());
-
-
         mTablayout = fragmentLayout.findViewById(R.id.tab_layout_manager);
         mViewPager2 = fragmentLayout.findViewById(R.id.view_pager2_manager);
 
-        mViewPager2Adapter = new ManagementViewPager2Adapter(getActivity());
-        mViewPager2.setAdapter(mViewPager2Adapter);
-
+        adapter = new ManagementViewPager2Adapter(getActivity());
+        mViewPager2.setAdapter(adapter);
         new TabLayoutMediator(mTablayout, mViewPager2, (tab, position) -> {
             switch (position) {
                 case 0:
@@ -61,30 +52,19 @@ public class ManagementFragment extends AbstractFragment {
             }
         }).attach();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        rcvBanner.setLayoutManager(linearLayoutManager);
-
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
-        rcvBanner.addItemDecoration(itemDecoration);
-
-        rcvBanner.setAdapter(bannerAdapter);
-
-
-
 
         return fragmentLayout;
-
     }
 
-    private List<Banner> getListBanner() {
-        List<Banner> list = new ArrayList<>();
-        list.add(new Banner(1, R.drawable.banner1, "Hinh 1"));
-        list.add(new Banner(2, R.drawable.banner2, "Hinh 2"));
-        list.add(new Banner(3, R.drawable.banner3, "Hinh 3"));
-        list.add(new Banner(4, R.drawable.banner4, "Hinh 4"));
-
-        return list;
-    }
+//    private List<Banner> getListBanner() {
+//        List<Banner> list = new ArrayList<>();
+//        list.add(new Banner(1, R.drawable.banner1, "Hinh 1"));
+//        list.add(new Banner(2, R.drawable.banner2, "Hinh 2"));
+//        list.add(new Banner(3, R.drawable.banner3, "Hinh 3"));
+//        list.add(new Banner(4, R.drawable.banner4, "Hinh 4"));
+//
+//        return list;
+//    }
 
 
 }

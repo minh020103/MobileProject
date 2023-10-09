@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobileproject.R;
 
-public class DistrictFragment extends Fragment {
+public class DistrictFragment extends AbstractFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
