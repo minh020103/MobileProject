@@ -10,6 +10,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
@@ -55,6 +56,8 @@ public interface ApiServiceKiet {
     Call<GoiDichVu> unLockPakageByIdAPI(@Query("id") int id);
     @POST("goi/add")
     Call<GoiDichVu> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+    @PUT("goi/update")
+    Call<GoiDichVu> updatePakage(@Query("id") int id,@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
 
 
 }

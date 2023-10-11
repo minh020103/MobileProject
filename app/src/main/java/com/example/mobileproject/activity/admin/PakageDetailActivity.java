@@ -161,4 +161,10 @@ public class PakageDetailActivity extends AppCompatActivity {
             }
         }).setNegativeButton("Cancle",null).show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PakageByIdAPI(AppUntil.ID_GOI_DICH_VU);
+    }
 }

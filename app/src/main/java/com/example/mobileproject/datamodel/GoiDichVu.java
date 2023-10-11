@@ -22,6 +22,12 @@ public class GoiDichVu {
         this.trangThai = trangThai;
     }
 
+    public GoiDichVu(int thoiHan, int soLuongPhong, int giaGoi) {
+        this.thoiHan = thoiHan;
+        this.soLuongPhong = soLuongPhong;
+        this.giaGoi = giaGoi;
+    }
+
     public int getId() {
         return id;
     }

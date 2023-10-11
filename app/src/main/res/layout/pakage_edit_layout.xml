@@ -76,6 +76,7 @@
                     android:background="@drawable/edt_text"
                     android:gravity="center"
                     android:textSize="20sp"
+                    android:inputType="number"
                     android:textStyle="bold"></EditText>
             </LinearLayout>
             <LinearLayout
@@ -100,6 +101,7 @@
                     android:background="@drawable/edt_text"
                     android:gravity="center"
                     android:textSize="20sp"
+                    android:inputType="number"
                     android:textStyle="bold"></EditText>
             </LinearLayout>
             <LinearLayout
@@ -124,6 +126,7 @@
                     android:background="@drawable/edt_text"
                     android:gravity="center"
                     android:textSize="20sp"
+                    android:inputType="number"
                     android:textStyle="bold"></EditText>
             </LinearLayout>
 
