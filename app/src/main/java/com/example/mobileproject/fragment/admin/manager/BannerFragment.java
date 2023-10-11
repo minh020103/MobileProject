@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mobileproject.Manifest;
+
 import com.example.mobileproject.R;
 import com.example.mobileproject.datamodel.Banner;
 import com.example.mobileproject.recycerviewadapter.admin.BannerAdapter;
