@@ -26,7 +26,6 @@
                 android:layout_height="34dp"
                 android:textStyle="bold"
                 android:text="Sua Goi Dich Vu"
-                android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="25sp"/>
         </RelativeLayout>
