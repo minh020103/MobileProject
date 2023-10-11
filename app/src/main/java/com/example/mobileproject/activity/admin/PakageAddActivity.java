@@ -74,11 +74,11 @@ public class PakageAddActivity extends AppCompatActivity {
 
     private void openDialogConfirmAddPakage(int i1, int i2, int i3)
     {
-        new AlertDialog.Builder(this).setMessage("Xac nhan them goi dich vu?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Xác nhận thêm gói dịch vụ mới ?").setCancelable(false).setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 AddPakageAPI(i1, i2, i3);
             }
-        }).setNegativeButton("Cancle",null).show();
+        }).setNegativeButton("Hủy",null).show();
     }
 }

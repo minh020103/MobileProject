@@ -95,11 +95,11 @@ public class PakageEditActivity extends AppCompatActivity {
 
     private void openDialogConfirmUpdatePakage(int i2, int i3, int i4)
     {
-        new AlertDialog.Builder(this).setMessage("Xac nhan sua goi dich vu?").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Xác nhận sửa gói dịch vụ số '" + AppUntil.ID_GOI_DICH_VU + "' ?").setCancelable(false).setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UpdatePakageAPI(i2, i3, i4);
             }
-        }).setNegativeButton("Cancle",null).show();
+        }).setNegativeButton("Hủy",null).show();
     }
 }

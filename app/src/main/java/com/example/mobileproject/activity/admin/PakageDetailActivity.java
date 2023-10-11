@@ -44,7 +44,7 @@ public class PakageDetailActivity extends AppCompatActivity {
         btnSuaGoiDVChiTiet = findViewById(R.id.btnSuaGoiDVChiTiet);
         btnMoKhoaGoiDVChiTiet = findViewById(R.id.btnMoGoiDVChiTiet);
         btnKhoaGoiDVChiTiet = findViewById(R.id.btnKhoaGoiDVChiTiet);
-        imgBackGoiDVFragment = findViewById(R.id.imgBackGoiDVFragment);
+        imgBackGoiDVFragment = findViewById(R.id.imgBackGoiDVChiTiet);
 
         imgBackGoiDVFragment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,14 +92,14 @@ public class PakageDetailActivity extends AppCompatActivity {
 
                 if (host.getTrangThai() == 1)
                 {
-                    tvTrangThaiGoiDVChiTiet.setText("Da Khoa");
+                    tvTrangThaiGoiDVChiTiet.setText("Đã khóa");
                     tvTrangThaiGoiDVChiTiet.setTextColor(0xFFFF0000);
                     btnKhoaGoiDVChiTiet.setEnabled(false);
                     btnMoKhoaGoiDVChiTiet.setEnabled(true);
                 }
                 else
                 {
-                    tvTrangThaiGoiDVChiTiet.setText("Dang Hoat Dong");
+                    tvTrangThaiGoiDVChiTiet.setText("Đang hoạt động");
                     tvTrangThaiGoiDVChiTiet.setTextColor(0xFF00FF00);
                     btnKhoaGoiDVChiTiet.setEnabled(true);
                     btnMoKhoaGoiDVChiTiet.setEnabled(false);
@@ -139,7 +139,7 @@ public class PakageDetailActivity extends AppCompatActivity {
 
     private void openDialogConfirmLockPakage()
     {
-        new AlertDialog.Builder(this).setMessage("Khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Xác nhận khóa dịch vụ số '" + AppUntil.ID_GOI_DICH_VU + "' ?").setCancelable(false).setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LockPakageApi(AppUntil.ID_GOI_DICH_VU);
@@ -148,12 +148,12 @@ public class PakageDetailActivity extends AppCompatActivity {
                 PakageByIdAPI(AppUntil.ID_GOI_DICH_VU);
 
             }
-        }).setNegativeButton("Cancle",null).show();
+        }).setNegativeButton("Hủy",null).show();
     }
 
     private void openDialogConfirmUnLockPakage()
     {
-        new AlertDialog.Builder(this).setMessage("Mo khoa tai khoan '" + AppUntil.TEN_CHU_TRO + "'").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setMessage("Xác nhận mở khóa dịch vụ số '" + AppUntil.ID_GOI_DICH_VU + "' ?").setCancelable(false).setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UnLockPakageApi(AppUntil.ID_GOI_DICH_VU);
@@ -161,7 +161,7 @@ public class PakageDetailActivity extends AppCompatActivity {
 //                btnKhoaGoiDVChiTiet.setEnabled(true);
                 PakageByIdAPI(AppUntil.ID_GOI_DICH_VU);
             }
-        }).setNegativeButton("Cancle",null).show();
+        }).setNegativeButton("Hủy",null).show();
     }
 
     @Override

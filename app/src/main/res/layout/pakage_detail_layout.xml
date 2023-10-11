@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:textStyle="bold"
-                android:text="Thong Tin Goi Dich Vu"
+                android:text="Thông tin gói dịch vụ"
                 android:gravity="center"
                 android:textSize="25sp"/>
         </RelativeLayout>
@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thoi han"
+                    android:text="Thời hạn (tháng)"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"
@@ -87,7 +87,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="So luong phong"
+                    android:text="Số lượng phòng tối đa"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"
@@ -112,7 +112,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gia goi"
+                    android:text="Giá gói (đồng)"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trang thai"
+                    android:text="Trạng thái"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"
@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@color/red"
-                    android:text="Sua goi Dich Vu"
+                    android:text="Sửa gói dịch vụ"
                     android:backgroundTint="@color/yellow"
                     ></Button>
                 <LinearLayout
@@ -180,7 +180,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:text="Mo Dich Vu"
+                        android:text="Mở dịch vụ"
                         android:backgroundTint="@color/blue"></Button>
                     <Button
                         android:id="@+id/btnKhoaGoiDVChiTiet"
@@ -189,7 +189,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:text="Khoa Dich Vu"
+                        android:text="Khóa dịch vụ"
                         android:backgroundTint="@color/red"></Button>
                 </LinearLayout>
             </LinearLayout>

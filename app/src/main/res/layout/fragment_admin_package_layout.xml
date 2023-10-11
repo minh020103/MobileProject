@@ -32,7 +32,7 @@
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quan Li Goi Dich Vu"
+            android:text="Quản lý gói dịch vụ"
             app:layout_constraintBottom_toBottomOf="@+id/imgAddPakage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

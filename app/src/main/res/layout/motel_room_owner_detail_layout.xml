@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imgBackChuTroChiTiet"
+                android:id="@+id/imgBackChuTroFragment"
                 android:layout_width="50dp"
                 android:layout_height="34dp"
                 android:src="@drawable/icon_back" />
