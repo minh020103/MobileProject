@@ -27,8 +27,8 @@ public interface ApiServiceKiet {
     /* Host */
     @GET("chutro/all")
     Call<List<ChuTro>> getListHostAPI();
-    @GET("hostByID.php")
-    Call<ChuTro> getHostByIdAPI(@Query("Id") int Id);
+    @GET("chutro/chitiet")
+    Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
     @GET("hostByName.php")
     Call<List<ChuTro>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
     @GET("hostByPhone.php")
@@ -41,7 +41,7 @@ public interface ApiServiceKiet {
     /* Pakage */
     @GET("goi/all")
     Call<List<GoiDichVu>> getListPakageAPI();
-    @GET("serviceByID.php")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    @GET("goi/chitiet")
+    Call<GoiDichVu> getPakageByIdAPI(@Query("id") int id);
 
 }

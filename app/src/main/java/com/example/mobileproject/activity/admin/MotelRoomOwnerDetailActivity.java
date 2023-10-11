@@ -44,7 +44,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         imgChuTroChiTiet = findViewById(R.id.imgChuTroChiTiet);
         tvTenChuTroChiTiet = findViewById(R.id.tvTenChuTroChiTiet);
         tvSoDienThoaiChuTroChiTiet = findViewById(R.id.tvSDTChuTroChiTiet);
-        tvGioiTinhChuTroChiTiet = findViewById(R.id.tvGioiTinhChuTroChiTiet);
         tvIdDichVuChuTroChiTiet = findViewById(R.id.tvIdDichVuChuTroChiTiet);
         tvSoTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvSoTaiKhoanChuTroChiTiet);
         tvTenChuTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvTenTaiKhoanNganHangChuTroChiTiet);

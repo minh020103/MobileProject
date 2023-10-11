@@ -7,7 +7,7 @@ public class GoiDichVu {
     private int id;
     @SerializedName("thoiHan")
     private int thoiHan;
-    @SerializedName("SoLuongPhong")
+    @SerializedName("soLuongPhongToiDa")
     private int soLuongPhong;
     @SerializedName("gia")
     private int giaGoi;

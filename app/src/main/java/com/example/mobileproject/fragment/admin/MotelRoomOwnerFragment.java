@@ -82,7 +82,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
+                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
                         nextActivity();
                     }
                 });
@@ -107,7 +107,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
+                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
                     }
                 });
             }
@@ -130,7 +130,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     @Override
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getId();
+                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
                     }
                 });
             }
