@@ -1,2 +1,4 @@
-package com.example.mobileproject.activity.admin;public class PakageAddActivity {
+package com.example.mobileproject.activity.admin;
+
+public class PakageAddActivity {
 }
