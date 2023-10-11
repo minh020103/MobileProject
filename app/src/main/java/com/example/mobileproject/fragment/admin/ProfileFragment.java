@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +19,9 @@ import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
 
 public class ProfileFragment extends AbstractFragment{
 
-    AppCompatImageView nextChinhSach;
-    AppCompatImageView nextDoiThongTin;
-    AppCompatImageView nextDoiMatKhau;
+    LinearLayout nextChinhSach;
+    LinearLayout nextDoiThongTin;
+    LinearLayout nextDoiMatKhau;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
