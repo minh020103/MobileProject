@@ -37,6 +37,13 @@ public class PakageAddActivity extends AppCompatActivity {
         edtGiaGoiDVThem = findViewById(R.id.edtGiaGoiDVThem);
         btnGoiDVThem = findViewById(R.id.btnGoiDVThem);
 
+        btnGoiDVThem.setEnabled(false);
+
+        if (edtThoiHanGoiDVThem.getText() != null && edtSoLuongPhongGoiDVThem.getText() != null && edtGiaGoiDVThem.getText() !=null)
+        {
+            btnGoiDVThem.setEnabled(true);
+        }
+
         btnGoiDVThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +51,15 @@ public class PakageAddActivity extends AppCompatActivity {
                 int soLuong = Integer.parseInt(edtSoLuongPhongGoiDVThem.getText()+"");
                 int gia = Integer.parseInt(edtGiaGoiDVThem.getText()+"");
 
-                openDialogConfirmAddPakage(thoiHan, soLuong, gia);
+                if (thoiHan >= 0 && soLuong >=0 && gia >=0)
+                {
+                    openDialogConfirmAddPakage(thoiHan, soLuong, gia);
+                }
+                else
+                {
+                    new AlertDialog.Builder(getApplicationContext()).setMessage("Lỗi").setCancelable(false).setNegativeButton("Quay lại",null).show();
+                }
+
             }
         });
 
