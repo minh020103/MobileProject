@@ -11,6 +11,10 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
@@ -33,15 +37,19 @@ public interface ApiServiceKiet {
     Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
     @GET("chutro/timKiemSDT")
     Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
-    @GET("hostLockAccount.php")
-    Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
-    @GET("hostUnLockAccount.php")
-    Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
+    @GET("chutro/lock")
+    Call<ChuTro> getHostLockAccountAPI(@Query("id") int id);
+    @GET("chutro/unLock")
+    Call<ChuTro> getHostUnLockAccountAPI(@Query("id") int id);
 
     /* Pakage */
     @GET("goi/all")
     Call<List<GoiDichVu>> getListPakageAPI();
     @GET("goi/chitiet")
     Call<GoiDichVu> getPakageByIdAPI(@Query("id") int id);
+    @GET("goi/lock")
+    Call<GoiDichVu> lockPakageByIdAPI(@Query("id") int id);
+    @GET("goi/unLock")
+    Call<GoiDichVu> unLockPakageByIdAPI(@Query("id") int id);
 
 }

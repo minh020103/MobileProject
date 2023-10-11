@@ -24,7 +24,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     ImageView imgChuTroChiTiet;
     TextView tvTenChuTroChiTiet;
     TextView tvSoDienThoaiChuTroChiTiet;
-    TextView tvGioiTinhChuTroChiTiet;
     TextView tvIdDichVuChuTroChiTiet;
     TextView tvSoTaiKhoanNganHangChuTroChiTiet;
     TextView tvTenChuTaiKhoanNganHangChuTroChiTiet;
@@ -114,9 +113,9 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void LockHostApi(int key)
+    private void LockHostApi(int id)
     {
-        ApiServiceKiet.apiServiceKiet.getHostLockAccountAPI(key).enqueue(new Callback<ChuTro>() {
+        ApiServiceKiet.apiServiceKiet.getHostLockAccountAPI(id).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
             }

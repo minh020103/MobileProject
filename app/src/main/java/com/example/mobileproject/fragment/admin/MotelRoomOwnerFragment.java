@@ -108,6 +108,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
+                        nextActivity();
                     }
                 });
             }
@@ -131,6 +132,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
+                        nextActivity();
                     }
                 });
             }
