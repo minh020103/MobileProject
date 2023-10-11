@@ -3,34 +3,31 @@ package com.example.mobileproject.datamodel;
 import com.google.gson.annotations.SerializedName;
 
 public class ChuTro {
-    @SerializedName("Id")
+    @SerializedName("id")
     private int id;
-    @SerializedName("IdTaiKhoan")
+    @SerializedName("idTaiKhoan")
     private int idTaiKhoan;
-    @SerializedName("HinhNguoiDung")
+    @SerializedName("hinh")
     private String hinhNguoiDung;
-    @SerializedName("TenNguoiDung")
+    @SerializedName("ten")
     private String tenNguoiDung;
-    @SerializedName("SoDienThoai")
+    @SerializedName("soDienThoai")
     private String SoDienThoai;
-    @SerializedName("GioiTinh")
-    private String gioiTinh;
-    @SerializedName("IdDichVu")
+    @SerializedName("idGoi")
     private int idDichVu;
     @SerializedName("soTaiKhoanNganHang")
     private String soTaiKhoanNganHang;
     @SerializedName("tenChuTaiKhoanNganHang")
     private String tenChuTaiKhoanNganHang;
-    @SerializedName("XacThuc")
+    @SerializedName("xacThuc")
     private int xacThuc;
 
-    public ChuTro(int id, int idTaiKhoan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, String gioiTinh, int idDichVu, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc) {
+    public ChuTro(int id, int idTaiKhoan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, int idDichVu, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc) {
         this.id = id;
         this.idTaiKhoan = idTaiKhoan;
         this.hinhNguoiDung = hinhNguoiDung;
         this.tenNguoiDung = tenNguoiDung;
         SoDienThoai = soDienThoai;
-        this.gioiTinh = gioiTinh;
         this.idDichVu = idDichVu;
         this.soTaiKhoanNganHang = soTaiKhoanNganHang;
         this.tenChuTaiKhoanNganHang = tenChuTaiKhoanNganHang;
@@ -77,14 +74,6 @@ public class ChuTro {
         SoDienThoai = soDienThoai;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
     public int getIdDichVu() {
         return idDichVu;
     }
@@ -125,7 +114,6 @@ public class ChuTro {
                 ", hinhNguoiDung='" + hinhNguoiDung + '\'' +
                 ", tenNguoiDung='" + tenNguoiDung + '\'' +
                 ", SoDienThoai='" + SoDienThoai + '\'' +
-                ", gioiTinh='" + gioiTinh + '\'' +
                 ", idDichVu=" + idDichVu +
                 ", soTaiKhoanNganHang='" + soTaiKhoanNganHang + '\'' +
                 ", tenChuTaiKhoanNganHang='" + tenChuTaiKhoanNganHang + '\'' +

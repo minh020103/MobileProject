@@ -19,13 +19,13 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.2/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.1.102/API_ChuyenDe_12/laravel/public/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
 
     /* Host */
-    @GET("hostAll.php")
+    @GET("chutro/all")
     Call<List<ChuTro>> getListHostAPI();
     @GET("hostByID.php")
     Call<ChuTro> getHostByIdAPI(@Query("Id") int Id);
@@ -39,7 +39,7 @@ public interface ApiServiceKiet {
     Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
 
     /* Pakage */
-    @GET("serviceAll.php")
+    @GET("goi/all")
     Call<List<GoiDichVu>> getListPakageAPI();
     @GET("serviceByID.php")
     Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
