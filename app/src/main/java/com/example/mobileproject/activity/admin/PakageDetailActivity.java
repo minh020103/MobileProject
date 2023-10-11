@@ -93,12 +93,14 @@ public class PakageDetailActivity extends AppCompatActivity {
                 if (host.getTrangThai() == 1)
                 {
                     tvTrangThaiGoiDVChiTiet.setText("Da Khoa");
+                    tvTrangThaiGoiDVChiTiet.setTextColor(0xFFFF0000);
                     btnKhoaGoiDVChiTiet.setEnabled(false);
                     btnMoKhoaGoiDVChiTiet.setEnabled(true);
                 }
                 else
                 {
                     tvTrangThaiGoiDVChiTiet.setText("Dang Hoat Dong");
+                    tvTrangThaiGoiDVChiTiet.setTextColor(0xFF00FF00);
                     btnKhoaGoiDVChiTiet.setEnabled(true);
                     btnMoKhoaGoiDVChiTiet.setEnabled(false);
                 }

@@ -32,7 +32,7 @@ public interface ApiServiceKiet {
             .create(ApiServiceKiet.class);
 
     /* Host */
-    @GET("chutro/all")
+    @GET("chutro/daxacthuc")
     Call<List<ChuTro>> getListHostAPI();
     @GET("chutro/chitiet")
     Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);

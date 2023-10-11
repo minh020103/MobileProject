@@ -4,29 +4,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbXacNhanTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/toolbar"
-        android:layout_marginBottom="1dp"
-        >
+        android:layout_marginBottom="2dp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
-                android:id="@+id/imgBackGoiDVFragment"
+                android:id="@+id/imgBackGoiDVChiTiet"
                 android:layout_width="50dp"
                 android:layout_height="34dp"
-                android:src="@color/black"/>
+                android:src="@drawable/icon_back" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
+                android:textStyle="bold"
+                android:text="Chi Tiet Goi Dich Vu"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="Thoong tin chi tiet"/>
+                android:textSize="25sp"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout

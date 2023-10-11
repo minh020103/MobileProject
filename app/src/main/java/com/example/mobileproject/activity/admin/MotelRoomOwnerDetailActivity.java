@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,6 +75,15 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openDialogConfirmLockAccount();
+            }
+        });
+        btnGoiDienChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = "tel:"+tvSoDienThoaiChuTroChiTiet.getText();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse(phone));
+                startActivity(callIntent);
             }
         });
 

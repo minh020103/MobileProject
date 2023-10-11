@@ -7,28 +7,30 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbXacNhanTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/toolbar"
-        >
+        android:layout_marginBottom="2dp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
-                android:id="@+id/imgBackChuTroFragment"
+                android:id="@+id/imgBackChuTroChiTiet"
                 android:layout_width="50dp"
                 android:layout_height="34dp"
-                android:src="@color/black"/>
+                android:src="@drawable/icon_back" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
+                android:textStyle="bold"
+                android:text="Chi Tiet Chu Tro"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="Thoong tin chi tiet"/>
+                android:textSize="25sp"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -174,7 +176,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trang thai tai khoan: "
+                android:text="Xac thuc: "
                 android:textSize="15sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"></TextView>
@@ -182,7 +184,7 @@
                 android:id="@+id/tvTrangThaiChuTroChiTiet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dang hoat dong"
+                android:text="Chua Xac Thuc"
                 android:textSize="15sp"></TextView>
         </LinearLayout>
 
