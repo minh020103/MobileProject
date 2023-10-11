@@ -130,6 +130,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/nextSuaThongTin"
                     android:layout_marginBottom="1sp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -144,7 +145,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/nextSuaThongTin"
+
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="34dp"
@@ -173,6 +174,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/nextDoiMK"
                     android:layout_marginBottom="1sp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -187,7 +189,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/nextDoiMK"
+
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="34dp"
@@ -216,6 +218,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/nextDoiChinhSach"
                     android:layout_marginBottom="1sp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -230,7 +233,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/nextDoiChinhSach"
+
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="34dp"
@@ -259,6 +262,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/dangXuat"
                     android:layout_marginBottom="1sp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -273,7 +277,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/dangXuat"
+
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="34dp"
