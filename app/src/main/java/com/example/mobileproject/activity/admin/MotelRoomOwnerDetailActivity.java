@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
-import com.example.mobileproject.api.ApiServiceKiet;
+import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
 import com.example.mobileproject.datamodel.ChuTro;
 

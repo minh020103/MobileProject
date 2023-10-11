@@ -13,13 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.activity.admin.MotelRoomOwnerDetailActivity;
 import com.example.mobileproject.activity.admin.PakageDetailActivity;
-import com.example.mobileproject.adapter.admin.ChuTroAdapter;
 import com.example.mobileproject.adapter.admin.GoiDichVuAdapter;
-import com.example.mobileproject.api.ApiServiceKiet;
+import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
-import com.example.mobileproject.datamodel.ChuTro;
 import com.example.mobileproject.datamodel.GoiDichVu;
 
 import java.util.ArrayList;

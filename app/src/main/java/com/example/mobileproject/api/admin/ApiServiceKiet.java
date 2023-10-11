@@ -1,4 +1,4 @@
-package com.example.mobileproject.api;
+package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.datamodel.ChuTro;
 import com.example.mobileproject.datamodel.GoiDichVu;
