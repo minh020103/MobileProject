@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.YeuCauXacThuc;
 
 import java.util.List;
 
@@ -20,10 +23,10 @@ public class PendingOwnerAccountAdapter extends RecyclerView.Adapter<PendingOwne
 
     private Activity activity;
     private int layoutID;
-    private List<ChuTro> list;
+    private List<YeuCauXacThuc> list;
     private OnClickItemListener onClickItemListener;
 
-    public PendingOwnerAccountAdapter(Activity activity, int layoutID, List<ChuTro> list) {
+    public PendingOwnerAccountAdapter(Activity activity, int layoutID, List<YeuCauXacThuc> list) {
         this.activity = activity;
         this.layoutID = layoutID;
         this.list = list;
@@ -43,8 +46,12 @@ public class PendingOwnerAccountAdapter extends RecyclerView.Adapter<PendingOwne
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ChuTro chuTro = list.get(position);
-        holder.tvTen.setText(chuTro.getTenNguoiDung());
+        YeuCauXacThuc yeuCauXacThuc = list.get(position);
+        if (list.get(position).getChuTro() != null) {
+            Glide.with(activity.getLayoutInflater().getContext()).load(Const.DOMAIN + list.get(position).getChuTro().getHinh()).into(holder.imgHinhDaiDien);
+
+            holder.tvTen.setText(yeuCauXacThuc.getChuTro().getTen());
+        }
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -87,11 +87,9 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
                 ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTroChiTiet);
-                tvTenChuTroChiTiet.setText(host.getTenNguoiDung());
+                Glide.with(getApplicationContext()).load(host.getHinh()).into(imgChuTroChiTiet);
+                tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvGioiTinhChuTroChiTiet.setText(host.getGioiTinh());
-                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
                 if (host.getXacThuc() == 1)
@@ -106,7 +104,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
-                AppUntil.TEN_CHU_TRO = host.getTenNguoiDung();
+                AppUntil.TEN_CHU_TRO = host.getTen();
 
             }
             @Override

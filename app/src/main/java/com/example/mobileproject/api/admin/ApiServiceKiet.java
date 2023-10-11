@@ -1,7 +1,7 @@
 package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.datamodel.ChuTro;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.Goi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
+
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd")
             .create();
@@ -23,7 +24,6 @@ public interface ApiServiceKiet {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
-
     /* Host */
     @GET("hostAll.php")
     Call<List<ChuTro>> getListHostAPI();
@@ -40,8 +40,8 @@ public interface ApiServiceKiet {
 
     /* Pakage */
     @GET("serviceAll.php")
-    Call<List<GoiDichVu>> getListPakageAPI();
+    Call<List<Goi>> getListPakageAPI();
     @GET("serviceByID.php")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    Call<Goi> getPakageByIdAPI(@Query("Id") int Id);
 
 }

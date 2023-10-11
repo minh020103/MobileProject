@@ -46,8 +46,8 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChuTro data = list.get(position);
-        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiDung()).into(holder.imgChuTro);
-        holder.tvTenChuTro.setText(data.getTenNguoiDung());
+        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinh()).into(holder.imgChuTro);
+        holder.tvTenChuTro.setText(data.getTen());
         holder.tvSDTChuTro.setText(data.getSoDienThoai());
         if (data.getXacThuc() == 1)
         {

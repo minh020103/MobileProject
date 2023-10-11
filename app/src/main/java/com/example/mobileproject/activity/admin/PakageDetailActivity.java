@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.mobileproject.R;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.Goi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,14 +55,14 @@ public class PakageDetailActivity extends AppCompatActivity {
 
     private void PakageByIdAPI(int key)
     {
-        ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<GoiDichVu>() {
+        ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
             @Override
-            public void onResponse(Call<GoiDichVu> call, Response<GoiDichVu> response) {
-                GoiDichVu host = response.body();
+            public void onResponse(Call<Goi> call, Response<Goi> response) {
+                Goi host = response.body();
 
                 tvThoiHanGoiDVChiTiet.setText(String.valueOf(host.getThoiHan()));
-                tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhong()));
-                tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGiaGoi()));
+                tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhongToiDa()));
+                tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGia()));
 
                 if (host.getTrangThai() == 1)
                 {
@@ -79,7 +79,7 @@ public class PakageDetailActivity extends AppCompatActivity {
 
             }
             @Override
-            public void onFailure(Call<GoiDichVu> call, Throwable t) {
+            public void onFailure(Call<Goi> call, Throwable t) {
 
             }
         });
