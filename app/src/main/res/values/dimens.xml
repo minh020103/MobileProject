@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--Start Phuc -->
+    <dimen name="width_logo">80dp</dimen>
+    <dimen name="height_logo">80dp</dimen>
+    <dimen name="pd_20dp">20dp</dimen>
+    <dimen name="text_size_40sp">40sp</dimen>
+    <dimen name="text_size_16dp">16sp</dimen>
+    <!--End Phuc-->
 </resources>

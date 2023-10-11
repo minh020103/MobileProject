@@ -11,4 +11,9 @@
 
     <color name="main_color_of_app">#00C385</color>
     <color name="main_color_of_app_night">#105740</color>
+
+    <!--Start Phuc -->
+    <color name="bg_tv_dangnhap">#30ffffff</color>
+    <!--End Phuc-->
+
 </resources>
