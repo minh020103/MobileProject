@@ -29,10 +29,10 @@ public interface ApiServiceKiet {
     Call<List<ChuTro>> getListHostAPI();
     @GET("chutro/chitiet")
     Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
-    @GET("hostByName.php")
-    Call<List<ChuTro>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
-    @GET("hostByPhone.php")
-    Call<List<ChuTro>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
+    @GET("chutro/timKiemTen")
+    Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
+    @GET("chutro/timKiemSDT")
+    Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
     @GET("hostLockAccount.php")
     Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
     @GET("hostUnLockAccount.php")
