@@ -3,15 +3,15 @@ package com.example.mobileproject.datamodel;
 import com.google.gson.annotations.SerializedName;
 
 public class GoiDichVu {
-    @SerializedName("Id")
+    @SerializedName("id")
     private int id;
-    @SerializedName("ThoiHan")
+    @SerializedName("thoiHan")
     private int thoiHan;
     @SerializedName("SoLuongPhong")
     private int soLuongPhong;
-    @SerializedName("GiaGoi")
+    @SerializedName("gia")
     private int giaGoi;
-    @SerializedName("TrangThai")
+    @SerializedName("trangThai")
     private int trangThai;
 
     public GoiDichVu(int id, int thoiHan, int soLuongPhong, int giaGoi, int trangThai) {

@@ -90,7 +90,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTroChiTiet);
                 tvTenChuTroChiTiet.setText(host.getTenNguoiDung());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvGioiTinhChuTroChiTiet.setText(host.getGioiTinh());
                 tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
