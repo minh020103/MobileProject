@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/bg_login_2"
     tools:context=".activity.login.RegisterActivity">
 
     <RelativeLayout
@@ -18,9 +18,9 @@
         android:layout_width="@dimen/width_logo"
         android:layout_height="@dimen/height_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
         android:src="@drawable/logo_green" />
 
     <TextView
@@ -29,13 +29,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp20"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Register"
+        android:text="@string/lb_register"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="@dimen/text_size_40sp"
         android:textStyle="bold" />
 
     <EditText
@@ -44,13 +43,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_register"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30ffffff"
         android:drawableLeft="@drawable/icon_username"
         android:drawablePadding="20dp"
-        android:hint="Username"
+        android:hint="Tên đăng nhập"
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -67,7 +66,7 @@
         android:background="#30ffffff"
         android:drawableLeft="@drawable/icon_password"
         android:drawablePadding="20dp"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/white"
@@ -82,10 +81,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
+        android:background="#30FFFFFF"
         android:drawableLeft="@drawable/icon_password"
         android:drawablePadding="20dp"
-        android:hint="Confirm Password"
+        android:hint="Nhập lại mật khẩu"
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/white"
@@ -102,6 +101,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/main_color_of_app"
-        android:text="REGISTER" />
+        android:text="@string/btn_dang_ky" />
 
 </RelativeLayout>

@@ -15,7 +15,7 @@ import com.example.mobileproject.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText edtUserName, edtPassWord, edtEmail, edtCPassWord;
+    EditText edtUserName, edtPassWord, edtCPassWord;
     Button btnRegister;
     String userName, passwWord, email, cPassWord;
 
@@ -26,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         edtUserName = findViewById(R.id.edt_username);
         edtPassWord = findViewById(R.id.edt_password);
-        edtEmail = findViewById(R.id.edt_email);
         edtCPassWord = findViewById(R.id.edt_confrm_password);
 
         btnRegister = findViewById(R.id.btn_register);
@@ -45,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
         userName = edtUserName.getText().toString();
         passwWord = edtPassWord.getText().toString();
         cPassWord = edtCPassWord.getText().toString();
-        email = edtEmail.getText().toString();
 
         if (userName.isEmpty() || passwWord.isEmpty() || email.isEmpty()) {
             alertFail("Username, Email and Password is required");
