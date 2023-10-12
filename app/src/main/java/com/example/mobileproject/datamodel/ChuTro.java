@@ -21,8 +21,10 @@ public class ChuTro {
     private String tenChuTaiKhoanNganHang;
     @SerializedName("xacThuc")
     private int xacThuc;
+    @SerializedName("thongTinXacThucCuaChuTro")
+    private XacThucChuTro xacThucChuTro;
 
-    public ChuTro(int id, int idTaiKhoan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, int idDichVu, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc) {
+    public ChuTro(int id, int idTaiKhoan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, int idDichVu, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc, XacThucChuTro xacThucChuTro) {
         this.id = id;
         this.idTaiKhoan = idTaiKhoan;
         this.hinhNguoiDung = hinhNguoiDung;
@@ -32,6 +34,7 @@ public class ChuTro {
         this.soTaiKhoanNganHang = soTaiKhoanNganHang;
         this.tenChuTaiKhoanNganHang = tenChuTaiKhoanNganHang;
         this.xacThuc = xacThuc;
+        this.xacThucChuTro = xacThucChuTro;
     }
 
     public int getId() {
@@ -106,6 +109,14 @@ public class ChuTro {
         this.xacThuc = xacThuc;
     }
 
+    public XacThucChuTro getXacThucChuTro() {
+        return xacThucChuTro;
+    }
+
+    public void setXacThucChuTro(XacThucChuTro xacThucChuTro) {
+        this.xacThucChuTro = xacThucChuTro;
+    }
+
     @Override
     public String toString() {
         return "ChuTro{" +
@@ -118,6 +129,7 @@ public class ChuTro {
                 ", soTaiKhoanNganHang='" + soTaiKhoanNganHang + '\'' +
                 ", tenChuTaiKhoanNganHang='" + tenChuTaiKhoanNganHang + '\'' +
                 ", xacThuc=" + xacThuc +
+                ", xacThucChuTro=" + xacThucChuTro +
                 '}';
     }
 }

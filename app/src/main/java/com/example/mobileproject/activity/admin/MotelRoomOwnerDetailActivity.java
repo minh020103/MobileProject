@@ -30,6 +30,8 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     TextView tvSoTaiKhoanNganHangChuTroChiTiet;
     TextView tvTenChuTaiKhoanNganHangChuTroChiTiet;
     TextView tvTrangThaiChuTroChiTiet;
+    ImageView imgCccdMatTruocChuTroChiTiet;
+    ImageView imgCccdMatSauChuTroChiTiet;
     Button btnDanhSachPhongChuTroChiTiet;
     Button btnGoiDienChuTroChiTiet;
     Button btnKhoaTaiKhoanChuTroChiTiet;
@@ -49,6 +51,8 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         tvSoTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvSoTaiKhoanChuTroChiTiet);
         tvTenChuTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvTenTaiKhoanNganHangChuTroChiTiet);
         tvTrangThaiChuTroChiTiet = findViewById(R.id.tvTrangThaiChuTroChiTiet);
+        imgCccdMatTruocChuTroChiTiet = findViewById(R.id.cccdMatTruocChuTroChiTiet);
+        imgCccdMatSauChuTroChiTiet = findViewById(R.id.cccdMatSauChuTroChiTiet);
 
         btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
         btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
@@ -102,15 +106,17 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
+                Glide.with(getApplicationContext()).load(host.getXacThucChuTro().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(host.getXacThucChuTro().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
                 if (host.getXacThuc() == 1)
                 {
-                    tvTrangThaiChuTroChiTiet.setText("Tai khoan da khoa");
+                    tvTrangThaiChuTroChiTiet.setText("Đã xác thực");
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
                 }
                 else
                 {
-                    tvTrangThaiChuTroChiTiet.setText("Dang hoat dong");
+                    tvTrangThaiChuTroChiTiet.setText("Chưa xác thực");
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
