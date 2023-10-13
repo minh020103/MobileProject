@@ -3,29 +3,18 @@ package com.example.mobileproject.datamodel;
 import com.google.gson.annotations.SerializedName;
 
 public class GoiDichVu {
-    @SerializedName("id")
     private int id;
-    @SerializedName("thoiHan")
     private int thoiHan;
-    @SerializedName("soLuongPhongToiDa")
-    private int soLuongPhong;
-    @SerializedName("gia")
-    private int giaGoi;
-    @SerializedName("trangThai")
+    private int soLuongPhongToiDa;
+    private int gia;
     private int trangThai;
 
-    public GoiDichVu(int id, int thoiHan, int soLuongPhong, int giaGoi, int trangThai) {
+    public GoiDichVu(int id, int thoiHan, int soLuongPhongToiDa, int gia, int trangThai) {
         this.id = id;
         this.thoiHan = thoiHan;
-        this.soLuongPhong = soLuongPhong;
-        this.giaGoi = giaGoi;
+        this.soLuongPhongToiDa = soLuongPhongToiDa;
+        this.gia = gia;
         this.trangThai = trangThai;
-    }
-
-    public GoiDichVu(int thoiHan, int soLuongPhong, int giaGoi) {
-        this.thoiHan = thoiHan;
-        this.soLuongPhong = soLuongPhong;
-        this.giaGoi = giaGoi;
     }
 
     public int getId() {
@@ -44,20 +33,20 @@ public class GoiDichVu {
         this.thoiHan = thoiHan;
     }
 
-    public int getSoLuongPhong() {
-        return soLuongPhong;
+    public int getSoLuongPhongToiDa() {
+        return soLuongPhongToiDa;
     }
 
-    public void setSoLuongPhong(int soLuongPhong) {
-        this.soLuongPhong = soLuongPhong;
+    public void setSoLuongPhongToiDa(int soLuongPhongToiDa) {
+        this.soLuongPhongToiDa = soLuongPhongToiDa;
     }
 
-    public int getGiaGoi() {
-        return giaGoi;
+    public int getGia() {
+        return gia;
     }
 
-    public void setGiaGoi(int giaGoi) {
-        this.giaGoi = giaGoi;
+    public void setGia(int gia) {
+        this.gia = gia;
     }
 
     public int getTrangThai() {
@@ -73,8 +62,8 @@ public class GoiDichVu {
         return "GoiDichVu{" +
                 "id=" + id +
                 ", thoiHan=" + thoiHan +
-                ", soLuongPhong=" + soLuongPhong +
-                ", giaGoi=" + giaGoi +
+                ", soLuongPhongToiDa=" + soLuongPhongToiDa +
+                ", gia=" + gia +
                 ", trangThai=" + trangThai +
                 '}';
     }

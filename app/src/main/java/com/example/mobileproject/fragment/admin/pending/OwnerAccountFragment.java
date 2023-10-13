@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.InfomationConfirmMotelRoomOwner;
-import com.example.mobileproject.datamodel.XacThucChuTro;
+import com.example.mobileproject.datamodel.ThongTinXacThucCuaChuTro;
 import com.example.mobileproject.recycerviewadapter.admin.PendingOwnerAccountAdapter;
 import com.example.mobileproject.datamodel.ChuTro;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class OwnerAccountFragment extends AbstractFragment {
     }
 
     private void suLi() {
-        listChuTro.add(new ChuTro(1,1,"jj","add","0345",1,"hjjwtu","uegiurigu", 1, new XacThucChuTro(1, 1, "qừqwef", "ădawdasd", 1)));
+        listChuTro.add(new ChuTro(1,1,"jj","add","0345",1,"hjjwtu","uegiurigu", 1, new ThongTinXacThucCuaChuTro(1, 1, "qừqwef", "ădawdasd", 1)));
         adapter = new PendingOwnerAccountAdapter(getActivity(), R.layout.cardview_admin_pending_owner_account_layout, listChuTro);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);

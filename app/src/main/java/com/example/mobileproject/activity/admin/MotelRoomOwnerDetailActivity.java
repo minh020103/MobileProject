@@ -100,14 +100,14 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
                 ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTroChiTiet);
-                tvTenChuTroChiTiet.setText(host.getTenNguoiDung());
+                Glide.with(getApplicationContext()).load(host.getHinh()).into(imgChuTroChiTiet);
+                tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
+                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
-                Glide.with(getApplicationContext()).load(host.getXacThucChuTro().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
-                Glide.with(getApplicationContext()).load(host.getXacThucChuTro().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(host.getThongTinXacThucCuaChuTro().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(host.getThongTinXacThucCuaChuTro().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
                 if (host.getXacThuc() == 1)
                 {
                     tvTrangThaiChuTroChiTiet.setText("Đã xác thực");
@@ -120,7 +120,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
-                AppUntil.TEN_CHU_TRO = host.getTenNguoiDung();
+                AppUntil.TEN_CHU_TRO = host.getTen();
 
             }
             @Override

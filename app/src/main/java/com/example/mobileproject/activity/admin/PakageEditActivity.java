@@ -68,8 +68,8 @@ public class PakageEditActivity extends AppCompatActivity {
                 GoiDichVu host = response.body();
 
                 edtThoiHanGoiDVSua.setText(String.valueOf(host.getThoiHan()));
-                edtSoLuongPhongGoiDVSua.setText(String.valueOf(host.getSoLuongPhong()));
-                edtGiaGoiDVSua.setText(String.valueOf(host.getGiaGoi()));
+                edtSoLuongPhongGoiDVSua.setText(String.valueOf(host.getSoLuongPhongToiDa()));
+                edtGiaGoiDVSua.setText(String.valueOf(host.getGia()));
 
             }
             @Override

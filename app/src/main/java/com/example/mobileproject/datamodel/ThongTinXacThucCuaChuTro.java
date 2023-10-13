@@ -2,11 +2,11 @@ package com.example.mobileproject.datamodel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class XacThucChuTro {
+public class ThongTinXacThucCuaChuTro {
     @SerializedName("id")
     private int id;
     @SerializedName("idChuTro")
-    private int idChoTro;
+    private int idChuTro;
     @SerializedName("cccdMatTruoc")
     private String cccdMatTruoc;
     @SerializedName("cccdMatSau")
@@ -14,9 +14,9 @@ public class XacThucChuTro {
     @SerializedName("trangThaiXacThuc")
     private int trangThaiXacThuc;
 
-    public XacThucChuTro(int id, int idChoTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
+    public ThongTinXacThucCuaChuTro(int id, int idChuTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
         this.id = id;
-        this.idChoTro = idChoTro;
+        this.idChuTro = idChuTro;
         this.cccdMatTruoc = cccdMatTruoc;
         this.cccdMatSau = cccdMatSau;
         this.trangThaiXacThuc = trangThaiXacThuc;
@@ -30,12 +30,12 @@ public class XacThucChuTro {
         this.id = id;
     }
 
-    public int getIdChoTro() {
-        return idChoTro;
+    public int getIdChuTro() {
+        return idChuTro;
     }
 
-    public void setIdChoTro(int idChoTro) {
-        this.idChoTro = idChoTro;
+    public void setIdChuTro(int idChuTro) {
+        this.idChuTro = idChuTro;
     }
 
     public String getCccdMatTruoc() {
@@ -64,9 +64,9 @@ public class XacThucChuTro {
 
     @Override
     public String toString() {
-        return "XacThucChuTro{" +
+        return "ThongTinXacThucCuaChuTro{" +
                 "id=" + id +
-                ", idChoTro=" + idChoTro +
+                ", idChuTro=" + idChuTro +
                 ", cccdMatTruoc='" + cccdMatTruoc + '\'' +
                 ", cccdMatSau='" + cccdMatSau + '\'' +
                 ", trangThaiXacThuc=" + trangThaiXacThuc +

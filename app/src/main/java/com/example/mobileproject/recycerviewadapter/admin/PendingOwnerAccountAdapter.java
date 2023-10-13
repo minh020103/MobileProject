@@ -44,7 +44,7 @@ public class PendingOwnerAccountAdapter extends RecyclerView.Adapter<PendingOwne
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChuTro chuTro = list.get(position);
-        holder.tvTen.setText(chuTro.getTenNguoiDung());
+        holder.tvTen.setText(chuTro.getTen());
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

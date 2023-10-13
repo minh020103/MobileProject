@@ -87,8 +87,8 @@ public class PakageDetailActivity extends AppCompatActivity {
                 GoiDichVu host = response.body();
 
                 tvThoiHanGoiDVChiTiet.setText(String.valueOf(host.getThoiHan()));
-                tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhong()));
-                tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGiaGoi()));
+                tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhongToiDa()));
+                tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGia()));
 
                 if (host.getTrangThai() == 1)
                 {

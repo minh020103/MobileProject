@@ -3,38 +3,28 @@ package com.example.mobileproject.datamodel;
 import com.google.gson.annotations.SerializedName;
 
 public class ChuTro {
-    @SerializedName("id")
     private int id;
-    @SerializedName("idTaiKhoan")
     private int idTaiKhoan;
-    @SerializedName("hinh")
-    private String hinhNguoiDung;
-    @SerializedName("ten")
-    private String tenNguoiDung;
-    @SerializedName("soDienThoai")
-    private String SoDienThoai;
-    @SerializedName("idGoi")
-    private int idDichVu;
-    @SerializedName("soTaiKhoanNganHang")
+    private String hinh;
+    private String ten;
+    private String soDienThoai;
+    private int idGoi;
     private String soTaiKhoanNganHang;
-    @SerializedName("tenChuTaiKhoanNganHang")
     private String tenChuTaiKhoanNganHang;
-    @SerializedName("xacThuc")
     private int xacThuc;
-    @SerializedName("thongTinXacThucCuaChuTro")
-    private XacThucChuTro xacThucChuTro;
+    private ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro;
 
-    public ChuTro(int id, int idTaiKhoan, String hinhNguoiDung, String tenNguoiDung, String soDienThoai, int idDichVu, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc, XacThucChuTro xacThucChuTro) {
+    public ChuTro(int id, int idTaiKhoan, String hinh, String ten, String soDienThoai, int idGoi, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc, ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro) {
         this.id = id;
         this.idTaiKhoan = idTaiKhoan;
-        this.hinhNguoiDung = hinhNguoiDung;
-        this.tenNguoiDung = tenNguoiDung;
-        SoDienThoai = soDienThoai;
-        this.idDichVu = idDichVu;
+        this.hinh = hinh;
+        this.ten = ten;
+        this.soDienThoai = soDienThoai;
+        this.idGoi = idGoi;
         this.soTaiKhoanNganHang = soTaiKhoanNganHang;
         this.tenChuTaiKhoanNganHang = tenChuTaiKhoanNganHang;
         this.xacThuc = xacThuc;
-        this.xacThucChuTro = xacThucChuTro;
+        this.thongTinXacThucCuaChuTro = thongTinXacThucCuaChuTro;
     }
 
     public int getId() {
@@ -53,36 +43,36 @@ public class ChuTro {
         this.idTaiKhoan = idTaiKhoan;
     }
 
-    public String getHinhNguoiDung() {
-        return hinhNguoiDung;
+    public String getHinh() {
+        return hinh;
     }
 
-    public void setHinhNguoiDung(String hinhNguoiDung) {
-        this.hinhNguoiDung = hinhNguoiDung;
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
     }
 
-    public String getTenNguoiDung() {
-        return tenNguoiDung;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTenNguoiDung(String tenNguoiDung) {
-        this.tenNguoiDung = tenNguoiDung;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getSoDienThoai() {
-        return SoDienThoai;
+        return soDienThoai;
     }
 
     public void setSoDienThoai(String soDienThoai) {
-        SoDienThoai = soDienThoai;
+        this.soDienThoai = soDienThoai;
     }
 
-    public int getIdDichVu() {
-        return idDichVu;
+    public int getIdGoi() {
+        return idGoi;
     }
 
-    public void setIdDichVu(int idDichVu) {
-        this.idDichVu = idDichVu;
+    public void setIdGoi(int idGoi) {
+        this.idGoi = idGoi;
     }
 
     public String getSoTaiKhoanNganHang() {
@@ -109,12 +99,12 @@ public class ChuTro {
         this.xacThuc = xacThuc;
     }
 
-    public XacThucChuTro getXacThucChuTro() {
-        return xacThucChuTro;
+    public ThongTinXacThucCuaChuTro getThongTinXacThucCuaChuTro() {
+        return thongTinXacThucCuaChuTro;
     }
 
-    public void setXacThucChuTro(XacThucChuTro xacThucChuTro) {
-        this.xacThucChuTro = xacThucChuTro;
+    public void setThongTinXacThucCuaChuTro(ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro) {
+        this.thongTinXacThucCuaChuTro = thongTinXacThucCuaChuTro;
     }
 
     @Override
@@ -122,14 +112,14 @@ public class ChuTro {
         return "ChuTro{" +
                 "id=" + id +
                 ", idTaiKhoan=" + idTaiKhoan +
-                ", hinhNguoiDung='" + hinhNguoiDung + '\'' +
-                ", tenNguoiDung='" + tenNguoiDung + '\'' +
-                ", SoDienThoai='" + SoDienThoai + '\'' +
-                ", idDichVu=" + idDichVu +
+                ", hinh='" + hinh + '\'' +
+                ", ten='" + ten + '\'' +
+                ", soDienThoai='" + soDienThoai + '\'' +
+                ", idGoi=" + idGoi +
                 ", soTaiKhoanNganHang='" + soTaiKhoanNganHang + '\'' +
                 ", tenChuTaiKhoanNganHang='" + tenChuTaiKhoanNganHang + '\'' +
                 ", xacThuc=" + xacThuc +
-                ", xacThucChuTro=" + xacThucChuTro +
+                ", thongTinXacThucCuaChuTro=" + thongTinXacThucCuaChuTro +
                 '}';
     }
 }
