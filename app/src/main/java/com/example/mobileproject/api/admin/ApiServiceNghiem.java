@@ -2,6 +2,7 @@ package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChinhSach;
+import com.example.mobileproject.datamodel.TaiKhoan;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -26,6 +27,7 @@ public interface ApiServiceNghiem {
     Call<Integer> capNhatChinhSach(@Query("id") int id,@Body ChinhSach chinhSach);
 
 
-
+    @GET("api/taikhoan")
+    Call<TaiKhoan> layTaiKhoanXuong(@Query("id") int id);
 
 }

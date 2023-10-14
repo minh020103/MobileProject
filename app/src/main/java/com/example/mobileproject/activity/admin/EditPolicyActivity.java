@@ -61,19 +61,17 @@ public class EditPolicyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!editText.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),editText.getText().toString(), Toast.LENGTH_SHORT).show();
                     ChinhSach chinhSach = new ChinhSach(editText.getText().toString());
                     Call<Integer> call = ApiServiceNghiem.apiService.capNhatChinhSach(1,chinhSach);
                     call.enqueue(new Callback<Integer>() {
                         @Override
                         public void onResponse(Call<Integer> call, Response<Integer> response) {
-                            Toast.makeText(getApplicationContext(),"Dung", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(getApplicationContext(),"Thành Công", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(Call<Integer> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(),"Loi", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Sai", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -81,6 +79,8 @@ public class EditPolicyActivity extends AppCompatActivity {
         });
 
     }
+
+
     private void anhXa(){
         ic_back = findViewById(R.id.icon_back);
         noiDungChinhSach = findViewById(R.id.noiDungCS);
