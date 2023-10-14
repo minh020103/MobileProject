@@ -1,19 +1,20 @@
 package com.example.mobileproject.recycerviewadapter.admin;
 
 import android.app.Activity;
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.Banner;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +49,10 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
     @Override
     public void onBindViewHolder(@NonNull BannerViewHolder holder, int position) {
         Banner banner = mListBanner.get(position);
-
+        Log.d("TAG", "data: "+ banner.getHinhBanner());
+        //Load hinh
+        Glide.with(activity.getLayoutInflater().getContext()).load(Const.DOMAIN + banner.getHinhBanner()).into(holder.hinhBanner);
+        holder.idBanner.setText(banner.getId() + "");
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,14 +91,14 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
 
         View.OnClickListener onClickListener;
 
-        private ImageView imgBanner;
-        private TextView tvName;
+        private ImageView hinhBanner;
+        private TextView idBanner;
         private FloatingActionButton fabAdd;
 
         public BannerViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgBanner = itemView.findViewById(R.id.imgBanner);
-            tvName = itemView.findViewById(R.id.tvNameBanner);
+            hinhBanner = itemView.findViewById(R.id.img_hinhBanner);
+            idBanner = itemView.findViewById(R.id.id_hinhBanner);
             fabAdd = itemView.findViewById(R.id.fabAdd);
             itemView.setOnClickListener(this);
         }
