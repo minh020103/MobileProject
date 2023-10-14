@@ -1,6 +1,7 @@
 package com.example.mobileproject.activity.admin;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -60,14 +61,15 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
                     if(kiemTraMKHienTai(matKhauHienTai,response.body().getMatKhau())){
                         /// Tiến Hành Đổi Mật Khẩu ở đây
+                        thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString());
                     }else{
-                        Toast.makeText(getApplicationContext(),"Mật Khẩu Không Giống", Toast.LENGTH_SHORT).show();
+                        thongBao("Mật Khẩu Hiện Tại Sai!");
                     }
             }
 
             @Override
             public void onFailure(Call<TaiKhoan> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Mật Khẩu Không Thể Load", Toast.LENGTH_SHORT).show();
+                thongBao("Mật Khẩu Sai");
             }
         });
     }
@@ -79,8 +81,49 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
         return false;
     }
 
+    private void capNhatMatKhauMoi(String mk){
+        Call<Integer> call = ApiServiceNghiem.apiService.capNhatMatKhau(1,mk);
+      call.enqueue(new Callback<Integer>() {
+          @Override
+          public void onResponse(Call<Integer> call, Response<Integer> response) {
+              thongBao("Cập nhật Thành Công");
+              matKhauHienTai.setText("");
+              matKhauMoi.setText("");
+              xacNhanMKMoi.setText("");
+          }
+
+          @Override
+          public void onFailure(Call<Integer> call, Throwable t) {
+                thongBao("Cập Nhật Thất Bại");
+          }
+      });
+    }
     private void thongBao(String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder()
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setPositiveButton("OKE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+    private void thongBaoYesNo(String message, String matKhauMoi){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                capNhatMatKhauMoi(matKhauMoi);
+            }
+        }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create();
+        builder.show();
     }
 
     private boolean kiemTra(EditText matKhauHienTai, EditText matKhauMoi, EditText xacNhanMKMoi){
