@@ -217,6 +217,12 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@id/cccdMatTruocChuTroChiTiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5in"
+                    android:src="@drawable/cccd"/>
+
+                <ImageView
                     android:id="@+id/cccdMatSauChuTroChiTiet"
                     android:layout_width="match_parent"
                     android:layout_height="1.5in"
