@@ -1,20 +1,14 @@
 package com.example.mobileproject.datamodel;
 
-import com.google.gson.annotations.SerializedName;
 
-public class ThongTinXacThucCuaChuTro {
-    @SerializedName("id")
+public class YeuCauXacThuc {
     private int id;
-    @SerializedName("idChuTro")
     private int idChuTro;
-    @SerializedName("cccdMatTruoc")
     private String cccdMatTruoc;
-    @SerializedName("cccdMatSau")
     private String cccdMatSau;
-    @SerializedName("trangThaiXacThuc")
     private int trangThaiXacThuc;
 
-    public ThongTinXacThucCuaChuTro(int id, int idChuTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
+    public YeuCauXacThuc(int id, int idChuTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
         this.id = id;
         this.idChuTro = idChuTro;
         this.cccdMatTruoc = cccdMatTruoc;
