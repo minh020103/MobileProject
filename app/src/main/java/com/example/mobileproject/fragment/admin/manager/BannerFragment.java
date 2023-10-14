@@ -1,9 +1,12 @@
 package com.example.mobileproject.fragment.admin.manager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.AddBannerActivity;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
 import com.example.mobileproject.recycerviewadapter.admin.BannerAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,22 +35,23 @@ public class BannerFragment extends AbstractFragment {
 
     List<Banner> listIem;
 
+    FloatingActionButton btnFabAdd;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_management_banner_layout, container, false);
         rcvBanner = fragmentLayout.findViewById(R.id.rcvBanner);
+        btnFabAdd = fragmentLayout.findViewById(R.id.btn_fabAdd);
         listIem = new LinkedList<>();
         adapter = new BannerAdapter(getActivity(), listIem, R.layout.cardview_admin_management_banner_layout);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         rcvBanner.setLayoutManager(layoutManager);
         rcvBanner.setAdapter(adapter);
-
         getDataFromApi();
-        setDataForUI();
-
+//        setDataForUI();
 
         adapter.setMyOnCLickListener(new BannerAdapter.MyOnCLickListener() {
             @Override
@@ -53,9 +59,15 @@ public class BannerFragment extends AbstractFragment {
 
             }
 
-            @Override
-            public void OnClickFabAdd(int position, View v) {
 
+        });
+
+        btnFabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddBannerActivity.class);
+
+                startActivity(intent);
             }
         });
 
@@ -63,6 +75,7 @@ public class BannerFragment extends AbstractFragment {
     }
 
     private void setDataForUI() {
+
     }
 
     private void getDataFromApi() {

@@ -59,12 +59,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
                 myOnCLickListener.OnClickItem(position, v);
             }
         };
-        holder.onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myOnCLickListener.OnClickFabAdd(position,v);
-            }
-        };
+
 
     }
 
@@ -84,7 +79,6 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
 
     public interface MyOnCLickListener{
         void OnClickItem(int position, View v);
-        void OnClickFabAdd(int position,View v);
     }
 
     public class BannerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -99,7 +93,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
             super(itemView);
             hinhBanner = itemView.findViewById(R.id.img_hinhBanner);
             idBanner = itemView.findViewById(R.id.id_hinhBanner);
-            fabAdd = itemView.findViewById(R.id.fabAdd);
+            fabAdd = itemView.findViewById(R.id.btn_fabAdd);
             itemView.setOnClickListener(this);
         }
 
