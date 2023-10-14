@@ -5,10 +5,15 @@ import com.example.mobileproject.datamodel.Banner;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface ApiServivePhuc {
@@ -23,4 +28,8 @@ public interface ApiServivePhuc {
 
     @GET("api/banner/all")
     Call<List<Banner>> getListBanner();
+
+    @Multipart
+    @POST("api/banner/create")
+    Call<Banner> uploadFileBanner(@Part MultipartBody.Part hinhBanner);
 }

@@ -18,21 +18,21 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/img_view_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_back"/>
+                android:src="@drawable/icon_back" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hình ảnh"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:text="Hình ảnh"
                 android:textColor="@color/black"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 />
@@ -50,11 +50,18 @@
 
     <Button
         android:id="@+id/btn_upload"
-        android:layout_marginTop="10dp"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:text="Upload"
         android:textAllCaps="false" />
 
+
+    <ImageView
+        android:id="@+id/img_from_api"
+        android:layout_width="match_parent"
+        android:layout_height="1.5in"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY" />
 </LinearLayout>
