@@ -49,16 +49,16 @@ public class GoiDichVuAdapter extends RecyclerView.Adapter<GoiDichVuAdapter.MyVi
         GoiDichVu data = list.get(position);
         holder.tvIdGoiDV.setText(String.valueOf(data.getId()));
         holder.tvThoiHanGoiDV.setText(String.valueOf(data.getThoiHan()));
-        holder.tvSoLuongGoiDV.setText(String.valueOf(data.getSoLuongPhong()));
-        holder.tvGiaGoi.setText(String.valueOf(data.getGiaGoi()));
+        holder.tvSoLuongGoiDV.setText(String.valueOf(data.getSoLuongPhongToiDa()));
+        holder.tvGiaGoi.setText(String.valueOf(data.getGia()));
         if (data.getTrangThai() == 1)
         {
-            holder.tvTrangThai.setText("Da Khoa");
+            holder.tvTrangThai.setText("Đã khóa");
             holder.tvTrangThai.setTextColor(0xFFFF0000);
         }
         else
         {
-            holder.tvTrangThai.setText("Dang Hoat Dong");
+            holder.tvTrangThai.setText("Đang hoạt động");
             holder.tvTrangThai.setTextColor(0xFF00FF00);
         }
         //holder.tvTrangThai.setText(String.valueOf(data.getTrangThai()));

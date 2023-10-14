@@ -10,7 +10,14 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
@@ -19,29 +26,38 @@ public interface ApiServiceKiet {
             .create();
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.103/API_ChuyenDe2/api/")
+            .baseUrl("http://192.168.2.6/API_ChuyenDe_12/laravel/public/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceKiet.class);
 
     /* Host */
-    @GET("hostAll.php")
+    @GET("chutro/daxacthuc")
     Call<List<ChuTro>> getListHostAPI();
-    @GET("hostByID.php")
-    Call<ChuTro> getHostByIdAPI(@Query("Id") int Id);
-    @GET("hostByName.php")
-    Call<List<ChuTro>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
-    @GET("hostByPhone.php")
-    Call<List<ChuTro>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
-    @GET("hostLockAccount.php")
-    Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
-    @GET("hostUnLockAccount.php")
-    Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
+    @GET("chutro/chitiet")
+    Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
+    @GET("chutro/timKiemTen")
+    Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
+    @GET("chutro/timKiemSDT")
+    Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
+    @GET("chutro/lock")
+    Call<ChuTro> getHostLockAccountAPI(@Query("id") int id);
+    @GET("chutro/unLock")
+    Call<ChuTro> getHostUnLockAccountAPI(@Query("id") int id);
 
     /* Pakage */
-    @GET("serviceAll.php")
+    @GET("goi/all")
     Call<List<GoiDichVu>> getListPakageAPI();
-    @GET("serviceByID.php")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    @GET("goi/chitiet")
+    Call<GoiDichVu> getPakageByIdAPI(@Query("id") int id);
+    @GET("goi/lock")
+    Call<GoiDichVu> lockPakageByIdAPI(@Query("id") int id);
+    @GET("goi/unLock")
+    Call<GoiDichVu> unLockPakageByIdAPI(@Query("id") int id);
+    @POST("goi/add")
+    Call<GoiDichVu> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+    @PUT("goi/update")
+    Call<GoiDichVu> updatePakage(@Query("id") int id,@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+
 
 }

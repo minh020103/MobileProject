@@ -46,18 +46,18 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChuTro data = list.get(position);
-        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinhNguoiDung()).into(holder.imgChuTro);
-        holder.tvTenChuTro.setText(data.getTenNguoiDung());
+        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinh()).into(holder.imgChuTro);
+        holder.tvTenChuTro.setText(data.getTen());
         holder.tvSDTChuTro.setText(data.getSoDienThoai());
         if (data.getXacThuc() == 1)
         {
-            holder.tvTrangThaiChuTro.setText("Da Khoa");
-            holder.tvTrangThaiChuTro.setTextColor(0xFFFF0000);
+            holder.tvTrangThaiChuTro.setText("Đã xác thực");
+            holder.tvTrangThaiChuTro.setTextColor(0xFF00FF00);
         }
         else
         {
-            holder.tvTrangThaiChuTro.setText("Dang Hoat Dong");
-            holder.tvTrangThaiChuTro.setTextColor(0xFF00FF00);
+            holder.tvTrangThaiChuTro.setText("Chưa xác thực");
+            holder.tvTrangThaiChuTro.setTextColor(0xFFFF0000);
         }
         holder.onClickListener = new View.OnClickListener() {
             @Override

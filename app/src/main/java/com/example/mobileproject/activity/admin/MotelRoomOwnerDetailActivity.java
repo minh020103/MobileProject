@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,11 +26,12 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     ImageView imgChuTroChiTiet;
     TextView tvTenChuTroChiTiet;
     TextView tvSoDienThoaiChuTroChiTiet;
-    TextView tvGioiTinhChuTroChiTiet;
     TextView tvIdDichVuChuTroChiTiet;
     TextView tvSoTaiKhoanNganHangChuTroChiTiet;
     TextView tvTenChuTaiKhoanNganHangChuTroChiTiet;
     TextView tvTrangThaiChuTroChiTiet;
+    ImageView imgCccdMatTruocChuTroChiTiet;
+    ImageView imgCccdMatSauChuTroChiTiet;
     Button btnDanhSachPhongChuTroChiTiet;
     Button btnGoiDienChuTroChiTiet;
     Button btnKhoaTaiKhoanChuTroChiTiet;
@@ -44,11 +47,12 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         imgChuTroChiTiet = findViewById(R.id.imgChuTroChiTiet);
         tvTenChuTroChiTiet = findViewById(R.id.tvTenChuTroChiTiet);
         tvSoDienThoaiChuTroChiTiet = findViewById(R.id.tvSDTChuTroChiTiet);
-        tvGioiTinhChuTroChiTiet = findViewById(R.id.tvGioiTinhChuTroChiTiet);
         tvIdDichVuChuTroChiTiet = findViewById(R.id.tvIdDichVuChuTroChiTiet);
         tvSoTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvSoTaiKhoanChuTroChiTiet);
         tvTenChuTaiKhoanNganHangChuTroChiTiet = findViewById(R.id.tvTenTaiKhoanNganHangChuTroChiTiet);
         tvTrangThaiChuTroChiTiet = findViewById(R.id.tvTrangThaiChuTroChiTiet);
+        imgCccdMatTruocChuTroChiTiet = findViewById(R.id.cccdMatTruocChuTroChiTiet);
+        imgCccdMatSauChuTroChiTiet = findViewById(R.id.cccdMatSauChuTroChiTiet);
 
         btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
         btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
@@ -77,6 +81,15 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 openDialogConfirmLockAccount();
             }
         });
+        btnGoiDienChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = "tel:"+tvSoDienThoaiChuTroChiTiet.getText();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse(phone));
+                startActivity(callIntent);
+            }
+        });
 
     }
 
@@ -87,26 +100,27 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
                 ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(host.getHinhNguoiDung()).into(imgChuTroChiTiet);
-                tvTenChuTroChiTiet.setText(host.getTenNguoiDung());
+                Glide.with(getApplicationContext()).load(host.getHinh()).into(imgChuTroChiTiet);
+                tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvGioiTinhChuTroChiTiet.setText(host.getGioiTinh());
-                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdDichVu()));
+                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
+                Glide.with(getApplicationContext()).load(host.getThongTinXacThucCuaChuTro().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(host.getThongTinXacThucCuaChuTro().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
                 if (host.getXacThuc() == 1)
                 {
-                    tvTrangThaiChuTroChiTiet.setText("Tai khoan da khoa");
+                    tvTrangThaiChuTroChiTiet.setText("Đã xác thực");
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(false);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(true);
                 }
                 else
                 {
-                    tvTrangThaiChuTroChiTiet.setText("Dang hoat dong");
+                    tvTrangThaiChuTroChiTiet.setText("Chưa xác thực");
                     btnKhoaTaiKhoanChuTroChiTiet.setEnabled(true);
                     btnMoTaiKhoanChuTroChiTiet.setEnabled(false);
                 }
-                AppUntil.TEN_CHU_TRO = host.getTenNguoiDung();
+                AppUntil.TEN_CHU_TRO = host.getTen();
 
             }
             @Override
@@ -116,9 +130,9 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void LockHostApi(int key)
+    private void LockHostApi(int id)
     {
-        ApiServiceKiet.apiServiceKiet.getHostLockAccountAPI(key).enqueue(new Callback<ChuTro>() {
+        ApiServiceKiet.apiServiceKiet.getHostLockAccountAPI(id).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
             }

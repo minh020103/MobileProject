@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView2"
+            android:id="@+id/imgAddPakage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -32,17 +32,18 @@
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quan Li Goi Dich Vu"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            android:text="Quản lý gói dịch vụ"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAddPakage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+            app:layout_constraintTop_toTopOf="@+id/imgAddPakage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_weight="9"
+        android:background="@color/gray">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvGoiDichVu"

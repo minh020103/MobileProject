@@ -1,303 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toolbar"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <ImageView
-                android:id="@+id/imgBackChuTroFragment"
-                android:layout_width="50dp"
-                android:layout_height="34dp"
-                android:src="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:text="Thoong tin chi tiet"/>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+    android:background="@color/gray">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_green"
-        android:padding="20dp">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgChuTroChiTiet"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@color/black"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name: "
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone: "
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tvTenChuTroChiTiet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
-
-                <TextView
-                    android:id="@+id/tvSDTChuTroChiTiet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    ></TextView>
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gioi tinh: "
-                android:textSize="15sp"
-                android:paddingRight="10dp"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/tvGioiTinhChuTroChiTiet"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Nam"
-                android:textSize="15sp"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ID dich vu: "
-                android:textSize="15sp"
-                android:paddingRight="10dp"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/tvIdDichVuChuTroChiTiet"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="1"
-                android:textSize="15sp"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="So tai khoan ngan hang: "
-                android:textSize="15sp"
-                android:paddingRight="10dp"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/tvSoTaiKhoanChuTroChiTiet"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="964781572"
-                android:textSize="15sp"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="So tai khoan ngan hang: "
-                android:textSize="15sp"
-                android:paddingRight="10dp"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/tvTenTaiKhoanNganHangChuTroChiTiet"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="TEN TAI KHOAN"
-                android:textSize="15sp"></TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Trang thai tai khoan: "
-                android:textSize="15sp"
-                android:paddingRight="10dp"
-                android:textStyle="bold"></TextView>
-            <TextView
-                android:id="@+id/tvTrangThaiChuTroChiTiet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dang hoat dong"
-                android:textSize="15sp"></TextView>
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
-
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@color/white">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:padding="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnDanhSachPhongChuTro"
+                <ImageView
+                    android:id="@+id/imgBackChuTroFragment"
+                    android:layout_width="50dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/icon_back" />
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/yellow"
-                    android:text="Sanh sach phong">
-                </Button>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:padding="10dp"
-                >
-
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGoiDienChuTro"
+                    android:layout_height="34dp"
                     android:gravity="center"
-                    app:iconGravity="textStart"
-                    app:icon="@drawable/ic_call"
-                    app:iconPadding="0dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:text="Thông tin chủ trọ"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
 
-
-
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:padding="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="1.2in"
+                android:background="@drawable/bg"
+                android:orientation="horizontal"
+                android:gravity="bottom">
 
-                <Button
-                    android:id="@+id/btnKhoaTaiKhoanChuTro"
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgChuTroChiTiet"
+                    android:layout_width="0.5in"
+                    android:layout_height="0.5in"
+                    android:src="@drawable/cccd"
+                    android:layout_margin="10dp"/>
+
+
+
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/red"
-                    android:text="Khoa Tai khoan">
-                </Button>
+                    android:layout_height="0.5in"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:id="@+id/tvTenChuTroChiTiet"
+                        android:text="Fake Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tvSDTChuTroChiTiet"
+                        android:text="0123123123"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"/>
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:padding="10dp">
-                <Button
-                    android:id="@+id/btnMoTaiKhoanChuTro"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/blue"
-                    android:text="Mo Khoa Tai Khoan"></Button>
-            </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID dịch vụ: "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/tvIdDichVuChuTroChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textStyle="normal"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số tài khoản: "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/tvSoTaiKhoanChuTroChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="123456789123"
+                        android:textStyle="normal"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tên người thụ hưởng: "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/tvTenTaiKhoanNganHangChuTroChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fake Name"
+                        android:textStyle="normal"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Xác thực: "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/tvTrangThaiChuTroChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chưa xác thực"
+                        android:textStyle="normal"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/cccdMatTruocChuTroChiTiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5in"
+                    android:src="@drawable/cccd" />
+
+                <ImageView
+                    android:id="@+id/cccdMatSauChuTroChiTiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5in"
+                    android:src="@drawable/cccd"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height=".8in"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:padding="10dp">
+
+                            <Button
+                                android:id="@+id/btnDanhSachPhongChuTro"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/yellow"
+                                android:text="Sanh sach phong">
+                            </Button>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:padding="10dp"
+                            >
+
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnGoiDienChuTro"
+                                android:gravity="center"
+                                app:iconGravity="textStart"
+                                app:icon="@drawable/ic_call"
+                                app:iconPadding="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:padding="10dp">
+
+                            <Button
+                                android:id="@+id/btnKhoaTaiKhoanChuTro"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/red"
+                                android:text="Khoa Tai khoan">
+                            </Button>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:padding="10dp">
+                            <Button
+                                android:id="@+id/btnMoTaiKhoanChuTro"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/blue"
+                                android:text="Mo Khoa Tai Khoan"></Button>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
