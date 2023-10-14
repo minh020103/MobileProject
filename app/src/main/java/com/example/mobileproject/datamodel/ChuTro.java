@@ -1,7 +1,5 @@
 package com.example.mobileproject.datamodel;
 
-import com.google.gson.annotations.SerializedName;
-
 public class ChuTro {
     private int id;
     private int idTaiKhoan;
@@ -12,9 +10,10 @@ public class ChuTro {
     private String soTaiKhoanNganHang;
     private String tenChuTaiKhoanNganHang;
     private int xacThuc;
-    private ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro;
+    private YeuCauXacThuc yeuCauXacThuc;
+    private TaiKhoan taiKhoan;
 
-    public ChuTro(int id, int idTaiKhoan, String hinh, String ten, String soDienThoai, int idGoi, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc, ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro) {
+    public ChuTro(int id, int idTaiKhoan, String hinh, String ten, String soDienThoai, int idGoi, String soTaiKhoanNganHang, String tenChuTaiKhoanNganHang, int xacThuc, YeuCauXacThuc yeuCauXacThuc, TaiKhoan taiKhoan) {
         this.id = id;
         this.idTaiKhoan = idTaiKhoan;
         this.hinh = hinh;
@@ -24,7 +23,8 @@ public class ChuTro {
         this.soTaiKhoanNganHang = soTaiKhoanNganHang;
         this.tenChuTaiKhoanNganHang = tenChuTaiKhoanNganHang;
         this.xacThuc = xacThuc;
-        this.thongTinXacThucCuaChuTro = thongTinXacThucCuaChuTro;
+        this.yeuCauXacThuc = yeuCauXacThuc;
+        this.taiKhoan = taiKhoan;
     }
 
     public int getId() {
@@ -99,12 +99,20 @@ public class ChuTro {
         this.xacThuc = xacThuc;
     }
 
-    public ThongTinXacThucCuaChuTro getThongTinXacThucCuaChuTro() {
-        return thongTinXacThucCuaChuTro;
+    public YeuCauXacThuc getYeuCauXacThuc() {
+        return yeuCauXacThuc;
     }
 
-    public void setThongTinXacThucCuaChuTro(ThongTinXacThucCuaChuTro thongTinXacThucCuaChuTro) {
-        this.thongTinXacThucCuaChuTro = thongTinXacThucCuaChuTro;
+    public void setYeuCauXacThuc(YeuCauXacThuc yeuCauXacThuc) {
+        this.yeuCauXacThuc = yeuCauXacThuc;
+    }
+
+    public TaiKhoan getTaiKhoan() {
+        return taiKhoan;
+    }
+
+    public void setTaiKhoan(TaiKhoan taiKhoan) {
+        this.taiKhoan = taiKhoan;
     }
 
     @Override
@@ -119,7 +127,8 @@ public class ChuTro {
                 ", soTaiKhoanNganHang='" + soTaiKhoanNganHang + '\'' +
                 ", tenChuTaiKhoanNganHang='" + tenChuTaiKhoanNganHang + '\'' +
                 ", xacThuc=" + xacThuc +
-                ", thongTinXacThucCuaChuTro=" + thongTinXacThucCuaChuTro +
+                ", yeuCauXacThuc=" + yeuCauXacThuc +
+                ", taiKhoan=" + taiKhoan +
                 '}';
     }
 }

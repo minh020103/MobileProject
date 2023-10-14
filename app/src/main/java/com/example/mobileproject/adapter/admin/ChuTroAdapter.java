@@ -49,16 +49,16 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
         Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinh()).into(holder.imgChuTro);
         holder.tvTenChuTro.setText(data.getTen());
         holder.tvSDTChuTro.setText(data.getSoDienThoai());
-        if (data.getXacThuc() == 1)
-        {
-            holder.tvTrangThaiChuTro.setText("Đã xác thực");
-            holder.tvTrangThaiChuTro.setTextColor(0xFF00FF00);
-        }
-        else
-        {
-            holder.tvTrangThaiChuTro.setText("Chưa xác thực");
-            holder.tvTrangThaiChuTro.setTextColor(0xFFFF0000);
-        }
+//        if (data.getTaiKhoan().getTrangThai() == 1)
+//        {
+//            holder.tvTrangThaiChuTro.setText("Đã khóa");
+//            holder.tvTrangThaiChuTro.setTextColor(0xFFFF0000);
+//        }
+//        else
+//        {
+//            holder.tvTrangThaiChuTro.setText("Đang hoạt động");
+//            holder.tvTrangThaiChuTro.setTextColor(0xFF00FF00);
+//        }
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,6 +2,7 @@ package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.datamodel.ChuTro;
 import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.TaiKhoan;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -40,10 +41,15 @@ public interface ApiServiceKiet {
     Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
     @GET("chutro/timKiemSDT")
     Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
-    @GET("chutro/lock")
-    Call<ChuTro> getHostLockAccountAPI(@Query("id") int id);
-    @GET("chutro/unLock")
-    Call<ChuTro> getHostUnLockAccountAPI(@Query("id") int id);
+
+    /* Account */
+    @PATCH("/capnhattrangthai")
+    Call<TaiKhoan> thayDoiTrangThaiTaiKhoan(@Query("id") int id);
+    @PUT("/taikhoan/khoa")
+    Call<TaiKhoan> khoaTaiKhoanAPI(@Query("id") int id);
+    @PUT("/taikhoan/moKhoa")
+    Call<TaiKhoan> moKhoaTaiKhoanAPI(@Query("id") int id);
+
 
     /* Pakage */
     @GET("goi/all")
