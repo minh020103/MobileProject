@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.AdminActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,12 +53,15 @@ public class LoginActivity extends AppCompatActivity {
         if (userName.isEmpty() || passWord.isEmpty()){
             alertFail("Username and Password is required");
         }else {
-            sendLogin();
+            clickButtonLogin();
         }
     }
 
-    private void sendLogin() {
-        Toast.makeText(this,"Send",Toast.LENGTH_SHORT).show();
+    private void clickButtonLogin() {
+
+        Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+        startActivity(intent);
+
     }
 
     private void alertFail(String s) {

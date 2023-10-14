@@ -17,11 +17,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".activity.login.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.login.RegisterActivity"
             android:exported="false"
-            android:parentActivityName=".activity.login.LoginActivity"/>
+            android:parentActivityName=".activity.login.LoginActivity" />
         <activity
-            android:name=".activity.login.LoginActivity"
+            android:name=".activity.admin.AdminActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.PakageDetailActivity"
@@ -38,7 +41,8 @@
         </activity>
         <activity
             android:name=".activity.admin.InfomationPackageRegisterActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -51,7 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.admin.AdminActivity"
+            android:name=".activity.login.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

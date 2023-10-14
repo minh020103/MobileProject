@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">MobileProject</string>
 
-<!--Start Phuc-->
+    <!--Start Phuc-->
     <string name="lb_register">Đăng Ký</string>
     <string name="lb_login">Đăng Nhập</string>
     <string name="btn_dang_nhap">Đăng nhập</string>
     <string name="btn_dang_ky">Đăng ký</string>
-<!-- End Phuc-->
+    <!-- End Phuc-->
 </resources>
