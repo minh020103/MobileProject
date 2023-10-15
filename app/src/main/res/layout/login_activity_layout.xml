@@ -106,10 +106,12 @@
         android:layout_below="@id/loading"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp20"
-        android:backgroundTint="@color/main_color_of_app"
+        android:background="@drawable/bg_btn_login"
         android:text="@string/btn_dang_nhap"
         android:textAllCaps="false"
-        android:textSize="@dimen/text_size_16dp" />
+        android:textSize="17.5sp"
+        android:paddingStart="45dp"
+        android:paddingEnd="45dp"/>
 
 
     <LinearLayout
