@@ -31,5 +31,5 @@ public interface ApiServivePhuc {
 
     @Multipart
     @POST("api/banner/create")
-    Call<Banner> uploadFileBanner(@Part MultipartBody.Part hinhBanner);
+    Call<Integer> uploadFileBanner(@Part MultipartBody.Part hinhBanner);
 }

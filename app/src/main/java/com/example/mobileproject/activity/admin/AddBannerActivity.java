@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -95,7 +97,7 @@ public class AddBannerActivity extends AppCompatActivity {
         imgBanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGallery();
+            onClickRequestPermission();
 
             }
         });
@@ -146,7 +148,7 @@ public class AddBannerActivity extends AppCompatActivity {
     }
 
     private void callApiUpLoadFile() {
-        mProgressDialog.show();
+//        mProgressDialog.show();
 
         String strRealPath = RealPathUtil.getRealPath(this, mUri);
         Log.e("phuc", strRealPath);
@@ -155,38 +157,31 @@ public class AddBannerActivity extends AppCompatActivity {
         RequestBody requestBodyBanner = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part multipartBodyBanner = MultipartBody.Part.createFormData("hinh", file.getName(), requestBodyBanner);
 
-        ApiServivePhuc.apiService.uploadFileBanner(multipartBodyBanner).enqueue(new Callback<Banner>() {
+        ApiServivePhuc.apiService.uploadFileBanner(multipartBodyBanner).enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Banner> call, Response<Banner> response) {
-                mProgressDialog.dismiss();
-                Banner banner = response.body();
-                if(banner != null){
-                    Glide.with(AddBannerActivity.this).load(banner.getHinhBanner()).into(imgViewFromApi);
-                }
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    Toast.makeText(getApplicationContext(),"Thanh COng",Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Banner> call, Throwable t) {
-                mProgressDialog.dismiss();
-                Toast.makeText(AddBannerActivity.this, "Call api fail", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"That Bai",Toast.LENGTH_SHORT).show();
             }
         });
 
 
-//        ApiServivePhuc.apiService.uploadFileBanner(multipartBodyBanner).enqueue(new Callback<Integer>() {
-//            @Override
-//            public void onResponse(Call<Integer> call, Response<Integer> response) {
-//                mProgressDialog.dismiss();
-//                Toast.makeText(AddBannerActivity.this, "Call api success", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Integer> call, Throwable t) {
-//                mProgressDialog.dismiss();
-//                Toast.makeText(AddBannerActivity.this, "Call api fail", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
+    private void thongBao(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+
 
 }
