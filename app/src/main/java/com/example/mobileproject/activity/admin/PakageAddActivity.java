@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +12,7 @@ import android.widget.ImageView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.Goi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,13 +74,13 @@ public class PakageAddActivity extends AppCompatActivity {
 
     private void AddPakageAPI(int thoiHan, int soLuongPhongToiDa, int gia)
     {
-        ApiServiceKiet.apiServiceKiet.addPakage(thoiHan,soLuongPhongToiDa,gia).enqueue(new Callback<GoiDichVu>() {
+        ApiServiceKiet.apiServiceKiet.addPakage(thoiHan,soLuongPhongToiDa,gia).enqueue(new Callback<Goi>() {
             @Override
-            public void onResponse(Call<GoiDichVu> call, Response<GoiDichVu> response) {
+            public void onResponse(Call<Goi> call, Response<Goi> response) {
 
             }
             @Override
-            public void onFailure(Call<GoiDichVu> call, Throwable t) {
+            public void onFailure(Call<Goi> call, Throwable t) {
 
             }
         });

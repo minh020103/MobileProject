@@ -40,7 +40,7 @@ public class PakageDetailActivity extends AppCompatActivity {
         btnSuaGoiDVChiTiet = findViewById(R.id.btnSuaGoiDVChiTiet);
         btnMoKhoaGoiDVChiTiet = findViewById(R.id.btnMoGoiDVChiTiet);
         btnKhoaGoiDVChiTiet = findViewById(R.id.btnKhoaGoiDVChiTiet);
-        imgBackGoiDVFragment = findViewById(R.id.imgBackGoiDVFragment);
+        imgBackGoiDVFragment = findViewById(R.id.imgBackGoiDVChiTiet);
 
         imgBackGoiDVFragment.setOnClickListener(new View.OnClickListener() {
             @Override

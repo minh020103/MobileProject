@@ -1,24 +1,17 @@
 package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.datamodel.ChuTro;
-import com.example.mobileproject.datamodel.GoiDichVu;
-import com.example.mobileproject.datamodel.TaiKhoan;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.mobileproject.datamodel.Goi;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
@@ -46,17 +39,17 @@ public interface ApiServiceKiet {
 
     /* Pakage */
     @GET("goi/all")
-    Call<List<GoiDichVu>> getListPakageAPI();
+    Call<List<Goi>> getListPakageAPI();
     @GET("goi/chitiet")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("id") int id);
+    Call<Goi> getPakageByIdAPI(@Query("id") int id);
     @GET("goi/lock")
-    Call<GoiDichVu> lockPakageByIdAPI(@Query("id") int id);
+    Call<Goi> lockPakageByIdAPI(@Query("id") int id);
     @GET("goi/unLock")
-    Call<GoiDichVu> unLockPakageByIdAPI(@Query("id") int id);
+    Call<Goi> unLockPakageByIdAPI(@Query("id") int id);
     @POST("goi/add")
-    Call<GoiDichVu> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+    Call<Goi> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
     @PUT("goi/update")
-    Call<GoiDichVu> updatePakage(@Query("id") int id,@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+    Call<Goi> updatePakage(@Query("id") int id, @Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
 
 
 }
