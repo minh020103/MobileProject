@@ -23,13 +23,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
-import com.example.mobileproject.fragment.admin.manager.BannerFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,10 +43,11 @@ import retrofit2.Response;
 public class AddBannerActivity extends AppCompatActivity {
     public static final String TAG = AddBannerActivity.class.getName();
     private static final int MY_REQUEST_CODE = 10;
-    private ImageView imgBanner, imgViewBack, imgViewFromApi;
+    private ImageView imgBanner, imgViewBack;
     private Button btnUpLoad;
     private Uri mUri;
     private ProgressDialog mProgressDialog;
+
 
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -79,13 +79,14 @@ public class AddBannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_add_banner_layout);
 
+
         btnUpLoad = findViewById(R.id.btn_upload);
         imgBanner = findViewById(R.id.img_from_gallery);
         imgViewBack = findViewById(R.id.img_view_back);
-        imgViewFromApi = findViewById(R.id.img_from_api);
 
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Please wait ...");
+
         imgViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +98,6 @@ public class AddBannerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onClickRequestPermission();
-
             }
         });
 
@@ -105,12 +105,11 @@ public class AddBannerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mUri != null) {
-                    callApiUpLoadFile();
+                    callApiUpLoadBanner();
                 }
             }
         });
     }
-
     private void onClickRequestPermission() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             openGallery();
@@ -125,7 +124,6 @@ public class AddBannerActivity extends AppCompatActivity {
             requestPermissions(permission, MY_REQUEST_CODE);
         }
     }
-
     //Nguoi dung cho phep or tu choi
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -136,19 +134,15 @@ public class AddBannerActivity extends AppCompatActivity {
                 openGallery();
             }
         }
-
     }
-
     private void openGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(Intent.createChooser(intent, "Seletec Picture"));
     }
-
-    private void callApiUpLoadFile() {
-//        mProgressDialog.show();
-
+    private void callApiUpLoadBanner() {
+        mProgressDialog.show();
         String strRealPath = RealPathUtil.getRealPath(this, mUri);
         Log.e("phuc", strRealPath);
         File file = new File(strRealPath);
@@ -162,14 +156,11 @@ public class AddBannerActivity extends AppCompatActivity {
                 alertSuccess("Upload Banner thanh cong");
 
             }
-
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 alertFail("Upload Banner that bai");
             }
         });
-
-
     }
 
     private void alertSuccess(String s) {

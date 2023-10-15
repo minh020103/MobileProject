@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddBannerActivity;
+import com.example.mobileproject.activity.admin.EditBannerActivity;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
 import com.example.mobileproject.recycerviewadapter.admin.BannerAdapter;
@@ -34,9 +35,7 @@ public class BannerFragment extends AbstractFragment {
     BannerAdapter adapter;
     LinearLayoutManager layoutManager;
     RecyclerView rcvBanner;
-
     List<Banner> listIem;
-
     FloatingActionButton btnFabAdd;
     Handler handler;
 
@@ -55,14 +54,15 @@ public class BannerFragment extends AbstractFragment {
         rcvBanner.setAdapter(adapter);
         getDataFromApi();
 
-
         adapter.setMyOnCLickListener(new BannerAdapter.MyOnCLickListener() {
             @Override
             public void OnClickItem(int position, View v) {
 
+                Intent intent = new Intent(getActivity(), EditBannerActivity.class);
+                intent.putExtra("hinh",listIem.get(position).getHinhBanner()+ "");
+                intent.putExtra("id",listIem.get(position).getId());
+                startActivity(intent);
             }
-
-
         });
 
         btnFabAdd.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,6 @@ public class BannerFragment extends AbstractFragment {
                 startActivity(intent);
             }
         });
-
         return fragmentLayout;
     }
 
@@ -90,9 +89,6 @@ public class BannerFragment extends AbstractFragment {
                 handler.postDelayed(this, 3000);
             }
         }, 3000);
-
-
-
     }
 
     private void getDataFromApi() {
@@ -105,7 +101,6 @@ public class BannerFragment extends AbstractFragment {
                     adapter.notifyDataSetChanged();
                 }
             }
-
             @Override
             public void onFailure(Call<List<Banner>> call, Throwable t) {
             }
