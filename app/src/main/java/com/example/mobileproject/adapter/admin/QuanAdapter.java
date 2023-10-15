@@ -12,13 +12,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.datamodel.TienIch;
+import com.example.mobileproject.datamodel.Quan;
 
 import java.util.ArrayList;
 
 public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> {
 
-    ArrayList<TienIch> arrayList;
+    ArrayList<Quan> arrayList;
     Activity activity;
     int layoutId;
 
@@ -28,7 +28,7 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
         this.onClickListener = onClickListener;
     }
 
-    public QuanAdapter(ArrayList<TienIch> arrayList, Activity activity, int layoutId) {
+    public QuanAdapter(ArrayList<Quan> arrayList, Activity activity, int layoutId) {
         this.arrayList = arrayList;
         this.activity = activity;
         this.layoutId = layoutId;
@@ -46,8 +46,8 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        TienIch tienIch = arrayList.get(position);
-        holder.tenQuan.setText(tienIch.getTenTienIch());
+         Quan quan = arrayList.get(position);
+        holder.tenQuan.setText(quan.getTenQuan());
 
         holder.onClickListener = new View.OnClickListener() {
             @Override

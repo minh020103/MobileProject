@@ -22,6 +22,12 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
     Activity activity;
     int layoutId;
 
+   private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
     public TienIchAdapter(ArrayList<TienIch> arrayList, Activity activity, int layoutId) {
         this.arrayList = arrayList;
         this.activity = activity;
@@ -42,6 +48,17 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TienIch tienIch = arrayList.get(position);
         holder.textView.setText(tienIch.getTenTienIch());
+        holder.onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.tenTienIch:
+                        onClickListener.onClickSua(position, view);
+                        break;
+                }
+                }
+        };
+
     }
 
     @Override
@@ -54,14 +71,26 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
         return layoutId;
     }
 
-    protected class MyViewHolder extends RecyclerView.ViewHolder {
+    public interface OnClickListener{
+        void onClickSua(int position, View view);
+    }
+
+    protected class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageView;
         TextView textView;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageView= itemView.findViewById(R.id.imgTienIch);
-            textView = itemView.findViewById(R.id.tenTienIch);
+        View.OnClickListener onClickListener;
+            public MyViewHolder(@NonNull View itemView) {
+                super(itemView);
+                imageView= itemView.findViewById(R.id.imgTienIch);
+                textView = itemView.findViewById(R.id.tenTienIch);
+
+                textView.setOnClickListener(this);
+            }
+
+        @Override
+        public void onClick(View view) {
+            onClickListener.onClick(view);
         }
     }
 }
