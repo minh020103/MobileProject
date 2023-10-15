@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login_2">
+    android:background="@drawable/bg_login_4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,21 +28,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="@dimen/dp20"
         android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="@string/lb_register"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_40sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/amiri_italic"
+         />
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_register"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/iconp_email_login"
+        android:drawablePadding="20dp"
+        android:hint="Email"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_19_5sp"/>
 
     <EditText
         android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_register"
+        android:layout_below="@+id/edt_email"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30ffffff"
@@ -51,7 +67,8 @@
         android:hint="Tên đăng nhập"
         android:padding="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_19_5sp"/>
 
     <EditText
         android:id="@+id/edt_password"
@@ -69,7 +86,8 @@
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_19_5sp"/>
 
     <EditText
         android:id="@+id/edt_confrm_password"
@@ -87,7 +105,8 @@
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_19_5sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
@@ -100,6 +119,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/main_color_of_app"
-        android:text="@string/btn_dang_ky" />
+        android:text="@string/btn_dang_ky"
+        android:textSize="@dimen/text_size_16dp"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

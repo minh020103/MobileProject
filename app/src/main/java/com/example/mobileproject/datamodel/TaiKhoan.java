@@ -5,26 +5,27 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class TaiKhoan{
-
-    @SerializedName("sdt")
-    private String tenDangNhap;
-    @SerializedName("matkhau")
+    private int id;
+    private String tenTaiKhoan;
     private String matKhau;
+    private int loaiTaiKhoan;
+    private int trangThai;
+    private String email;
 
-    public TaiKhoan(String tenDangNhap, String matKhau) {
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
-    }
-    public TaiKhoan() {
-
-    }
-
-    public String getTenDangNhap() {
-        return tenDangNhap;
+    public int getId() {
+        return id;
     }
 
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTenTaiKhoan() {
+        return tenTaiKhoan;
+    }
+
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+        this.tenTaiKhoan = tenTaiKhoan;
     }
 
     public String getMatKhau() {
@@ -33,5 +34,29 @@ public class TaiKhoan{
 
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
+    }
+
+    public int getLoaiTaiKhoan() {
+        return loaiTaiKhoan;
+    }
+
+    public void setLoaiTaiKhoan(int loaiTaiKhoan) {
+        this.loaiTaiKhoan = loaiTaiKhoan;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

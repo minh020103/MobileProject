@@ -12,5 +12,6 @@
     <dimen name="height_btn_dang_ky">47dp</dimen>
     <dimen name="dp20">20dp</dimen>
     <dimen name="mr_70dp">70dp</dimen>
+    <dimen name="_19_5sp">19.5sp</dimen>
     <!--End Phuc-->
 </resources>

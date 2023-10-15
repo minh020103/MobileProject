@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobileproject.R;
@@ -16,7 +17,8 @@ import com.example.mobileproject.activity.admin.AdminActivity;
 public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassWord;
-    Button btnLogin, btnRegister;
+    Button btnLogin;
+    TextView tvRegister;
 
 
     String userName,passWord;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassWord = findViewById(R.id.edt_password);
         edtUsername = findViewById(R.id.edt_username);
         btnLogin = findViewById(R.id.btn_login);
-        btnRegister = findViewById(R.id.btn_register);
+        tvRegister = findViewById(R.id.tv_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
