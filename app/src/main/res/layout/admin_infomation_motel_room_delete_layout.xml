@@ -55,14 +55,11 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgMain"
                     android:layout_width="0.5in"
                     android:layout_height="0.5in"
-                    android:src="@drawable/cccd"
-                    android:layout_margin="10dp"/>
-
-
-
-
+                    android:layout_margin="10dp"
+                    android:src="@drawable/logo" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,14 +68,15 @@
                     android:gravity="center"
                     android:layout_margin="10dp">
                     <TextView
-                        android:text="Nguyễn Đức Minh"
+                        android:id="@+id/tvTen"
+                        android:text="N/A"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
                     <TextView
                         android:id="@+id/tvSDT"
-                        android:text="097338383383"
+                        android:text="N/A"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"/>
@@ -105,9 +103,10 @@
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/tvSoPhong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1"
+                        android:text="N/A"
                         android:textStyle="normal"
                         android:textSize="20sp"/>
                 </LinearLayout>
@@ -124,9 +123,10 @@
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/tvIdPhong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="122"
+                        android:text="N/A"
                         android:textStyle="normal"
                         android:textSize="20sp"/>
                 </LinearLayout>
@@ -143,9 +143,10 @@
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/tvLyDo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lí do là fdsajfkhjasfjkcifsdjafj fsdjajjfcsdafc fcsdajkfcjksdfc fcsdikfjcj"
+                        android:text="N/A"
                         android:textStyle="normal"
                         android:textSize="20sp"/>
                 </LinearLayout>
@@ -172,6 +173,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llXacNhan"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -189,6 +191,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llHuy"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -197,12 +200,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
                             android:background="@drawable/btn_yellow"
+                            android:gravity="center"
                             android:text="Hủy"
-                            android:textStyle="bold"
                             android:textColor="@color/white"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
 

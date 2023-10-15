@@ -55,6 +55,7 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgMain"
                     android:layout_width="0.5in"
                     android:layout_height="0.5in"
                     android:src="@drawable/cccd"
@@ -71,6 +72,7 @@
                     android:gravity="center"
                     android:layout_margin="10dp">
                     <TextView
+                        android:id="@+id/tvTen"
                         android:text="Nguyễn Đức Minh"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -93,24 +95,6 @@
                 android:orientation="vertical"
                 android:layout_margin="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giới tính: "
-                        android:textStyle="bold"
-                        android:textSize="20sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nam"
-                        android:textStyle="normal"
-                        android:textSize="20sp"/>
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -124,6 +108,7 @@
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/tvSTK"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123456789123"
@@ -142,6 +127,7 @@
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/tvTenNguoiThuHuong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NGUYEN DUC MINH"
@@ -150,11 +136,13 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/imgcccdMT"
                     android:layout_width="match_parent"
                     android:layout_height="1.5in"
                     android:src="@drawable/cccd"/>
 
                 <ImageView
+                    android:id="@+id/imgcccdMS"
                     android:layout_width="match_parent"
                     android:layout_height="1.5in"
                     android:src="@drawable/cccd"/>
@@ -180,6 +168,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llXacNhan"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -197,6 +186,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llHuy"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

@@ -11,17 +11,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.datamodel.ChuTro;
-import com.example.mobileproject.datamodel.GoiDichVu;
-
-import org.w3c.dom.Text;
+import com.example.mobileproject.datamodel.Goi;
 
 import java.util.List;
 
 public class GoiDichVuAdapter extends RecyclerView.Adapter<GoiDichVuAdapter.MyViewHolder>{
 
     private Activity activity;
-    private List<GoiDichVu> list;
+    private List<Goi> list;
     private int layoutID;
 
     OnClickItemListener onClickItemListener;
@@ -34,7 +31,7 @@ public class GoiDichVuAdapter extends RecyclerView.Adapter<GoiDichVuAdapter.MyVi
         return new MyViewHolder(view);
     }
 
-    public GoiDichVuAdapter(Activity activity, List<GoiDichVu> list, int layoutID) {
+    public GoiDichVuAdapter(Activity activity, List<Goi> list, int layoutID) {
         this.activity = activity;
         this.list = list;
         this.layoutID = layoutID;
@@ -46,7 +43,7 @@ public class GoiDichVuAdapter extends RecyclerView.Adapter<GoiDichVuAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        GoiDichVu data = list.get(position);
+        Goi data = list.get(position);
         holder.tvIdGoiDV.setText(String.valueOf(data.getId()));
         holder.tvThoiHanGoiDV.setText(String.valueOf(data.getThoiHan()));
         holder.tvSoLuongGoiDV.setText(String.valueOf(data.getSoLuongPhongToiDa()));
