@@ -22,13 +22,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
-    Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd")
-            .create();
+
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.2.6/API_ChuyenDe_12/laravel/public/api/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl("http://192.168.1.64/API_ChuyenDe_12/laravel/public/api/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiServiceKiet.class);
 
@@ -43,13 +41,8 @@ public interface ApiServiceKiet {
     Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
 
     /* Account */
-    @PATCH("/capnhattrangthai")
-    Call<TaiKhoan> thayDoiTrangThaiTaiKhoan(@Query("id") int id);
-    @PUT("/taikhoan/khoa")
-    Call<TaiKhoan> khoaTaiKhoanAPI(@Query("id") int id);
-    @PUT("/taikhoan/moKhoa")
-    Call<TaiKhoan> moKhoaTaiKhoanAPI(@Query("id") int id);
-
+    @PATCH("capnhattrangthai")
+    Call<Integer> thayDoiTrangThaiTaiKhoan(@Query("id") int id);
 
     /* Pakage */
     @GET("goi/all")
