@@ -2,6 +2,7 @@ package com.example.mobileproject.fragment.admin.manager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Header;
 
 public class BannerFragment extends AbstractFragment {
 
@@ -36,6 +38,7 @@ public class BannerFragment extends AbstractFragment {
     List<Banner> listIem;
 
     FloatingActionButton btnFabAdd;
+    Handler handler;
 
     @Nullable
     @Override
@@ -51,7 +54,7 @@ public class BannerFragment extends AbstractFragment {
         rcvBanner.setLayoutManager(layoutManager);
         rcvBanner.setAdapter(adapter);
         getDataFromApi();
-//        setDataForUI();
+
 
         adapter.setMyOnCLickListener(new BannerAdapter.MyOnCLickListener() {
             @Override
@@ -66,7 +69,6 @@ public class BannerFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddBannerActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -74,7 +76,22 @@ public class BannerFragment extends AbstractFragment {
         return fragmentLayout;
     }
 
-    private void setDataForUI() {
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getDataFromApi();
+
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getDataFromApi();
+                handler.postDelayed(this, 3000);
+            }
+        }, 3000);
+
+
 
     }
 
@@ -83,15 +100,14 @@ public class BannerFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<List<Banner>> call, Response<List<Banner>> response) {
                 if (response.code() == 200){
+                    listIem.clear();
                     listIem.addAll(response.body());
                     adapter.notifyDataSetChanged();
                 }
-
             }
 
             @Override
             public void onFailure(Call<List<Banner>> call, Throwable t) {
-
             }
         });
     }

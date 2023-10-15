@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
+import com.example.mobileproject.fragment.admin.manager.BannerFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,8 +69,6 @@ public class AddBannerActivity extends AppCompatActivity {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-
-
                     }
                 }
             }
@@ -97,7 +96,7 @@ public class AddBannerActivity extends AppCompatActivity {
         imgBanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            onClickRequestPermission();
+                onClickRequestPermission();
 
             }
         });
@@ -160,27 +159,45 @@ public class AddBannerActivity extends AppCompatActivity {
         ApiServivePhuc.apiService.uploadFileBanner(multipartBodyBanner).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                    Toast.makeText(getApplicationContext(),"Thanh COng",Toast.LENGTH_SHORT).show();
+                alertSuccess("Upload Banner thanh cong");
+
             }
 
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"That Bai",Toast.LENGTH_SHORT).show();
+                alertFail("Upload Banner that bai");
             }
         });
 
 
     }
-    private void thongBao(String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
+    private void alertSuccess(String s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Success")
+                .setIcon(R.drawable.iconp_check_banner)
+                .setMessage(s)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
         builder.create();
         builder.show();
+    }
+
+    private void alertFail(String s) {
+        new AlertDialog.Builder(this)
+                .setTitle("Failed")
+                .setIcon(R.drawable.iconp_error_banner)
+                .setMessage(s)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
     }
 
 
