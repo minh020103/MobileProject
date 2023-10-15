@@ -44,10 +44,15 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     Button btnMoKhoaTaiKhoanChuTroChiTiet;
     ImageView imgBackChuTroFragment;
 
+    int idTaiKhoan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.motel_room_owner_detail_layout);
+
+        Intent intent = getIntent();
+        idTaiKhoan = intent.getIntExtra("idTaiKhoan", 0);
 
         imgChuTroChiTiet = findViewById(R.id.imgChuTroChiTiet);
         tvTenChuTroChiTiet = findViewById(R.id.tvTenChuTroChiTiet);
@@ -147,19 +152,28 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void thayDoiTrangThaiTaiKhoan(int id)
+    private void thayDoiTrangThaiTaiKhoan()
     {
-        ApiServiceKiet.apiServiceKiet.thayDoiTrangThaiTaiKhoan(id).enqueue(new Callback<TaiKhoan>() {
+        Call<Integer> call = ApiServiceKiet.apiServiceKiet.thayDoiTrangThaiTaiKhoan(idTaiKhoan);
+        call.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
-                Toast.makeText(MotelRoomOwnerDetailActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(MotelRoomOwnerDetailActivity.this);
+//            builder.setMessage(call.request().toString()).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                }
+//            });
+//            builder.create();
+//            builder.show();
             }
-
             @Override
-            public void onFailure(Call<TaiKhoan> call, Throwable t) {
-
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(MotelRoomOwnerDetailActivity.this, "Loi", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void openDialogChangeStatusAccount()
@@ -168,7 +182,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("TAG", "id: " + AppUntil.ID_CHU_TRO);
-                thayDoiTrangThaiTaiKhoan(AppUntil.ID_CHU_TRO);
+                thayDoiTrangThaiTaiKhoan();
                 HostByIdApi(AppUntil.ID_CHU_TRO);
             }
         }).setNegativeButton("Cancle",null).show();

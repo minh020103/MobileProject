@@ -1,5 +1,7 @@
 package com.example.mobileproject.fragment.admin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +37,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
     List<ChuTro> list;
     ChuTroAdapter chuTroAdapter;
     LinearLayoutManager layoutManager;
-
+    ImageView imgRefresh;
     EditText edtTimKiemChuTro;
     Button btnTimKiemChuTro;
     @Nullable
@@ -43,6 +47,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_motel_room_owner_layout, container, false);
         edtTimKiemChuTro = fragmentLayout.findViewById(R.id.edtTimKiemChuTro);
         btnTimKiemChuTro = fragmentLayout.findViewById(R.id.btnTimKiemChuTro);
+        imgRefresh = fragmentLayout.findViewById(R.id.imgRefresh);
         recyclerView = fragmentLayout.findViewById(R.id.rvChuTro);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -63,8 +68,20 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                 }
                 else
                 {
-                    ListMotelRoomOwnerAPI();
+                    new AlertDialog.Builder(getActivity()).setMessage("Không tìm thấy giá trị với từ khóa đã nhập").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            edtTimKiemChuTro.setText("");
+                        }
+                    }).setNegativeButton("Cancle",null).show();
                 }
+            }
+        });
+
+        imgRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListMotelRoomOwnerAPI();
             }
         });
 
@@ -83,7 +100,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity();
+                        nextActivity(list.get(position).getIdTaiKhoan());
                     }
                 });
             }
@@ -108,7 +125,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity();
+                        nextActivity(list.get(position).getIdTaiKhoan());
                     }
                 });
             }
@@ -132,7 +149,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     public void onClickItem(int position, View v) {
                         Log.d("RESULT", list.get(position)+"");
                         AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity();
+                        nextActivity(list.get(position).getIdTaiKhoan());
                     }
                 });
             }
@@ -144,9 +161,10 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
         });
     }
 
-    private void nextActivity()
+    private void nextActivity(int idTaiKhoan)
     {
         Intent intent = new Intent(getActivity(), MotelRoomOwnerDetailActivity.class);
+        intent.putExtra("idTaiKhoan", idTaiKhoan);
         startActivity(intent);
     }
 

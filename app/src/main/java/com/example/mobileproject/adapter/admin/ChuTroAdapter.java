@@ -95,7 +95,6 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
             tvTenChuTro = itemView.findViewById(R.id.tvTenChuTro);
             imgChuTro = itemView.findViewById(R.id.imgChuTro);
             tvSDTChuTro = itemView.findViewById(R.id.tvSDTChuTro);
-            tvTrangThaiChuTro = itemView.findViewById(R.id.tvTrangThaiChuTro);
 
             itemView.setOnClickListener(this);
         }
