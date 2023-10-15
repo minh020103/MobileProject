@@ -1,7 +1,19 @@
 package com.example.mobileproject.datamodel;
 
-public class TienIch {
+public class Quan {
     private int id;
+    private String tenQuan;
+    private String hinh;
+    private int trangThai;
+
+    public Quan(int id, String tenQuan, String hinh, int trangThai) {
+        this.id = id;
+        this.tenQuan = tenQuan;
+        this.hinh = hinh;
+        this.trangThai = trangThai;
+    }
+    public Quan() {
+    }
 
     public int getId() {
         return id;
@@ -11,26 +23,12 @@ public class TienIch {
         this.id = id;
     }
 
-    private String tenTienIch;
-    private String hinh;
-    private int trangThai;
-
-    public TienIch(int id,String tenTienIch, String hinh, int trangThai) {
-        this.id= id;
-        this.tenTienIch = tenTienIch;
-        this.hinh = hinh;
-        this.trangThai = trangThai;
-    }
-    public TienIch() {
-
+    public String getTenQuan() {
+        return tenQuan;
     }
 
-    public String getTenTienIch() {
-        return tenTienIch;
-    }
-
-    public void setTenTienIch(String tenTienIch) {
-        this.tenTienIch = tenTienIch;
+    public void setTenQuan(String tenQuan) {
+        this.tenQuan = tenQuan;
     }
 
     public String getHinh() {

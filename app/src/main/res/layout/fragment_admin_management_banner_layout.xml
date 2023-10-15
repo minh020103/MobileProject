@@ -21,12 +21,15 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
-            android:backgroundTint="@color/main_color_of_app"
             android:layout_width="@dimen/width_btn_add"
             android:layout_height="@dimen/height_btn_add"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/main_color_of_app"
             android:src="@drawable/iconp_add" />
 
     </RelativeLayout>
