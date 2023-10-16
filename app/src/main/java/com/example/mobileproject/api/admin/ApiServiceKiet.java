@@ -25,7 +25,7 @@ public interface ApiServiceKiet {
 
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.28/API_ChuyenDe_12/laravel/public/api/")
+                .baseUrl("http://192.168.1.70/TimTroTot/laravel/public/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiServiceKiet.class);

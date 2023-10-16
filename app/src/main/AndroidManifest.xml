@@ -21,6 +21,9 @@
             android:name=".activity.login.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.admin.PakageEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.login.RegisterActivity"
             android:exported="false"
             android:parentActivityName=".activity.login.LoginActivity" />

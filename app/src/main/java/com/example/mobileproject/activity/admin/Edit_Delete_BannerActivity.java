@@ -108,6 +108,8 @@ public class Edit_Delete_BannerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (mUri != null) {
                     callApiEditBanner();
+                }else {
+                    haiNhi("Bạn chưa thay đổi ảnh !");
                 }
             }
         });
@@ -240,5 +242,17 @@ public class Edit_Delete_BannerActivity extends AppCompatActivity {
                 }).show();
     }
 
+    private void haiNhi(String s) {
+        new AlertDialog.Builder(this)
+                .setTitle("Failed")
+                .setIcon(R.drawable.cuoi)
+                .setMessage(s)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
+    }
 
 }
