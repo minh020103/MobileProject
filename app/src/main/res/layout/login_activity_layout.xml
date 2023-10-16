@@ -129,7 +129,7 @@
             android:layout_below="@+id/btn_register"
             android:layout_centerHorizontal="true"
             android:textSize="14.5dp"
-            android:text="Bạn chưa có tài khoản"
+            android:text="Bạn chưa có tài khoản ?"
             android:textColor="@color/white" />
 
 
