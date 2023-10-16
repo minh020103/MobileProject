@@ -13,6 +13,7 @@ import com.example.mobileproject.R;
 import com.example.mobileproject.datamodel.Phuong;
 import com.example.mobileproject.recycerviewadapter.admin.WardAdapter;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,14 +24,12 @@ public class ListWardActivity extends AppCompatActivity {
     private WardAdapter adapter;
     private List<Phuong> list;
     private LinearLayoutManager layoutManager;
-    private LinearLayout buttomSheet;
-    private BottomSheetBehavior bottomSheetBehavior;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_list_ward_layout);
 
-        buttomSheet = findViewById(R.id.buttomSheet);
+
         anhXa();
 
         batSuKienClickItem();
@@ -40,19 +39,20 @@ public class ListWardActivity extends AppCompatActivity {
         adapter.setMyOnClickListenner(new WardAdapter.MyOnClickListenner() {
             @Override
             public void onClickItemListener(int position, View v) {
-                bottomSheetBehavior = BottomSheetBehavior.from(buttomSheet);
-                if (bottomSheetBehavior.getState() != bottomSheetBehavior.STATE_EXPANDED){
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }
-                else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
+                openButtomSheet();
             }
         });
     }
 
-    private void anhXa() {
+    private void openButtomSheet() {
+        View diaLog = getLayoutInflater().inflate(R.layout.admin_buttom_sheet_layout, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(diaLog);
+        bottomSheetDialog.show();
 
+    }
+
+    private void anhXa() {
         rcvWard =findViewById(R.id.rcvWard);
         list = new LinkedList<>();
         list.add(new Phuong());
