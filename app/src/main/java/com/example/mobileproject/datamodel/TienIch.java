@@ -11,13 +11,13 @@ public class TienIch {
         this.id = id;
     }
 
-    private String tenTienIch;
+    private String ten;
     private String hinh;
     private int trangThai;
 
-    public TienIch(int id,String tenTienIch, String hinh, int trangThai) {
+    public TienIch(int id, String ten, String hinh, int trangThai) {
         this.id= id;
-        this.tenTienIch = tenTienIch;
+        this.ten = ten;
         this.hinh = hinh;
         this.trangThai = trangThai;
     }
@@ -25,12 +25,12 @@ public class TienIch {
 
     }
 
-    public String getTenTienIch() {
-        return tenTienIch;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTenTienIch(String tenTienIch) {
-        this.tenTienIch = tenTienIch;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getHinh() {

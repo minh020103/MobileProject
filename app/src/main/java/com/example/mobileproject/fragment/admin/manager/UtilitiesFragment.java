@@ -17,10 +17,15 @@ import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddUtilitiesActivity;
 import com.example.mobileproject.activity.admin.EditUtilitiesActivity;
 import com.example.mobileproject.adapter.admin.TienIchAdapter;
+import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.TienIch;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UtilitiesFragment extends AbstractFragment {
 
@@ -48,18 +53,36 @@ public class UtilitiesFragment extends AbstractFragment {
     }
     private void setDuLieu(){
         arrayList = new ArrayList<>();
-        arrayList.add(new TienIch(1,"Máy Giặt","máy giặt",1));
-        arrayList.add(new TienIch(2,"Máy Giặt","máy giặt",1));
-        tienIchAdapter = new TienIchAdapter(arrayList,getActivity(),R.layout.cardview_admin_utilities);
+        tienIchAdapter = new TienIchAdapter(arrayList,getActivity(),R.layout.cardview_admin_utilities,R.layout.cardview_admin_utilities_block);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tienIchAdapter);
+
+        Call<ArrayList<TienIch>> call = ApiServiceNghiem.apiService.layTatCaTienIch();
+        call.enqueue(new Callback<ArrayList<TienIch>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TienIch>> call, Response<ArrayList<TienIch>> response) {
+                if(response.isSuccessful()){
+                    for (TienIch tienIch: response.body()) {
+                            arrayList.add(tienIch);
+                    }
+                }
+                tienIchAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<TienIch>> call, Throwable t) {
+
+            }
+        });
         tienIchAdapter.setOnClickListener(new TienIchAdapter.OnClickListener() {
             @Override
             public void onClickSua(int position, View view) {
 
+
                 Intent intent = new Intent(getContext(), EditUtilitiesActivity.class);
+                intent.putExtra("key",arrayList.get(position).getId());
                 startActivity(intent);
             }
         });
