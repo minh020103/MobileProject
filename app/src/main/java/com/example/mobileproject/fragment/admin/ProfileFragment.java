@@ -20,9 +20,11 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.DetailPolicyActivity;
 import com.example.mobileproject.activity.admin.EditPasswordAdminActivity;
 import com.example.mobileproject.activity.admin.EditPolicyActivity;
 import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.Admin;
 import com.example.mobileproject.datamodel.TaiKhoan;
@@ -53,7 +55,7 @@ public class ProfileFragment extends AbstractFragment{
         nextChinhSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EditPolicyActivity.class);
+                Intent intent = new Intent(getActivity(), DetailPolicyActivity.class);
                 startActivity(intent);
             }
         });
@@ -81,7 +83,7 @@ public class ProfileFragment extends AbstractFragment{
         call.enqueue(new Callback<Admin>() {
             @Override
             public void onResponse(Call<Admin> call, Response<Admin> response) {
-                Glide.with(ProfileFragment.this).load("http://192.168.190.1/3t/laravel/public/"+response.body().getHinh()).into(imgAdmin);
+                Glide.with(ProfileFragment.this).load(Const.DOMAIN+response.body().getHinh()).into(imgAdmin);
                 tenAdmin.setText(response.body().getTen());
                 sdtAdmin.setText(response.body().getSoDienThoai());
                 stkAdmin.setText(response.body().getSoTaiKhoanNganHang());
