@@ -10,21 +10,23 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/imgBanner"
+            android:id="@+id/img_hinhBanner"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:src="@drawable/banner1" />
 
         <TextView
-            android:id="@+id/tvNameBanner"
+            android:id="@+id/tv_idBanner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/img_hinhBanner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:text="Hinh 1"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_below="@+id/imgBanner"
-            android:layout_centerHorizontal="true"/>
+            android:textSize="20sp" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

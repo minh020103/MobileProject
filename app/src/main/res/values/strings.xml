@@ -5,7 +5,6 @@
     <string name="lb_register">Đăng Ký</string>
     <string name="lb_login">Đăng Nhập</string>
     <string name="btn_dang_nhap">Đăng nhập</string>
-    <string name="btn_dang_ky">Chấp nhận</string>
+    <string name="btn_dang_ky">Đăng ký</string>
     <!-- End Phuc-->
-
 </resources>
