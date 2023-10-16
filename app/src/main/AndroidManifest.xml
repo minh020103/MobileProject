@@ -2,12 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -21,6 +19,9 @@
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".DetailPolicyActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.admin.PakageDetailActivity"
             android:exported="false" />
@@ -61,10 +62,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".activity.admin.EditPolicyActivity"/>
-        <activity android:name=".activity.admin.EditProfileAdminActivity"/>
-        <activity android:name=".activity.admin.EditPasswordAdminActivity"/>
+        <activity android:name=".activity.admin.EditPolicyActivity" />
+        <activity android:name=".activity.admin.EditProfileAdminActivity" />
+        <activity android:name=".activity.admin.EditPasswordAdminActivity" />
     </application>
 
 </manifest>
