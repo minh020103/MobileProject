@@ -35,9 +35,9 @@ public interface ApiServiceKiet {
     Call<List<ChuTro>> getListHostAPI();
     @GET("chutro/chitiet")
     Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
-    @GET("chutro/timKiemTen")
+    @GET("chutro/timKiemTenChuTroXacThuc")
     Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
-    @GET("chutro/timKiemSDT")
+    @GET("chutro/timKiemSDTChuTroXacThuc")
     Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
 
     /* Account */
