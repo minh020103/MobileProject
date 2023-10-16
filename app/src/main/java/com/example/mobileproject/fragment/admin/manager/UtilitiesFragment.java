@@ -17,10 +17,15 @@ import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddUtilitiesActivity;
 import com.example.mobileproject.activity.admin.EditUtilitiesActivity;
 import com.example.mobileproject.adapter.admin.TienIchAdapter;
+import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.TienIch;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UtilitiesFragment extends AbstractFragment {
 
@@ -54,7 +59,25 @@ public class UtilitiesFragment extends AbstractFragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tienIchAdapter);
 
+        Call<ArrayList<TienIch>> call = ApiServiceNghiem.apiService.layTatCaTienIch();
+        call.enqueue(new Callback<ArrayList<TienIch>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TienIch>> call, Response<ArrayList<TienIch>> response) {
+                if(response.isSuccessful()){
+                    for (TienIch tienIch: response.body()) {
+                        if(tienIch.getTrangThai()==1){
+                            arrayList.add(tienIch);
+                        }
+                    }
+                }
+                tienIchAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onFailure(Call<ArrayList<TienIch>> call, Throwable t) {
+
+            }
+        });
         tienIchAdapter.setOnClickListener(new TienIchAdapter.OnClickListener() {
             @Override
             public void onClickSua(int position, View view) {
