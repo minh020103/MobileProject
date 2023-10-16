@@ -48,13 +48,13 @@ public class UtilitiesFragment extends AbstractFragment {
     }
     private void setDuLieu(){
         arrayList = new ArrayList<>();
-        arrayList.add(new TienIch(1,"Máy Giặt","máy giặt",1));
-        arrayList.add(new TienIch(2,"Máy Giặt","máy giặt",1));
         tienIchAdapter = new TienIchAdapter(arrayList,getActivity(),R.layout.cardview_admin_utilities);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tienIchAdapter);
+
+
         tienIchAdapter.setOnClickListener(new TienIchAdapter.OnClickListener() {
             @Override
             public void onClickSua(int position, View view) {
