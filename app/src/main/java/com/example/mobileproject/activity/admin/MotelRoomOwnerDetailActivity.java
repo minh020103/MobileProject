@@ -41,7 +41,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
     Button btnDanhSachPhongChuTroChiTiet;
     Button btnGoiDienChuTroChiTiet;
     Button btnKhoaTaiKhoanChuTroChiTiet;
-    Button btnMoKhoaTaiKhoanChuTroChiTiet;
     ImageView imgBackChuTroFragment;
 
     int idTaiKhoan;
@@ -69,7 +68,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
         btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
         btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
-        btnMoKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
 
         imgBackChuTroFragment = findViewById(R.id.imgBackChuTroFragment);
 
