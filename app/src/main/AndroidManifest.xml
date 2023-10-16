@@ -33,6 +33,9 @@
             android:name=".activity.admin.MotelRoomOwnerDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.admin.PakageAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.admin.InfomationMotelRoomDeleteActivity"
             android:exported="false">
             <meta-data
