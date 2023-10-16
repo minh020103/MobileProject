@@ -1,7 +1,6 @@
 package com.example.mobileproject.recycerviewadapter.admin;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +91,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
         public BannerViewHolder(@NonNull View itemView) {
             super(itemView);
             hinhBanner = itemView.findViewById(R.id.img_hinhBanner);
-            idBanner = itemView.findViewById(R.id.id_hinhBanner);
+            idBanner = itemView.findViewById(R.id.tv_idBanner);
             fabAdd = itemView.findViewById(R.id.btn_fabAdd);
             itemView.setOnClickListener(this);
         }

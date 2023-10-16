@@ -23,12 +23,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
+import com.example.mobileproject.fragment.admin.manager.BannerFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +45,7 @@ import retrofit2.Response;
 public class EditBannerActivity extends AppCompatActivity {
     public static final String TAG = EditBannerActivity.class.getName();
     private static final int MY_REQUEST_CODE = 10;
-    private Button btnUpdate;
+    private Button btnUpdate, btnDelete;
     private ImageView imgBanner, imgViewBack;
     private Uri mUri;
     private ProgressDialog mProgressDialog;
@@ -73,6 +75,7 @@ public class EditBannerActivity extends AppCompatActivity {
                 }
             }
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,9 +83,10 @@ public class EditBannerActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mBanner = intent.getStringExtra("hinh");
-        id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id", 0);
 
         btnUpdate = findViewById(R.id.btn_update);
+        btnDelete = findViewById(R.id.btn_delete);
         imgBanner = findViewById(R.id.img_from_gallery);
         imgViewBack = findViewById(R.id.img_view_back);
 
@@ -105,13 +109,55 @@ public class EditBannerActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mUri != null){
+                if (mUri != null) {
                     callApiEditBanner();
                 }
             }
         });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callApiDeleteBanner();
+            }
+        });
 
     }
+
+
+    private void callApiDeleteBanner() {
+        mProgressDialog.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditBannerActivity.this);
+        builder.setMessage("Bạn muốn xóa ảnh này")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Call<Integer> deleteBanner = ApiServivePhuc.apiService.deleteBanner(id);
+                        deleteBanner.enqueue(new Callback<Integer>() {
+                            @Override
+                            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                                alertSuccess("Đã xóa ảnh");
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Integer> call, Throwable t) {
+                                alertFail("Xóa ảnh thất bại");
+                                mProgressDialog.cancel();
+                            }
+                        });
+                    }
+                }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mProgressDialog.cancel();
+                    }
+                });
+        builder.create();
+        builder.show();
+
+
+    }
+
     private void onClickRequestPermission() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             openGallery();
@@ -126,6 +172,7 @@ public class EditBannerActivity extends AppCompatActivity {
             requestPermissions(permission, MY_REQUEST_CODE);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -137,13 +184,16 @@ public class EditBannerActivity extends AppCompatActivity {
         }
 
     }
+
     private void openGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(Intent.createChooser(intent, "Seletec Picture"));
     }
+
     private void callApiEditBanner() {
+        mProgressDialog.show();
         String strRealPath = RealPathUtil.getRealPath(this, mUri);
         Log.e("phuc", strRealPath);
         File file = new File(strRealPath);
@@ -164,6 +214,7 @@ public class EditBannerActivity extends AppCompatActivity {
 
 
     }
+
     private void alertSuccess(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle("Success")
@@ -178,6 +229,7 @@ public class EditBannerActivity extends AppCompatActivity {
         builder.create();
         builder.show();
     }
+
     private void alertFail(String s) {
         new AlertDialog.Builder(this)
                 .setTitle("Failed")
