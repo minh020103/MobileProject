@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class TaiKhoan{
+    private int id;
     private String tenTaiKhoan;
     private String matKhau;
     private int trangThai;
@@ -60,5 +61,9 @@ public class TaiKhoan{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
