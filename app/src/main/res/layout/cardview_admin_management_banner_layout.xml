@@ -23,8 +23,20 @@
             android:text="Hinh 1"
             android:textSize="20sp"
             android:textColor="@color/black"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/img_hinhBanner"
             android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_hinhBanner"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/red"
+            android:text="Xóa"
+            android:textAllCaps="false"
+            />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
