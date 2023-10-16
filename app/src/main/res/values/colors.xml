@@ -13,9 +13,11 @@
     <color name="ngoc">#58ECBD</color>
     <color name="main_color_of_app_night">#105740</color>
     <color name="gray">#DDDADA</color>
-    <color name="red">#FF1111</color>
+    <color name="red">#F40606</color>
     <color name="red_bold">#A80000</color>
     <color name="yellow">#FFEA26</color>
     <color name="yellow_bold">#7E7100</color>
     <color name="blue">#2a66e8</color>
+
+    <color name="black_a">#66000000</color>
 </resources>

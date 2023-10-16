@@ -49,7 +49,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.BannerView
     @Override
     public void onBindViewHolder(@NonNull BannerViewHolder holder, int position) {
         Banner banner = mListBanner.get(position);
-        Log.d("TAG", "data: "+ banner.getHinhBanner());
+//        Log.d("TAG", "data: "+ banner.getHinhBanner());
         //Load hinh
         Glide.with(activity.getLayoutInflater().getContext()).load(Const.DOMAIN + banner.getHinhBanner()).into(holder.hinhBanner);
         holder.idBanner.setText(banner.getId() + "");

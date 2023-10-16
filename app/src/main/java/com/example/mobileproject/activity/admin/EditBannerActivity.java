@@ -105,7 +105,9 @@ public class EditBannerActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callApiEditBanner();
+                if(mUri != null){
+                    callApiEditBanner();
+                }
             }
         });
 
@@ -148,16 +150,19 @@ public class EditBannerActivity extends AppCompatActivity {
 
         RequestBody requestBodyBanner = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part multipartBodyBanner = MultipartBody.Part.createFormData("hinh", file.getName(), requestBodyBanner);
-        ApiServivePhuc.apiService.editBanner(id,multipartBodyBanner).enqueue(new Callback<Banner>() {
+        ApiServivePhuc.apiService.editBanner(id, multipartBodyBanner).enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Banner> call, Response<Banner> response) {
-                alertSuccess("Cập nhật Banner thanh cong");
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                alertSuccess("Cập nhật Banner thành công ");
             }
+
             @Override
-            public void onFailure(Call<Banner> call, Throwable t) {
-                alertFail("Cập nhật Banner thành công");
+            public void onFailure(Call<Integer> call, Throwable t) {
+                alertFail("Cập nhật Banner thất bại");
             }
         });
+
+
     }
     private void alertSuccess(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)

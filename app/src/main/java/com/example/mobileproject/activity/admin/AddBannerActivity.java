@@ -54,7 +54,7 @@ public class AddBannerActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Log.e(TAG, "onActivityResult");
+//                    Log.e(TAG, "onActivityResult");
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         if (data == null) {
@@ -144,7 +144,7 @@ public class AddBannerActivity extends AppCompatActivity {
     private void callApiUpLoadBanner() {
         mProgressDialog.show();
         String strRealPath = RealPathUtil.getRealPath(this, mUri);
-        Log.e("phuc", strRealPath);
+//        Log.e("phuc", strRealPath);
         File file = new File(strRealPath);
 
         RequestBody requestBodyBanner = RequestBody.create(MediaType.parse("multipart/form-data"), file);

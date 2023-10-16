@@ -10,6 +10,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -32,7 +33,8 @@ public interface ApiServivePhuc {
     @Multipart
     @POST("api/banner/create")
     Call<Integer> uploadFileBanner(@Part MultipartBody.Part hinhBanner);
-
+    @Multipart
     @POST("api/banner/edit")
-    Call<Banner> editBanner(@Query("id") int id, @Part MultipartBody.Part hinhBanner);
+    Call<Integer> editBanner(@Query("id") int id, @Part MultipartBody.Part hinhBanner);
+
 }
