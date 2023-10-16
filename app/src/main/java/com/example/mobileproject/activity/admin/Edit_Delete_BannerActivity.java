@@ -23,14 +23,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
-import com.example.mobileproject.datamodel.Banner;
-import com.example.mobileproject.fragment.admin.manager.BannerFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,8 +39,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditBannerActivity extends AppCompatActivity {
-    public static final String TAG = EditBannerActivity.class.getName();
+public class Edit_Delete_BannerActivity extends AppCompatActivity {
+    public static final String TAG = Edit_Delete_BannerActivity.class.getName();
     private static final int MY_REQUEST_CODE = 10;
     private Button btnUpdate, btnDelete;
     private ImageView imgBanner, imgViewBack;
@@ -126,7 +123,7 @@ public class EditBannerActivity extends AppCompatActivity {
 
     private void callApiDeleteBanner() {
         mProgressDialog.show();
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditBannerActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Edit_Delete_BannerActivity.this);
         builder.setMessage("Bạn muốn xóa ảnh này")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override

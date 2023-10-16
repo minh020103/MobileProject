@@ -3,11 +3,9 @@ package com.example.mobileproject.fragment.admin.manager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddBannerActivity;
-import com.example.mobileproject.activity.admin.EditBannerActivity;
+import com.example.mobileproject.activity.admin.Edit_Delete_BannerActivity;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
 import com.example.mobileproject.datamodel.Banner;
 import com.example.mobileproject.recycerviewadapter.admin.BannerAdapter;
@@ -28,7 +26,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Header;
 
 public class BannerFragment extends AbstractFragment {
 
@@ -58,7 +55,7 @@ public class BannerFragment extends AbstractFragment {
             @Override
             public void OnClickItem(int position, View v) {
 
-                Intent intent = new Intent(getActivity(), EditBannerActivity.class);
+                Intent intent = new Intent(getActivity(), Edit_Delete_BannerActivity.class);
                 intent.putExtra("hinh",listIem.get(position).getHinhBanner()+ "");
                 intent.putExtra("id",listIem.get(position).getId());
                 startActivity(intent);
