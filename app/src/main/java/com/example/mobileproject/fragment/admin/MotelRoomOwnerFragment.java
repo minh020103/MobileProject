@@ -84,6 +84,7 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
             @Override
             public void onClick(View v) {
                 ListMotelRoomOwnerAPI();
+                edtTimKiemChuTro.setText("");
             }
         });
 
