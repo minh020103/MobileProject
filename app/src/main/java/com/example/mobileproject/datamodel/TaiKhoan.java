@@ -5,27 +5,21 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class TaiKhoan{
-
-    private int id;
     private String tenTaiKhoan;
     private String matKhau;
-    private int loaiTaiKhoan;
     private int trangThai;
+    private int loaiTaiKhoan;
+    private String email;
 
-    public TaiKhoan(int id, String tenTaiKhoan, String matKhau, int loaiTaiKhoan, int trangThai) {
-        this.id = id;
+    public TaiKhoan(String tenTaiKhoan, String matKhau, int trangThai, int loaiTaiKhoan, String email) {
         this.tenTaiKhoan = tenTaiKhoan;
         this.matKhau = matKhau;
-        this.loaiTaiKhoan = loaiTaiKhoan;
         this.trangThai = trangThai;
+        this.loaiTaiKhoan = loaiTaiKhoan;
+        this.email = email;
     }
+    public TaiKhoan() {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTenTaiKhoan() {
@@ -44,14 +38,6 @@ public class TaiKhoan{
         this.matKhau = matKhau;
     }
 
-    public int getLoaiTaiKhoan() {
-        return loaiTaiKhoan;
-    }
-
-    public void setLoaiTaiKhoan(int loaiTaiKhoan) {
-        this.loaiTaiKhoan = loaiTaiKhoan;
-    }
-
     public int getTrangThai() {
         return trangThai;
     }
@@ -60,14 +46,19 @@ public class TaiKhoan{
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return "TaiKhoan{" +
-                "id=" + id +
-                ", tenTaiKhoan='" + tenTaiKhoan + '\'' +
-                ", matKhau='" + matKhau + '\'' +
-                ", loaiTaiKhoan=" + loaiTaiKhoan +
-                ", trangThai=" + trangThai +
-                '}';
+    public int getLoaiTaiKhoan() {
+        return loaiTaiKhoan;
+    }
+
+    public void setLoaiTaiKhoan(int loaiTaiKhoan) {
+        this.loaiTaiKhoan = loaiTaiKhoan;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
