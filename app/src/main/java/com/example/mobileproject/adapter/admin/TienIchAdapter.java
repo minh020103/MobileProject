@@ -22,18 +22,20 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
 
     ArrayList<TienIch> arrayList;
     Activity activity;
-    int layoutId;
+    int layoutId1;
 
+    int layoutId2;
    private OnClickListener onClickListener;
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 
-    public TienIchAdapter(ArrayList<TienIch> arrayList, Activity activity, int layoutId) {
+    public TienIchAdapter(ArrayList<TienIch> arrayList, Activity activity, int layoutId1, int layoutId2) {
         this.arrayList = arrayList;
         this.activity = activity;
-        this.layoutId = layoutId;
+        this.layoutId1 = layoutId1;
+        this.layoutId2 = layoutId2;
     }
 
     @NonNull
@@ -61,7 +63,6 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
                 }
                 }
         };
-
     }
 
     @Override
@@ -71,7 +72,10 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
 
     @Override
     public int getItemViewType(int position) {
-        return layoutId;
+        if(arrayList.get(position).getTrangThai()==1){
+            return layoutId2;
+        }
+        return layoutId1;
     }
 
     public interface OnClickListener{

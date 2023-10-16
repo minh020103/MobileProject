@@ -53,7 +53,7 @@ public class UtilitiesFragment extends AbstractFragment {
     }
     private void setDuLieu(){
         arrayList = new ArrayList<>();
-        tienIchAdapter = new TienIchAdapter(arrayList,getActivity(),R.layout.cardview_admin_utilities);
+        tienIchAdapter = new TienIchAdapter(arrayList,getActivity(),R.layout.cardview_admin_utilities,R.layout.cardview_admin_utilities_block);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -65,9 +65,7 @@ public class UtilitiesFragment extends AbstractFragment {
             public void onResponse(Call<ArrayList<TienIch>> call, Response<ArrayList<TienIch>> response) {
                 if(response.isSuccessful()){
                     for (TienIch tienIch: response.body()) {
-                        if(tienIch.getTrangThai()==1){
                             arrayList.add(tienIch);
-                        }
                     }
                 }
                 tienIchAdapter.notifyDataSetChanged();
@@ -82,7 +80,9 @@ public class UtilitiesFragment extends AbstractFragment {
             @Override
             public void onClickSua(int position, View view) {
 
+
                 Intent intent = new Intent(getContext(), EditUtilitiesActivity.class);
+                intent.putExtra("key",arrayList.get(position).getId());
                 startActivity(intent);
             }
         });

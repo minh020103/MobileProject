@@ -27,9 +27,17 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.RealPathUtil;
+import com.example.mobileproject.api.admin.ApiServiceNghiem;
 
 import java.io.File;
 import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddUtilitiesActivity extends AppCompatActivity {
     AppCompatImageView ic_back;
@@ -45,7 +53,7 @@ public class AddUtilitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_utilities);
         anhXa();
-
+        setSuKien();
     }
     private boolean kiemTra(EditText edtTenTienIch, Uri mUri){
         if(mUri!=null&&!edtTenTienIch.getText().toString().isEmpty()){
@@ -81,6 +89,22 @@ public class AddUtilitiesActivity extends AppCompatActivity {
     private void themTienIch(EditText edtTenTienIch, Uri mUri){
         String strRealPath = RealPathUtil.getRealPath(this,mUri);
         File file = new File(strRealPath);
+        String ten = edtTenTienIch.getText().toString();
+        RequestBody tenTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),ten);
+        RequestBody requestBodyImage = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        MultipartBody.Part mulPart = MultipartBody.Part.createFormData("hinh",file.getName(),requestBodyImage);
+        Call<Integer> call = ApiServiceNghiem.apiService.themTienIch(tenTienIch,mulPart);
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                thongBao("Up load thành công");
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                thongBao("Không Up được");
+            }
+        });
     }
 
     private void onClickRequestPermission(){
@@ -125,19 +149,21 @@ public class AddUtilitiesActivity extends AppCompatActivity {
             }
     );
     private void thongBao(String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddUtilitiesActivity.this);
         builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
+        builder.create();
+        builder.show();
     }
 
     private void anhXa(){
         ic_back = findViewById(R.id.icon_back);
         imageTienIch = findViewById(R.id.imgTienIch);
         edtTenTienIch = findViewById(R.id.editTenTienIch);
-        btnThemTienIch.findViewById(R.id.btnThemTienIch);
+        btnThemTienIch=findViewById(R.id.btnThemTienIch1);
     }
 }
