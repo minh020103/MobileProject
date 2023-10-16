@@ -20,6 +20,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.activity.admin.DetailPolicyActivity;
 import com.example.mobileproject.activity.admin.EditPasswordAdminActivity;
 import com.example.mobileproject.activity.admin.EditPolicyActivity;
 import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
@@ -53,7 +54,7 @@ public class ProfileFragment extends AbstractFragment{
         nextChinhSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EditPolicyActivity.class);
+                Intent intent = new Intent(getActivity(), DetailPolicyActivity.class);
                 startActivity(intent);
             }
         });
