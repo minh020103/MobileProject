@@ -2,6 +2,7 @@ package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.Banner;
+import com.example.mobileproject.datamodel.TaiKhoan;
 
 import java.util.List;
 
@@ -40,5 +41,8 @@ public interface ApiServivePhuc {
 
     @DELETE("api/banner/delete")
     Call<Integer> deleteBanner(@Query("id")int id);
+
+    @GET("api/kiemtradangnhap")
+    Call<TaiKhoan> login(@Query("tenTaiKhoan")String tenTaiKhoan, @Query("matKhau")String matKhau);
 
 }
