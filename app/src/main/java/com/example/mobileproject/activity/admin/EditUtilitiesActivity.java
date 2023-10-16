@@ -97,6 +97,22 @@ public class EditUtilitiesActivity extends AppCompatActivity {
                 }
             }
         });
+        btnKhoaTienIch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Call<Integer> call = ApiServiceNghiem.apiService.capNhatTrangThai(idTienIch);
+                call.enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        thongBao("Cập Nhật Thành Công");
+                    }
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+                        thongBao("Cập Nhật Thất Bại");
+                    }
+                });
+            }
+        });
     }
     private void layTrangThai(Integer trangThai){
         this.trangThai= trangThai;

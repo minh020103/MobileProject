@@ -34,7 +34,9 @@ public interface ApiServiceNghiem {
     @POST("api/capnhattienich")
     Call<Integer> capNhatTienIch(@Part("id") RequestBody id,@Part("ten") RequestBody ten,@Part("trangThai") RequestBody trangThai, @Part MultipartBody.Part hinh);
 
-    @PATCH("api/capnhattrangthai2")
+    @PATCH("api/capnhattienich2")
     Call<Integer> capNhatTienIch2(@Query("id") int id, @Query("ten") String ten,@Query("trangThai") int trangThai);
 
+    @PATCH("api/capnhattrangthaitienich")
+    Call<Integer> capNhatTrangThai(@Query("id") int id);
 }
