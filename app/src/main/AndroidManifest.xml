@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -15,12 +11,21 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.login.RegisterActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.login.LoginActivity" />
+        <activity
+            android:name=".activity.admin.AdminActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.admin.PakageDetailActivity"
             android:exported="false" />
@@ -36,7 +41,8 @@
         </activity>
         <activity
             android:name=".activity.admin.InfomationPackageRegisterActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.Design.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -49,7 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.admin.AdminActivity"
+            android:name=".activity.login.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,11 +67,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".activity.admin.PakageAddActivity"/>
-        <activity android:name=".activity.admin.PakageEditActivity"/>
-        <activity android:name=".activity.admin.EditPolicyActivity"/>
-        <activity android:name=".activity.admin.EditProfileAdminActivity"/>
-        <activity android:name=".activity.admin.EditPasswordAdminActivity"/>
+        <activity android:name=".activity.admin.EditPolicyActivity" />
+        <activity android:name=".activity.admin.EditProfileAdminActivity" />
+        <activity android:name=".activity.admin.EditPasswordAdminActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
