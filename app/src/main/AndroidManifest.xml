@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -18,6 +16,13 @@
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".activity.admin.ListWardActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".activity.admin.PakageDetailActivity"
             android:exported="false" />
@@ -58,14 +63,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".activity.admin.EditPolicyActivity"/>
-        <activity android:name=".activity.admin.EditProfileAdminActivity"/>
-        <activity android:name=".activity.admin.EditPasswordAdminActivity"/>
-        <activity android:name=".activity.admin.EditUtilitiesActivity"/>
-        <activity android:name=".activity.admin.AddUtilitiesActivity"/>
-        <activity android:name=".activity.admin.EditDistrictActivity"/>
-        <activity android:name=".activity.admin.AddDistrictActivity"/>
+        <activity android:name=".activity.admin.EditPolicyActivity" />
+        <activity android:name=".activity.admin.EditProfileAdminActivity" />
+        <activity android:name=".activity.admin.EditPasswordAdminActivity" />
+        <activity android:name=".activity.admin.EditUtilitiesActivity" />
+        <activity android:name=".activity.admin.AddUtilitiesActivity" />
+        <activity android:name=".activity.admin.EditDistrictActivity" />
+        <activity android:name=".activity.admin.AddDistrictActivity" />
     </application>
 
 </manifest>

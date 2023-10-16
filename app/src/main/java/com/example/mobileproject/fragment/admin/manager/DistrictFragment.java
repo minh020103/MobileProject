@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddDistrictActivity;
 import com.example.mobileproject.activity.admin.EditDistrictActivity;
+import com.example.mobileproject.activity.admin.ListWardActivity;
 import com.example.mobileproject.adapter.admin.QuanAdapter;
 import com.example.mobileproject.datamodel.Quan;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,7 +44,8 @@ public class DistrictFragment extends AbstractFragment {
         quanAdapter.setOnClickListener(new QuanAdapter.OnClickListener() {
             @Override
             public void onClickXem(int position, View view) {
-
+                Intent intent = new Intent(getContext(), ListWardActivity.class);
+                startActivity(intent);
             }
 
             @Override
