@@ -65,7 +65,7 @@ public class YeuCauXacThuc {
     }
     @Override
     public String toString() {
-        return "ThongTinXacThucCuaChuTro{" +
+        return "YeuCauXacThuc{" +
                 "id=" + id +
                 ", idChuTro=" + idChuTro +
                 ", cccdMatTruoc='" + cccdMatTruoc + '\'' +
