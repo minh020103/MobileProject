@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.admin.ListWardActivity">
+    tools:context=".activity.admin.ListWardActivity"
+    android:background="@color/gray">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbXacNhanTaiKhoan"
@@ -42,8 +43,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvWard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/gray"/>
     </LinearLayout>
+
+    <include layout="@layout/admin_buttom_sheet_layout"/>
+
+
 
 
 </LinearLayout>

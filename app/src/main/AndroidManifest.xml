@@ -22,6 +22,9 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+            <intent-filter>
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.admin.PakageDetailActivity"
