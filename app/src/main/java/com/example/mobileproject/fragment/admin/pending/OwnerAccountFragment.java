@@ -2,6 +2,8 @@ package com.example.mobileproject.fragment.admin.pending;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.InfomationConfirmMotelRoomOwner;
-import com.example.mobileproject.datamodel.TaiKhoan;
+import com.example.mobileproject.api.admin.ApiServiceMinh;
 import com.example.mobileproject.datamodel.YeuCauXacThuc;
 import com.example.mobileproject.recycerviewadapter.admin.PendingOwnerAccountAdapter;
 import com.example.mobileproject.datamodel.ChuTro;
@@ -21,11 +23,17 @@ import com.example.mobileproject.datamodel.ChuTro;
 import java.util.LinkedList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class OwnerAccountFragment extends AbstractFragment {
     private RecyclerView rcvAccountOwner;
     private PendingOwnerAccountAdapter adapter;
     private LinearLayoutManager layoutManager;
-    private List<ChuTro> listChuTro;
+    private List<YeuCauXacThuc> listYeuCauXacThuc;
+    Handler handler;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,20 +45,39 @@ public class OwnerAccountFragment extends AbstractFragment {
         suLi();
 
 
+        return fragmentLayout;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        callAPI();
+
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                callAPI();
+                handler.postDelayed(this, 3000);
+            }
+        }, 3000);
+
+
         adapter.setOnClickItemListener(new PendingOwnerAccountAdapter.OnClickItemListener() {
             @Override
             public void onClick(int position, View view) {
                 Intent intent = new Intent(getActivity(), InfomationConfirmMotelRoomOwner.class);
+                intent.putExtra("idChuTro", listYeuCauXacThuc.get(position).getChuTro().getId());
+                Log.d("TAG", "idChuTro: "+listYeuCauXacThuc.get(position).getChuTro().getId());
                 startActivity(intent);
             }
         });
-
-        return fragmentLayout;
     }
 
     private void suLi() {
-        listChuTro.add(new ChuTro(1,1,"jj","add","0345",1,"hjjwtu","uegiurigu", 1, new YeuCauXacThuc(1, 1, "qừqwef", "ădawdasd", 1), new TaiKhoan(1, "kawdasd", "uisdfsdf", 1, 1)));
-        adapter = new PendingOwnerAccountAdapter(getActivity(), R.layout.cardview_admin_pending_owner_account_layout, listChuTro);
+        adapter = new PendingOwnerAccountAdapter(getActivity(), R.layout.cardview_admin_pending_owner_account_layout, listYeuCauXacThuc);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         rcvAccountOwner.setLayoutManager(layoutManager);
@@ -59,8 +86,29 @@ public class OwnerAccountFragment extends AbstractFragment {
     }
 
     private void anhXa(View fragmentLayout) {
+        handler = new Handler();
         rcvAccountOwner = fragmentLayout.findViewById(R.id.rcvAccountOwner);
-        listChuTro = new LinkedList<>();
+        listYeuCauXacThuc = new LinkedList<>();
+    }
+
+
+    private void callAPI() {
+        ApiServiceMinh.apiService.layTatCaYeuCauXacThuc().enqueue(new Callback<List<YeuCauXacThuc>>() {
+            @Override
+            public void onResponse(Call<List<YeuCauXacThuc>> call, Response<List<YeuCauXacThuc>> response) {
+                if (response.code() == 200) {
+                    listYeuCauXacThuc.clear();
+                    listYeuCauXacThuc.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<YeuCauXacThuc>> call, Throwable t) {
+
+            }
+        });
+
 
     }
 }

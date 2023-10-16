@@ -1,15 +1,13 @@
 package com.example.mobileproject.datamodel;
 
-import com.google.gson.annotations.SerializedName;
-
-public class GoiDichVu {
+public class Goi {
     private int id;
     private int thoiHan;
     private int soLuongPhongToiDa;
     private int gia;
     private int trangThai;
 
-    public GoiDichVu(int id, int thoiHan, int soLuongPhongToiDa, int gia, int trangThai) {
+    public Goi(int id, int thoiHan, int soLuongPhongToiDa, int gia, int trangThai) {
         this.id = id;
         this.thoiHan = thoiHan;
         this.soLuongPhongToiDa = soLuongPhongToiDa;

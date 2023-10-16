@@ -1,6 +1,5 @@
 package com.example.mobileproject.datamodel;
 
-
 public class YeuCauXacThuc {
     private int id;
     private int idChuTro;
@@ -8,13 +7,7 @@ public class YeuCauXacThuc {
     private String cccdMatSau;
     private int trangThaiXacThuc;
 
-    public YeuCauXacThuc(int id, int idChuTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
-        this.id = id;
-        this.idChuTro = idChuTro;
-        this.cccdMatTruoc = cccdMatTruoc;
-        this.cccdMatSau = cccdMatSau;
-        this.trangThaiXacThuc = trangThaiXacThuc;
-    }
+    private ChuTro chuTro;
 
     public int getId() {
         return id;
@@ -56,6 +49,20 @@ public class YeuCauXacThuc {
         this.trangThaiXacThuc = trangThaiXacThuc;
     }
 
+    public ChuTro getChuTro() {
+        return chuTro;
+    }
+
+    public void setChuTro(ChuTro chuTro) {
+        this.chuTro = chuTro;
+    }
+    public YeuCauXacThuc(int id, int idChuTro, String cccdMatTruoc, String cccdMatSau, int trangThaiXacThuc) {
+        this.id = id;
+        this.idChuTro = idChuTro;
+        this.cccdMatTruoc = cccdMatTruoc;
+        this.cccdMatSau = cccdMatSau;
+        this.trangThaiXacThuc = trangThaiXacThuc;
+    }
     @Override
     public String toString() {
         return "YeuCauXacThuc{" +

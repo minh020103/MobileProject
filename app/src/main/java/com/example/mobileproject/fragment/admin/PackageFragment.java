@@ -19,7 +19,7 @@ import com.example.mobileproject.activity.admin.PakageDetailActivity;
 import com.example.mobileproject.adapter.admin.GoiDichVuAdapter;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.Goi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class PackageFragment extends AbstractFragment{
     RecyclerView recyclerView;
-    List<GoiDichVu> list;
+    List<Goi> list;
     GoiDichVuAdapter goiDichVuAdapter;
     LinearLayoutManager layoutManager;
     @Nullable
@@ -62,9 +62,9 @@ public class PackageFragment extends AbstractFragment{
 
     private void ListPakageAPI()
     {
-        ApiServiceKiet.apiServiceKiet.getListPakageAPI().enqueue(new Callback<List<GoiDichVu>>() {
+        ApiServiceKiet.apiServiceKiet.getListPakageAPI().enqueue(new Callback<List<Goi>>() {
             @Override
-            public void onResponse(Call<List<GoiDichVu>> call, Response<List<GoiDichVu>> response) {
+            public void onResponse(Call<List<Goi>> call, Response<List<Goi>> response) {
                 list = response.body();
                 goiDichVuAdapter = new GoiDichVuAdapter(getActivity(), list, R.layout.cardview_admin_package_layout);
                 recyclerView.setAdapter(goiDichVuAdapter);
@@ -79,7 +79,7 @@ public class PackageFragment extends AbstractFragment{
             }
 
             @Override
-            public void onFailure(Call<List<GoiDichVu>> call, Throwable t) {
+            public void onFailure(Call<List<Goi>> call, Throwable t) {
 
             }
         });
