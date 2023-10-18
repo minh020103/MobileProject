@@ -1,5 +1,7 @@
 package com.example.mobileproject.activity.admin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,12 +52,22 @@ public class EditPolicyActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ChinhSach> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Loi", Toast.LENGTH_SHORT).show();
+                thongBao("ERROR!");
             }
         });
     }
 
+    private void thongBao(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setPositiveButton("OKE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        builder.create();
+        builder.show();
+    }
     private void setSuKienCapNhat(EditText editText){
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +78,12 @@ public class EditPolicyActivity extends AppCompatActivity {
                     call.enqueue(new Callback<Integer>() {
                         @Override
                         public void onResponse(Call<Integer> call, Response<Integer> response) {
-                            Toast.makeText(getApplicationContext(),"Thành Công", Toast.LENGTH_SHORT).show();
+                           thongBao("Cập Nhật Thành Công!");
                         }
 
                         @Override
                         public void onFailure(Call<Integer> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(),"Sai", Toast.LENGTH_SHORT).show();
+                        thongBao("Lỗi!");
                         }
                     });
                 }
