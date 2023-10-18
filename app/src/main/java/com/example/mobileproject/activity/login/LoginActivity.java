@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvRegister,tvErrorUsnPass, tvErrorEmpty,tvErrorMissing;
 
+    ProgressBar progLoading;
 
     String userName, passWord;
 
@@ -46,11 +48,13 @@ public class LoginActivity extends AppCompatActivity {
         tvErrorUsnPass = findViewById(R.id.tv_error_usn_pass);
         tvErrorEmpty = findViewById(R.id.tv_error_empty);
         tvErrorMissing = findViewById(R.id.tv_error_missing_charter);
+        progLoading = findViewById(R.id.loading);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progLoading.setVisibility(View.VISIBLE);
                 checkLogin();
             }
         });
@@ -65,11 +69,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkLogin() {
+
         userName = edtUsername.getText().toString();
         passWord = edtPassWord.getText().toString();
         if (userName.isEmpty() || passWord.isEmpty()) {
+            progLoading.setVisibility(View.GONE);
+            tvErrorMissing.setVisibility(View.GONE);
+            tvErrorUsnPass.setVisibility(View.GONE);
             tvErrorEmpty.setVisibility(View.VISIBLE);
         } else if(userName.length() < 6 || passWord.length() < 6) {
+            progLoading.setVisibility(View.GONE);
+            tvErrorUsnPass.setVisibility(View.GONE);
             tvErrorEmpty.setVisibility(View.GONE);
             tvErrorMissing.setVisibility(View.VISIBLE);
         } else {
@@ -82,10 +92,12 @@ public class LoginActivity extends AppCompatActivity {
         login.enqueue(new Callback<TaiKhoan>() {
             @Override
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
+                progLoading.setVisibility(View.GONE);
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
             }
             @Override
             public void onFailure(Call<TaiKhoan> call, Throwable t) {
+                progLoading.setVisibility(View.GONE);
                 tvErrorEmpty.setVisibility(View.GONE);
                 tvErrorMissing.setVisibility(View.GONE);
                 tvErrorUsnPass.setVisibility(View.VISIBLE);

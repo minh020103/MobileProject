@@ -117,7 +117,6 @@
         android:layout_below="@+id/edt_password"
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
-
 <!--    <com.google.android.material.button.MaterialButton-->
 <!--        android:id="@+id/btn_register"-->
 <!--        android:layout_width="@dimen/width_btn_dang_nhap"-->
