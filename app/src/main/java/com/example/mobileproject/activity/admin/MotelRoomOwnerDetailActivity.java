@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
 import com.example.mobileproject.datamodel.ChuTro;
@@ -106,14 +107,14 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
                 ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(host.getHinh()).into(imgChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getHinh()).into(imgChuTroChiTiet);
                 tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
                 tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
-                Glide.with(getApplicationContext()).load(host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
-                Glide.with(getApplicationContext()).load(host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
                 if (host.getXacThuc() == 1)
                 {
                     tvXacThucChuTroChiTiet.setText("Đã xác thực");

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChuTro data = list.get(position);
-        Glide.with(activity.getLayoutInflater().getContext()).load(list.get(position).getHinh()).into(holder.imgChuTro);
+        Glide.with(activity.getLayoutInflater().getContext()).load(Const.DOMAIN + list.get(position).getHinh()).into(holder.imgChuTro);
         holder.tvTenChuTro.setText(data.getTen());
         holder.tvSDTChuTro.setText(data.getSoDienThoai());
 //        if (data.getTaiKhoan().getTrangThai() == 1)
