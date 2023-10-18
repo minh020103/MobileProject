@@ -28,6 +28,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
 import com.example.mobileproject.RealPathUtil;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.Admin;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -201,7 +202,7 @@ public class EditProfileAdminActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Admin> call, Response<Admin> response) {
                 Admin admin = response.body();
-                Glide.with(EditProfileAdminActivity.this).load("http://192.168.190.1/3t/laravel/public/"+admin.getHinh()).into(imgAdmin);
+                Glide.with(EditProfileAdminActivity.this).load(Const.DOMAIN +admin.getHinh()).into(imgAdmin);
                 edtTenAdmin.setText(admin.getTen());
                 edtSdtAdmin.setText(admin.getSoDienThoai());
                 edtSTKAdmin.setText(admin.getSoTaiKhoanNganHang());
