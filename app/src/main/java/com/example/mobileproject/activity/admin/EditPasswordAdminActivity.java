@@ -116,6 +116,8 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(matKhauMoi.equals(xacNhan)){
                     capNhatMatKhauMoi(matKhauMoi);
+
+
                 }
                 else{
                     thongBao("Mat Khau Moi Khong Trung Voi Xac Nhan Mat Khau");
