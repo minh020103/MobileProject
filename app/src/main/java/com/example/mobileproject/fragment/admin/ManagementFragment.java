@@ -56,15 +56,5 @@ public class ManagementFragment extends AbstractFragment {
         return fragmentLayout;
     }
 
-//    private List<Banner> getListBanner() {
-//        List<Banner> list = new ArrayList<>();
-//        list.add(new Banner(1, R.drawable.banner1, "Hinh 1"));
-//        list.add(new Banner(2, R.drawable.banner2, "Hinh 2"));
-//        list.add(new Banner(3, R.drawable.banner3, "Hinh 3"));
-//        list.add(new Banner(4, R.drawable.banner4, "Hinh 4"));
-//
-//        return list;
-//    }
-
 
 }

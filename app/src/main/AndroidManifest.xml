@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -73,7 +74,13 @@
         <activity android:name=".activity.admin.EditPolicyActivity" />
         <activity android:name=".activity.admin.EditProfileAdminActivity" />
         <activity android:name=".activity.admin.EditPasswordAdminActivity" />
-
+        <activity android:name=".activity.admin.DetailPolicyActivity"/>
+        <activity
+            android:name=".activity.admin.Edit_Delete_BannerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.AddBannerActivity"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

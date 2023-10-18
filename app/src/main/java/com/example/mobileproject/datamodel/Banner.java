@@ -2,13 +2,11 @@ package com.example.mobileproject.datamodel;
 
 public class Banner {
     private int id;
-    private int resourceId;
-    private String name;
+    private String hinhBanner;
 
-    public Banner(int id, int resourceId, String name) {
+    public Banner(int id, String hinhBanner) {
         this.id = id;
-        this.resourceId = resourceId;
-        this.name = name;
+        this.hinhBanner = hinhBanner;
     }
 
     public int getId() {
@@ -19,19 +17,11 @@ public class Banner {
         this.id = id;
     }
 
-    public int getResourceId() {
-        return resourceId;
+    public String getHinhBanner() {
+        return hinhBanner;
     }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setHinhBanner(String hinhBanner) {
+        this.hinhBanner = hinhBanner;
     }
 }
