@@ -66,16 +66,16 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
                     FindMotelRoomOwnerByNameAPI(key);
                     FindMotelRoomOwnerByPhoneAPI(key);
 
-                    Toast.makeText(getActivity(), "size: "+ list.size(), Toast.LENGTH_SHORT).show();
-                    if (list.size() == 0)
-                    {
-                        new AlertDialog.Builder(getActivity()).setMessage("Không tìm thấy giá trị với từ khóa đã nhập").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                edtTimKiemChuTro.setText("");
-                            }
-                        }).show();
-                    }
+//                    Toast.makeText(getActivity(), "size: "+ list.size(), Toast.LENGTH_SHORT).show();
+//                    if (list.size() == 0)
+//                    {
+//                        new AlertDialog.Builder(getActivity()).setMessage("Không tìm thấy giá trị với từ khóa đã nhập").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                edtTimKiemChuTro.setText("");
+//                            }
+//                        }).show();
+//                    }
                 }
             }
         });

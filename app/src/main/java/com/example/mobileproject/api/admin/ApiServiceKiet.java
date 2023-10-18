@@ -1,5 +1,6 @@
 package com.example.mobileproject.api.admin;
 
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
 import com.example.mobileproject.datamodel.Goi;
 import com.example.mobileproject.datamodel.TaiKhoan;
@@ -25,37 +26,37 @@ public interface ApiServiceKiet {
 
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.28/API_ChuyenDe_12/laravel/public/api/")
+                .baseUrl(Const.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiServiceKiet.class);
 
     /* Host */
-    @GET("chutro/daxacthuc")
+    @GET("api/chutro/daxacthuc")
     Call<List<ChuTro>> getListHostAPI();
-    @GET("chutro/chitiet")
+    @GET("api/chutro/chitiet")
     Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
-    @GET("chutro/timKiemTenChuTroXacThuc")
+    @GET("api/chutro/timKiemTenChuTroXacThuc")
     Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
-    @GET("chutro/timKiemSDTChuTroXacThuc")
+    @GET("api/chutro/timKiemSDTChuTroXacThuc")
     Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
 
     /* Account */
-    @PATCH("capnhattrangthai")
+    @PATCH("api/capnhattrangthai")
     Call<Integer> thayDoiTrangThaiTaiKhoan(@Query("id") int id);
 
     /* Pakage */
-    @GET("goi/all")
+    @GET("api/goi/all")
     Call<List<Goi>> getListPakageAPI();
-    @GET("goi/chitiet")
+    @GET("api/goi/chitiet")
     Call<Goi> getPakageByIdAPI(@Query("id") int id);
-    @GET("goi/lock")
+    @GET("api/goi/lock")
     Call<Goi> lockPakageByIdAPI(@Query("id") int id);
-    @GET("goi/unLock")
+    @GET("api/goi/unLock")
     Call<Goi> unLockPakageByIdAPI(@Query("id") int id);
-    @POST("goi/add")
+    @POST("api/goi/add")
     Call<Goi> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
-    @PUT("goi/update")
+    @PUT("api/goi/update")
     Call<Goi> updatePakage(@Query("id") int id,@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
 
 
