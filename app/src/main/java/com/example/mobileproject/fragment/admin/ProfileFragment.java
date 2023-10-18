@@ -24,6 +24,7 @@ import com.example.mobileproject.activity.admin.DetailPolicyActivity;
 import com.example.mobileproject.activity.admin.EditPasswordAdminActivity;
 import com.example.mobileproject.activity.admin.EditPolicyActivity;
 import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
+import com.example.mobileproject.activity.login.LoginActivity;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.Admin;
@@ -39,6 +40,7 @@ public class ProfileFragment extends AbstractFragment{
     LinearLayout nextChinhSach;
     LinearLayout nextDoiThongTin;
     LinearLayout nextDoiMatKhau;
+    LinearLayout dangXuat;
 
     RoundedImageView imgAdmin;
     TextView tenAdmin;
@@ -73,6 +75,12 @@ public class ProfileFragment extends AbstractFragment{
                 startActivity(intent);
             }
         });
+        dangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
 
 
         return fragmentLayout;
@@ -100,6 +108,7 @@ public class ProfileFragment extends AbstractFragment{
         nextChinhSach = fragment.findViewById(R.id.nextDoiChinhSach);
         nextDoiThongTin = fragment.findViewById(R.id.nextSuaThongTin);
         nextDoiMatKhau = fragment.findViewById(R.id.nextDoiMK);
+        dangXuat = fragment.findViewById(R.id.dangXuat);
         imgAdmin = fragment.findViewById(R.id.imgAdmin);
         tenAdmin = fragment.findViewById(R.id.tenAdmin);
         sdtAdmin = fragment.findViewById(R.id.sdtAdmin);
