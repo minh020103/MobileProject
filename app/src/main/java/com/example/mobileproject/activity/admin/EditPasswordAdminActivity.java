@@ -61,7 +61,7 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
                     if(kiemTraMKHienTai(matKhauHienTai,response.body().getMatKhau())){
                         /// Tiến Hành Đổi Mật Khẩu ở đây
-                        thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString());
+                        thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString(), xacNhanMKMoi.getText().toString());
                     }else{
                         thongBao("Mật Khẩu Hiện Tại Sai!");
                     }
@@ -74,8 +74,8 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
         });
     }
 
-    private boolean kiemTraMKHienTai(EditText matKhauHienTai, String matKhauHientai){
-        if(matKhauHienTai.getText().toString().equals(matKhauHientai)){
+    private boolean kiemTraMKHienTai(EditText matKhauHienTaie, String matKhauHientai){
+        if(matKhauHienTaie.getText().toString().equals(matKhauHientai)){
             return true;
         }
         return false;
@@ -109,12 +109,20 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
         builder.create();
         builder.show();
     }
-    private void thongBaoYesNo(String message, String matKhauMoi){
+    private void thongBaoYesNo(String message, String matKhauMoi, String xacNhan){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message).setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                capNhatMatKhauMoi(matKhauMoi);
+                if(matKhauMoi.equals(xacNhan)){
+                    capNhatMatKhauMoi(matKhauMoi);
+
+
+                }
+                else{
+                    thongBao("Mat Khau Moi Khong Trung Voi Xac Nhan Mat Khau");
+                }
+
             }
         }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
