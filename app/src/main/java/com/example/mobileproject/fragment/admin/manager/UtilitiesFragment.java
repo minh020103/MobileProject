@@ -58,17 +58,15 @@ public class UtilitiesFragment extends AbstractFragment {
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tienIchAdapter);
-
         Call<ArrayList<TienIch>> call = ApiServiceNghiem.apiService.layTatCaTienIch();
         call.enqueue(new Callback<ArrayList<TienIch>>() {
             @Override
             public void onResponse(Call<ArrayList<TienIch>> call, Response<ArrayList<TienIch>> response) {
                 if(response.isSuccessful()){
-                    for (TienIch tienIch: response.body()) {
-                            arrayList.add(tienIch);
-                    }
+                    arrayList.addAll(response.body());
+                    tienIchAdapter.notifyDataSetChanged();
                 }
-                tienIchAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -79,8 +77,6 @@ public class UtilitiesFragment extends AbstractFragment {
         tienIchAdapter.setOnClickListener(new TienIchAdapter.OnClickListener() {
             @Override
             public void onClickSua(int position, View view) {
-
-
                 Intent intent = new Intent(getContext(), EditUtilitiesActivity.class);
                 intent.putExtra("key",arrayList.get(position).getId());
                 startActivity(intent);

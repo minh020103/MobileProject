@@ -104,11 +104,11 @@ public class EditUtilitiesActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Integer>() {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        thongBao("Cập Nhật Thành Công");
+                        thongBao("Cập Nhật Thành Công " );
                     }
                     @Override
                     public void onFailure(Call<Integer> call, Throwable t) {
-                        thongBao("Cập Nhật Thất Bại");
+                        thongBao("Cập Nhật Thất Bại" );
                     }
                 });
             }

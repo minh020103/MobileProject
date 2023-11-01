@@ -26,7 +26,7 @@ public interface ApiServiceNghiem {
     Call<ArrayList<TienIch>> layTatCaTienIch();
     @Multipart
     @POST("api/themtienich")
-    Call<Integer> themTienIch(@Part("ten") RequestBody ten, @Part MultipartBody.Part hinh);
+    Call<TienIch> themTienIch(@Part("ten") RequestBody ten, @Part MultipartBody.Part hinh);
 
     @GET("api/laytienichtheoid")
     Call<TienIch> layTienIchTheoId(@Query("id") int id);

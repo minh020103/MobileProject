@@ -28,6 +28,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.example.mobileproject.R;
 import com.example.mobileproject.RealPathUtil;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
+import com.example.mobileproject.datamodel.TienIch;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,16 +94,16 @@ public class AddUtilitiesActivity extends AppCompatActivity {
         RequestBody tenTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),ten);
         RequestBody requestBodyImage = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part mulPart = MultipartBody.Part.createFormData("hinh",file.getName(),requestBodyImage);
-        Call<Integer> call = ApiServiceNghiem.apiService.themTienIch(tenTienIch,mulPart);
-        call.enqueue(new Callback<Integer>() {
+        Call<TienIch> call = ApiServiceNghiem.apiService.themTienIch(tenTienIch,mulPart);
+        call.enqueue(new Callback<TienIch>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                thongBao("Up load thành công");
+            public void onResponse(Call<TienIch> call, Response<TienIch> response) {
+                thongBao("Cập Nhật Thành Công!");
             }
 
             @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                thongBao("Không Up được");
+            public void onFailure(Call<TienIch> call, Throwable t) {
+                thongBao("Cập Nhật Thất Bại");
             }
         });
     }
