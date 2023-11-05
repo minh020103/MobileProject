@@ -80,6 +80,7 @@ public class AddUtilitiesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(kiemTra(edtTenTienIch,mUri)){
                     themTienIch(edtTenTienIch,mUri);
+
                 }else{
                     thongBao("Thiếu Ảnh Hoặc Tên Tiện Ích");
                 }
@@ -94,18 +95,18 @@ public class AddUtilitiesActivity extends AppCompatActivity {
         RequestBody tenTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),ten);
         RequestBody requestBodyImage = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part mulPart = MultipartBody.Part.createFormData("hinh",file.getName(),requestBodyImage);
-        Call<TienIch> call = ApiServiceNghiem.apiService.themTienIch(tenTienIch,mulPart);
-        call.enqueue(new Callback<TienIch>() {
-            @Override
-            public void onResponse(Call<TienIch> call, Response<TienIch> response) {
-                thongBao("Cập Nhật Thành Công!");
-            }
+       Call<TienIch> call = ApiServiceNghiem.apiService.themTienIch(tenTienIch,mulPart);
+       call.enqueue(new Callback<TienIch>() {
+           @Override
+           public void onResponse(Call<TienIch> call, Response<TienIch> response) {
+               thongBao("Them Tien Ich Thanh Cong");
+           }
 
-            @Override
-            public void onFailure(Call<TienIch> call, Throwable t) {
-                thongBao("Cập Nhật Thất Bại");
-            }
-        });
+           @Override
+           public void onFailure(Call<TienIch> call, Throwable t) {
+                thongBao("That Bai");
+           }
+       });
     }
 
     private void onClickRequestPermission(){

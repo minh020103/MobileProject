@@ -144,7 +144,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                thongBao(call.request().toString());
+                thongBao("Cap Nhat Thanh COng");
             }
 
             @Override
@@ -189,6 +189,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
                         try{
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
                             imgTienIch.setImageBitmap(bitmap);
+
                         }catch (IOException e){
                             e.printStackTrace();
                         }

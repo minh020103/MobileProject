@@ -3,13 +3,7 @@ package com.example.mobileproject.datamodel;
 public class TienIch {
     private int id;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     private String ten;
     private String hinh;
@@ -23,6 +17,13 @@ public class TienIch {
     }
     public TienIch() {
 
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTen() {

@@ -91,7 +91,6 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
                 super(itemView);
                 imageView= itemView.findViewById(R.id.imgTienIch);
                 textView = itemView.findViewById(R.id.tenTienIch);
-
                 textView.setOnClickListener(this);
             }
 
