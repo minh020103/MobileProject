@@ -32,7 +32,7 @@ public class OwnerAccountFragment extends AbstractFragment {
     private PendingOwnerAccountAdapter adapter;
     private LinearLayoutManager layoutManager;
     private List<YeuCauXacThuc> listYeuCauXacThuc;
-    Handler handler;
+//    Handler handler;
 
     @Nullable
     @Override
@@ -56,13 +56,13 @@ public class OwnerAccountFragment extends AbstractFragment {
         callAPI();
 
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 callAPI();
-                handler.postDelayed(this, 3000);
-            }
-        }, 3000);
+//                handler.postDelayed(this, 3000);
+//            }
+//        }, 3000);
 
 
         adapter.setOnClickItemListener(new PendingOwnerAccountAdapter.OnClickItemListener() {
@@ -86,7 +86,7 @@ public class OwnerAccountFragment extends AbstractFragment {
     }
 
     private void anhXa(View fragmentLayout) {
-        handler = new Handler();
+//        handler = new Handler();
         rcvAccountOwner = fragmentLayout.findViewById(R.id.rcvAccountOwner);
         listYeuCauXacThuc = new LinkedList<>();
     }

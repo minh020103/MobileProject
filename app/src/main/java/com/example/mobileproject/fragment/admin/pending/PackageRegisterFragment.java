@@ -35,7 +35,7 @@ public class PackageRegisterFragment extends AbstractFragment {
     private PendingPackageAdapter adapter;
     private LinearLayoutManager layoutManager;
     private List<YeuCauDangKyGoi> list;
-    Handler handler;
+//    Handler handler;
 
     @Nullable
     @Override
@@ -43,10 +43,10 @@ public class PackageRegisterFragment extends AbstractFragment {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_pending_package_register_layout, container, false);
 
-        handler = new Handler();
+//        handler = new Handler();
         anhXa(fragmentLayout);
 
-        getDataFromAPI();
+//        getDataFromAPI();
 
         clickItem();
 
@@ -56,14 +56,13 @@ public class PackageRegisterFragment extends AbstractFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getDataFromAPI();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 getDataFromAPI();
-                handler.postDelayed(this, 3000);
-            }
-        }, 3000);
+//                handler.postDelayed(this, 3000);
+//            }
+//        }, 3000);
 
     }
 

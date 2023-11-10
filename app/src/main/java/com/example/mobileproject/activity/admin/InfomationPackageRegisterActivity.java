@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -87,15 +88,22 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
         ApiServiceMinh.apiService.layChiTietYeuCauDangKyGoi(idYeuCauDangKyGoi).enqueue(new Callback<YeuCauDangKyGoi>() {
             @Override
             public void onResponse(Call<YeuCauDangKyGoi> call, Response<YeuCauDangKyGoi> response) {
-                tvTen.setText(response.body().getChuTro().getTen());
-                tvSDT.setText(response.body().getChuTro().getSoDienThoai());
-                tvIDGoi.setText("#" + response.body().getGoi().getId());
-                tvTen.setText(response.body().getChuTro().getTen());
-                tvSoPhong.setText(response.body().getGoi().getSoLuongPhongToiDa()+"");
-                tvThoiGian.setText(response.body().getGoi().getThoiHan()+"");
-                tvGia.setText(response.body().getGoi().getThoiHan()+"");
-                Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN+response.body().getHinhAnhChuyenKhoan()).into(imgCK);
-                batSuKienCanDuLieu(response.body().getId());
+
+
+                if (response.code() == 200){
+                    if (response.body() != null){
+                        tvTen.setText(response.body().getChuTro().getTen());
+                        tvSDT.setText(response.body().getChuTro().getSoDienThoai());
+                        tvIDGoi.setText("#" + response.body().getGoi().getId());
+                        tvTen.setText(response.body().getChuTro().getTen());
+                        tvSoPhong.setText(response.body().getGoi().getSoLuongPhongToiDa()+"");
+                        tvThoiGian.setText(response.body().getGoi().getThoiHan()+"");
+                        tvGia.setText(response.body().getGoi().getThoiHan()+"");
+                        Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN+response.body().getHinhAnhChuyenKhoan()).into(imgCK);
+                        batSuKienCanDuLieu(response.body().getId());
+                    }
+                }
+
             }
 
             @Override
