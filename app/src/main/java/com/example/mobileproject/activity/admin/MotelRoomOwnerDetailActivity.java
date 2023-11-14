@@ -66,7 +66,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         imgCccdMatTruocChuTroChiTiet = findViewById(R.id.cccdMatTruocChuTroChiTiet);
         imgCccdMatSauChuTroChiTiet = findViewById(R.id.cccdMatSauChuTroChiTiet);
 
-        btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
         btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
         btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
 
@@ -113,8 +112,33 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
-                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
-                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+                if (host.getYeuCauXacThuc() != null)
+                {
+                    if (host.getYeuCauXacThuc().getCccdMatTruoc() != null)
+                    {
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                    }
+                    else
+                    {
+                        imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    }
+                    if (host.getYeuCauXacThuc().getCccdMatSau() != null)
+                    {
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+
+                    }
+                    else
+                    {
+                        imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    }
+                }
+                else
+                {
+                    imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+
+                }
+
                 if (host.getXacThuc() == 1)
                 {
                     tvXacThucChuTroChiTiet.setText("Đã xác thực");
