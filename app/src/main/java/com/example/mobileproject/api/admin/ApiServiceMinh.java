@@ -57,4 +57,6 @@ public interface ApiServiceMinh {
 
     @DELETE("api/phongtro/delete")
     Call<Integer> xacNhanYeuCauXoaPhong(@Query("id") int idPhong);
+    @GET("api/notification/number")
+    Call<Integer> demTongSoThongBao();
 }

@@ -48,8 +48,7 @@
         </activity>
         <activity
             android:name=".activity.admin.InfomationPackageRegisterActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -33,7 +33,6 @@ public class MotelRoomDeleteFragment extends AbstractFragment {
     private PendingMotelRoomAdapter adapter;
     private LinearLayoutManager layoutManager;
     private List<YeuCauXoaPhong> list;
-    private Handler handler;
 
     @Nullable
     @Override
@@ -41,7 +40,6 @@ public class MotelRoomDeleteFragment extends AbstractFragment {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_pending_motel_room_delete_layout, container, false);
 
-        handler = new Handler();
 
         anhXa(fragmentLayout);
         
@@ -56,13 +54,6 @@ public class MotelRoomDeleteFragment extends AbstractFragment {
     public void onResume() {
         super.onResume();
         getDataFromAPI();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getDataFromAPI();
-                handler.postDelayed(this,3000);
-            }
-        }, 3000);
     }
 
     private void getDataFromAPI() {

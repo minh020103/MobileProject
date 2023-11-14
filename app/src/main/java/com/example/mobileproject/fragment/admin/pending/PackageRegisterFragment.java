@@ -1,26 +1,27 @@
 package com.example.mobileproject.fragment.admin.pending;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.activity.admin.InfomationConfirmMotelRoomOwner;
 import com.example.mobileproject.activity.admin.InfomationPackageRegisterActivity;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
-import com.example.mobileproject.datamodel.DangKyDichVu;
 import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
 import com.example.mobileproject.recycerviewadapter.admin.PendingPackageAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +36,9 @@ public class PackageRegisterFragment extends AbstractFragment {
     private PendingPackageAdapter adapter;
     private LinearLayoutManager layoutManager;
     private List<YeuCauDangKyGoi> list;
-    Handler handler;
+    private ProgressBar load;
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Nullable
     @Override
@@ -43,10 +46,20 @@ public class PackageRegisterFragment extends AbstractFragment {
         View fragmentLayout = null;
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_pending_package_register_layout, container, false);
 
-        handler = new Handler();
         anhXa(fragmentLayout);
 
-        getDataFromAPI();
+        databaseReference.child("notification_admin").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                getDataFromAPI();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         clickItem();
 
@@ -56,18 +69,11 @@ public class PackageRegisterFragment extends AbstractFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getDataFromAPI();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getDataFromAPI();
-                handler.postDelayed(this, 3000);
-            }
-        }, 3000);
 
     }
 
     private void getDataFromAPI() {
+        load.setVisibility(View.VISIBLE);
         ApiServiceMinh.apiService.layTatCaYeuCauDangKyGoi().enqueue(new Callback<List<YeuCauDangKyGoi>>() {
             @Override
             public void onResponse(Call<List<YeuCauDangKyGoi>> call, Response<List<YeuCauDangKyGoi>> response) {
@@ -75,6 +81,7 @@ public class PackageRegisterFragment extends AbstractFragment {
                     list.clear();
                     list.addAll(response.body());
                     adapter.notifyDataSetChanged();
+                    load.setVisibility(View.GONE);
                 }
 
             }
@@ -98,6 +105,7 @@ public class PackageRegisterFragment extends AbstractFragment {
     }
 
     private void anhXa(View fragmentLayout) {
+        load = fragmentLayout.findViewById(R.id.idLoad);
         list = new LinkedList<>();
         rcvPandingPackage = fragmentLayout.findViewById(R.id.rcvPendingPackage);
         adapter = new PendingPackageAdapter(getActivity(), list, R.layout.cardview_admin_pending_package_register_layout);
