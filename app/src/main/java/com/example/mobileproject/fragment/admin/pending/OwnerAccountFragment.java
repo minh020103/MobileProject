@@ -2,11 +2,11 @@ package com.example.mobileproject.fragment.admin.pending;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,11 @@ import com.example.mobileproject.activity.admin.InfomationConfirmMotelRoomOwner;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
 import com.example.mobileproject.datamodel.YeuCauXacThuc;
 import com.example.mobileproject.recycerviewadapter.admin.PendingOwnerAccountAdapter;
-import com.example.mobileproject.datamodel.ChuTro;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +36,9 @@ public class OwnerAccountFragment extends AbstractFragment {
     private PendingOwnerAccountAdapter adapter;
     private LinearLayoutManager layoutManager;
     private List<YeuCauXacThuc> listYeuCauXacThuc;
-    Handler handler;
+    private ProgressBar load;
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Nullable
     @Override
@@ -43,26 +49,19 @@ public class OwnerAccountFragment extends AbstractFragment {
 
         anhXa(fragmentLayout);
         suLi();
-
-
-        return fragmentLayout;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
-        callAPI();
-
-
-        handler.postDelayed(new Runnable() {
+        databaseReference.child("notification_admin").addValueEventListener(new ValueEventListener() {
             @Override
-            public void run() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 callAPI();
-                handler.postDelayed(this, 3000);
             }
-        }, 3000);
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
 
         adapter.setOnClickItemListener(new PendingOwnerAccountAdapter.OnClickItemListener() {
@@ -74,6 +73,16 @@ public class OwnerAccountFragment extends AbstractFragment {
                 startActivity(intent);
             }
         });
+
+
+        return fragmentLayout;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
     }
 
     private void suLi() {
@@ -86,13 +95,14 @@ public class OwnerAccountFragment extends AbstractFragment {
     }
 
     private void anhXa(View fragmentLayout) {
-        handler = new Handler();
+        load = fragmentLayout.findViewById(R.id.idLoad);
         rcvAccountOwner = fragmentLayout.findViewById(R.id.rcvAccountOwner);
         listYeuCauXacThuc = new LinkedList<>();
     }
 
 
     private void callAPI() {
+        load.setVisibility(View.VISIBLE);
         ApiServiceMinh.apiService.layTatCaYeuCauXacThuc().enqueue(new Callback<List<YeuCauXacThuc>>() {
             @Override
             public void onResponse(Call<List<YeuCauXacThuc>> call, Response<List<YeuCauXacThuc>> response) {
@@ -100,6 +110,7 @@ public class OwnerAccountFragment extends AbstractFragment {
                     listYeuCauXacThuc.clear();
                     listYeuCauXacThuc.addAll(response.body());
                     adapter.notifyDataSetChanged();
+                    load.setVisibility(View.GONE);
                 }
             }
 
