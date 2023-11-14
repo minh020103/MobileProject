@@ -21,6 +21,7 @@ import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.Goi;
 import com.example.mobileproject.datamodel.TaiKhoan;
 
 import retrofit2.Call;
@@ -80,6 +81,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
 
         HostByIdApi(AppUntil.ID_CHU_TRO);
 
+
         btnKhoaTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +101,25 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
 
     }
 
+    private void PakageById(int key)
+    {
+        ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
+            @Override
+            public void onResponse(Call<Goi> call, Response<Goi> response) {
+                Goi goi = response.body();
+                String thoiHan = String.valueOf(goi.getThoiHan());
+                String soPhong = String.valueOf(goi.getSoLuongPhongToiDa());
+                tvIdDichVuChuTroChiTiet.setText(thoiHan + " ngày / " + soPhong + " phòng");
+
+            }
+
+            @Override
+            public void onFailure(Call<Goi> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void HostByIdApi(int key)
     {
         ApiServiceKiet.apiServiceKiet.getHostByIdAPI(key).enqueue(new Callback<ChuTro>() {
@@ -109,7 +130,8 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getHinh()).into(imgChuTroChiTiet);
                 tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
+                //tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
+                PakageById(host.getIdGoi());
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
                 if (host.getYeuCauXacThuc() != null)
