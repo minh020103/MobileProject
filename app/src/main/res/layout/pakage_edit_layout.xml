@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thời hạn (tháng)"
+                    android:text="Thời hạn (ngày)"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingTop="10dp"
