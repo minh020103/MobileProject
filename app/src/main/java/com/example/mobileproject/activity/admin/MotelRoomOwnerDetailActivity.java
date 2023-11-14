@@ -21,6 +21,7 @@ import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceKiet;
 import com.example.mobileproject.appuntil.AppUntil;
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.Goi;
 import com.example.mobileproject.datamodel.TaiKhoan;
 
 import retrofit2.Call;
@@ -66,7 +67,6 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         imgCccdMatTruocChuTroChiTiet = findViewById(R.id.cccdMatTruocChuTroChiTiet);
         imgCccdMatSauChuTroChiTiet = findViewById(R.id.cccdMatSauChuTroChiTiet);
 
-        btnDanhSachPhongChuTroChiTiet = findViewById(R.id.btnDanhSachPhongChuTro);
         btnGoiDienChuTroChiTiet = findViewById(R.id.btnGoiDienChuTro);
         btnKhoaTaiKhoanChuTroChiTiet = findViewById(R.id.btnKhoaTaiKhoanChuTro);
 
@@ -80,6 +80,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         });
 
         HostByIdApi(AppUntil.ID_CHU_TRO);
+
 
         btnKhoaTaiKhoanChuTroChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +101,25 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
 
     }
 
+    private void PakageById(int key)
+    {
+        ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
+            @Override
+            public void onResponse(Call<Goi> call, Response<Goi> response) {
+                Goi goi = response.body();
+                String thoiHan = String.valueOf(goi.getThoiHan());
+                String soPhong = String.valueOf(goi.getSoLuongPhongToiDa());
+                tvIdDichVuChuTroChiTiet.setText(thoiHan + " ngày / " + soPhong + " phòng");
+
+            }
+
+            @Override
+            public void onFailure(Call<Goi> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void HostByIdApi(int key)
     {
         ApiServiceKiet.apiServiceKiet.getHostByIdAPI(key).enqueue(new Callback<ChuTro>() {
@@ -110,11 +130,37 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                 Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getHinh()).into(imgChuTroChiTiet);
                 tvTenChuTroChiTiet.setText(host.getTen());
                 tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
+                //tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
+                PakageById(host.getIdGoi());
                 tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
                 tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
-                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
-                Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+                if (host.getYeuCauXacThuc() != null)
+                {
+                    if (host.getYeuCauXacThuc().getCccdMatTruoc() != null)
+                    {
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                    }
+                    else
+                    {
+                        imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    }
+                    if (host.getYeuCauXacThuc().getCccdMatSau() != null)
+                    {
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+
+                    }
+                    else
+                    {
+                        imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    }
+                }
+                else
+                {
+                    imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+
+                }
+
                 if (host.getXacThuc() == 1)
                 {
                     tvXacThucChuTroChiTiet.setText("Đã xác thực");
