@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -47,6 +48,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
     AppCompatImageView ic_back;
     ImageView imgTienIch;
     EditText edtTenTienIch;
+    TextView name_tien_ich;
     Button btnSuaTienIch;
     Button btnKhoaTienIch;
     Integer idTienIch;
@@ -61,8 +63,6 @@ public class EditUtilitiesActivity extends AppCompatActivity {
         anhXa();
         showThongTinTienIch();
         setSuKien();
-
-
     }
     private boolean kiemTra(EditText edtTenTienIch){
         if(!edtTenTienIch.getText().toString().isEmpty()){
@@ -120,19 +120,22 @@ public class EditUtilitiesActivity extends AppCompatActivity {
     private void capNhatTienIch1(EditText edtTenTienIch, Uri mUri){
         String strRealPath = RealPathUtil.getRealPath(this,mUri);
         File file = new File(strRealPath);
+
         String ten = edtTenTienIch.getText().toString();
+
         RequestBody idTienIchForm = RequestBody.create(MediaType.parse("multipart/form-data"),idTienIch+"");
+
         RequestBody tenTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),ten);
+
         RequestBody trangThaiTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),trangThai+"");
+
         RequestBody requestBodyImage = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part mulPart = MultipartBody.Part.createFormData("hinh",file.getName(),requestBodyImage);
-        Call<Integer> call = ApiServiceNghiem.apiService.capNhatTienIch(idTienIchForm,tenTienIch,trangThaiTienIch,mulPart);
-        call.enqueue(new Callback<Integer>() {
+        ApiServiceNghiem.apiService.capNhatTienIch(idTienIchForm,tenTienIch,trangThaiTienIch,mulPart).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 thongBao("Up load thành công");
             }
-
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 thongBao("Không Up được");
@@ -140,13 +143,18 @@ public class EditUtilitiesActivity extends AppCompatActivity {
         });
     }
     private void capNhatTienIch2(EditText edtTenTienIch){
-        Call<Integer> call = ApiServiceNghiem.apiService.capNhatTienIch2(idTienIch,edtTenTienIch.getText().toString(),trangThai);
-        call.enqueue(new Callback<Integer>() {
+        String ten = edtTenTienIch.getText().toString();
+
+        RequestBody idTienIchForm = RequestBody.create(MediaType.parse("multipart/form-data"),idTienIch+"");
+
+        RequestBody tenTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),ten);
+
+        RequestBody trangThaiTienIch = RequestBody.create(MediaType.parse("multipart/form-data"),trangThai+"");
+        ApiServiceNghiem.apiService.capNhatTienIch2(idTienIchForm,tenTienIch,trangThaiTienIch).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                thongBao("Cap Nhat Thanh COng");
+                thongBao("Up load thành công");
             }
-
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 thongBao("Không Up được");
@@ -217,6 +225,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
             public void onResponse(Call<TienIch> call, Response<TienIch> response) {
                 layTrangThai(response.body().getTrangThai());
                 edtTenTienIch.setText(response.body().getTen().toString());
+                name_tien_ich.setText("Chỉnh Sửa " + response.body().getTen().toString());
                 Glide.with(EditUtilitiesActivity.this).load(Const.DOMAIN+response.body().getHinh()).into(imgTienIch);
                 if(response.body().getTrangThai()==0){
                     btnKhoaTienIch.setText("Khóa Tiên Ích Lại");
@@ -238,7 +247,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
         builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                finish();
             }
         });
         builder.create();
@@ -247,6 +256,7 @@ public class EditUtilitiesActivity extends AppCompatActivity {
     private void anhXa(){
         ic_back = findViewById(R.id.icon_back);
         imgTienIch = findViewById(R.id.imgTienIch);
+        name_tien_ich = findViewById(R.id.name_tien_ich);
         edtTenTienIch= findViewById(R.id.editTenTienIch);
         btnSuaTienIch = findViewById(R.id.btnSuaTienIch);
         btnKhoaTienIch = findViewById(R.id.btnKhoaTienIch);

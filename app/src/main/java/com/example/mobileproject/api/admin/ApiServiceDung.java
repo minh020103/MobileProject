@@ -1,47 +1,69 @@
 package com.example.mobileproject.api.admin;
 
-import com.example.mobileproject.datamodel.ChuTro;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.api.Const;
+import com.example.mobileproject.datamodel.Phuong;
+import com.example.mobileproject.datamodel.Quan;
+import com.example.mobileproject.datamodel.TienIch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
-public interface ApiServiceKiet {
+public interface ApiServiceDung {
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd")
             .create();
 
-    ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.103/API_ChuyenDe2/api/")
+    ApiServiceDung apiServiceDung = new Retrofit.Builder()
+            .baseUrl(Const.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create(ApiServiceKiet.class);
+            .create(ApiServiceDung.class);
 
     /* Host */
-    @GET("hostAll.php")
-    Call<List<ChuTro>> getListHostAPI();
-    @GET("hostByID.php")
-    Call<ChuTro> getHostByIdAPI(@Query("Id") int Id);
-    @GET("hostByName.php")
-    Call<List<ChuTro>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
-    @GET("hostByPhone.php")
-    Call<List<ChuTro>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
-    @GET("hostLockAccount.php")
-    Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
-    @GET("hostUnLockAccount.php")
-    Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
+    @GET("api/laytatcaquan")
+    Call<ArrayList<Quan>> layTatCaQuan();
 
-    /* Pakage */
-    @GET("serviceAll.php")
-    Call<List<GoiDichVu>> getListPakageAPI();
-    @GET("serviceByID.php")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    @GET("api/phuong/layphuongtheoquan")
+    Call<ArrayList<Phuong>> layTatCaPhuongTheoQuan(@Query("idQuan") int idQuan);
 
+    @GET("api/layquantheoid")
+    Call<Quan> layQuanTheoID(@Query("id") int id);
+
+    @Multipart
+    @POST("api/themquan")
+    Call<Quan> themQuan(@Part("tenQuan") RequestBody ten, @Part MultipartBody.Part hinh);
+
+    @Multipart
+    @POST("api/capnhatquan")
+    Call<Integer> capnhatquan(@Part("id") RequestBody id,@Part("tenQuan") RequestBody tenQuan,@Part("trangThai") RequestBody trangThai, @Part MultipartBody.Part hinh);
+
+    @Multipart
+    @POST("api/capnhatquan")
+    Call<Integer> capnhatquan2(@Part("id") RequestBody id,@Part("tenQuan") RequestBody tenQuan,@Part("trangThai") RequestBody trangThai);
+
+    @PATCH("api/capnhattrangthaiquan")
+    Call<Integer> capnhattrangthaiquan(@Query("id") int id);
+
+    //Phuong
+    @Multipart
+    @POST("api/themphuong")
+    Call<Phuong> themphuong(@Part("tenPhuong") RequestBody ten,@Part("idQuan") int idQuan);
+
+    @Multipart
+    @POST("api/capnhatphuong")
+    Call<Integer> editPhuong(@Part("id") int id,@Part("tenPhuong") RequestBody ten,@Part("idQuan") int idQuan,@Part("trangThai") Integer trangThai);
 }

@@ -13,6 +13,7 @@
     android:paddingBottom="0.2in">
 
     <EditText
+        android:id="@+id/ten_phuong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
@@ -22,6 +23,7 @@
         android:layout_marginBottom="20dp"/>
 
     <Button
+        android:id="@+id/btnPhuong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"

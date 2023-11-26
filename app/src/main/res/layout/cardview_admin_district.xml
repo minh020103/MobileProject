@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="80dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,9 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Xem"
+                android:textSize="20sp"
                 android:padding="20dp"
-                android:textColor="@color/red"
-                android:layout_marginLeft="5dp"/>
+                android:textColor="@color/red"/>
 
             <TextView
                 android:id="@+id/sua"
@@ -55,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:text="Sửa"
                 android:padding="20dp"
-                android:textColor="@color/black" />
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
 
 
         </LinearLayout>

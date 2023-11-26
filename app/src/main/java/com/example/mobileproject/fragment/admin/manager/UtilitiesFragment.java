@@ -44,7 +44,6 @@ public class UtilitiesFragment extends AbstractFragment {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getContext(), AddUtilitiesActivity.class);
                 startActivity(intent);
             }
@@ -66,12 +65,9 @@ public class UtilitiesFragment extends AbstractFragment {
                     arrayList.addAll(response.body());
                     tienIchAdapter.notifyDataSetChanged();
                 }
-
             }
-
             @Override
             public void onFailure(Call<ArrayList<TienIch>> call, Throwable t) {
-
             }
         });
         tienIchAdapter.setOnClickListener(new TienIchAdapter.OnClickListener() {
@@ -86,5 +82,11 @@ public class UtilitiesFragment extends AbstractFragment {
     private void anhXa(View fragment){
         recyclerView = fragment.findViewById(R.id.recycleView);
         fabAdd = fragment.findViewById(R.id.fabAdd);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setDuLieu();
     }
 }

@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.Quan;
 
 import java.util.ArrayList;
@@ -20,7 +22,9 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
 
     ArrayList<Quan> arrayList;
     Activity activity;
-    int layoutId;
+    int layoutId1;
+
+    int layoutId2;
 
     private OnClickListener onClickListener;
 
@@ -28,10 +32,11 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
         this.onClickListener = onClickListener;
     }
 
-    public QuanAdapter(ArrayList<Quan> arrayList, Activity activity, int layoutId) {
+    public QuanAdapter(ArrayList<Quan> arrayList, Activity activity, int layoutId1, int layoutId2) {
         this.arrayList = arrayList;
         this.activity = activity;
-        this.layoutId = layoutId;
+        this.layoutId1 = layoutId1;
+        this.layoutId2 = layoutId2;
     }
 
     @NonNull
@@ -48,7 +53,7 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
          Quan quan = arrayList.get(position);
         holder.tenQuan.setText(quan.getTenQuan());
-
+        Glide.with(activity.getLayoutInflater().getContext()).load(Const.DOMAIN+quan.getHinh()).into(holder.imgQuan);
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +76,10 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        return layoutId;
+        if(arrayList.get(position).getTrangThai()==1){
+            return layoutId2;
+        }
+        return layoutId1;
     }
 
     public interface OnClickListener{
