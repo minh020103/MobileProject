@@ -49,6 +49,8 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(kiemTra(matKhauHienTai,matKhauMoi,xacNhanMKMoi)){
                     layTaiKhoanXuong(matKhauHienTai,matKhauMoi,xacNhanMKMoi);
+                }else{
+                    thongBao("Không Được Để Rỗng!");
                 }
             }
         });
@@ -59,12 +61,20 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
         call.enqueue(new Callback<TaiKhoan>() {
             @Override
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
+
+
                     if(kiemTraMKHienTai(matKhauHienTai,response.body().getMatKhau())){
                         /// Tiến Hành Đổi Mật Khẩu ở đây
-                        thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString(), xacNhanMKMoi.getText().toString());
+                        if(matKhauMoi.getText().toString().trim().length()<6|xacNhanMKMoi.getText().toString().trim().length()<6){
+                            thongBao("Mật Khẩu Tối Thiểu 6 Kí Tự!");
+                        }else{
+                                thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString(), xacNhanMKMoi.getText().toString());
+                        }
                     }else{
                         thongBao("Mật Khẩu Hiện Tại Sai!");
                     }
+
+
             }
 
             @Override
