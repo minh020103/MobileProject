@@ -82,6 +82,13 @@ public class ListWardActivity extends AppCompatActivity {
         });
     }
 
+    private boolean kiemTra(EditText editTen){
+        if(!editTen.getText().toString().isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
     private void openButtomSheetEdit(int positiom) {
         Phuong phuong = list.get(positiom);
         View view = getLayoutInflater().inflate(R.layout.admin_buttom_sheet_layout, null, false);
@@ -106,20 +113,25 @@ public class ListWardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tenPhuong = editText.getText().toString();
-                RequestBody namePhuong = RequestBody.create(MediaType.parse("multipart/form-data"),tenPhuong);
-                //Log.d("TAG", "onClick: "+tenPhuong + trangThai);
-                ApiServiceDung.apiServiceDung.editPhuong(idPhuong,namePhuong,idQuan,trangThai).enqueue(new Callback<Integer>() {
-                    @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        thongBao("Sửa Phường Thành Công");
-                        button_khoa.setVisibility(View.GONE);
-                    }
+                if (kiemTra(editText)){
+                    RequestBody namePhuong = RequestBody.create(MediaType.parse("multipart/form-data"),tenPhuong);
+                    //Log.d("TAG", "onClick: "+tenPhuong + trangThai);
+                    ApiServiceDung.apiServiceDung.editPhuong(idPhuong,namePhuong,idQuan,trangThai).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            thongBao("Sửa Phường Thành Công");
+                            button_khoa.setVisibility(View.GONE);
+                        }
 
-                    @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        thongBao("Lỗi Hệ Thống ....");
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            thongBao("Lỗi Hệ Thống ....");
+                        }
+                    });
+                }else{
+                    thongBao("Vui Lòng Điền Tên Phường ...");
+                }
+
             }
         });
 
@@ -152,6 +164,7 @@ public class ListWardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tenPhuong = editText.getText().toString();
+                if (kiemTra(editText)){
                 RequestBody namePhuong = RequestBody.create(MediaType.parse("multipart/form-data"),tenPhuong);
                 //Log.d("TAG", "onClick: "+tenPhuong);
                 ApiServiceDung.apiServiceDung.themphuong(namePhuong,idQuan).enqueue(new Callback<Phuong>() {
@@ -165,6 +178,10 @@ public class ListWardActivity extends AppCompatActivity {
                         thongBao("Lỗi Hệ Thống ....");
                     }
                 });
+                }else{
+                    thongBao("Vui Lòng Điền Tên Phường ...");
+                }
+
             }
         });
         bottomSheetDialogEdit.show();
