@@ -29,4 +29,12 @@
         android:backgroundTint="@color/black"
         android:text="Xác nhận"/>
 
+    <Button
+        android:id="@+id/btnKhoaPhuong"
+        android:backgroundTint="@color/red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Khoá"
+        android:visibility="gone"/>
+
 </LinearLayout>

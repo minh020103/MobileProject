@@ -66,4 +66,6 @@ public interface ApiServiceDung {
     @Multipart
     @POST("api/capnhatphuong")
     Call<Integer> editPhuong(@Part("id") int id,@Part("tenPhuong") RequestBody ten,@Part("idQuan") int idQuan,@Part("trangThai") Integer trangThai);
+    @PATCH("api/capnhattrangthaiphuong")
+    Call<Integer> capnhattrangthaiphuong(@Query("id") int id);
 }

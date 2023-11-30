@@ -89,6 +89,16 @@ public class ListWardActivity extends AppCompatActivity {
         bottomSheetDialogEdit.setContentView(view);
         EditText editText = view.findViewById(R.id.ten_phuong);
         Button button = view.findViewById(R.id.btnPhuong);
+        Button button_khoa = view.findViewById(R.id.btnKhoaPhuong);
+        if(phuong.getTrangThai()==0){
+            button_khoa.setText("Khóa");
+            button_khoa.setBackgroundColor(getResources().getColor(R.color.red));
+            button_khoa.setVisibility(View.VISIBLE);
+        }else{
+            button_khoa.setText("Mở");
+            button_khoa.setBackgroundColor(getResources().getColor(R.color.black));
+            button_khoa.setVisibility(View.VISIBLE);
+        }
         editText.setText(phuong.getTenPhuong());
         trangThai = phuong.getTrangThai();
         idPhuong = phuong.getId();
@@ -102,6 +112,24 @@ public class ListWardActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> response) {
                         thongBao("Sửa Phường Thành Công");
+                        button_khoa.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+                        thongBao("Lỗi Hệ Thống ....");
+                    }
+                });
+            }
+        });
+
+        button_khoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiServiceDung.apiServiceDung.capnhattrangthaiphuong(phuong.getId()).enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        thongBao("Cập nhật phường thành công");
                     }
 
                     @Override
@@ -139,7 +167,6 @@ public class ListWardActivity extends AppCompatActivity {
                 });
             }
         });
-
         bottomSheetDialogEdit.show();
     }
 
