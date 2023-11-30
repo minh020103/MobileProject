@@ -73,7 +73,6 @@
         android:layout_height="42dp"
         android:gravity="center"
         android:hint="Tên Quận"
-        android:text="thu duc"
         android:textSize="30sp"
         android:background="@drawable/background_tienich"
         app:layout_constraintBottom_toBottomOf="parent"
