@@ -1,11 +1,11 @@
-package com.example.mobileprojectapp2.applications;
+package com.example.mobileproject.applications;
 
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
-import com.example.mobileprojectapp2.R;
+import com.example.mobileproject.R;
 
 public class MyNotification extends Application {
     public static final String CHANNEL_ID = "NOTIFICATION_3T";

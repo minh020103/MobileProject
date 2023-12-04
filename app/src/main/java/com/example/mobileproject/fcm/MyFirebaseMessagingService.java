@@ -1,32 +1,18 @@
-package com.example.mobileprojectapp2.fcm;
+package com.example.mobileproject.fcm;
 
-import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.util.Log;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
-import com.example.mobileprojectapp2.R;
-import com.example.mobileprojectapp2.activity.loading.LoadingActivity;
-import com.example.mobileprojectapp2.activity.loginregister.LoginActivity;
-import com.example.mobileprojectapp2.api.Const;
-import com.example.mobileprojectapp2.applications.MyNotification;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.mobileproject.R;
+import com.example.mobileproject.activity.login.LoginActivity;
+import com.example.mobileproject.applications.MyNotification;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -41,7 +27,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         int id = Integer.parseInt(stringMap.get("id"));
         String title = stringMap.get("title");
         String content = stringMap.get("content");
-        notification(R.drawable.notification_selector, title, content, id);
+        notification(R.drawable.icon_notification_selected, title, content, id);
 
 
     }
@@ -67,7 +53,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentTitle(title)
                 .setContentText(content)
                 .setSmallIcon(icon)
-                .setColor(getResources().getColor(R.color.main_color_app_light, MyFirebaseMessagingService.this.getTheme()))
+                .setColor(getResources().getColor(R.color.main_color_of_app, MyFirebaseMessagingService.this.getTheme()))
                 .setContentIntent(pendingIntent)
                 .build();
         NotificationManager notificationManager = (NotificationManager) MyFirebaseMessagingService.this.getSystemService(Context.NOTIFICATION_SERVICE);

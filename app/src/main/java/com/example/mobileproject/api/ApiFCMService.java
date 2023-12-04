@@ -1,6 +1,6 @@
-package com.example.mobileprojectapp2.api;
+package com.example.mobileproject.api;
 
-import com.example.mobileprojectapp2.datamodel.fcm.PushNotification;
+import com.example.mobileproject.datamodel.fcm.PushNotification;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

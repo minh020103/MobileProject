@@ -1,4 +1,4 @@
-package com.example.mobileprojectapp2.datamodel.fcm;
+package com.example.mobileproject.datamodel.fcm;
 
 public class Notification {
     private int id;

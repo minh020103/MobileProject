@@ -1,9 +1,10 @@
-package com.example.mobileprojectapp2.datamodel;
+package com.example.mobileproject.datamodel;
 
 public class ThongBao {
     private int id;
     private int idTaiKhoanGui;
     private int idTaiKhoanNhan;
+    private String tieuDe;
     private String noiDung;
     private int trangThai;
     private int trangThaiNhan;
@@ -18,6 +19,14 @@ public class ThongBao {
         this.trangThai = trangThai;
         this.nguoiGui = nguoiGui;
         this.taiKhoanNhan = taiKhoanNhan;
+    }
+
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
     }
 
     public int getTrangThaiNhan() {

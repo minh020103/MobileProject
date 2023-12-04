@@ -1,18 +1,15 @@
-package com.example.mobileprojectapp2.component;
+package com.example.mobileproject.component;
 
 import android.util.Log;
 
-import com.example.mobileprojectapp2.api.ApiFCMService;
-import com.example.mobileprojectapp2.api.Const;
-import com.example.mobileprojectapp2.api.nguoithue.ApiServiceMinh;
-import com.example.mobileprojectapp2.datamodel.FirebaseCloudMessaging;
-import com.example.mobileprojectapp2.datamodel.ResultFCM;
-import com.example.mobileprojectapp2.datamodel.TaiKhoan;
-import com.example.mobileprojectapp2.datamodel.fcm.Notification;
-import com.example.mobileprojectapp2.datamodel.fcm.PushNotification;
+import com.example.mobileproject.api.ApiFCMService;
+import com.example.mobileproject.api.admin.ApiServiceMinh;
+import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
+import com.example.mobileproject.datamodel.ResultFCM;
+import com.example.mobileproject.datamodel.fcm.Notification;
+import com.example.mobileproject.datamodel.fcm.PushNotification;
 
 import java.util.List;
-import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;

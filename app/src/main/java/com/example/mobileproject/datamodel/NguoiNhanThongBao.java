@@ -1,4 +1,4 @@
-package com.example.mobileprojectapp2.datamodel;
+package com.example.mobileproject.datamodel;
 
 public class NguoiNhanThongBao {
     private int id;
