@@ -1,11 +1,19 @@
 package com.example.mobileproject.activity.login;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +23,13 @@ import android.widget.Toast;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AdminActivity;
+import com.example.mobileproject.api.admin.ApiServiceMinh;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
+import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
 import com.example.mobileproject.datamodel.TaiKhoan;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.regex.Pattern;
 
@@ -50,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         tvErrorMissing = findViewById(R.id.tv_error_missing_charter);
         progLoading = findViewById(R.id.loading);
 
-
+        askNotificationPermission();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +105,37 @@ public class LoginActivity extends AppCompatActivity {
         login.enqueue(new Callback<TaiKhoan>() {
             @Override
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
+                if (response.code() == 200){
+                    if (response.body() != null){
+                        FirebaseMessaging.getInstance().getToken()
+                                .addOnCompleteListener(new OnCompleteListener<String>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<String> task) {
+                                        if (!task.isSuccessful()) {
+                                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                                            return;
+                                        }
+
+                                        // Get new FCM registration token
+                                        String token = task.getResult();
+
+                                        ApiServiceMinh.apiService.saveTokenDeviceOfAccount(token, response.body().getId()).enqueue(new Callback<FirebaseCloudMessaging>() {
+                                            @Override
+                                            public void onResponse(Call<FirebaseCloudMessaging> call, Response<FirebaseCloudMessaging> response) {
+                                                if (response.code() == 200){
+                                                    Log.d("TAG", "onResponse: SAVE TOKEN COMPLATED");
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<FirebaseCloudMessaging> call, Throwable t) {
+
+                                            }
+                                        });
+                                    }
+                                });
+                    }
+                }
                 progLoading.setVisibility(View.GONE);
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
             }
@@ -118,6 +162,45 @@ public class LoginActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 }).show();
+    }
+//    private void requestPermisstion(){
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            if (ContextCompat.checkSelfPermission(
+//                    LoginActivity.this, Manifest.permission.POST_NOTIFICATIONS) ==
+//                    PackageManager.PERMISSION_GRANTED){
+//            }
+//            else {
+//                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 111);
+//            }
+//        }
+//    }
+
+    // Declare the launcher at the top of your Activity/Fragment:
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // FCM SDK (and your app) can post notifications.
+                } else {
+                    // TODO: Inform user that that your app will not show notifications.
+                }
+            });
+
+    private void askNotificationPermission() {
+        // This is only necessary for API level >= 33 (TIRAMISU)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                // FCM SDK (and your app) can post notifications.
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                // TODO: display an educational UI explaining to the user the features that will be enabled
+                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
+                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
+                //       If the user selects "No thanks," allow the user to continue without notifications.
+            } else {
+                // Directly ask for the permission
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
     }
 
 

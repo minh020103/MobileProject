@@ -2,6 +2,9 @@ package com.example.mobileproject.api.admin;
 
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
+import com.example.mobileproject.datamodel.TaiKhoan;
+import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
 import com.example.mobileproject.datamodel.YeuCauXacThuc;
 import com.example.mobileproject.datamodel.YeuCauXoaPhong;
@@ -16,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
@@ -59,4 +63,20 @@ public interface ApiServiceMinh {
     Call<Integer> xacNhanYeuCauXoaPhong(@Query("id") int idPhong);
     @GET("api/notification/number")
     Call<Integer> demTongSoThongBao();
+
+    // Khi đăng nhập thành công thì lưu token device lên trên database rồi mới đăng nhập vào ứng dụng
+    @POST("api/fcm/savetoken")
+    Call<FirebaseCloudMessaging> saveTokenDeviceOfAccount(@Query("token") String token, @Query("idTaiKhoan") int idTaiKhoan);
+    // Khi đăng xuất thì phải dùng hàm này khi xóa thành công trên database rồi mới được xóa idTaiKhoan trong thiết bị và đăng xuất
+    @DELETE("api/fcm/delete")
+    Call<Integer> deleteTokenDeviceOfAccount(@Query("token") String token, @Query("idTaiKhoan") int idTaiKhoan);
+
+    @GET("api/taikhoan/all/type")
+    Call<List<TaiKhoan>> layTatCaTaiKhoanTheoLoaiTaiKhoan(@Query("loaiTaiKhoan") int loaiTaiKhoan);
+
+    @GET("api/fcm/gettoken")
+    Call<List<FirebaseCloudMessaging>> layTatCaTokenCuaTaiKhoan(@Query("idTaiKhoan") int idTaiKhoan);
+
+    @POST("api/notification/create")
+    Call<ThongBao> sendNotificationResult(@Query("idTaiKhoanGui") int idTaiKhoanGui, @Query("idTaiKhoanNhan") int idTaiKhoanNhan, @Query("title") String title, @Query("noiDung") String noiDung, @Query("trangThai") int trangThai, @Query("trangThaiNhan") int trangThaiNhan);
 }

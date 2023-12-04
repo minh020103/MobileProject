@@ -13,10 +13,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.ApiFCMService;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
+import com.example.mobileproject.component.MFCM;
 import com.example.mobileproject.datamodel.ChuTro;
+import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
+import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauXacThuc;
+import com.example.mobileproject.datamodel.fcm.Notification;
+import com.example.mobileproject.datamodel.fcm.PushNotification;
+
+import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,13 +105,32 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
             public void onClick(View v) {
                 ApiServiceMinh.apiService.xacThucThongTinChuTro(idChuTro).enqueue(new Callback<Integer>() {
                     @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        finish();
+                    public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
+                        if (responseIdTaiKhoan.code() == 200) {
+                            Log.d("TAG", "onResponse: idTaiKhoan"+responseIdTaiKhoan.body());
+                            ApiServiceMinh.apiService.layTatCaTokenCuaTaiKhoan(responseIdTaiKhoan.body()).enqueue(new Callback<List<FirebaseCloudMessaging>>() {
+                                @Override
+                                public void onResponse(Call<List<FirebaseCloudMessaging>> call, Response<List<FirebaseCloudMessaging>> responseToken) {
+                                    for (FirebaseCloudMessaging firebaseCloudMessaging:
+                                         responseToken.body()) {
+                                        // TODO: Tạo thông báo gửi kết quả cho người dùng
+                                        MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds()+responseIdTaiKhoan.body(), "Xác thực tài khoản thành công", "Xác thực yêu cầu đăng ký tài khoản thành công cảm ơn bạn đã sử dụng dịch vụ");
+                                    }
+                                    finish();
+                                }
+
+                                @Override
+                                public void onFailure(Call<List<FirebaseCloudMessaging>> call, Throwable t) {
+
+                                }
+                            });
+                        }
+
                     }
 
                     @Override
                     public void onFailure(Call<Integer> call, Throwable t) {
-                        Log.d("TAG", "fell444lllllllll");
+                        Log.d("TAG", "onFailure Xac thuc tai khoan");
                     }
                 });
                 ApiServiceMinh.apiService.xacThucChuTro(idChuTro).enqueue(new Callback<Integer>() {

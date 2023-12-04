@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,9 +14,18 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.ApiFCMService;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
+import com.example.mobileproject.component.MFCM;
+import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
+import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
+import com.example.mobileproject.datamodel.fcm.Notification;
+import com.example.mobileproject.datamodel.fcm.PushNotification;
+
+import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -110,8 +120,9 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ApiServiceMinh.apiService.xacNhanYeuCauDangKy(id).enqueue(new Callback<Integer>() {
                     @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        finish();
+                    public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
+                        Log.d("TAG", "onResponse: idTaiKhoan"+responseIdTaiKhoan.body());
+                        MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds()+responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
                     }
 
                     @Override
