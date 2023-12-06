@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height=".8in"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:layout_marginTop="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgChuTro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/black"/>
+        </LinearLayout>
+
+        //
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            >
+            <TextView
+                android:id="@+id/tv_tenTienIch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Ten tien ich"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="20dp"
+            android:paddingLeft="15dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/btn_suaTienIch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sua" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

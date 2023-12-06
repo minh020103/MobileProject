@@ -142,7 +142,7 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                        imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.not_image);
                     }
                     if (host.getYeuCauXacThuc().getCccdMatSau() != null)
                     {
@@ -151,13 +151,13 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                        imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.not_image);
                     }
                 }
                 else
                 {
-                    imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.logo_white);
-                    imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.logo_white);
+                    imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.not_image);
+                    imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.not_image);
 
                 }
 
