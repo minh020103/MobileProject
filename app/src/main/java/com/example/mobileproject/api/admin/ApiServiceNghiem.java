@@ -4,6 +4,9 @@ import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.Admin;
 import com.example.mobileproject.datamodel.ChinhSach;
 import com.example.mobileproject.datamodel.TaiKhoan;
+import com.example.mobileproject.datamodel.TienIch;
+
+import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -59,4 +62,22 @@ public interface ApiServiceNghiem {
     @PATCH("api/doimatkhautaikhoan")
     Call<Integer> capNhatMatKhau(@Query("id") int id,@Query("matkhaumoi") String matkhaumoi);
 
+    @GET("api/laytatcatienich")
+    Call<ArrayList<TienIch>> layTatCaTienIch();
+    @Multipart
+    @POST("api/themtienich")
+    Call<TienIch> themTienIch(@Part("ten") RequestBody ten, @Part MultipartBody.Part hinh);
+
+    @GET("api/laytienichtheoid")
+    Call<TienIch> layTienIchTheoId(@Query("id") int id);
+    @Multipart
+    @POST("api/capnhattienich")
+    Call<Integer> capNhatTienIch(@Part("id") RequestBody id,@Part("ten") RequestBody ten,@Part("trangThai") RequestBody trangThai, @Part MultipartBody.Part hinh);
+
+    @Multipart
+    @POST("api/capnhattienich")
+    Call<Integer> capNhatTienIch2(@Part("id") RequestBody id,@Part("ten") RequestBody ten,@Part("trangThai") RequestBody trangThai);
+
+    @PATCH("api/capnhattrangthaitienich")
+    Call<Integer> capNhatTrangThai(@Query("id") int id);
 }
