@@ -1,8 +1,10 @@
 package com.example.mobileproject.activity.admin;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.example.mobileproject.R;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.TaiKhoan;
 
@@ -25,12 +28,15 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
     AppCompatImageView ic_back;
     EditText matKhauMoi, matKhauHienTai, xacNhanMKMoi;
     Button btnXacNhanDoiMK;
-
+    SharedPreferences sharedPreferences;
+    int idTaiKhoan;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_password_admin);
+        sharedPreferences = this.getSharedPreferences(Const.PRE_LOGIN, Context.MODE_PRIVATE);
+        idTaiKhoan = sharedPreferences.getInt("idTaiKhoan", -1);
         anhXa();
 
         batSuKienButton();
@@ -57,7 +63,7 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
     }
 
     private void layTaiKhoanXuong(EditText matKhauHienTai, EditText matKhauMoi, EditText xacNhanMKMoi){
-        Call<TaiKhoan> call = ApiServiceNghiem.apiService.layTaiKhoanXuong(1);
+        Call<TaiKhoan> call = ApiServiceNghiem.apiService.layTaiKhoanXuong(idTaiKhoan);
         call.enqueue(new Callback<TaiKhoan>() {
             @Override
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
@@ -92,7 +98,7 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
     }
 
     private void capNhatMatKhauMoi(String mk){
-        Call<Integer> call = ApiServiceNghiem.apiService.capNhatMatKhau(1,mk);
+        Call<Integer> call = ApiServiceNghiem.apiService.capNhatMatKhau(idTaiKhoan,mk);
       call.enqueue(new Callback<Integer>() {
           @Override
           public void onResponse(Call<Integer> call, Response<Integer> response) {

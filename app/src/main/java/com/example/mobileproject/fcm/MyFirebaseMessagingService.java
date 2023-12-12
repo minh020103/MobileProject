@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.login.LoginActivity;
+import com.example.mobileproject.activity.login.SplashActivity;
 import com.example.mobileproject.applications.MyNotification;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -31,24 +32,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     }
-//    private void requestPermisstion(int icon, String title, String content, int id){
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-//            notification(icon, title, content, id);
-//        }
-//        else {
-//            if (ContextCompat.checkSelfPermission(
-//                    MyFirebaseMessagingService.this, Manifest.permission.POST_NOTIFICATIONS) ==
-//                    PackageManager.PERMISSION_GRANTED){
-//                notification(icon, title, content, id);
-//            }
-//            else {
-//                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 111);
-//            }
-//        }
-//    }
     private void notification(int icon, String title, String content, int id){
-        Intent intent = new Intent(this, LoginActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 2003, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(this, SplashActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 2003, intent, PendingIntent.FLAG_IMMUTABLE);
         Notification notification = new NotificationCompat.Builder(MyFirebaseMessagingService.this, MyNotification.CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(content)
