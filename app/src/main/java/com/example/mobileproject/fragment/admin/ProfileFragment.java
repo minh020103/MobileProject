@@ -1,8 +1,10 @@
 package com.example.mobileproject.fragment.admin;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import com.example.mobileproject.activity.admin.EditProfileAdminActivity;
 import com.example.mobileproject.activity.login.LoginActivity;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceNghiem;
+import com.example.mobileproject.component.MComponent;
 import com.example.mobileproject.datamodel.Admin;
 import com.example.mobileproject.datamodel.TaiKhoan;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -47,10 +50,14 @@ public class ProfileFragment extends AbstractFragment{
     TextView sdtAdmin;
     TextView stkAdmin;
     TextView tenNganHangAdmin;
+    private SharedPreferences sharedPreferences;
+    int idTaiKhoan;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentLayout = null;
+        sharedPreferences = getActivity().getSharedPreferences(Const.PRE_LOGIN, Context.MODE_PRIVATE);
+        idTaiKhoan = sharedPreferences.getInt("idTaiKhoan", -idTaiKhoan);
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_profile_layout, container, false);
         anhXa(fragmentLayout);
         layDuLieuXuong();
@@ -78,6 +85,9 @@ public class ProfileFragment extends AbstractFragment{
         dangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sharedPreferences = getContext().getSharedPreferences("SharedPreferencesLogin", Context.MODE_PRIVATE);
+                MComponent.deleteTokenDivice();
+                sharedPreferences.edit().remove("idTaiKhoan").commit();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
@@ -87,7 +97,7 @@ public class ProfileFragment extends AbstractFragment{
     }
 
     private void layDuLieuXuong(){
-        Call<Admin> call = ApiServiceNghiem.apiService.layThongTinAdmin(1);
+        Call<Admin> call = ApiServiceNghiem.apiService.layThongTinAdmin(idTaiKhoan);
         call.enqueue(new Callback<Admin>() {
             @Override
             public void onResponse(Call<Admin> call, Response<Admin> response) {

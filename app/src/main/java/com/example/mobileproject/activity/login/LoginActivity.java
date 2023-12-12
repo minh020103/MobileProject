@@ -8,8 +8,10 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,8 +25,10 @@ import android.widget.Toast;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AdminActivity;
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
+import com.example.mobileproject.component.MComponent;
 import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
 import com.example.mobileproject.datamodel.TaiKhoan;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progLoading;
 
     String userName, passWord;
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -53,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity_layout);
-
+        sharedPreferences = sharedPreferences = this.getSharedPreferences(Const.PRE_LOGIN, Context.MODE_PRIVATE);
         edtPassWord = findViewById(R.id.edt_password);
         edtUsername = findViewById(R.id.edt_username);
         btnLogin = findViewById(R.id.btn_login);
@@ -107,37 +112,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
                 if (response.code() == 200){
                     if (response.body() != null){
-                        FirebaseMessaging.getInstance().getToken()
-                                .addOnCompleteListener(new OnCompleteListener<String>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<String> task) {
-                                        if (!task.isSuccessful()) {
-                                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
-                                            return;
-                                        }
-
-                                        // Get new FCM registration token
-                                        String token = task.getResult();
-
-                                        ApiServiceMinh.apiService.saveTokenDeviceOfAccount(token, response.body().getId()).enqueue(new Callback<FirebaseCloudMessaging>() {
-                                            @Override
-                                            public void onResponse(Call<FirebaseCloudMessaging> call, Response<FirebaseCloudMessaging> response) {
-                                                if (response.code() == 200){
-                                                    Log.d("TAG", "onResponse: SAVE TOKEN COMPLATED");
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Call<FirebaseCloudMessaging> call, Throwable t) {
-
-                                            }
-                                        });
-                                    }
-                                });
+                        MComponent.saveTokenAppDevice(response.body().getId());
+                        sharedPreferences.edit().putInt("idTaiKhoan", response.body().getId()).commit();
+                        progLoading.setVisibility(View.GONE);
+                        startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                        finish();
                     }
                 }
-                progLoading.setVisibility(View.GONE);
-                startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+
             }
             @Override
             public void onFailure(Call<TaiKhoan> call, Throwable t) {
