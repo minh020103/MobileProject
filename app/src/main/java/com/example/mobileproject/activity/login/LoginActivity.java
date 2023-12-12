@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,8 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassWord;
     Button btnLogin;
-    TextView tvRegister,tvErrorUsnPass, tvErrorEmpty,tvErrorMissing;
-
+    TextView tvErrorUsnPass, tvErrorEmpty,tvErrorMissing;
     ProgressBar progLoading;
 
     String userName, passWord;
@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassWord = findViewById(R.id.edt_password);
         edtUsername = findViewById(R.id.edt_username);
         btnLogin = findViewById(R.id.btn_login);
-        tvRegister = findViewById(R.id.tv_register);
         tvErrorUsnPass = findViewById(R.id.tv_error_usn_pass);
         tvErrorEmpty = findViewById(R.id.tv_error_empty);
         tvErrorMissing = findViewById(R.id.tv_error_missing_charter);
@@ -59,13 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void checkLogin() {
@@ -83,6 +75,8 @@ public class LoginActivity extends AppCompatActivity {
             tvErrorEmpty.setVisibility(View.GONE);
             tvErrorMissing.setVisibility(View.VISIBLE);
         } else {
+            Log.d("TAG", "checkLogin: "+userName);
+            Log.d("TAG", "checkLogin: "+passWord);
             clickButtonLogin();
         }
     }
