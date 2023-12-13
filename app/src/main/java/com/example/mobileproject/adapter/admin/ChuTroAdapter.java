@@ -70,7 +70,7 @@ public class ChuTroAdapter extends RecyclerView.Adapter<ChuTroAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     @Override
