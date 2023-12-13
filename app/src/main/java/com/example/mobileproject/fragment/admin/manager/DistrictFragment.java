@@ -53,7 +53,7 @@ public class DistrictFragment extends AbstractFragment {
         quanAdapter.setOnClickListener(new QuanAdapter.OnClickListener() {
             @Override
             public void onClickXem(int position, View view) {
-                Intent intent = new Intent(getContext(), ListWardActivity.class);
+                Intent intent = new Intent(getActivity(), ListWardActivity.class);
                 startActivity(intent);
             }
 
@@ -83,6 +83,7 @@ public class DistrictFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<ArrayList<Quan>> call, Response<ArrayList<Quan>> response) {
                 if(response.isSuccessful()){
+                    arrayList.clear();
                     arrayList.addAll(response.body());
                     quanAdapter.notifyDataSetChanged();
                 }

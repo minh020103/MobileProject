@@ -30,6 +30,7 @@ public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.MyViewHolder> 
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
+        
     }
 
     public QuanAdapter(ArrayList<Quan> arrayList, Activity activity, int layoutId1, int layoutId2) {

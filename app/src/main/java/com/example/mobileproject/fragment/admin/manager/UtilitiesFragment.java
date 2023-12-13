@@ -62,6 +62,7 @@ public class UtilitiesFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<ArrayList<TienIch>> call, Response<ArrayList<TienIch>> response) {
                 if(response.isSuccessful()){
+                    arrayList.clear();
                     arrayList.addAll(response.body());
                     tienIchAdapter.notifyDataSetChanged();
                 }

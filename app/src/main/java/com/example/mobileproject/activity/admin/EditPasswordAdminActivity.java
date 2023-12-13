@@ -89,7 +89,6 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             }
         });
     }
-
     private boolean kiemTraMKHienTai(EditText matKhauHienTaie, String matKhauHientai){
         if(matKhauHienTaie.getText().toString().equals(matKhauHientai)){
             return true;

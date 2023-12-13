@@ -112,7 +112,7 @@
         <activity android:name=".activity.admin.AddUtilitiesActivity" />
         <activity android:name=".activity.admin.EditDistrictActivity" />
         <activity android:name=".activity.admin.AddDistrictActivity" />
-
+        <activity android:name=".activity.admin.ListWardActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
