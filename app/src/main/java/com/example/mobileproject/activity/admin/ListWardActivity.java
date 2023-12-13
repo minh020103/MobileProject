@@ -204,6 +204,7 @@ public class ListWardActivity extends AppCompatActivity {
         ApiServiceDung.apiServiceDung.layTatCaPhuongTheoQuan(1).enqueue(new Callback<ArrayList<Phuong>>() {
             @Override
             public void onResponse(Call<ArrayList<Phuong>> call, Response<ArrayList<Phuong>> response) {
+                list.clear();
                 list.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }
