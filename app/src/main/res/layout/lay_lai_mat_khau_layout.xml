@@ -31,7 +31,7 @@
         android:textSize="@dimen/text_size_40sp" />
 
     <EditText
-        android:id="@+id/edt_username"
+        android:id="@+id/edtCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sign_in"
@@ -40,19 +40,20 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/bg_tv_dangnhap"
-        android:drawableLeft="@drawable/icon_username"
+        android:drawableLeft="@drawable/ic_baseline_code_off_24"
         android:drawablePadding="@dimen/dp20"
-        android:hint="Tên đăng nhập"
+        android:hint="Nhập mã"
+        android:inputType="number"
         android:padding="@dimen/dp20"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="@dimen/_19_5sp" />
 
     <EditText
-        android:id="@+id/edt_password"
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_username"
+        android:layout_below="@+id/edtCode"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -68,27 +69,15 @@
         android:textSize="@dimen/_19_5sp" />
 
     <TextView
-        android:id="@+id/tv_error_usn_pass"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvNotification"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_password"
-        android:text="    Sai tên đăng nhập hoặc mật khẩu"
+        android:layout_below="@+id/edtPassword"
+        android:text="Mã không đúng đặt mật khẩu thất bại"
         android:textColor="@color/red"
         android:textSize="18sp"
-        android:layout_marginStart="30dp"
-        android:background="@color/black_a"
-        android:drawableStart="@drawable/iconp_error"
-        android:visibility="gone"
-        />
-    <TextView
-        android:id="@+id/tv_error_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_password"
-        android:text="   Chưa nhập tên đăng hoặc mật khẩu "
-        android:textColor="@color/red"
-        android:textSize="18sp"
-        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@color/black_a"
         android:drawableStart="@drawable/iconp_error"
         android:visibility="gone"
@@ -96,49 +85,36 @@
 
 
 
-    <TextView
-        android:id="@+id/tv_error_missing_charter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_password"
-        android:text="    Tối thiểu 6 ký tự"
-        android:textColor="@color/red"
-        android:textSize="18sp"
-        android:layout_marginStart="30dp"
-        android:drawableStart="@drawable/iconp_error"
-        android:visibility="gone"
-        android:background="@color/black_a"
-        />
 
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_password"
+        android:layout_below="@+id/edtPassword"
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/btn_register"-->
-<!--        android:layout_width="@dimen/width_btn_dang_nhap"-->
-<!--        android:layout_height="@dimen/height_btn_dang_ky"-->
-<!--        android:layout_below="@id/loading"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginTop="@dimen/dp20"-->
-<!--        android:layout_marginEnd="@dimen/mr_70dp"-->
-<!--        android:backgroundTint="@color/main_color_of_app"-->
-<!--        android:text="@string/btn_dang_ky"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textSize="@dimen/text_size_16dp" />-->
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/btn_register"-->
+    <!--        android:layout_width="@dimen/width_btn_dang_nhap"-->
+    <!--        android:layout_height="@dimen/height_btn_dang_ky"-->
+    <!--        android:layout_below="@id/loading"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_marginTop="@dimen/dp20"-->
+    <!--        android:layout_marginEnd="@dimen/mr_70dp"-->
+    <!--        android:backgroundTint="@color/main_color_of_app"-->
+    <!--        android:text="@string/btn_dang_ky"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textSize="@dimen/text_size_16dp" />-->
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btnCreatePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/loading"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_btn_login"
-        android:text="@string/btn_dang_nhap"
+        android:text="Tạo mật khẩu"
         android:textAllCaps="false"
         android:textSize="17.5sp"
         android:paddingStart="45dp"
@@ -153,16 +129,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvQuanMatKhau"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_register"
-            android:layout_centerHorizontal="true"
-            android:textSize="14.5dp"
-            android:text="Quên mật khẩu?"
-            android:textColor="@color/white"
-            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/tv_register"
@@ -171,7 +137,7 @@
             android:layout_below="@+id/btn_register"
             android:layout_centerHorizontal="true"
             android:textSize="14.5dp"
-            android:text="Bạn chưa có tài khoản ?"
+            android:text="Login?"
             android:textColor="@color/white"
             android:layout_marginBottom="10dp"/>
 

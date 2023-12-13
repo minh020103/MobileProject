@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".applications.MyNotification"
         android:allowBackup="true"
@@ -18,6 +19,21 @@
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".activity.admin.LayLaiMatKhauActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.admin.QuenMatKhauActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <service
             android:name=".fcm.MyFirebaseMessagingService"
             android:exported="false">
@@ -25,6 +41,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".activity.login.LoginActivity"
             android:exported="false" />
@@ -84,7 +101,7 @@
         <activity android:name=".activity.admin.EditPolicyActivity" />
         <activity android:name=".activity.admin.EditProfileAdminActivity" />
         <activity android:name=".activity.admin.EditPasswordAdminActivity" />
-        <activity android:name=".activity.admin.DetailPolicyActivity"/>
+        <activity android:name=".activity.admin.DetailPolicyActivity" />
         <activity
             android:name=".activity.admin.Edit_Delete_BannerActivity"
             android:exported="false" />
@@ -95,10 +112,10 @@
         <activity android:name=".activity.admin.AddUtilitiesActivity" />
         <activity android:name=".activity.admin.EditDistrictActivity" />
         <activity android:name=".activity.admin.AddDistrictActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-            
     </application>
 
 </manifest>
