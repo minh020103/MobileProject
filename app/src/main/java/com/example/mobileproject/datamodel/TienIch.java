@@ -2,9 +2,6 @@ package com.example.mobileproject.datamodel;
 
 public class TienIch {
     private int id;
-
-
-
     private String ten;
     private String hinh;
     private int trangThai;

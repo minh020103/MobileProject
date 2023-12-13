@@ -11,14 +11,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.datamodel.DangKyDichVu;
+import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
 
 import java.util.List;
 
 public class PendingPackageAdapter extends RecyclerView.Adapter<PendingPackageAdapter.MyViewHolder> {
 
     private Activity activity;
-    private List<DangKyDichVu> list;
+    private List<YeuCauDangKyGoi> list;
     private int layoutID;
     private OnClick onClick;
 
@@ -26,7 +26,7 @@ public class PendingPackageAdapter extends RecyclerView.Adapter<PendingPackageAd
         this.onClick = onClick;
     }
 
-    public PendingPackageAdapter(Activity activity, List<DangKyDichVu> list, int layoutID) {
+    public PendingPackageAdapter(Activity activity, List<YeuCauDangKyGoi> list, int layoutID) {
         this.activity = activity;
         this.list = list;
         this.layoutID = layoutID;
@@ -42,11 +42,12 @@ public class PendingPackageAdapter extends RecyclerView.Adapter<PendingPackageAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        DangKyDichVu dangKyDichVu = list.get(position);
-        holder.tvTen.setText("Nguyen Duc Minh");
-        holder.tvSoPhong.setText("10 phong");
-        holder.tvThoiGian.setText("30 ngay");
-        holder.tvGia.setText("100000 dong");
+        YeuCauDangKyGoi yeuCauDangKyGoi = list.get(position);
+
+        holder.tvTen.setText(yeuCauDangKyGoi.getChuTro().getTen());
+        holder.tvSoPhong.setText(yeuCauDangKyGoi.getGoi().getSoLuongPhongToiDa()+" phòng");
+        holder.tvThoiGian.setText(yeuCauDangKyGoi.getGoi().getThoiHan()+" ngày");
+        holder.tvGia.setText(yeuCauDangKyGoi.getGoi().getGia()+" giá");
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

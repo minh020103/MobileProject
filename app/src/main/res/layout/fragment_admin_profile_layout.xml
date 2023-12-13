@@ -1,311 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/xam">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="Cá Nhân"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
+        android:layout_height="0dp"
+        android:layout_weight="9.2"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:layout_marginBottom="1dp"
-            android:background="@color/white">
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imgAdmin"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:src="@drawable/avt1"
+                app:riv_oval="true"
+                android:padding="10sp"
+                />
+
+            
+            <LinearLayout
+                android:layout_weight="7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <TextView
+
+                    android:id="@+id/tenAdmin"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Nguyễn Thanh Tùng"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    />
+                <TextView
+                    android:id="@+id/sdtAdmin"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0973975484"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:padding="10sp">
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số Tài Khoản:"
                 android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:gravity="center"
-                android:text="Cá Nhân"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-
-        </androidx.appcompat.widget.Toolbar>
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/stkAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1212121212121212"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên Người Thụ Hưởng:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/tenNganHangAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NGUYEN THANH TUNG"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9.2"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:layout_weight="1"
+
+            >
+
             <LinearLayout
-                android:orientation="horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/avt1"
-                    app:riv_oval="true"
-                    android:padding="10sp"
-
-                    />
+                android:background="@color/xam"
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_weight="7"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
+                    android:id="@+id/nextSuaThongTin"
+                    android:layout_marginBottom="1sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent">
                     <TextView
-
-                        android:id="@+id/tenAdmin"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Nguyễn Thanh Tùng"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:textSize="25sp"
-                        />
-                    <TextView
-                        android:id="@+id/sdtAdmin"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="0973975484"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        />
+                        android:text="Chỉnh Sửa Thông Tin"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"/>
 
+                    <androidx.appcompat.widget.AppCompatImageView
 
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10sp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số Tài Khoản:"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    />
-                <TextView
-                    android:id="@+id/stkAdmin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1212121212121212"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tên Người Thụ Hưởng:"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    />
-                <TextView
-                    android:id="@+id/tenNganHangAdmin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NGUYEN THANH TUNG"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-
-                >
-
-                <LinearLayout
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_width="match_parent"
-                    android:background="@color/xam"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/nextSuaThongTin"
-                        android:layout_marginBottom="1sp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:background="@color/white"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textSize="25sp"
-                            android:text="Chỉnh Sửa Thông Tin"
-                            android:layout_width="0dp"
-                            android:layout_weight="9"
-                            android:layout_height="wrap_content"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="34dp"
-                            android:src="@drawable/icon_next" />
-
-                    </LinearLayout>
-
-
-
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/icon_next" />
 
                 </LinearLayout>
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
 
-                >
-
-                <LinearLayout
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_width="match_parent"
-                    android:background="@color/xam"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/nextDoiMK"
-                        android:layout_marginBottom="1sp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:background="@color/white"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textSize="25sp"
-                            android:text="Đổi Mật Khẩu"
-                            android:layout_width="0dp"
-                            android:layout_weight="9"
-                            android:layout_height="wrap_content"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="34dp"
-                            android:src="@drawable/icon_next" />
-
-                    </LinearLayout>
-
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-
-                >
-
-                <LinearLayout
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_width="match_parent"
-                    android:background="@color/xam"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/nextDoiChinhSach"
-                        android:layout_marginBottom="1sp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:background="@color/white"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textSize="25sp"
-                            android:text="Chính Sách"
-                            android:layout_width="0dp"
-                            android:layout_weight="9"
-                            android:layout_height="wrap_content"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="34dp"
-                            android:src="@drawable/icon_next" />
-
-                    </LinearLayout>
-
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-
-                >
-
-                <LinearLayout
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_width="match_parent"
-                    android:background="@color/xam"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/dangXuat"
-                        android:layout_marginBottom="1sp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:background="@color/white"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textSize="25sp"
-                            android:text="Đăng Xuất"
-                            android:layout_width="0dp"
-                            android:layout_weight="9"
-                            android:layout_height="wrap_content"/>
-
-                        <androidx.appcompat.widget.AppCompatImageView
-
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="34dp"
-                            android:src="@drawable/icon_next" />
-
-                    </LinearLayout>
-
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2">
 
 
             </LinearLayout>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
 
+            >
+
+            <LinearLayout
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_width="match_parent"
+                android:background="@color/xam"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/nextDoiMK"
+                    android:layout_marginBottom="1sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textSize="25sp"
+                        android:text="Đổi Mật Khẩu"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/icon_next" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            >
+
+            <LinearLayout
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_width="match_parent"
+                android:background="@color/xam"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/nextDoiChinhSach"
+                    android:layout_marginBottom="1sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textSize="25sp"
+                        android:text="Chính Sách"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/icon_next" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            >
+
+            <LinearLayout
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_width="match_parent"
+                android:background="@color/xam"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/dangXuat"
+                    android:layout_marginBottom="1sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textSize="25sp"
+                        android:text="Đăng Xuất"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="34dp"
+                        android:src="@drawable/icon_next" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

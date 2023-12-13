@@ -40,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông Tin Quận"
+                    android:text="Thêm Quận"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -56,7 +56,7 @@
     <ImageView
         android:padding="5dp"
         android:background="@drawable/background_tienich"
-        android:src="@drawable/maygiat"
+        android:src="@drawable/ic_add"
         android:id="@+id/imgQuan"
         android:layout_width="375dp"
         android:layout_height="310dp"
@@ -69,16 +69,18 @@
 
     <EditText
         android:id="@+id/editTenQuan"
-        android:layout_width="375dp"
-        android:layout_height="76dp"
-        android:background="@drawable/background_tentienich"
+        android:layout_width="366dp"
+        android:layout_height="42dp"
+        android:gravity="center"
         android:hint="Tên Quận"
         android:textSize="30sp"
+        android:background="@drawable/background_tienich"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgQuan"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <Button
         android:id="@+id/btnThemQuan"

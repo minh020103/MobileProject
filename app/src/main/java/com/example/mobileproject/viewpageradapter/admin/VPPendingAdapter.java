@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.mobileproject.R;
 import com.example.mobileproject.fragment.admin.pending.AbstractFragment;
 import com.example.mobileproject.fragment.admin.pending.MotelRoomDeleteFragment;
 import com.example.mobileproject.fragment.admin.pending.OwnerAccountFragment;
@@ -18,22 +20,14 @@ public class VPPendingAdapter extends FragmentStateAdapter {
 
     private final int OWNER_ACCOUNT_ID = 0;
     private final int PACKAGE_REGISTER_ID = 1;
-    private final int MOTEL_ROOM_DELETE_ID = 2;
 
     AbstractFragment fragment;
     FragmentActivity fragmentActivity;
+    FragmentTransaction transaction;
 
     public VPPendingAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
         this.fragmentActivity = fragmentActivity;
-    }
-
-    public VPPendingAdapter(@NonNull Fragment fragment) {
-        super(fragment);
-    }
-
-    public VPPendingAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-        super(fragmentManager, lifecycle);
     }
 
     @NonNull
@@ -44,7 +38,7 @@ public class VPPendingAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 
 
@@ -56,19 +50,23 @@ public class VPPendingAdapter extends FragmentStateAdapter {
         } else {
 
             switch (screenID){
-                case 0:
+                case OWNER_ACCOUNT_ID:
                     fragment = new OwnerAccountFragment();
                     break;
-                case 1:
+                case PACKAGE_REGISTER_ID:
                     fragment = new PackageRegisterFragment();
-                    break;
-                case 2:
-                    fragment = new MotelRoomDeleteFragment();
                     break;
                 default:
                     fragment = new OwnerAccountFragment();
                     break;
             }
+        }
+        if (fragment != null) {
+            transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            if (fragmentActivity.getSupportFragmentManager().findFragmentByTag(screenID + "") == null) {
+                transaction.addToBackStack(screenID + "");
+            }
+            transaction.commit();
         }
         return fragment;
     }

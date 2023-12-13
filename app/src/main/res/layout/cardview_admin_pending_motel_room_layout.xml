@@ -12,12 +12,6 @@
         android:orientation="horizontal">
 
 
-        <ImageView
-            android:layout_width="0.5in"
-            android:layout_height="match_parent"
-            android:src="@drawable/chuyenkhoan"
-            android:padding="5dp"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"

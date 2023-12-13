@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.R;
 import com.example.mobileproject.datamodel.PhongTro;
+import com.example.mobileproject.datamodel.YeuCauXoaPhong;
 
 import java.security.PublicKey;
 import java.util.List;
@@ -17,11 +20,11 @@ import java.util.List;
 public class PendingMotelRoomAdapter extends RecyclerView.Adapter<PendingMotelRoomAdapter.MyViewHolder> {
 
     private Activity activity;
-    private List<PhongTro> list;
+    private List<YeuCauXoaPhong> list;
     private int layoutID;
     private OnClick onClick;
 
-    public PendingMotelRoomAdapter(Activity activity, List<PhongTro> list, int layoutID) {
+    public PendingMotelRoomAdapter(Activity activity, List<YeuCauXoaPhong> list, int layoutID) {
         this.activity = activity;
         this.list = list;
         this.layoutID = layoutID;
@@ -45,8 +48,19 @@ public class PendingMotelRoomAdapter extends RecyclerView.Adapter<PendingMotelRo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        PhongTro phongTro = list.get(position);
-
+        YeuCauXoaPhong yeuCauXoaPhong = list.get(position);
+        if (list.get(position).getChuTro() != null) {
+            holder.tvTen.setText(list.get(position).getChuTro().getTen());
+        }
+        else {
+            holder.tvTen.setText("ChuTro: N/A");
+        }
+        if (list.get(position).getPhongTro() != null) {
+            holder.tvIdPhong.setText("#" + list.get(position).getPhongTro().getId());
+        }
+        else {
+            holder.tvIdPhong.setText("Phòng: N/A");
+        }
 
         holder.onClickListener = new View.OnClickListener() {
             @Override
@@ -68,11 +82,16 @@ public class PendingMotelRoomAdapter extends RecyclerView.Adapter<PendingMotelRo
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        TextView tvTen;
+        TextView tvIdPhong;
         View.OnClickListener onClickListener;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvTen = itemView.findViewById(R.id.tvTen);
+            tvIdPhong = itemView.findViewById(R.id.tvIdPhong);
+
             itemView.setOnClickListener(this);
         }
 

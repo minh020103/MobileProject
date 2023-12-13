@@ -51,9 +51,6 @@ public class PendingFragment extends AbstractFragment{
                     case 1:
                         tab.setText("Gói dịch vụ");
                         break;
-                    case 2:
-                        tab.setText("Xóa phòng");
-                        break;
                 }
             }
         }).attach();

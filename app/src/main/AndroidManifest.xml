@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
+        android:name=".applications.MyNotification"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,21 +18,34 @@
         android:theme="@style/Theme.MobileProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
-        <activity
-            android:name=".activity.admin.ListWardActivity"
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
             <intent-filter>
-                <category android:name="android.intent.category.ALTERNATIVE" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </activity>
+        </service>
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.login.RegisterActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.login.LoginActivity" />
+        <activity
+            android:name=".activity.admin.AdminActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.admin.PakageDetailActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.MotelRoomOwnerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.PakageAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.PakageEditActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.InfomationMotelRoomDeleteActivity"
@@ -55,7 +69,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.admin.AdminActivity"
+            android:name=".activity.login.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,10 +84,21 @@
         <activity android:name=".activity.admin.EditPolicyActivity" />
         <activity android:name=".activity.admin.EditProfileAdminActivity" />
         <activity android:name=".activity.admin.EditPasswordAdminActivity" />
+        <activity android:name=".activity.admin.DetailPolicyActivity"/>
+        <activity
+            android:name=".activity.admin.Edit_Delete_BannerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.AddBannerActivity"
+            android:exported="false" />
         <activity android:name=".activity.admin.EditUtilitiesActivity" />
         <activity android:name=".activity.admin.AddUtilitiesActivity" />
         <activity android:name=".activity.admin.EditDistrictActivity" />
         <activity android:name=".activity.admin.AddDistrictActivity" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+            
     </application>
 
 </manifest>

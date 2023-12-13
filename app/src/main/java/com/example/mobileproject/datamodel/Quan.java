@@ -1,5 +1,7 @@
 package com.example.mobileproject.datamodel;
 
+import java.io.Serializable;
+
 public class Quan {
     private int id;
     private String tenQuan;

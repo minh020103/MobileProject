@@ -56,11 +56,7 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
         holder.onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.tenTienIch:
                         onClickListener.onClickSua(position, view);
-                        break;
-                }
                 }
         };
     }
@@ -91,7 +87,7 @@ public class TienIchAdapter extends RecyclerView.Adapter<TienIchAdapter.MyViewHo
                 super(itemView);
                 imageView= itemView.findViewById(R.id.imgTienIch);
                 textView = itemView.findViewById(R.id.tenTienIch);
-                textView.setOnClickListener(this);
+                itemView.setOnClickListener(this);
             }
 
         @Override

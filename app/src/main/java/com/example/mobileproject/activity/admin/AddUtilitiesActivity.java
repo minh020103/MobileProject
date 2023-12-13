@@ -155,7 +155,7 @@ public class AddUtilitiesActivity extends AppCompatActivity {
         builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                finish();
             }
         });
         builder.create();

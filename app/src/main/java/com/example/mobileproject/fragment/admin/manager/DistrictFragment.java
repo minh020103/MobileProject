@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -16,12 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AddDistrictActivity;
 import com.example.mobileproject.activity.admin.EditDistrictActivity;
+import com.example.mobileproject.activity.admin.EditUtilitiesActivity;
 import com.example.mobileproject.activity.admin.ListWardActivity;
 import com.example.mobileproject.adapter.admin.QuanAdapter;
+import com.example.mobileproject.api.admin.ApiServiceDung;
+import com.example.mobileproject.api.admin.ApiServiceNghiem;
 import com.example.mobileproject.datamodel.Quan;
+import com.example.mobileproject.datamodel.TienIch;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DistrictFragment extends AbstractFragment {
 
@@ -64,19 +73,54 @@ public class DistrictFragment extends AbstractFragment {
     }
     private void setDuLieu(){
         arrayList = new ArrayList<>();
-        arrayList.add(new Quan(1,"Quận Thủ Đức", "hinh1",0));
-        arrayList.add(new Quan(2,"Quận Thủ Đức", "hinh1",0));
-        arrayList.add(new Quan(3,"Quận Thủ Đức", "hinh1",0));
-        arrayList.add(new Quan(4,"Quận Thủ Đức", "hinh1",0));
-        quanAdapter= new QuanAdapter(arrayList,getActivity(),R.layout.cardview_admin_district);
+        quanAdapter= new QuanAdapter(arrayList,getActivity(),R.layout.cardview_admin_district,R.layout.cardview_admin_district_block);
         linearLayout = new LinearLayoutManager(getActivity());
         linearLayout.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayout);
         recyclerView.setAdapter(quanAdapter);
+        Call<ArrayList<Quan>> call = ApiServiceDung.apiServiceDung.layTatCaQuan();
+        call.enqueue(new Callback<ArrayList<Quan>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Quan>> call, Response<ArrayList<Quan>> response) {
+                if(response.isSuccessful()){
+                    arrayList.addAll(response.body());
+                    quanAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Quan>> call, Throwable t) {
+
+            }
+        });
+
+
+        quanAdapter.setOnClickListener(new QuanAdapter.OnClickListener() {
+            @Override
+            public void onClickXem(int position, View view) {
+                Intent intent = new Intent(getContext(), ListWardActivity.class);
+                intent.putExtra("idQuan",arrayList.get(position).getId());
+                intent.putExtra("nameQuan",arrayList.get(position).getTenQuan());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onClickSua(int position, View view) {
+                Intent intent = new Intent(getContext(), EditDistrictActivity.class);
+                intent.putExtra("key",arrayList.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
     private void anhXa(View fragment){
         fabAdd = fragment.findViewById(R.id.fabAdd);
         recyclerView = fragment.findViewById(R.id.recycleView);
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setDuLieu();
+    }
 }

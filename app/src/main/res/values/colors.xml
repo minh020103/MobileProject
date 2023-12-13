@@ -18,4 +18,7 @@
     <color name="yellow">#FFEA26</color>
     <color name="yellow_bold">#7E7100</color>
     <color name="blue">#2a66e8</color>
+    <color name="bg_tv_dangnhap">#30ffffff</color>
+    <color name="black_a">#4D000000</color>
+
 </resources>

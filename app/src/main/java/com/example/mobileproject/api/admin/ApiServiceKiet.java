@@ -1,7 +1,9 @@
 package com.example.mobileproject.api.admin;
 
+import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
-import com.example.mobileproject.datamodel.GoiDichVu;
+import com.example.mobileproject.datamodel.Goi;
+import com.example.mobileproject.datamodel.TaiKhoan;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -10,38 +12,52 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceKiet {
-    Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd")
-            .create();
+
 
     ApiServiceKiet apiServiceKiet = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.103/API_ChuyenDe2/api/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl(Const.DOMAIN)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiServiceKiet.class);
 
     /* Host */
-    @GET("hostAll.php")
+    @GET("api/chutro/daxacthuc")
     Call<List<ChuTro>> getListHostAPI();
-    @GET("hostByID.php")
-    Call<ChuTro> getHostByIdAPI(@Query("Id") int Id);
-    @GET("hostByName.php")
-    Call<List<ChuTro>> getHostByNameAPI(@Query("TenNguoiDung") String TenNguoiDung);
-    @GET("hostByPhone.php")
-    Call<List<ChuTro>> getHostByPhoneAPI(@Query("SoDienThoai") String SoDienThoai);
-    @GET("hostLockAccount.php")
-    Call<ChuTro> getHostLockAccountAPI(@Query("Id") int Id);
-    @GET("hostUnLockAccount.php")
-    Call<ChuTro> getHostUnLockAccountAPI(@Query("Id") int Id);
+    @GET("api/chutro/chitiet")
+    Call<ChuTro> getHostByIdAPI(@Query("idTaiKhoan") int idTaiKhoan);
+    @GET("api/chutro/timKiemTenChuTroXacThuc")
+    Call<List<ChuTro>> getHostByNameAPI(@Query("ten") String ten);
+    @GET("api/chutro/timKiemSDTChuTroXacThuc")
+    Call<List<ChuTro>> getHostByPhoneAPI(@Query("soDienThoai") String soDienThoai);
+
+    /* Account */
+    @PATCH("api/capnhattrangthai")
+    Call<Integer> thayDoiTrangThaiTaiKhoan(@Query("id") int id);
 
     /* Pakage */
-    @GET("serviceAll.php")
-    Call<List<GoiDichVu>> getListPakageAPI();
-    @GET("serviceByID.php")
-    Call<GoiDichVu> getPakageByIdAPI(@Query("Id") int Id);
+    @GET("api/goi/all")
+    Call<List<Goi>> getListPakageAPI();
+    @GET("api/goi/chitiet")
+    Call<Goi> getPakageByIdAPI(@Query("id") int id);
+    @GET("api/goi/lock")
+    Call<Goi> lockPakageByIdAPI(@Query("id") int id);
+    @GET("api/goi/unLock")
+    Call<Goi> unLockPakageByIdAPI(@Query("id") int id);
+    @POST("api/goi/add")
+    Call<Goi> addPakage(@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+    @PUT("api/goi/update")
+    Call<Goi> updatePakage(@Query("id") int id,@Query("thoiHan") int thoiHan, @Query("soLuongPhongToiDa") int soLuongPhongToiDa, @Query("gia") int gia);
+
 
 }
