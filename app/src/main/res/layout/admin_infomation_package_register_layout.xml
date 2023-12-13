@@ -174,11 +174,17 @@
                         android:textSize="20sp"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imgCK"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="4in"
-                    android:src="@drawable/chuyenkhoan" />
+                    app:cardCornerRadius="10dp">
+                    <ImageView
+                        android:id="@+id/imgCK"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/chuyenkhoan"
+                        android:scaleType="fitXY"/>
+                </androidx.cardview.widget.CardView>
 
 
 

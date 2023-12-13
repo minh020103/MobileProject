@@ -135,17 +135,32 @@
                         android:textSize="20sp"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imgcccdMT"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="1.5in"
-                    android:src="@drawable/cccd"/>
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginBottom="5dp">
+                    <ImageView
+                        android:id="@+id/imgcccdMT"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/cccd"
+                        android:scaleType="fitXY"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5in"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginBottom="5dp">
+                    <ImageView
+                        android:id="@+id/imgcccdMS"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/cccd"
+                        android:scaleType="fitXY"/>
+                </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/imgcccdMS"
-                    android:layout_width="match_parent"
-                    android:layout_height="1.5in"
-                    android:src="@drawable/cccd"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
