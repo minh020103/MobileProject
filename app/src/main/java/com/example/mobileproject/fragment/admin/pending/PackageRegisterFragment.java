@@ -48,6 +48,17 @@ public class PackageRegisterFragment extends AbstractFragment {
 
         anhXa(fragmentLayout);
 
+
+
+
+        clickItem();
+
+        return fragmentLayout;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         databaseReference.child("notification_admin").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -59,17 +70,6 @@ public class PackageRegisterFragment extends AbstractFragment {
 
             }
         });
-
-
-        clickItem();
-
-        return fragmentLayout;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
     }
 
     private void getDataFromAPI() {

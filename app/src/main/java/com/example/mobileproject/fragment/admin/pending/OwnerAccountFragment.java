@@ -52,17 +52,7 @@ public class OwnerAccountFragment extends AbstractFragment {
 
         anhXa(fragmentLayout);
         suLi();
-        databaseReference.child("notification_admin").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                callAPI();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
 
@@ -84,7 +74,17 @@ public class OwnerAccountFragment extends AbstractFragment {
     @Override
     public void onResume() {
         super.onResume();
+        databaseReference.child("notification_admin").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                callAPI();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

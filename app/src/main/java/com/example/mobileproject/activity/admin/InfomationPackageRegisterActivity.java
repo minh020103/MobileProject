@@ -23,6 +23,9 @@ import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
 import com.example.mobileproject.datamodel.fcm.Notification;
 import com.example.mobileproject.datamodel.fcm.PushNotification;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 import java.util.List;
@@ -46,7 +49,7 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
     TextView tvThoiGian;
     TextView tvGia;
     ImageView imgCK;
-
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +124,17 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
                 ApiServiceMinh.apiService.xacNhanYeuCauDangKy(id).enqueue(new Callback<Integer>() {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
-                        Log.d("TAG", "onResponse: idTaiKhoan"+responseIdTaiKhoan.body());
-                        MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds()+responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
+                        if (responseIdTaiKhoan.code() == 200) {
+                            Log.d("TAGTK", "onResponse: idTaiKhoan" + responseIdTaiKhoan.body());
+                            databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
+                                }
+                            });
+                            MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds() + responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
+                            finish();
+                        }
                     }
 
                     @Override

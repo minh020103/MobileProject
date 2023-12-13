@@ -1,5 +1,6 @@
 package com.example.mobileproject.api;
 
+import com.example.mobileproject.datamodel.ResultFCM;
 import com.example.mobileproject.datamodel.fcm.PushNotification;
 
 import retrofit2.Call;
@@ -18,5 +19,5 @@ public interface ApiFCMService {
 
         @Headers({"Authorization: key=" + Const.SERVER_KEY, "Content-Type:" + Const.CONTENT_TYPE})
         @POST("/fcm/send")
-        Call postNotification(@Body PushNotification data);
+        Call<ResultFCM> postNotification(@Body PushNotification data);
 }

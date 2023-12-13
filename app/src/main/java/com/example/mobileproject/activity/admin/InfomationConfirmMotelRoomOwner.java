@@ -23,6 +23,9 @@ import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauXacThuc;
 import com.example.mobileproject.datamodel.fcm.Notification;
 import com.example.mobileproject.datamodel.fcm.PushNotification;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 import java.util.List;
@@ -46,6 +49,7 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
     TextView tvSDT;
     TextView tvSTK;
     TextView tvTenNguoiThuHuong;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     private int idChuTro;
     @Override
@@ -108,6 +112,12 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
                     public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
                         if (responseIdTaiKhoan.code() == 200) {
                             Log.d("TAG", "onResponse: idTaiKhoan"+responseIdTaiKhoan.body());
+                            databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
+                                }
+                            });
                             ApiServiceMinh.apiService.layTatCaTokenCuaTaiKhoan(responseIdTaiKhoan.body()).enqueue(new Callback<List<FirebaseCloudMessaging>>() {
                                 @Override
                                 public void onResponse(Call<List<FirebaseCloudMessaging>> call, Response<List<FirebaseCloudMessaging>> responseToken) {
