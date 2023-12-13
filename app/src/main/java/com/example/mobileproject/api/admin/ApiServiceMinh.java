@@ -3,6 +3,7 @@ package com.example.mobileproject.api.admin;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.datamodel.ChuTro;
 import com.example.mobileproject.datamodel.FirebaseCloudMessaging;
+import com.example.mobileproject.datamodel.ResultForgotPassword;
 import com.example.mobileproject.datamodel.TaiKhoan;
 import com.example.mobileproject.datamodel.ThongBao;
 import com.example.mobileproject.datamodel.YeuCauDangKyGoi;
@@ -79,4 +80,11 @@ public interface ApiServiceMinh {
 
     @POST("api/notification/create")
     Call<ThongBao> sendNotificationResult(@Query("idTaiKhoanGui") int idTaiKhoanGui, @Query("idTaiKhoanNhan") int idTaiKhoanNhan, @Query("title") String title, @Query("noiDung") String noiDung, @Query("trangThai") int trangThai, @Query("trangThaiNhan") int trangThaiNhan);
+
+    @GET("api/checkuser")
+    Call<TaiKhoan> layTaiKhoanTheoUsername(@Query("tenTaiKhoan") String tenTaiKhoan);
+    @POST("api/forgotpassword")
+    Call<ResultForgotPassword> sendEmailForgotPassword(@Query("idTaiKhoan") int idTaiKhoan, @Query("email") String email);
+    @POST("api/checkcode")
+    Call<ResultForgotPassword> resultForgotpassword(@Query("idTaiKhoan") int idTaiKhoan, @Query("code") int code, @Query("matKhau") String matKhau);
 }

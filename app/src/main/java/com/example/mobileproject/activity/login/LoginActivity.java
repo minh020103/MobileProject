@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.mobileproject.R;
 import com.example.mobileproject.activity.admin.AdminActivity;
+import com.example.mobileproject.activity.admin.QuenMatKhauActivity;
 import com.example.mobileproject.api.Const;
 import com.example.mobileproject.api.admin.ApiServiceMinh;
 import com.example.mobileproject.api.admin.ApiServivePhuc;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassWord;
     Button btnLogin;
-    TextView tvRegister,tvErrorUsnPass, tvErrorEmpty,tvErrorMissing;
+    TextView tvRegister,tvErrorUsnPass, tvErrorEmpty,tvErrorMissing, tvQuanMatKhau;
 
     ProgressBar progLoading;
 
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         tvErrorUsnPass = findViewById(R.id.tv_error_usn_pass);
         tvErrorEmpty = findViewById(R.id.tv_error_empty);
         tvErrorMissing = findViewById(R.id.tv_error_missing_charter);
+        tvQuanMatKhau = findViewById(R.id.tvQuanMatKhau);
         progLoading = findViewById(R.id.loading);
 
         askNotificationPermission();
@@ -74,6 +76,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 progLoading.setVisibility(View.VISIBLE);
                 checkLogin();
+            }
+        });
+
+        tvQuanMatKhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, QuenMatKhauActivity.class));
+                finish();
             }
         });
 
