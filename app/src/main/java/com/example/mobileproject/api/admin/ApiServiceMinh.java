@@ -87,4 +87,5 @@ public interface ApiServiceMinh {
     Call<ResultForgotPassword> sendEmailForgotPassword(@Query("idTaiKhoan") int idTaiKhoan, @Query("email") String email);
     @POST("api/checkcode")
     Call<ResultForgotPassword> resultForgotpassword(@Query("idTaiKhoan") int idTaiKhoan, @Query("code") int code, @Query("matKhau") String matKhau);
+
 }
