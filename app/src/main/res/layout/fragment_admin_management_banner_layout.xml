@@ -17,7 +17,18 @@
             android:layout_height="match_parent"
             android:background="@color/gray">
 
+
         </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/tv_rong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có banner nào!"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:visibility="gone"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_fabAdd"

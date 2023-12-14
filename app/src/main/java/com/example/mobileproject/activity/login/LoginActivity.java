@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassWord;
     Button btnLogin;
-    TextView tvRegister,tvErrorUsnPass, tvErrorEmpty,tvErrorMissing, tvQuanMatKhau;
+    TextView tvErrorUsnPass, tvErrorEmpty,tvErrorMissing, tvQuanMatKhau;
 
     ProgressBar progLoading;
 
@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassWord = findViewById(R.id.edt_password);
         edtUsername = findViewById(R.id.edt_username);
         btnLogin = findViewById(R.id.btn_login);
-        tvRegister = findViewById(R.id.tv_register);
         tvErrorUsnPass = findViewById(R.id.tv_error_usn_pass);
         tvErrorEmpty = findViewById(R.id.tv_error_empty);
         tvErrorMissing = findViewById(R.id.tv_error_missing_charter);

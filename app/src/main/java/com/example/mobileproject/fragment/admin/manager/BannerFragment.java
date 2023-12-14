@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ public class BannerFragment extends AbstractFragment {
     BannerAdapter adapter;
     LinearLayoutManager layoutManager;
     RecyclerView rcvBanner;
+    TextView tv_rong;
     List<Banner> listIem;
     FloatingActionButton btnFabAdd;
     Handler handler;
@@ -43,6 +45,7 @@ public class BannerFragment extends AbstractFragment {
         fragmentLayout = inflater.inflate(R.layout.fragment_admin_management_banner_layout, container, false);
         rcvBanner = fragmentLayout.findViewById(R.id.rcvBanner);
         btnFabAdd = fragmentLayout.findViewById(R.id.btn_fabAdd);
+        tv_rong = fragmentLayout.findViewById(R.id.tv_rong);
         listIem = new LinkedList<>();
         adapter = new BannerAdapter(getActivity(), listIem, R.layout.cardview_admin_management_banner_layout);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -56,8 +59,8 @@ public class BannerFragment extends AbstractFragment {
             public void OnClickItem(int position, View v) {
 
                 Intent intent = new Intent(getActivity(), Edit_Delete_BannerActivity.class);
-                intent.putExtra("hinh",listIem.get(position).getHinhBanner()+ "");
-                intent.putExtra("id",listIem.get(position).getId());
+                intent.putExtra("hinh", listIem.get(position).getHinhBanner() + "");
+                intent.putExtra("id", listIem.get(position).getId());
                 startActivity(intent);
             }
         });
@@ -92,12 +95,19 @@ public class BannerFragment extends AbstractFragment {
         ApiServivePhuc.apiService.getListBanner().enqueue(new Callback<List<Banner>>() {
             @Override
             public void onResponse(Call<List<Banner>> call, Response<List<Banner>> response) {
-                if (response.code() == 200){
-                    listIem.clear();
-                    listIem.addAll(response.body());
-                    adapter.notifyDataSetChanged();
+                if (response.code() == 200) {
+                    if (response.body().size() == 0) {
+                        tv_rong.setVisibility(View.VISIBLE);
+                    } else {
+                        tv_rong.setVisibility(View.GONE);
+                        listIem.clear();
+                        listIem.addAll(response.body());
+                        adapter.notifyDataSetChanged();
+                    }
+
                 }
             }
+
             @Override
             public void onFailure(Call<List<Banner>> call, Throwable t) {
             }
