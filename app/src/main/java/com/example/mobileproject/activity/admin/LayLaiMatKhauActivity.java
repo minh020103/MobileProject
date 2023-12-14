@@ -52,6 +52,9 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
                                     if (response.body().getStatus() == 1) {
                                         alertDialog(response.body().getMessage());
                                     }
+                                    if (response.body().getStatus() == 0) {
+                                        alertDialog(response.body().getMessage());
+                                    }
                                 } else {
                                     alertDialog(response.body().getMessage());
                                     tvNotification.setText("Hãy kiểm tra lại code trong email và nhập đúng");
