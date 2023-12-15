@@ -201,7 +201,7 @@ public class ListWardActivity extends AppCompatActivity {
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         rcvWard.setLayoutManager(layoutManager);
         rcvWard.setAdapter(adapter);
-        ApiServiceDung.apiServiceDung.layTatCaPhuongTheoQuan(1).enqueue(new Callback<ArrayList<Phuong>>() {
+        ApiServiceDung.apiServiceDung.layTatCaPhuongTheoQuan(idQuan).enqueue(new Callback<ArrayList<Phuong>>() {
             @Override
             public void onResponse(Call<ArrayList<Phuong>> call, Response<ArrayList<Phuong>> response) {
                 list.clear();
