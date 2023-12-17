@@ -151,12 +151,12 @@ public class EditProfileAdminActivity extends AppCompatActivity {
                         call.enqueue(new Callback<Integer>() {
                             @Override
                             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                                thongBao("Thành COng");
+                                thongBao("Cập nhật thông tin thành công");
                             }
 
                             @Override
                             public void onFailure(Call<Integer> call, Throwable t) {
-                                thongBao("That Bai");
+                                thongBao("Cập nhật thông tin thất bại!");
                             }
                         });
                     }else{

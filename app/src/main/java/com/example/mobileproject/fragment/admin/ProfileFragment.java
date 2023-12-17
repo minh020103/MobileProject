@@ -101,11 +101,13 @@ public class ProfileFragment extends AbstractFragment{
         call.enqueue(new Callback<Admin>() {
             @Override
             public void onResponse(Call<Admin> call, Response<Admin> response) {
-                Glide.with(ProfileFragment.this).load(Const.DOMAIN+response.body().getHinh()).into(imgAdmin);
-                tenAdmin.setText(response.body().getTen());
-                sdtAdmin.setText(response.body().getSoDienThoai());
-                stkAdmin.setText(response.body().getSoTaiKhoanNganHang());
-                tenNganHangAdmin.setText(response.body().getTenChuTaiKhoan());
+                if (response.body() != null){
+                    Glide.with(ProfileFragment.this).load(Const.DOMAIN+response.body().getHinh()).into(imgAdmin);
+                    tenAdmin.setText(response.body().getTen());
+                    sdtAdmin.setText(response.body().getSoDienThoai());
+                    stkAdmin.setText(response.body().getSoTaiKhoanNganHang());
+                    tenNganHangAdmin.setText(response.body().getTenChuTaiKhoan());
+                }
             }
 
             @Override

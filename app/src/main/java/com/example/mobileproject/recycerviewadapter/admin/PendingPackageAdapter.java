@@ -43,7 +43,6 @@ public class PendingPackageAdapter extends RecyclerView.Adapter<PendingPackageAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         YeuCauDangKyGoi yeuCauDangKyGoi = list.get(position);
-
         holder.tvTen.setText(yeuCauDangKyGoi.getChuTro().getTen());
         holder.tvSoPhong.setText(yeuCauDangKyGoi.getGoi().getSoLuongPhongToiDa()+" phòng");
         holder.tvThoiGian.setText(yeuCauDangKyGoi.getGoi().getThoiHan()+" ngày");
