@@ -231,10 +231,10 @@ public class EditDistrictActivity extends AppCompatActivity {
                     name_quan.setText("Chỉnh Sửa " + response.body().getTenQuan().toString());
                     Glide.with(EditDistrictActivity.this).load(Const.DOMAIN + response.body().getHinh()).into(imgQuan);
                     if (response.body().getTrangThai() == 0) {
-                        btnKhoaQuan.setText("Khóa Tiên Ích Lại");
+                        btnKhoaQuan.setText("Khóa Quận Lại");
                         btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.red));
                     } else {
-                        btnKhoaQuan.setText("Mở Khóa Tiện Ích");
+                        btnKhoaQuan.setText("Mở Quận Ích");
                         btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.black));
                     }
                 }
