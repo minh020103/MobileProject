@@ -79,7 +79,7 @@ public interface ApiServiceMinh {
     Call<List<FirebaseCloudMessaging>> layTatCaTokenCuaTaiKhoan(@Query("idTaiKhoan") int idTaiKhoan);
 
     @POST("api/notification/create")
-    Call<ThongBao> sendNotificationResult(@Query("idTaiKhoanGui") int idTaiKhoanGui, @Query("idTaiKhoanNhan") int idTaiKhoanNhan, @Query("title") String title, @Query("noiDung") String noiDung, @Query("trangThai") int trangThai, @Query("trangThaiNhan") int trangThaiNhan);
+        Call<ThongBao> sendNotificationResult(@Query("idTaiKhoanGui") int idTaiKhoanGui, @Query("idTaiKhoanNhan") int idTaiKhoanNhan, @Query("title") String title, @Query("noiDung") String noiDung, @Query("trangThai") int trangThai, @Query("trangThaiNhan") int trangThaiNhan);
 
     @GET("api/checkuser")
     Call<TaiKhoan> layTaiKhoanTheoUsername(@Query("tenTaiKhoan") String tenTaiKhoan);

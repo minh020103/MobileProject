@@ -133,6 +133,22 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
+                                        ApiServiceMinh.apiService.sendNotificationResult(1,responseIdTaiKhoan.body(),"Đăng ký gói thành công", "Chúc mừng bạn đã đăng ký gói thành công", 0,0).enqueue(new Callback<ThongBao>() {
+                                            @Override
+                                            public void onResponse(Call<ThongBao> call, Response<ThongBao> response) {
+                                                databaseReference.child("notification").child(responseIdTaiKhoan.body()+"").child(0+"").setValue(new Date().getSeconds()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
+                                                    }
+                                                });
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<ThongBao> call, Throwable t) {
+
+                                            }
+                                        });
                                     }
                                 });
                                 MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds() + responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
