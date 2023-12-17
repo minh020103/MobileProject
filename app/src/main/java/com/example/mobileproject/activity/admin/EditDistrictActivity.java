@@ -155,7 +155,7 @@ public class EditDistrictActivity extends AppCompatActivity {
         ApiServiceDung.apiServiceDung.capnhatquan2(idQuanForm,tenQuan,trangQuan).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                thongBao("Up load thành công Quan");
+                thongBao("Up load thành công Quận");
             }
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {

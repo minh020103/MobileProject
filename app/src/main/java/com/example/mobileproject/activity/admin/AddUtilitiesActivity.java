@@ -99,12 +99,12 @@ public class AddUtilitiesActivity extends AppCompatActivity {
        call.enqueue(new Callback<TienIch>() {
            @Override
            public void onResponse(Call<TienIch> call, Response<TienIch> response) {
-               thongBao("Them Tien Ich Thanh Cong");
+               thongBao("Thêm Tiện Ích Thành Công");
            }
 
            @Override
            public void onFailure(Call<TienIch> call, Throwable t) {
-                thongBao("That Bai");
+                thongBao("Lỗi !!!");
            }
        });
     }

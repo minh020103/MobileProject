@@ -101,12 +101,12 @@ public class AddDistrictActivity extends AppCompatActivity {
         call.enqueue(new Callback<Quan>() {
             @Override
             public void onResponse(Call<Quan> call, Response<Quan> response) {
-                thongBao("Them Tien Ich Thanh Cong");
+                thongBao("Thêm Quận Mới Thành Công");
             }
 
             @Override
             public void onFailure(Call<Quan> call, Throwable t) {
-                thongBao("That Bai");
+                thongBao("Lỗi !!!");
             }
         });
     }
