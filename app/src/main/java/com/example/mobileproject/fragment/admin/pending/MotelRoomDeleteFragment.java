@@ -61,9 +61,11 @@ public class MotelRoomDeleteFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<List<YeuCauXoaPhong>> call, Response<List<YeuCauXoaPhong>> response) {
                 if (response.code() == 200){
-                    list.clear();
-                    list.addAll(response.body());
-                    adapter.notifyDataSetChanged();
+                    if (response.body()!=null) {
+                        list.clear();
+                        list.addAll(response.body());
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
 

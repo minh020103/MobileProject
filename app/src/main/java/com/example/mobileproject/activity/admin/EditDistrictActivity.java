@@ -225,16 +225,18 @@ public class EditDistrictActivity extends AppCompatActivity {
         call.enqueue(new Callback<Quan>() {
             @Override
             public void onResponse(Call<Quan> call, Response<Quan> response) {
-                layTrangThai(response.body().getTrangThai());
-                editQuan.setText(response.body().getTenQuan().toString());
-                name_quan.setText("Chỉnh Sửa " + response.body().getTenQuan().toString());
-                Glide.with(EditDistrictActivity.this).load(Const.DOMAIN+response.body().getHinh()).into(imgQuan);
-                if(response.body().getTrangThai()==0){
-                    btnKhoaQuan.setText("Khóa Tiên Ích Lại");
-                    btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.red));
-                }else{
-                    btnKhoaQuan.setText("Mở Khóa Tiện Ích");
-                    btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.black));
+                if (response.body()!= null) {
+                    layTrangThai(response.body().getTrangThai());
+                    editQuan.setText(response.body().getTenQuan().toString());
+                    name_quan.setText("Chỉnh Sửa " + response.body().getTenQuan().toString());
+                    Glide.with(EditDistrictActivity.this).load(Const.DOMAIN + response.body().getHinh()).into(imgQuan);
+                    if (response.body().getTrangThai() == 0) {
+                        btnKhoaQuan.setText("Khóa Tiên Ích Lại");
+                        btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.red));
+                    } else {
+                        btnKhoaQuan.setText("Mở Khóa Tiện Ích");
+                        btnKhoaQuan.setBackgroundColor(getResources().getColor(R.color.black));
+                    }
                 }
             }
             @Override

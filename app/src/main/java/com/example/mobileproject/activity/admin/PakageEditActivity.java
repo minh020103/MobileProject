@@ -64,11 +64,13 @@ public class PakageEditActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
             @Override
             public void onResponse(Call<Goi> call, Response<Goi> response) {
-                Goi host = response.body();
+                if (response.body()!=null) {
+                    Goi host = response.body();
 
-                edtThoiHanGoiDVSua.setText(String.valueOf(host.getThoiHan()));
-                edtSoLuongPhongGoiDVSua.setText(String.valueOf(host.getSoLuongPhongToiDa()));
-                edtGiaGoiDVSua.setText(String.valueOf(host.getGia()));
+                    edtThoiHanGoiDVSua.setText(String.valueOf(host.getThoiHan()));
+                    edtSoLuongPhongGoiDVSua.setText(String.valueOf(host.getSoLuongPhongToiDa()));
+                    edtGiaGoiDVSua.setText(String.valueOf(host.getGia()));
+                }
 
             }
             @Override

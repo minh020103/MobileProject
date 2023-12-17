@@ -68,18 +68,18 @@ public class EditPasswordAdminActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> response) {
 
-
-                    if(kiemTraMKHienTai(matKhauHienTai,response.body().getMatKhau())){
+                if(response.body() != null) {
+                    if (kiemTraMKHienTai(matKhauHienTai, response.body().getMatKhau())) {
                         /// Tiến Hành Đổi Mật Khẩu ở đây
-                        if(matKhauMoi.getText().toString().trim().length()<6|xacNhanMKMoi.getText().toString().trim().length()<6){
+                        if (matKhauMoi.getText().toString().trim().length() < 6 | xacNhanMKMoi.getText().toString().trim().length() < 6) {
                             thongBao("Mật Khẩu Tối Thiểu 6 Kí Tự!");
-                        }else{
-                                thongBaoYesNo("Bạn có chắc muốn đổi MK",matKhauMoi.getText().toString(), xacNhanMKMoi.getText().toString());
+                        } else {
+                            thongBaoYesNo("Bạn có chắc muốn đổi MK", matKhauMoi.getText().toString(), xacNhanMKMoi.getText().toString());
                         }
-                    }else{
+                    } else {
                         thongBao("Mật Khẩu Hiện Tại Sai!");
                     }
-
+                }
 
             }
 

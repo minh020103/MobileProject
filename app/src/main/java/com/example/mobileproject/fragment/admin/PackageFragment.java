@@ -65,17 +65,19 @@ public class PackageFragment extends AbstractFragment{
         ApiServiceKiet.apiServiceKiet.getListPakageAPI().enqueue(new Callback<List<Goi>>() {
             @Override
             public void onResponse(Call<List<Goi>> call, Response<List<Goi>> response) {
-                list = response.body();
-                goiDichVuAdapter = new GoiDichVuAdapter(getActivity(), list, R.layout.cardview_admin_package_layout);
-                recyclerView.setAdapter(goiDichVuAdapter);
-                goiDichVuAdapter.setOnClickItemListener(new GoiDichVuAdapter.OnClickItemListener() {
-                    @Override
-                    public void onClickItem(int position, View v) {
-                        Log.d("TAG", list.get(position) + "");
-                        AppUntil.ID_GOI_DICH_VU = list.get(position).getId();
-                        nextActivity();
-                    }
-                });
+                if (response.body()!=null) {
+                    list = response.body();
+                    goiDichVuAdapter = new GoiDichVuAdapter(getActivity(), list, R.layout.cardview_admin_package_layout);
+                    recyclerView.setAdapter(goiDichVuAdapter);
+                    goiDichVuAdapter.setOnClickItemListener(new GoiDichVuAdapter.OnClickItemListener() {
+                        @Override
+                        public void onClickItem(int position, View v) {
+                            Log.d("TAG", list.get(position) + "");
+                            AppUntil.ID_GOI_DICH_VU = list.get(position).getId();
+                            nextActivity();
+                        }
+                    });
+                }
             }
 
             @Override

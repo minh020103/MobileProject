@@ -96,15 +96,16 @@ public class BannerFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<List<Banner>> call, Response<List<Banner>> response) {
                 if (response.code() == 200) {
-                    if (response.body().size() == 0) {
-                        tv_rong.setVisibility(View.VISIBLE);
-                    } else {
-                        tv_rong.setVisibility(View.GONE);
-                        listIem.clear();
-                        listIem.addAll(response.body());
-                        adapter.notifyDataSetChanged();
+                    if (response.body()!=null) {
+                        if (response.body().size() == 0) {
+                            tv_rong.setVisibility(View.VISIBLE);
+                        } else {
+                            tv_rong.setVisibility(View.GONE);
+                            listIem.clear();
+                            listIem.addAll(response.body());
+                            adapter.notifyDataSetChanged();
+                        }
                     }
-
                 }
             }
 

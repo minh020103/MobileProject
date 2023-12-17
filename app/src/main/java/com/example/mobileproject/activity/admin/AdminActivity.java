@@ -68,12 +68,13 @@ public class AdminActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> response) {
                         if (response.code() == 200){
-                            if (response.body() > 0){
-                                badgeDrawable.setVisible(true);
-                                badgeDrawable.setNumber(response.body());
-                            }
-                            else {
-                                badgeDrawable.setVisible(false);
+                            if (response.body() != null) {
+                                if (response.body() > 0) {
+                                    badgeDrawable.setVisible(true);
+                                    badgeDrawable.setNumber(response.body());
+                                } else {
+                                    badgeDrawable.setVisible(false);
+                                }
                             }
                         }
 

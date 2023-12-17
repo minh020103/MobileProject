@@ -54,44 +54,44 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TaiKhoan> call, Response<TaiKhoan> responseTaiKhoan) {
                         if (responseTaiKhoan.code() == 200) {
-                            Log.d("TAGL", "onClick: 2");
-                            if (responseTaiKhoan.body() != null) {
-                                ApiServiceMinh.apiService.sendEmailForgotPassword(responseTaiKhoan.body().getId(), responseTaiKhoan.body().getEmail()).enqueue(new Callback<ResultForgotPassword>() {
-                                    @Override
-                                    public void onResponse(Call<ResultForgotPassword> call, Response<ResultForgotPassword> responseResult) {
-                                        if (responseResult.code() == 200){
-                                            Log.d("TAGL", "onClick: 3");
-                                            if (responseResult.body() != null){
-                                                if (responseResult.body().getStatus() == 1) {
-                                                    Log.d("TAGL", "onClick: 4");
-                                                    Intent intent = new Intent(QuenMatKhauActivity.this, LayLaiMatKhauActivity.class);
-                                                    intent.putExtra("idTaiKhoan", responseTaiKhoan.body().getId());
-                                                    startActivity(intent);
-                                                    finish();
+                            if (responseTaiKhoan.body()!=null) {
+                                Log.d("TAGL", "onClick: 2");
+                                if (responseTaiKhoan.body() != null) {
+                                    ApiServiceMinh.apiService.sendEmailForgotPassword(responseTaiKhoan.body().getId(), responseTaiKhoan.body().getEmail()).enqueue(new Callback<ResultForgotPassword>() {
+                                        @Override
+                                        public void onResponse(Call<ResultForgotPassword> call, Response<ResultForgotPassword> responseResult) {
+                                            if (responseResult.code() == 200) {
+                                                Log.d("TAGL", "onClick: 3");
+                                                if (responseResult.body() != null) {
+                                                    if (responseResult.body().getStatus() == 1) {
+                                                        Log.d("TAGL", "onClick: 4");
+                                                        Intent intent = new Intent(QuenMatKhauActivity.this, LayLaiMatKhauActivity.class);
+                                                        intent.putExtra("idTaiKhoan", responseTaiKhoan.body().getId());
+                                                        startActivity(intent);
+                                                        finish();
 
-                                                }
-                                                else {
-                                                    Log.d("TAGL", "onClick: 5");
-                                                    alertDialog(responseResult.body().getMessage());
+                                                    } else {
+                                                        Log.d("TAGL", "onClick: 5");
+                                                        alertDialog(responseResult.body().getMessage());
+                                                    }
                                                 }
                                             }
+
+                                            loding.setVisibility(View.GONE);
                                         }
 
-                                        loding.setVisibility(View.GONE);
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ResultForgotPassword> call, Throwable t) {
-                                        Log.d("TAGL", "onClick: 6");
-                                    }
-                                });
-                            } else {
-                                Log.d("TAGL", "onClick: 7");
-                                tvNotification.setText("Tài khoản không chính sác");
-                                tvNotification.setVisibility(View.VISIBLE);
-                                loding.setVisibility(View.GONE);
+                                        @Override
+                                        public void onFailure(Call<ResultForgotPassword> call, Throwable t) {
+                                            Log.d("TAGL", "onClick: 6");
+                                        }
+                                    });
+                                } else {
+                                    Log.d("TAGL", "onClick: 7");
+                                    tvNotification.setText("Tài khoản không chính sác");
+                                    tvNotification.setVisibility(View.VISIBLE);
+                                    loding.setVisibility(View.GONE);
+                                }
                             }
-
 
                         }
                     }

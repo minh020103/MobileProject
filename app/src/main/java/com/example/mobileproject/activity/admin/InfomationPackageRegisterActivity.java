@@ -100,15 +100,17 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
         ApiServiceMinh.apiService.layChiTietYeuCauDangKyGoi(idYeuCauDangKyGoi).enqueue(new Callback<YeuCauDangKyGoi>() {
             @Override
             public void onResponse(Call<YeuCauDangKyGoi> call, Response<YeuCauDangKyGoi> response) {
-                tvTen.setText(response.body().getChuTro().getTen());
-                tvSDT.setText(response.body().getChuTro().getSoDienThoai());
-                tvIDGoi.setText("#" + response.body().getGoi().getId());
-                tvTen.setText(response.body().getChuTro().getTen());
-                tvSoPhong.setText(response.body().getGoi().getSoLuongPhongToiDa()+"");
-                tvThoiGian.setText(response.body().getGoi().getThoiHan()+"");
-                tvGia.setText(response.body().getGoi().getThoiHan()+"");
-                Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN+response.body().getHinhAnhChuyenKhoan()).into(imgCK);
-                batSuKienCanDuLieu(response.body().getId());
+                if (response.body()!=null) {
+                    tvTen.setText(response.body().getChuTro().getTen());
+                    tvSDT.setText(response.body().getChuTro().getSoDienThoai());
+                    tvIDGoi.setText("#" + response.body().getGoi().getId());
+                    tvTen.setText(response.body().getChuTro().getTen());
+                    tvSoPhong.setText(response.body().getGoi().getSoLuongPhongToiDa() + "");
+                    tvThoiGian.setText(response.body().getGoi().getThoiHan() + "");
+                    tvGia.setText(response.body().getGoi().getThoiHan() + "");
+                    Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN + response.body().getHinhAnhChuyenKhoan()).into(imgCK);
+                    batSuKienCanDuLieu(response.body().getId());
+                }
             }
 
             @Override
@@ -125,15 +127,17 @@ public class InfomationPackageRegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
                         if (responseIdTaiKhoan.code() == 200) {
-                            Log.d("TAGTK", "onResponse: idTaiKhoan" + responseIdTaiKhoan.body());
-                            databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
-                                }
-                            });
-                            MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds() + responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
-                            finish();
+                            if (responseIdTaiKhoan.body()!=null) {
+                                Log.d("TAGTK", "onResponse: idTaiKhoan" + responseIdTaiKhoan.body());
+                                databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
+                                    }
+                                });
+                                MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds() + responseIdTaiKhoan.body(), "Đăng ký gói thành công", "Yêu cầu đăng ký gói của bạn đã được xác thực cảm ơn bạn đã sử dụng dịch vụ.");
+                                finish();
+                            }
                         }
                     }
 

@@ -106,11 +106,12 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
             @Override
             public void onResponse(Call<Goi> call, Response<Goi> response) {
-                Goi goi = response.body();
-                String thoiHan = String.valueOf(goi.getThoiHan());
-                String soPhong = String.valueOf(goi.getSoLuongPhongToiDa());
-                tvIdDichVuChuTroChiTiet.setText(thoiHan + " ngày / " + soPhong + " phòng");
-
+                if (response.body()!=null) {
+                    Goi goi = response.body();
+                    String thoiHan = String.valueOf(goi.getThoiHan());
+                    String soPhong = String.valueOf(goi.getSoLuongPhongToiDa());
+                    tvIdDichVuChuTroChiTiet.setText(thoiHan + " ngày / " + soPhong + " phòng");
+                }
             }
 
             @Override
@@ -125,69 +126,56 @@ public class MotelRoomOwnerDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getHostByIdAPI(key).enqueue(new Callback<ChuTro>() {
             @Override
             public void onResponse(Call<ChuTro> call, Response<ChuTro> response) {
-                ChuTro host = response.body();
+                if (response.body()!=null) {
+                    ChuTro host = response.body();
 
-                Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getHinh()).into(imgChuTroChiTiet);
-                tvTenChuTroChiTiet.setText(host.getTen());
-                tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
-                //tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
-                PakageById(host.getIdGoi());
-                tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
-                tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
-                if (host.getYeuCauXacThuc() != null)
-                {
-                    if (host.getYeuCauXacThuc().getCccdMatTruoc() != null)
-                    {
-                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
-                    }
-                    else
-                    {
+                    Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getHinh()).into(imgChuTroChiTiet);
+                    tvTenChuTroChiTiet.setText(host.getTen());
+                    tvSoDienThoaiChuTroChiTiet.setText(host.getSoDienThoai());
+                    //tvIdDichVuChuTroChiTiet.setText(String.valueOf(host.getIdGoi()));
+                    PakageById(host.getIdGoi());
+                    tvSoTaiKhoanNganHangChuTroChiTiet.setText(host.getSoTaiKhoanNganHang());
+                    tvTenChuTaiKhoanNganHangChuTroChiTiet.setText(host.getTenChuTaiKhoanNganHang());
+                    if (host.getYeuCauXacThuc() != null) {
+                        if (host.getYeuCauXacThuc().getCccdMatTruoc() != null) {
+                            Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getYeuCauXacThuc().getCccdMatTruoc()).into(imgCccdMatTruocChuTroChiTiet);
+                        } else {
+                            imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.not_image);
+                        }
+                        if (host.getYeuCauXacThuc().getCccdMatSau() != null) {
+                            Glide.with(getApplicationContext()).load(Const.DOMAIN + host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
+
+                        } else {
+                            imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.not_image);
+                        }
+                    } else {
                         imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.not_image);
-                    }
-                    if (host.getYeuCauXacThuc().getCccdMatSau() != null)
-                    {
-                        Glide.with(getApplicationContext()).load(Const.DOMAIN +  host.getYeuCauXacThuc().getCccdMatSau()).into(imgCccdMatSauChuTroChiTiet);
-
-                    }
-                    else
-                    {
                         imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.not_image);
+
                     }
-                }
-                else
-                {
-                    imgCccdMatTruocChuTroChiTiet.setImageResource(R.drawable.not_image);
-                    imgCccdMatSauChuTroChiTiet.setImageResource(R.drawable.not_image);
 
+                    if (host.getXacThuc() == 1) {
+                        tvXacThucChuTroChiTiet.setText("Đã xác thực");
+                        tvXacThucChuTroChiTiet.setTextColor(0xFF00FF00);
+                    } else {
+                        tvXacThucChuTroChiTiet.setText("Chưa xác thực");
+                        tvXacThucChuTroChiTiet.setTextColor(0xFFFF0000);
+                    }
+                    if (host.getTaiKhoan().getTrangThai() == 1) {
+                        tvTrangThaiChuTroChiTiet.setText("Đã khóa");
+                        tvTrangThaiChuTroChiTiet.setTextColor(0xFFFF0000);
+                        //blue
+                        btnKhoaTaiKhoanChuTroChiTiet.setBackgroundColor(Color.parseColor("#1218db"));
+                        btnKhoaTaiKhoanChuTroChiTiet.setText("Mở khóa tài khoản");
+                    } else {
+                        tvTrangThaiChuTroChiTiet.setText("Đang hoạt động");
+                        tvTrangThaiChuTroChiTiet.setTextColor(0xFF00FF00);
+                        //red
+                        btnKhoaTaiKhoanChuTroChiTiet.setBackgroundColor(Color.parseColor("#fa1302"));
+                        btnKhoaTaiKhoanChuTroChiTiet.setText("Khóa tài khoản");
+                    }
+                    AppUntil.TEN_CHU_TRO = host.getTen();
                 }
-
-                if (host.getXacThuc() == 1)
-                {
-                    tvXacThucChuTroChiTiet.setText("Đã xác thực");
-                    tvXacThucChuTroChiTiet.setTextColor(0xFF00FF00);
-                }
-                else
-                {
-                    tvXacThucChuTroChiTiet.setText("Chưa xác thực");
-                    tvXacThucChuTroChiTiet.setTextColor(0xFFFF0000);
-                }
-                if (host.getTaiKhoan().getTrangThai() == 1)
-                {
-                    tvTrangThaiChuTroChiTiet.setText("Đã khóa");
-                    tvTrangThaiChuTroChiTiet.setTextColor(0xFFFF0000);
-                    //blue
-                    btnKhoaTaiKhoanChuTroChiTiet.setBackgroundColor(Color.parseColor("#1218db"));
-                    btnKhoaTaiKhoanChuTroChiTiet.setText("Mở khóa tài khoản");
-                }
-                else
-                {
-                    tvTrangThaiChuTroChiTiet.setText("Đang hoạt động");
-                    tvTrangThaiChuTroChiTiet.setTextColor(0xFF00FF00);
-                    //red
-                    btnKhoaTaiKhoanChuTroChiTiet.setBackgroundColor(Color.parseColor("#fa1302"));
-                    btnKhoaTaiKhoanChuTroChiTiet.setText("Khóa tài khoản");
-                }
-                AppUntil.TEN_CHU_TRO = host.getTen();
 
             }
             @Override

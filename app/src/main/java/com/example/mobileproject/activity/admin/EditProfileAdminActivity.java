@@ -201,13 +201,15 @@ public class EditProfileAdminActivity extends AppCompatActivity {
         call.enqueue(new Callback<Admin>() {
             @Override
             public void onResponse(Call<Admin> call, Response<Admin> response) {
-                Admin admin = response.body();
-                Glide.with(EditProfileAdminActivity.this).load(Const.DOMAIN +admin.getHinh()).into(imgAdmin);
-                edtTenAdmin.setText(admin.getTen());
-                edtSdtAdmin.setText(admin.getSoDienThoai());
-                edtSTKAdmin.setText(admin.getSoTaiKhoanNganHang());
-                edtTenNguoiThuHuong.setText(admin.getTenChuTaiKhoan());
-                setSuKienXacNhan(admin);
+                if (response.body()!=null) {
+                    Admin admin = response.body();
+                    Glide.with(EditProfileAdminActivity.this).load(Const.DOMAIN + admin.getHinh()).into(imgAdmin);
+                    edtTenAdmin.setText(admin.getTen());
+                    edtSdtAdmin.setText(admin.getSoDienThoai());
+                    edtSTKAdmin.setText(admin.getSoTaiKhoanNganHang());
+                    edtTenNguoiThuHuong.setText(admin.getTenChuTaiKhoan());
+                    setSuKienXacNhan(admin);
+                }
             }
 
             @Override

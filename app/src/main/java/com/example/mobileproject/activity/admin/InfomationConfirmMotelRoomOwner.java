@@ -111,29 +111,33 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> responseIdTaiKhoan) {
                         if (responseIdTaiKhoan.code() == 200) {
-                            Log.d("TAG", "onResponse: idTaiKhoan"+responseIdTaiKhoan.body());
-                            databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
-                                }
-                            });
-                            ApiServiceMinh.apiService.layTatCaTokenCuaTaiKhoan(responseIdTaiKhoan.body()).enqueue(new Callback<List<FirebaseCloudMessaging>>() {
-                                @Override
-                                public void onResponse(Call<List<FirebaseCloudMessaging>> call, Response<List<FirebaseCloudMessaging>> responseToken) {
-                                    for (FirebaseCloudMessaging firebaseCloudMessaging:
-                                         responseToken.body()) {
-                                        // TODO: Tạo thông báo gửi kết quả cho người dùng
-                                        MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds()+responseIdTaiKhoan.body(), "Xác thực tài khoản thành công", "Xác thực yêu cầu đăng ký tài khoản thành công cảm ơn bạn đã sử dụng dịch vụ");
+                            if (responseIdTaiKhoan.body()!=null) {
+                                Log.d("TAG", "onResponse: idTaiKhoan" + responseIdTaiKhoan.body());
+                                databaseReference.child("notification_admin").child(responseIdTaiKhoan.body() + "").setValue(-1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.d("TAG", "onSuccess: PUSH NOTIFICATION REALTIME");
                                     }
-                                    finish();
-                                }
+                                });
+                                ApiServiceMinh.apiService.layTatCaTokenCuaTaiKhoan(responseIdTaiKhoan.body()).enqueue(new Callback<List<FirebaseCloudMessaging>>() {
+                                    @Override
+                                    public void onResponse(Call<List<FirebaseCloudMessaging>> call, Response<List<FirebaseCloudMessaging>> responseToken) {
+                                        if (responseToken.body()!=null) {
+                                            for (FirebaseCloudMessaging firebaseCloudMessaging :
+                                                    responseToken.body()) {
+                                                // TODO: Tạo thông báo gửi kết quả cho người dùng
+                                                MFCM.sendNotificationForAccountID(responseIdTaiKhoan.body(), new Date().getSeconds() + responseIdTaiKhoan.body(), "Xác thực tài khoản thành công", "Xác thực yêu cầu đăng ký tài khoản thành công cảm ơn bạn đã sử dụng dịch vụ");
+                                            }
+                                        }
+                                        finish();
+                                    }
 
-                                @Override
-                                public void onFailure(Call<List<FirebaseCloudMessaging>> call, Throwable t) {
+                                    @Override
+                                    public void onFailure(Call<List<FirebaseCloudMessaging>> call, Throwable t) {
 
-                                }
-                            });
+                                    }
+                                });
+                            }
                         }
 
                     }
@@ -197,16 +201,18 @@ public class InfomationConfirmMotelRoomOwner extends AppCompatActivity {
             @Override
             public void onResponse(Call<YeuCauXacThuc> call, Response<YeuCauXacThuc> response) {
                 if (response.code() == 200){
-                    YeuCauXacThuc yeuCauXacThuc = response.body();
-                    tvTen.setText(yeuCauXacThuc.getChuTro().getTen());
-                    tvSDT.setText(yeuCauXacThuc.getChuTro().getSoDienThoai());
-                    tvSTK.setText(yeuCauXacThuc.getChuTro().getTenChuTaiKhoanNganHang());
-                    tvTenNguoiThuHuong.setText(yeuCauXacThuc.getChuTro().getTenChuTaiKhoanNganHang());
-                    Glide.with(getApplicationContext()).load(Const.DOMAIN+yeuCauXacThuc.getChuTro().getHinh()).into(imgMain);
-                    Glide.with(getApplicationContext()).load(Const.DOMAIN+yeuCauXacThuc.getCccdMatTruoc()).into(imgcccdT);
-                    Glide.with(getApplicationContext()).load(Const.DOMAIN+yeuCauXacThuc.getCccdMatSau()).into(imgcccdS);
+                    if (response.body()!=null) {
+                        YeuCauXacThuc yeuCauXacThuc = response.body();
+                        tvTen.setText(yeuCauXacThuc.getChuTro().getTen());
+                        tvSDT.setText(yeuCauXacThuc.getChuTro().getSoDienThoai());
+                        tvSTK.setText(yeuCauXacThuc.getChuTro().getTenChuTaiKhoanNganHang());
+                        tvTenNguoiThuHuong.setText(yeuCauXacThuc.getChuTro().getTenChuTaiKhoanNganHang());
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN + yeuCauXacThuc.getChuTro().getHinh()).into(imgMain);
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN + yeuCauXacThuc.getCccdMatTruoc()).into(imgcccdT);
+                        Glide.with(getApplicationContext()).load(Const.DOMAIN + yeuCauXacThuc.getCccdMatSau()).into(imgcccdS);
 
-                    batSuKienCanDuLieu(idChuTro);
+                        batSuKienCanDuLieu(idChuTro);
+                    }
                 }
             }
 

@@ -83,9 +83,11 @@ public class DistrictFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<ArrayList<Quan>> call, Response<ArrayList<Quan>> response) {
                 if(response.isSuccessful()){
-                    arrayList.clear();
-                    arrayList.addAll(response.body());
-                    quanAdapter.notifyDataSetChanged();
+                    if (response.body()!=null) {
+                        arrayList.clear();
+                        arrayList.addAll(response.body());
+                        quanAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 

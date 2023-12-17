@@ -95,17 +95,19 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
         ApiServiceKiet.apiServiceKiet.getListHostAPI().enqueue(new Callback<List<ChuTro>>() {
             @Override
             public void onResponse(Call<List<ChuTro>> call, Response<List<ChuTro>> response) {
-                list = response.body();
-                chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
-                recyclerView.setAdapter(chuTroAdapter);
-                chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
-                    @Override
-                    public void onClickItem(int position, View v) {
-                        Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity(list.get(position).getIdTaiKhoan());
-                    }
-                });
+                if (response.body()!=null) {
+                    list = response.body();
+                    chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
+                    recyclerView.setAdapter(chuTroAdapter);
+                    chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
+                        @Override
+                        public void onClickItem(int position, View v) {
+                            Log.d("RESULT", list.get(position) + "");
+                            AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
+                            nextActivity(list.get(position).getIdTaiKhoan());
+                        }
+                    });
+                }
             }
 
             @Override
@@ -120,18 +122,20 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
         ApiServiceKiet.apiServiceKiet.getHostByNameAPI(key).enqueue(new Callback<List<ChuTro>>() {
             @Override
             public void onResponse(Call<List<ChuTro>> call, Response<List<ChuTro>> response) {
-                list = response.body();
-                chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
-                recyclerView.setAdapter(chuTroAdapter);
-                chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
-                    @Override
-                    public void onClickItem(int position, View v) {
-                        Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity(list.get(position).getIdTaiKhoan());
-                    }
+                if (response.body()!=null) {
+                    list = response.body();
+                    chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
+                    recyclerView.setAdapter(chuTroAdapter);
+                    chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
+                        @Override
+                        public void onClickItem(int position, View v) {
+                            Log.d("RESULT", list.get(position) + "");
+                            AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
+                            nextActivity(list.get(position).getIdTaiKhoan());
+                        }
 
-                });
+                    });
+                }
 
 
             }
@@ -148,18 +152,19 @@ public class MotelRoomOwnerFragment extends AbstractFragment{
         ApiServiceKiet.apiServiceKiet.getHostByPhoneAPI(key).enqueue(new Callback<List<ChuTro>>() {
             @Override
             public void onResponse(Call<List<ChuTro>> call, Response<List<ChuTro>> response) {
-                list = response.body();
-                chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
-                recyclerView.setAdapter(chuTroAdapter);
-                chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
-                    @Override
-                    public void onClickItem(int position, View v) {
-                        Log.d("RESULT", list.get(position)+"");
-                        AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
-                        nextActivity(list.get(position).getIdTaiKhoan());
-                    }
-                });
-
+                if (response.body()!=null) {
+                    list = response.body();
+                    chuTroAdapter = new ChuTroAdapter(getActivity(), list, R.layout.cardview_admin_motel_room_owner_layout);
+                    recyclerView.setAdapter(chuTroAdapter);
+                    chuTroAdapter.setOnClickItemListener(new ChuTroAdapter.OnClickItemListener() {
+                        @Override
+                        public void onClickItem(int position, View v) {
+                            Log.d("RESULT", list.get(position) + "");
+                            AppUntil.ID_CHU_TRO = list.get(position).getIdTaiKhoan();
+                            nextActivity(list.get(position).getIdTaiKhoan());
+                        }
+                    });
+                }
 
             }
 

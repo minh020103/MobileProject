@@ -51,7 +51,9 @@ public class DetailPolicyActivity extends AppCompatActivity {
         call.enqueue(new Callback<ChinhSach>() {
             @Override
             public void onResponse(Call<ChinhSach> call, Response<ChinhSach> response) {
-                tvChinhSach.setText(response.body().getNoiDungChinhSach());
+                if (response.body()!=null) {
+                    tvChinhSach.setText(response.body().getNoiDungChinhSach());
+                }
             }
 
             @Override

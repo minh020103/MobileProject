@@ -110,10 +110,12 @@ public class OwnerAccountFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<List<YeuCauXacThuc>> call, Response<List<YeuCauXacThuc>> response) {
                 if (response.code() == 200) {
-                    listYeuCauXacThuc.clear();
-                    listYeuCauXacThuc.addAll(response.body());
-                    adapter.notifyDataSetChanged();
-                    load.setVisibility(View.GONE);
+                    if (response.body()!=null) {
+                        listYeuCauXacThuc.clear();
+                        listYeuCauXacThuc.addAll(response.body());
+                        adapter.notifyDataSetChanged();
+                        load.setVisibility(View.GONE);
+                    }
                 }
             }
 

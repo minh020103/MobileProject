@@ -223,16 +223,18 @@ public class EditUtilitiesActivity extends AppCompatActivity {
         call.enqueue(new Callback<TienIch>() {
             @Override
             public void onResponse(Call<TienIch> call, Response<TienIch> response) {
-                layTrangThai(response.body().getTrangThai());
-                edtTenTienIch.setText(response.body().getTen().toString());
-                name_tien_ich.setText("Chỉnh Sửa " + response.body().getTen().toString());
-                Glide.with(EditUtilitiesActivity.this).load(Const.DOMAIN+response.body().getHinh()).into(imgTienIch);
-                if(response.body().getTrangThai()==0){
-                    btnKhoaTienIch.setText("Khóa Tiên Ích Lại");
-                    btnKhoaTienIch.setBackgroundColor(getResources().getColor(R.color.red));
-                }else{
-                    btnKhoaTienIch.setText("Mở Khóa Tiện Ích");
-                    btnKhoaTienIch.setBackgroundColor(getResources().getColor(R.color.black));
+                if (response.body()!=null) {
+                    layTrangThai(response.body().getTrangThai());
+                    edtTenTienIch.setText(response.body().getTen().toString());
+                    name_tien_ich.setText("Chỉnh Sửa " + response.body().getTen().toString());
+                    Glide.with(EditUtilitiesActivity.this).load(Const.DOMAIN + response.body().getHinh()).into(imgTienIch);
+                    if (response.body().getTrangThai() == 0) {
+                        btnKhoaTienIch.setText("Khóa Tiên Ích Lại");
+                        btnKhoaTienIch.setBackgroundColor(getResources().getColor(R.color.red));
+                    } else {
+                        btnKhoaTienIch.setText("Mở Khóa Tiện Ích");
+                        btnKhoaTienIch.setBackgroundColor(getResources().getColor(R.color.black));
+                    }
                 }
             }
             @Override

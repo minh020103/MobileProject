@@ -84,27 +84,25 @@ public class PakageDetailActivity extends AppCompatActivity {
         ApiServiceKiet.apiServiceKiet.getPakageByIdAPI(key).enqueue(new Callback<Goi>() {
             @Override
             public void onResponse(Call<Goi> call, Response<Goi> response) {
-                Goi host = response.body();
+                if (response.body()!=null) {
+                    Goi host = response.body();
 
-                tvThoiHanGoiDVChiTiet.setText(String.valueOf(host.getThoiHan()));
-                tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhongToiDa()));
-                tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGia()));
+                    tvThoiHanGoiDVChiTiet.setText(String.valueOf(host.getThoiHan()));
+                    tvSoLuongPhongGoiDVChiTiet.setText(String.valueOf(host.getSoLuongPhongToiDa()));
+                    tvGiaGoiDVChiTiet.setText(String.valueOf(host.getGia()));
 
-                if (host.getTrangThai() == 1)
-                {
-                    tvTrangThaiGoiDVChiTiet.setText("Đã khóa");
-                    tvTrangThaiGoiDVChiTiet.setTextColor(0xFFFF0000);
-                    btnKhoaGoiDVChiTiet.setEnabled(false);
-                    btnMoKhoaGoiDVChiTiet.setEnabled(true);
+                    if (host.getTrangThai() == 1) {
+                        tvTrangThaiGoiDVChiTiet.setText("Đã khóa");
+                        tvTrangThaiGoiDVChiTiet.setTextColor(0xFFFF0000);
+                        btnKhoaGoiDVChiTiet.setEnabled(false);
+                        btnMoKhoaGoiDVChiTiet.setEnabled(true);
+                    } else {
+                        tvTrangThaiGoiDVChiTiet.setText("Đang hoạt động");
+                        tvTrangThaiGoiDVChiTiet.setTextColor(0xFF00FF00);
+                        btnKhoaGoiDVChiTiet.setEnabled(true);
+                        btnMoKhoaGoiDVChiTiet.setEnabled(false);
+                    }
                 }
-                else
-                {
-                    tvTrangThaiGoiDVChiTiet.setText("Đang hoạt động");
-                    tvTrangThaiGoiDVChiTiet.setTextColor(0xFF00FF00);
-                    btnKhoaGoiDVChiTiet.setEnabled(true);
-                    btnMoKhoaGoiDVChiTiet.setEnabled(false);
-                }
-
             }
             @Override
             public void onFailure(Call<Goi> call, Throwable t) {

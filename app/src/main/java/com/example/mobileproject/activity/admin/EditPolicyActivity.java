@@ -46,8 +46,10 @@ public class EditPolicyActivity extends AppCompatActivity {
         call.enqueue(new Callback<ChinhSach>() {
             @Override
             public void onResponse(Call<ChinhSach> call, Response<ChinhSach> response) {
-                noiDungChinhSach.setText(response.body().getNoiDungChinhSach());
-                setSuKienCapNhat(noiDungChinhSach);
+                if (response.body()!=null) {
+                    noiDungChinhSach.setText(response.body().getNoiDungChinhSach());
+                    setSuKienCapNhat(noiDungChinhSach);
+                }
             }
 
             @Override

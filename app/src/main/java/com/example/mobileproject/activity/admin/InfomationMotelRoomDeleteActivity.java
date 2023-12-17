@@ -132,22 +132,24 @@ public class InfomationMotelRoomDeleteActivity extends AppCompatActivity {
             public void onResponse(Call<YeuCauXoaPhong> call, Response<YeuCauXoaPhong> response) {
                 Log.d("TAG", "okkk: "+response.code());
                 if (response.code() == 200){
-                    Log.d("TAG", "okkk: "+response.isSuccessful());
-                    YeuCauXoaPhong yeuCauXoaPhong = response.body();
-                    if (yeuCauXoaPhong != null) {
-                        if (yeuCauXoaPhong.getChuTro() != null) {
-                            Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN+yeuCauXoaPhong.getChuTro().getHinh()).into(imgMain);
-                            tvTen.setText(yeuCauXoaPhong.getChuTro().getTen()+"");
-                            tvSDT.setText(yeuCauXoaPhong.getChuTro().getSoDienThoai()+"");
-                        }
-                        if (yeuCauXoaPhong.getPhongTro() != null) {
-                            tvSoPhong.setText(yeuCauXoaPhong.getPhongTro().getSoPhong() + "");
-                            tvIdPhong.setText(yeuCauXoaPhong.getPhongTro().getId() + "");
+                    if (response.body()!=null) {
+                        Log.d("TAG", "okkk: " + response.isSuccessful());
+                        YeuCauXoaPhong yeuCauXoaPhong = response.body();
+                        if (yeuCauXoaPhong != null) {
+                            if (yeuCauXoaPhong.getChuTro() != null) {
+                                Glide.with(getLayoutInflater().getContext()).load(Const.DOMAIN + yeuCauXoaPhong.getChuTro().getHinh()).into(imgMain);
+                                tvTen.setText(yeuCauXoaPhong.getChuTro().getTen() + "");
+                                tvSDT.setText(yeuCauXoaPhong.getChuTro().getSoDienThoai() + "");
+                            }
+                            if (yeuCauXoaPhong.getPhongTro() != null) {
+                                tvSoPhong.setText(yeuCauXoaPhong.getPhongTro().getSoPhong() + "");
+                                tvIdPhong.setText(yeuCauXoaPhong.getPhongTro().getId() + "");
 
+                            }
+                            tvLyDo.setText(yeuCauXoaPhong.getLyDo());
                         }
-                        tvLyDo.setText(yeuCauXoaPhong.getLyDo());
+                        batSuKienCanDuLieu(yeuCauXoaPhong.getIdPhong());
                     }
-                    batSuKienCanDuLieu(yeuCauXoaPhong.getIdPhong());
                 }
             }
 

@@ -78,10 +78,12 @@ public class PackageRegisterFragment extends AbstractFragment {
             @Override
             public void onResponse(Call<List<YeuCauDangKyGoi>> call, Response<List<YeuCauDangKyGoi>> response) {
                 if (response.code() == 200) {
-                    list.clear();
-                    list.addAll(response.body());
-                    adapter.notifyDataSetChanged();
-                    load.setVisibility(View.GONE);
+                    if (response.body()!=null) {
+                        list.clear();
+                        list.addAll(response.body());
+                        adapter.notifyDataSetChanged();
+                        load.setVisibility(View.GONE);
+                    }
                 }
 
             }
